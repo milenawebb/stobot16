@@ -60,7 +60,7 @@ export function Hero() {
           </dl>
         </div>
 
-        <div className="mt-10 flex flex-col gap-px bg-border sm:flex-row sm:items-stretch">
+        <div className="mt-10 flex w-full flex-col gap-px bg-border sm:w-fit sm:flex-row sm:items-stretch">
           <a
             href="#zayavka"
             className="bg-primary px-8 py-5 text-center font-display text-base font-bold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
