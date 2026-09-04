@@ -34,6 +34,8 @@
   --color-surface-2: var(--surface-2);
   --color-move: var(--move);
   --color-move-foreground: var(--move-foreground);
+  --color-brand-band: var(--brand-band);
+  --color-brand-card: var(--brand-card);
   --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
 }
@@ -58,6 +60,8 @@
   /* Secondary service line accent (moving) */
   --move: oklch(0.78 0.13 195);
   --move-foreground: oklch(0.2 0.03 258);
+  --brand-band: oklch(0.16 0.02 258);
+  --brand-card: oklch(0.205 0.024 258);
 
   --secondary: oklch(0.3 0.026 258);
   --secondary-foreground: oklch(0.97 0.005 250);
@@ -134,11 +138,52 @@
   background-size: 64px 64px;
 }
 
+@keyframes marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@utility marquee-fade {
+  mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+}
+
+@utility marquee-track {
+  will-change: transform;
+}
+
+@utility marquee-track-partners {
+  animation: marquee-left 34s linear infinite;
+}
+
+@utility marquee-track-brands {
+  animation: marquee-left 72s linear infinite;
+}
+
+@utility marquee-track-brands-reverse {
+  animation: marquee-right 78s linear infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+  .marquee-track {
+    animation-play-state: paused;
   }
   html {
     scroll-behavior: auto;
