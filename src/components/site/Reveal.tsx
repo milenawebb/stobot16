@@ -6,11 +6,13 @@ export function Reveal({
   children,
   className,
   delay = 0,
+  id,
   as: Tag = "div",
 }: {
   children: ReactNode;
   className?: string;
   delay?: number;
+  id?: string;
   as?: "div" | "section" | "li" | "article" | "header";
 }) {
   const { ref, visible } = useReveal<HTMLDivElement>();
