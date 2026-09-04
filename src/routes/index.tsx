@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Nav } from "@/components/site/Nav";
 import { Hero } from "@/components/site/Hero";
 import { PartnerTicker } from "@/components/site/PartnerTicker";
-import { Stats } from "@/components/site/Stats";
 import { Services } from "@/components/site/Services";
 import { Process } from "@/components/site/Process";
 import { Sectors } from "@/components/site/Sectors";
@@ -36,13 +35,21 @@ function Index() {
       <Nav />
       <Hero />
       <PartnerTicker />
-      <Stats />
-      <Services />
-      <Process />
-      <Sectors />
-      <Brands />
-      <Moving />
-      <Forms />
+
+      {/* route line: one continuous path through the page, drawn once on load */}
+      <div className="relative">
+        <span
+          className="route-line-y pointer-events-none absolute left-5 top-0 hidden h-full w-px bg-line/25 lg:left-8 lg:block"
+          aria-hidden="true"
+        />
+        <Services />
+        <Process />
+        <Sectors />
+        <Brands />
+        <Moving />
+        <Forms />
+      </div>
+
       <Footer />
       <FloatingContact />
     </main>

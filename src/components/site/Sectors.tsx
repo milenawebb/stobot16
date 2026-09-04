@@ -8,7 +8,7 @@ import {
   Wrench,
   Warehouse,
 } from "lucide-react";
-import { Reveal } from "./Reveal";
+import { SectionHead } from "./SectionHead";
 
 const sectors = [
   { icon: HardHat, t: "Строителство", d: "Общи работници, кофражисти, помощен персонал." },
@@ -26,26 +26,28 @@ export function Sectors() {
     <section id="sektori" className="relative overflow-hidden py-20 lg:py-28">
       <div className="grid-lines pointer-events-none absolute inset-0 opacity-60" />
       <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
-        <Reveal className="max-w-2xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">Сектори</p>
-          <h2 className="mt-3 text-3xl font-bold sm:text-4xl">Кадри за вашия бранш</h2>
-          <p className="mt-4 text-muted-foreground">
-            Placeholder текст: осигуряваме персонал за производствени, логистични и сервизни обекти
-            в цялата страна.
-          </p>
-        </Reveal>
+        <SectionHead
+          index="04"
+          label="Сектори на разпределение"
+          title="Кадри за вашия бранш"
+          lead="Placeholder текст: осигуряваме персонал за производствени, логистични и сервизни обекти в цялата страна."
+        />
 
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
           {sectors.map((s, i) => (
-            <Reveal key={s.t} delay={i * 70}>
-              <article className="surface-card group h-full p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/50 hover:shadow-[var(--shadow-glow)]">
-                <span className="grid h-11 w-11 place-items-center rounded-xl bg-secondary transition-colors group-hover:bg-primary">
-                  <s.icon className="h-5 w-5 text-primary transition-colors group-hover:text-primary-foreground" />
-                </span>
-                <h3 className="mt-4 font-display text-lg font-semibold">{s.t}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.d}</p>
-              </article>
-            </Reveal>
+            <article
+              key={s.t}
+              className="group relative bg-background p-6 transition-colors hover:bg-primary hover:text-primary-foreground"
+            >
+              <span className="manifest-label absolute right-4 top-4 group-hover:text-primary-foreground/70">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <s.icon className="h-6 w-6 text-primary transition-colors group-hover:text-primary-foreground" />
+              <h3 className="mt-6 text-xl">{s.t}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground group-hover:text-primary-foreground/85">
+                {s.d}
+              </p>
+            </article>
           ))}
         </div>
       </div>

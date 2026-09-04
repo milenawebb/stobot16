@@ -24,16 +24,16 @@ export function Nav() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        scrolled ? "bg-background/85 border-b border-border backdrop-blur-xl" : "bg-transparent",
+        "fixed inset-x-0 top-0 z-50 transition-colors duration-200",
+        scrolled ? "border-b border-border bg-background/95 backdrop-blur" : "bg-transparent",
       )}
     >
       <nav className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-4 lg:px-8">
         <a href="#top" className="flex min-w-0 items-center gap-3">
-          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-[image:var(--gradient-accent)] font-display text-lg font-bold text-primary-foreground">
+          <span className="grid h-9 w-9 shrink-0 place-items-center bg-primary font-display text-lg font-extrabold text-primary-foreground">
             К
           </span>
-          <span className="truncate font-display text-lg font-bold tracking-tight">
+          <span className="truncate font-display text-lg font-extrabold tracking-tight">
             КАДРИ<span className="text-primary">.БГ</span>
           </span>
         </a>
@@ -43,37 +43,37 @@ export function Nav() {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className="relative py-1 text-sm font-medium text-muted-foreground transition-colors after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-left after:scale-x-0 after:bg-primary after:transition-transform hover:text-foreground hover:after:scale-x-100"
             >
               {l.label}
             </a>
           ))}
           <a
             href="#zayavka"
-            className="rounded-full bg-[image:var(--gradient-accent)] px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.03]"
+            className="bg-primary px-5 py-2.5 font-display text-sm font-bold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
           >
-            Нуждая се от персонал
+            Заявка за персонал
           </a>
         </div>
 
         <button
           aria-label="Меню"
           onClick={() => setOpen((v) => !v)}
-          className="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-border lg:hidden"
+          className="grid h-10 w-10 shrink-0 place-items-center border border-border transition-colors hover:border-primary lg:hidden"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </nav>
 
       {open && (
-        <div className="border-t border-border bg-background/95 px-5 py-4 backdrop-blur-xl lg:hidden">
-          <div className="flex flex-col gap-1">
+        <div className="border-t border-border bg-background px-5 py-4 lg:hidden">
+          <div className="flex flex-col">
             {links.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-3 text-sm font-medium text-muted-foreground hover:bg-secondary hover:text-foreground"
+                className="border-b border-border py-3.5 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
               >
                 {l.label}
               </a>
@@ -81,9 +81,9 @@ export function Nav() {
             <a
               href="#zayavka"
               onClick={() => setOpen(false)}
-              className="mt-2 rounded-full bg-[image:var(--gradient-accent)] px-5 py-3 text-center text-sm font-semibold text-primary-foreground"
+              className="mt-4 bg-primary px-5 py-3.5 text-center font-display text-sm font-bold uppercase tracking-wide text-primary-foreground"
             >
-              Нуждая се от персонал
+              Заявка за персонал
             </a>
           </div>
         </div>

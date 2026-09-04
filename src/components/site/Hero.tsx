@@ -1,74 +1,79 @@
-import { ArrowRight, BadgeCheck, ShieldCheck, FileCheck2 } from "lucide-react";
 import heroImg from "@/assets/hero-crew.jpg";
-import { Reveal } from "./Reveal";
 
 export function Hero() {
   return (
-    <section id="top" className="relative isolate overflow-hidden pt-28 lg:pt-36">
+    <section id="top" className="relative isolate overflow-hidden border-b border-border pt-28 lg:pt-36">
       <img
         src={heroImg}
         alt="Екип от обучени работници на индустриален обект"
         width={1600}
         height={1100}
-        className="absolute inset-0 -z-20 h-full w-full object-cover opacity-35"
+        className="absolute inset-0 -z-20 h-full w-full object-cover opacity-20 grayscale"
       />
       <div
         className="absolute inset-0 -z-10"
-        style={{
-          background:
-            "linear-gradient(110deg, var(--background) 20%, oklch(0.19 0.028 258 / 0.72) 60%, oklch(0.19 0.028 258 / 0.55))",
-        }}
+        style={{ background: "linear-gradient(100deg, #14181c 30%, #14181cd9 65%, #14181cb3)" }}
       />
+      <div className="grid-lines pointer-events-none absolute inset-0 -z-10 opacity-70" />
 
-      <div className="mx-auto max-w-7xl px-5 pb-20 lg:px-8 lg:pb-28">
-        <Reveal className="max-w-3xl">
-          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground backdrop-blur">
-            <BadgeCheck className="h-4 w-4 text-primary" />
-            Аутсорсинг на персонал в България
-          </span>
-          <h1 className="mt-6 text-4xl font-bold leading-[1.05] sm:text-5xl lg:text-6xl">
-            Обучен и осигурен персонал,
-            <span className="block bg-[image:var(--gradient-accent)] bg-clip-text text-transparent">
-              готов за вашия обект
-            </span>
-          </h1>
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+      <div className="mx-auto max-w-7xl px-5 pb-16 lg:px-8 lg:pb-24">
+        <div className="flex flex-wrap items-center gap-3">
+          <span className="manifest-label">Манифест 001</span>
+          <span className="h-px flex-1 bg-line/35" aria-hidden="true" />
+          <span className="manifest-label">Аутсорсинг на персонал / България</span>
+        </div>
+
+        <h1 className="mt-8 max-w-5xl text-[2.75rem] leading-[0.92] sm:text-6xl lg:text-[5.25rem]">
+          350+ души на договор.
+          <span className="block text-primary">12 сектора.</span>
+          Нула главоболия по наемането за вас.
+        </h1>
+
+        {/* the single orchestrated animation: the route line drawing in on load */}
+        <div className="mt-10 flex items-center">
+          <span className="route-stop h-3 w-3 shrink-0 bg-primary" aria-hidden="true" />
+          <span className="route-line-x h-px flex-1 bg-line/60" aria-hidden="true" />
+          <span
+            className="route-stop h-3 w-3 shrink-0 border border-line/60 [animation-delay:1.5s]"
+            aria-hidden="true"
+          />
+        </div>
+
+        <div className="mt-10 grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+          <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">
             Placeholder текст: наемаме, обучаваме и осигуряваме хората — вие получавате работеща
             смяна на обекта. Трудови договори, социални осигуровки, застраховка и заместване при
             отсъствие.
           </p>
-        </Reveal>
 
-        <Reveal delay={120} className="mt-9 flex flex-col gap-3 sm:flex-row">
+          <dl className="grid grid-cols-3 gap-px bg-border">
+            {[
+              ["12", "години опит"],
+              ["95+", "партньори"],
+              ["24ч", "заместване"],
+            ].map(([v, k]) => (
+              <div key={k} className="bg-background px-4 py-5">
+                <dt className="font-display text-3xl font-extrabold sm:text-4xl">{v}</dt>
+                <dd className="manifest-label mt-1 block">{k}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+
+        <div className="mt-10 flex w-full flex-col gap-px bg-border sm:w-fit sm:flex-row sm:items-stretch">
           <a
             href="#zayavka"
-            className="group inline-flex items-center justify-center gap-2 rounded-full bg-[image:var(--gradient-accent)] px-7 py-4 text-sm font-bold text-primary-foreground shadow-[var(--shadow-glow)] transition-transform hover:scale-[1.02]"
+            className="bg-primary px-8 py-5 text-center font-display text-base font-bold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
           >
             Нуждая се от персонал
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </a>
           <a
             href="#kandidati"
-            className="group inline-flex items-center justify-center gap-2 rounded-full border border-border bg-surface/70 px-7 py-4 text-sm font-bold backdrop-blur transition-colors hover:bg-surface-2"
+            className="bg-background px-8 py-5 text-center font-display text-base font-bold uppercase tracking-wide text-foreground transition-colors hover:bg-move hover:text-move-foreground"
           >
             Търся работа
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </a>
-        </Reveal>
-
-        <Reveal delay={220} className="mt-12 grid gap-4 sm:grid-cols-3">
-          {[
-            { icon: FileCheck2, t: "Трудови договори", d: "Пълна документация и осигуровки" },
-            { icon: ShieldCheck, t: "Застраховани екипи", d: "Трудова медицина и инструктаж" },
-            { icon: BadgeCheck, t: "Заместване до 24ч", d: "Гарантирана наличност на смяната" },
-          ].map((f) => (
-            <div key={f.t} className="surface-card p-5">
-              <f.icon className="h-5 w-5 text-primary" />
-              <p className="mt-3 font-display font-semibold">{f.t}</p>
-              <p className="mt-1 text-sm text-muted-foreground">{f.d}</p>
-            </div>
-          ))}
-        </Reveal>
+        </div>
       </div>
     </section>
   );

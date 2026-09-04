@@ -1,5 +1,3 @@
-import { Reveal } from "./Reveal";
-
 const brandRows = [
   [
     "Nike",
@@ -36,14 +34,14 @@ const brandRows = [
 
 function BrandSet({ brands, hidden = false }: { brands: string[]; hidden?: boolean }) {
   return (
-    <div className="flex shrink-0 items-stretch gap-4 pr-4" aria-hidden={hidden || undefined}>
+    <div className="flex shrink-0 items-stretch" aria-hidden={hidden || undefined}>
       {brands.map((brand) => (
         <div
           key={brand}
-          className="flex h-28 w-48 shrink-0 flex-col justify-between rounded-lg border border-border bg-brand-card p-5 shadow-[var(--shadow-soft)] transition-colors hover:border-primary/40 hover:bg-surface-2 sm:h-32 sm:w-56"
+          className="flex h-32 w-52 shrink-0 flex-col justify-between border-r border-paper-foreground/15 px-6 py-5 transition-colors hover:bg-paper-foreground hover:text-paper sm:h-36 sm:w-60"
         >
-          <span className="h-9 w-9 rounded-md border border-dashed border-border bg-surface" aria-hidden="true" />
-          <span className="font-display text-lg font-bold text-foreground sm:text-xl">{brand}</span>
+          <span className="h-8 w-8 border border-current opacity-30" aria-hidden="true" />
+          <span className="font-display text-xl font-extrabold sm:text-2xl">{brand}</span>
         </div>
       ))}
     </div>
@@ -52,21 +50,33 @@ function BrandSet({ brands, hidden = false }: { brands: string[]; hidden?: boole
 
 export function Brands() {
   return (
-    <section aria-labelledby="brands-title" className="overflow-hidden bg-brand-band py-20 lg:py-28">
-      <Reveal className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="h-1 w-12 rounded-full bg-primary" aria-hidden="true" />
-        <h2 id="brands-title" className="mt-5 max-w-3xl text-3xl font-bold sm:text-4xl lg:text-5xl">
+    <section
+      aria-labelledby="brands-title"
+      className="overflow-hidden border-y border-border bg-paper py-20 text-paper-foreground lg:py-28"
+    >
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+        <div className="flex items-center gap-3">
+          <span className="manifest-label">05</span>
+          <span className="h-px w-8 bg-paper-foreground/20" aria-hidden="true" />
+          <span className="manifest-label">Крайни обекти</span>
+        </div>
+        <h2 id="brands-title" className="mt-5 max-w-4xl text-[2rem] sm:text-5xl lg:text-6xl">
           Доверие от екипи по проекти за водещи марки
         </h2>
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">
+        <p className="mt-5 max-w-2xl text-base leading-relaxed text-paper-foreground/70">
           Наши служители са работили в складове, обекти и проекти на разпознаваеми международни и
           български марки чрез логистичните ни партньори.
         </p>
-      </Reveal>
+      </div>
 
-      <div className="mt-12 space-y-4">
+      <div className="mt-14 border-y border-paper-foreground/15">
         {brandRows.map((brands, index) => (
-          <div key={brands[0]} className="marquee-fade group overflow-hidden">
+          <div
+            key={brands[0]}
+            className={`marquee-fade group overflow-hidden ${
+              index === 1 ? "border-t border-paper-foreground/15" : ""
+            }`}
+          >
             <div
               className={`marquee-track flex w-max group-hover:[animation-play-state:paused] ${
                 index === 0 ? "marquee-track-brands" : "marquee-track-brands-reverse"
