@@ -1,0 +1,57 @@
+import { SectionHead } from "./SectionHead";
+
+const items = [
+  {
+    code: "T-01",
+    quote:
+      "Placeholder текст: в рамките на два дни получихме екип за нощна смяна и покрихме пиковия сезон без забавяне на пратките.",
+    name: "Оперативен директор",
+    company: "Логистичен партньор, София",
+  },
+  {
+    code: "T-02",
+    quote:
+      "Placeholder текст: хората идват подготвени и с редовни документи. Отчитането на часовете е прозрачно и не отнема време на нашия екип.",
+    name: "Ръководител склад",
+    company: "Дистрибуция, Пловдив",
+  },
+  {
+    code: "T-03",
+    quote:
+      "Placeholder текст: при отсъствие получаваме заместник същия ден. Това е основната причина да продължаваме договора трета година.",
+    name: "Мениджър производство",
+    company: "Производствена база, Варна",
+  },
+];
+
+export function Testimonials() {
+  return (
+    <section className="relative overflow-hidden border-b border-border bg-paper py-20 text-paper-foreground lg:py-28">
+      <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
+        <SectionHead
+          index="09"
+          label="Отзиви от партньори"
+          title="Какво казват обектите"
+          tone="paper"
+        />
+        <div className="mt-14 grid gap-px bg-paper-foreground/15 lg:grid-cols-3">
+          {items.map((i) => (
+            <figure
+              key={i.code}
+              className="flex h-full flex-col justify-between bg-paper p-6 transition-colors hover:bg-paper-foreground/5 lg:p-8"
+            >
+              <div>
+                <span className="manifest-label">{i.code}</span>
+                <blockquote className="mt-6 text-lg leading-snug">{i.quote}</blockquote>
+              </div>
+              <figcaption className="mt-8 border-t border-paper-foreground/20 pt-4">
+                <p className="font-display text-base font-bold">{i.name}</p>
+                <p className="mt-1 text-sm text-paper-foreground/65">{i.company}</p>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
