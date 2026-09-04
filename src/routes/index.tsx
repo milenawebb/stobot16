@@ -7,6 +7,9 @@ import { Process } from "@/components/site/Process";
 import { Sectors } from "@/components/site/Sectors";
 import { Brands } from "@/components/site/Brands";
 import { Moving } from "@/components/site/Moving";
+import { QuickMatch } from "@/components/site/QuickMatch";
+import { WhyUs } from "@/components/site/WhyUs";
+import { Testimonials } from "@/components/site/Testimonials";
 import { Forms } from "@/components/site/Forms";
 import { Footer } from "@/components/site/Footer";
 import { FloatingContact } from "@/components/site/FloatingContact";
@@ -47,6 +50,9 @@ function Index() {
         <Sectors />
         <Brands />
         <Moving />
+        <QuickMatch />
+        <WhyUs />
+        <Testimonials />
         <Forms />
       </div>
 
