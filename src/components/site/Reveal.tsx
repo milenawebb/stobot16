@@ -19,6 +19,7 @@ export function Reveal({
   return (
     <Tag
       ref={ref as never}
+      id={id}
       data-visible={visible}
       style={{ transitionDelay: `${delay}ms` }}
       className={cn("reveal", className)}
