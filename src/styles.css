@@ -5,12 +5,12 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -34,56 +34,50 @@
   --color-surface-2: var(--surface-2);
   --color-move: var(--move);
   --color-move-foreground: var(--move-foreground);
-  --color-brand-band: var(--brand-band);
-  --color-brand-card: var(--brand-card);
-  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --color-paper: var(--paper);
+  --color-paper-foreground: var(--paper-foreground);
+  --color-line: var(--line);
+  --font-display: "Archivo", "Arial Narrow", ui-sans-serif, sans-serif;
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 }
 
 :root {
-  --radius: 0.75rem;
+  --radius: 0px;
 
-  /* Dark navy / graphite base */
-  --background: oklch(0.19 0.028 258);
-  --foreground: oklch(0.97 0.005 250);
-  --surface: oklch(0.235 0.028 258);
-  --surface-2: oklch(0.28 0.026 258);
-  --card: oklch(0.235 0.028 258);
-  --card-foreground: oklch(0.97 0.005 250);
-  --popover: oklch(0.235 0.028 258);
-  --popover-foreground: oklch(0.97 0.005 250);
+  /* Industrial graphite base */
+  --background: #14181c;
+  --foreground: #f5f3ee;
+  --surface: #191e23;
+  --surface-2: #20262c;
+  --card: #191e23;
+  --card-foreground: #f5f3ee;
+  --popover: #191e23;
+  --popover-foreground: #f5f3ee;
 
-  /* Amber accent (B2B) */
-  --primary: oklch(0.79 0.16 74);
-  --primary-foreground: oklch(0.2 0.03 258);
+  /* Safety orange */
+  --primary: #e8471c;
+  --primary-foreground: #f5f3ee;
 
-  /* Secondary service line accent (moving) */
-  --move: oklch(0.78 0.13 195);
-  --move-foreground: oklch(0.2 0.03 258);
-  --brand-band: oklch(0.16 0.02 258);
-  --brand-card: oklch(0.205 0.024 258);
+  /* Dark green service line */
+  --move: #2b5d4f;
+  --move-foreground: #f5f3ee;
 
-  --secondary: oklch(0.3 0.026 258);
-  --secondary-foreground: oklch(0.97 0.005 250);
-  --muted: oklch(0.28 0.024 258);
-  --muted-foreground: oklch(0.72 0.018 254);
-  --accent: oklch(0.32 0.03 258);
-  --accent-foreground: oklch(0.97 0.005 250);
-  --destructive: oklch(0.62 0.21 25);
-  --destructive-foreground: oklch(0.98 0.005 250);
-  --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 14%);
-  --ring: oklch(0.79 0.16 74);
+  --paper: #f5f3ee;
+  --paper-foreground: #14181c;
+  --line: #8a8f94;
 
-  --gradient-hero: linear-gradient(
-    135deg,
-    oklch(0.19 0.028 258 / 0.96),
-    oklch(0.19 0.028 258 / 0.72)
-  );
-  --gradient-accent: linear-gradient(100deg, var(--primary), oklch(0.86 0.14 92));
-  --gradient-move: linear-gradient(100deg, var(--move), oklch(0.86 0.1 175));
-  --shadow-soft: 0 18px 50px -24px oklch(0 0 0 / 0.75);
-  --shadow-glow: 0 0 0 1px oklch(0.79 0.16 74 / 0.35), 0 24px 60px -28px oklch(0.79 0.16 74 / 0.55);
+  --secondary: #20262c;
+  --secondary-foreground: #f5f3ee;
+  --muted: #20262c;
+  --muted-foreground: #8a8f94;
+  --accent: #20262c;
+  --accent-foreground: #f5f3ee;
+  --destructive: #e8471c;
+  --destructive-foreground: #f5f3ee;
+  --border: #8a8f9440;
+  --input: #8a8f9459;
+  --ring: #e8471c;
 }
 
 @layer base {
@@ -108,34 +102,74 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    font-stretch: 87.5%;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 0.95;
   }
 }
 
-@utility reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition:
-    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-  &[data-visible="true"] {
-    opacity: 1;
-    transform: none;
-  }
+/* Manifest-style meta label: mono, tracked, not shouty */
+@utility manifest-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--line);
 }
 
-@utility surface-card {
-  background: var(--surface);
+@utility hairline {
   border: 1px solid var(--border);
-  border-radius: var(--radius-2xl);
-  box-shadow: var(--shadow-soft);
 }
 
 @utility grid-lines {
   background-image:
-    linear-gradient(oklch(1 0 0 / 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, oklch(1 0 0 / 0.04) 1px, transparent 1px);
-  background-size: 64px 64px;
+    linear-gradient(#8a8f9412 1px, transparent 1px),
+    linear-gradient(90deg, #8a8f9412 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+/* ---- the route line: one orchestrated animation on load ---- */
+@keyframes route-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes route-draw-y {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes stop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@utility route-line-x {
+  transform-origin: left center;
+  animation: route-draw 1.5s cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+
+@utility route-line-y {
+  transform-origin: top center;
+  animation: route-draw-y 2.4s cubic-bezier(0.65, 0, 0.35, 1) 0.5s both;
+}
+
+@utility route-stop {
+  animation: stop-in 0.5s cubic-bezier(0.34, 1.4, 0.64, 1) both;
 }
 
 @keyframes marquee-left {
@@ -157,7 +191,7 @@
 }
 
 @utility marquee-fade {
-  mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
 }
 
 @utility marquee-track {
@@ -165,25 +199,27 @@
 }
 
 @utility marquee-track-partners {
-  animation: marquee-left 34s linear infinite;
+  animation: marquee-left 40s linear infinite;
 }
 
 @utility marquee-track-brands {
-  animation: marquee-left 72s linear infinite;
+  animation: marquee-left 80s linear infinite;
 }
 
 @utility marquee-track-brands-reverse {
-  animation: marquee-right 78s linear infinite;
+  animation: marquee-right 86s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
   .marquee-track {
     animation-play-state: paused;
+  }
+  .route-line-x,
+  .route-line-y,
+  .route-stop {
+    animation: none;
+    transform: none;
+    opacity: 1;
   }
   html {
     scroll-behavior: auto;
