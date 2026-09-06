@@ -55,7 +55,7 @@ export function Process() {
     setActiveStep(stepIndex);
   });
 
-  const active = steps[activeStep];
+  const active = steps[activeStep] ?? steps[0]!;
 
   return (
     <section
