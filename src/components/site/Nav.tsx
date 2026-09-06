@@ -29,14 +29,10 @@ export function Nav() {
       )}
     >
       <nav className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-4 lg:px-8">
-        <a href="#top" className="flex min-w-0 items-center gap-3">
-          <span className="grid h-9 w-9 shrink-0 place-items-center bg-primary font-display text-lg font-extrabold text-primary-foreground">
-            К
-          </span>
-          <span className="truncate font-display text-lg font-extrabold tracking-tight">
-            КАДРИ<span className="text-primary">.БГ</span>
-          </span>
+        <a href="#top" className="flex min-w-0 items-center">
+          <Wordmark lang="bg" tone="light" size="text-xl" />
         </a>
+
 
         <div className="hidden items-center gap-8 lg:flex">
           {links.map((l) => (
