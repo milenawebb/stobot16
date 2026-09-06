@@ -15,6 +15,20 @@ const steps = [
 export function Process() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const [active, setActive] = useState(0);
+  // Only one step is rendered at a time: on change we fade the current step
+  // out, then swap content and fade the new one in — never two steps visible.
+  const [displayed, setDisplayed] = useState(0);
+  const [fadedIn, setFadedIn] = useState(true);
+
+  useEffect(() => {
+    if (active === displayed) return;
+    setFadedIn(false);
+    const swap = window.setTimeout(() => {
+      setDisplayed(active);
+      setFadedIn(true);
+    }, 150);
+    return () => window.clearTimeout(swap);
+  }, [active, displayed]);
 
   useEffect(() => {
     const el = sectionRef.current;
@@ -79,31 +93,26 @@ export function Process() {
               </div>
             </div>
 
-            {/* Step content — one visible at a time */}
+            {/* Step content — exactly one step rendered at a time */}
             <div className="relative min-h-56 sm:min-h-44">
-              {steps.map((s, i) => (
-                <div
-                  key={s.t}
-                  aria-hidden={i !== active}
-                  className={`absolute inset-0 transition-all duration-500 ease-out ${
-                    i === active
-                      ? "translate-y-0 opacity-100"
-                      : "pointer-events-none translate-y-4 opacity-0"
-                  }`}
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="h-3 w-3 shrink-0 bg-primary" aria-hidden="true" />
-                    <span className="h-px flex-1 bg-paper-foreground/25" aria-hidden="true" />
-                    <span className="font-serif text-5xl leading-none text-primary">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                  </div>
-                  <h3 className="mt-5 text-2xl sm:text-3xl">{s.t}</h3>
-                  <p className="mt-3 max-w-xl text-sm leading-relaxed text-paper-foreground/70 sm:text-base">
-                    {s.d}
-                  </p>
+              <div
+                key={displayed}
+                className={`transition-[opacity,transform] duration-200 ease-out ${
+                  fadedIn ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  <span className="h-3 w-3 shrink-0 bg-primary" aria-hidden="true" />
+                  <span className="h-px flex-1 bg-paper-foreground/25" aria-hidden="true" />
+                  <span className="font-serif text-5xl leading-none text-primary">
+                    {String(displayed + 1).padStart(2, "0")}
+                  </span>
                 </div>
-              ))}
+                <h3 className="mt-5 text-2xl sm:text-3xl">{steps[displayed]!.t}</h3>
+                <p className="mt-3 max-w-xl text-sm leading-relaxed text-paper-foreground/70 sm:text-base">
+                  {steps[displayed]!.d}
+                </p>
+              </div>
             </div>
           </div>
         </div>
