@@ -74,8 +74,8 @@ export function Hero() {
 
           {path === "company" && (
             <p className="mt-6 flex items-baseline gap-2">
-              <span className="numeral text-4xl text-white">{active.stat}</span>
-              <span className="manifest-label">{active.statLabel}</span>
+              <span className="numeral text-4xl text-white">{paths.company.stat}</span>
+              <span className="manifest-label">{paths.company.statLabel}</span>
             </p>
           )}
 
