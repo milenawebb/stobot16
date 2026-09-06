@@ -1,5 +1,8 @@
 import { useState, type FormEvent } from "react";
+import { useSearch } from "@tanstack/react-router";
 import { toast } from "sonner";
+import { SECTORS } from "@/lib/sectors";
+
 
 const inputClass =
   "w-full border border-input bg-transparent px-4 py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:bg-surface";
@@ -21,8 +24,11 @@ function useFakeSubmit(message: string) {
 }
 
 export function Forms() {
+  const search = useSearch({ strict: false }) as { sector?: string };
   const company = useFakeSubmit("Заявката е изпратена. Ще се свържем с вас до 24 часа.");
   const candidate = useFakeSubmit("Кандидатурата е изпратена. Очаквайте обаждане.");
+  const presetSector = search.sector && SECTORS.includes(search.sector as never) ? search.sector : "";
+
 
   return (
     <section id="kontakti" className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
@@ -90,16 +96,20 @@ export function Forms() {
               <input required name="phone" placeholder="Телефон" className={inputClass} />
               <input name="city" placeholder="Град" className={inputClass} />
             </div>
-            <select name="sector" className={inputClass} defaultValue="">
+            <select
+              key={presetSector}
+              name="sector"
+              className={inputClass}
+              defaultValue={presetSector}
+            >
               <option value="" disabled>
                 Желана сфера
               </option>
-              <option>Строителство</option>
-              <option>Производство</option>
-              <option>Склад и логистика</option>
-              <option>ХоРеКа</option>
-              <option>Хамалски услуги</option>
+              {SECTORS.map((s) => (
+                <option key={s}>{s}</option>
+              ))}
             </select>
+
             <textarea
               name="experience"
               rows={3}

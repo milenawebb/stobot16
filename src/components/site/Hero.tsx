@@ -13,8 +13,8 @@ const paths = {
   candidate: {
     headline: "Кажи къде и кога — ние ти намираме смяна.",
     support: "Строителство, складове, ХоРеКа, производство — избираш сектор, започваш бързо.",
-    cta: "Кандидатствайте сега",
-    href: "#kandidati",
+    cta: "Виж свободните места",
+    href: "/obiavi",
   },
 } as const;
 
@@ -140,7 +140,7 @@ export function Hero() {
             Нуждая се от персонал
           </a>
           <a
-            href="#kandidati"
+            href="/obiavi"
             className="bg-background px-8 py-5 text-center font-display text-base font-bold tracking-wide text-foreground uppercase transition-colors hover:bg-move hover:text-move-foreground"
           >
             Търся работа

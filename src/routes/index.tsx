@@ -7,6 +7,7 @@ import { Process } from "@/components/site/Process";
 import { Sectors } from "@/components/site/Sectors";
 import { Brands } from "@/components/site/Brands";
 import { Moving } from "@/components/site/Moving";
+import { LatestListings } from "@/components/site/LatestListings";
 import { QuickMatch } from "@/components/site/QuickMatch";
 import { WhyUs } from "@/components/site/WhyUs";
 import { Testimonials } from "@/components/site/Testimonials";
@@ -19,6 +20,8 @@ const description =
   "Обучен, осигурен и застрахован персонал на трудов договор за вашия обект. Плюс хамалски услуги и премествания за фирми и частни клиенти.";
 
 export const Route = createFileRoute("/")({
+  validateSearch: (search: Record<string, unknown>): { sector?: string } =>
+    typeof search["sector"] === "string" ? { sector: search["sector"] as string } : {},
   head: () => ({
     meta: [
       { title },
@@ -50,6 +53,7 @@ function Index() {
         <Sectors />
         <Brands />
         <Moving />
+        <LatestListings />
         <QuickMatch />
         <WhyUs />
         <Testimonials />

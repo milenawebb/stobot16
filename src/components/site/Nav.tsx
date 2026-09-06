@@ -4,11 +4,12 @@ import { cn } from "@/lib/utils";
 import { Wordmark } from "./Wordmark";
 
 const links = [
-  { href: "#uslugi", label: "Услуги" },
-  { href: "#kak-rabotim", label: "Как работим" },
-  { href: "#sektori", label: "Сектори" },
-  { href: "#hamalski", label: "Хамалски услуги" },
-  { href: "#kontakti", label: "Контакти" },
+  { href: "/#uslugi", label: "Услуги" },
+  { href: "/#kak-rabotim", label: "Как работим" },
+  { href: "/obiavi", label: "Обяви" },
+  { href: "/#sektori", label: "Сектори" },
+  { href: "/#hamalski", label: "Хамалски услуги" },
+  { href: "/#kontakti", label: "Контакти" },
 ];
 
 export function Nav() {
@@ -30,7 +31,7 @@ export function Nav() {
       )}
     >
       <nav className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-4 lg:px-8">
-        <a href="#top" className="flex min-w-0 items-center">
+        <a href="/" className="flex min-w-0 items-center">
           <Wordmark lang="bg" tone="light" size="text-xl" />
         </a>
 
@@ -46,7 +47,7 @@ export function Nav() {
             </a>
           ))}
           <a
-            href="#zayavka"
+            href="/#zayavka"
             className="bg-primary px-5 py-2.5 font-display text-sm font-bold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
           >
             Заявка за персонал
@@ -76,7 +77,7 @@ export function Nav() {
               </a>
             ))}
             <a
-              href="#zayavka"
+              href="/#zayavka"
               onClick={() => setOpen(false)}
               className="mt-4 bg-primary px-5 py-3.5 text-center font-display text-sm font-bold uppercase tracking-wide text-primary-foreground"
             >
