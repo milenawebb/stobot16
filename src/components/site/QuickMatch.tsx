@@ -73,7 +73,7 @@ export function QuickMatch() {
           index="07"
           label="Бърза проверка"
           title="Проверете за 10 секунди"
-          lead="Placeholder текст: изберете няколко параметъра и вижте ориентировъчен отговор — без регистрация и без обаждане."
+          lead="Изберете параметри и вижте ориентировъчен отговор — отнема 10 секунди, без обаждане и без регистрация."
         />
 
         <div className="mt-12 grid gap-px border border-border bg-border lg:grid-cols-[0.9fr_1.1fr]">

@@ -32,7 +32,7 @@ export function Forms() {
         <span className="manifest-label">Последна спирка</span>
       </div>
       <h2 className="mt-5 max-w-3xl text-[2rem] sm:text-5xl lg:text-6xl">
-        Два пътя — изберете вашия
+        Два пътя. Изберете вашия.
       </h2>
 
       <div className="mt-14 grid gap-px border border-border bg-border lg:grid-cols-2">
@@ -41,6 +41,10 @@ export function Forms() {
             <h3 className="text-2xl">За фирми</h3>
             <span className="manifest-label">Заявка за персонал</span>
           </div>
+          <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+            Кажете ни от какво имате нужда — отговаряме до 24 часа.
+          </p>
+
 
           <div className="mt-6 space-y-3">
             <input required name="company" placeholder="Фирма" className={inputClass} />
@@ -75,6 +79,10 @@ export function Forms() {
             <h3 className="text-2xl">За кандидати</h3>
             <span className="manifest-label">Кандидатствай за работа</span>
           </div>
+          <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+            Кандидатствайте сега — плащане на време, всичко по договор.
+          </p>
+
 
           <div className="mt-6 space-y-3">
             <input required name="name" placeholder="Име и фамилия" className={inputClass} />
