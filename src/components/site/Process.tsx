@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { SectionHead } from "./SectionHead";
 
 const steps = [
@@ -12,40 +13,100 @@ const steps = [
 ];
 
 export function Process() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const rect = el.getBoundingClientRect();
+      const scrollable = el.offsetHeight - window.innerHeight;
+      if (scrollable <= 0) return;
+      const progress = Math.min(1, Math.max(0, -rect.top / scrollable));
+      setActive(Math.min(steps.length - 1, Math.floor(progress * steps.length)));
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      if (raf) cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       id="kak-rabotim"
-      className="border-y border-border bg-paper text-paper-foreground"
+      className="relative border-y border-border bg-paper text-paper-foreground"
+      style={{ height: `${steps.length * 100}vh` }}
     >
-      <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
-        <SectionHead
-          index="03"
-          label="Маршрут на изпълнение"
-          tone="paper"
-          title="Как работим"
-          lead="Placeholder текст: пет спирки от първия разговор до работещ екип на обекта."
-        />
+      <div className="sticky top-0 flex min-h-screen items-center">
+        <div className="mx-auto w-full max-w-7xl px-5 py-20 lg:px-8">
+          <SectionHead
+            index="03"
+            label="Маршрут на изпълнение"
+            tone="paper"
+            title="Как работим"
+            lead="Placeholder текст: пет спирки от първия разговор до работещ екип на обекта."
+          />
 
-        <ol className="mt-14 grid gap-px bg-paper-foreground/15 md:grid-cols-5">
-          {steps.map((s, i) => (
-            <li
-              key={s.t}
-              className="group relative bg-paper p-6 transition-colors hover:bg-paper-foreground hover:text-paper"
-            >
-              <div className="flex items-center gap-3">
-                <span className="h-3 w-3 shrink-0 bg-primary" aria-hidden="true" />
-                <span className="h-px flex-1 bg-paper-foreground/25 group-hover:bg-paper/30" aria-hidden="true" />
+          <div className="mt-12 grid gap-10 lg:grid-cols-[auto_1fr] lg:gap-16">
+            {/* Step indicator */}
+            <div className="flex items-center gap-4 lg:flex-col lg:items-stretch">
+              <p className="manifest-label text-paper-foreground/55">
+                Стъпка {String(active + 1).padStart(2, "0")} / {String(steps.length).padStart(2, "0")}
+              </p>
+              <div className="flex flex-1 items-center gap-2 lg:mt-2 lg:flex-col lg:items-stretch">
+                {steps.map((s, i) => (
+                  <div
+                    key={s.t}
+                    aria-hidden="true"
+                    className={`h-0.5 flex-1 transition-colors duration-300 lg:h-8 lg:w-0.5 lg:flex-none ${
+                      i <= active ? "bg-primary" : "bg-paper-foreground/20"
+                    }`}
+                  />
+                ))}
               </div>
-              <p className="manifest-label mt-5 block text-paper-foreground/55 group-hover:text-paper/70">
-                Стъпка {String(i + 1).padStart(2, "0")}
-              </p>
-              <h3 className="mt-2 text-xl">{s.t}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-paper-foreground/70 group-hover:text-paper/80">
-                {s.d}
-              </p>
-            </li>
-          ))}
-        </ol>
+            </div>
+
+            {/* Step content — one visible at a time */}
+            <div className="relative min-h-56 sm:min-h-44">
+              {steps.map((s, i) => (
+                <div
+                  key={s.t}
+                  aria-hidden={i !== active}
+                  className={`absolute inset-0 transition-all duration-500 ease-out ${
+                    i === active
+                      ? "translate-y-0 opacity-100"
+                      : "pointer-events-none translate-y-4 opacity-0"
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="h-3 w-3 shrink-0 bg-primary" aria-hidden="true" />
+                    <span className="h-px flex-1 bg-paper-foreground/25" aria-hidden="true" />
+                    <span className="font-serif text-5xl leading-none text-primary">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <h3 className="mt-5 text-2xl sm:text-3xl">{s.t}</h3>
+                  <p className="mt-3 max-w-xl text-sm leading-relaxed text-paper-foreground/70 sm:text-base">
+                    {s.d}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
