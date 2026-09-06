@@ -12,7 +12,7 @@ export function Hero() {
       />
       <div
         className="absolute inset-0 -z-10"
-        style={{ background: "linear-gradient(100deg, #14181c 30%, #14181cd9 65%, #14181cb3)" }}
+        style={{ background: "linear-gradient(100deg, #130F3E 30%, #130F3Ee6 65%, #130F3Ebf)" }}
       />
       <div className="grid-lines pointer-events-none absolute inset-0 -z-10 opacity-70" />
 
@@ -25,16 +25,16 @@ export function Hero() {
 
         <h1 className="mt-8 max-w-5xl text-[2.75rem] leading-[0.92] sm:text-6xl lg:text-[5.25rem]">
           350+ души на договор.
-          <span className="block text-primary">12 сектора.</span>
+          <span className="block text-white/70">12 сектора.</span>
           Нула главоболия по наемането за вас.
         </h1>
 
         {/* the single orchestrated animation: the route line drawing in on load */}
         <div className="mt-10 flex items-center">
-          <span className="route-stop h-3 w-3 shrink-0 bg-primary" aria-hidden="true" />
+          <span className="route-stop h-3 w-3 shrink-0 rounded-full bg-white" aria-hidden="true" />
           <span className="route-line-x h-px flex-1 bg-line/60" aria-hidden="true" />
           <span
-            className="route-stop h-3 w-3 shrink-0 border border-line/60 [animation-delay:1.5s]"
+            className="route-stop h-3 w-3 shrink-0 rounded-full border border-line/60 [animation-delay:1.5s]"
             aria-hidden="true"
           />
         </div>
@@ -53,7 +53,7 @@ export function Hero() {
               ["24ч", "заместване"],
             ].map(([v, k]) => (
               <div key={k} className="bg-background px-4 py-5">
-                <dt className="font-display text-3xl font-extrabold sm:text-4xl">{v}</dt>
+                <dt className="numeral text-3xl sm:text-4xl">{v}</dt>
                 <dd className="manifest-label mt-1 block">{k}</dd>
               </div>
             ))}

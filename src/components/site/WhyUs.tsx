@@ -35,9 +35,9 @@ function Stat({ value, suffix, label, note, run }: (typeof stats)[number] & { ru
   const n = useCountUp(value, run);
   return (
     <div className="bg-background p-6 lg:p-8">
-      <p className="font-display text-5xl font-bold leading-none tabular-nums lg:text-7xl">
+      <p className="numeral text-5xl leading-none tabular-nums lg:text-7xl">
         {n}
-        <span className="text-primary">{suffix}</span>
+        <span className="text-white/60">{suffix}</span>
       </p>
       <p className="mt-4 text-base text-foreground">{label}</p>
       <p className="manifest-label mt-2">{note}</p>
