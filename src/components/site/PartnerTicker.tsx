@@ -13,11 +13,16 @@ const partners = [
 
 function PartnerSet({ hidden = false }: { hidden?: boolean }) {
   return (
-    <div className="flex shrink-0 items-stretch" aria-hidden={hidden || undefined}>
+    <div className="flex shrink-0 items-stretch gap-3 pr-3" aria-hidden={hidden || undefined}>
       {partners.map((partner) => (
         <div
           key={partner}
-          className="flex h-14 shrink-0 items-center border-r border-border px-6 font-mono text-sm text-muted-foreground transition-colors hover:bg-surface hover:text-foreground"
+          className="flex shrink-0 items-center rounded-lg border px-5 py-3 text-sm font-semibold tracking-tight whitespace-nowrap transition-colors sm:text-base"
+          style={{
+            borderColor: "rgba(255,255,255,0.2)",
+            backgroundColor: "rgba(255,255,255,0.06)",
+            color: "#FFFFFF",
+          }}
         >
           {partner}
         </div>
@@ -28,15 +33,34 @@ function PartnerSet({ hidden = false }: { hidden?: boolean }) {
 
 export function PartnerTicker() {
   return (
-    <section aria-labelledby="partners-title" className="border-b border-border bg-background">
-      <div className="mx-auto flex max-w-7xl items-center gap-3 px-5 py-3 lg:px-8">
-        <span className="h-2 w-2 bg-primary" aria-hidden="true" />
-        <h2 id="partners-title" className="manifest-label font-normal">
+    <section
+      aria-labelledby="partners-title"
+      className="border-b border-border"
+      style={{ background: "#130F3E" }}
+    >
+      <div className="mx-auto max-w-7xl px-5 pt-10 pb-6 lg:px-8">
+        <span
+          className="inline-block rounded border px-2.5 py-1 font-mono text-[0.7rem] tracking-[0.18em] uppercase"
+          style={{
+            borderColor: "rgba(255,255,255,0.25)",
+            color: "rgba(255,255,255,0.75)",
+          }}
+        >
+          Партньори
+        </span>
+        <h2
+          id="partners-title"
+          className="mt-4 max-w-3xl text-xl leading-snug font-bold sm:text-2xl"
+          style={{ color: "#FFFFFF" }}
+        >
           10 логистични партньора ни се доверяват — над 95 обекта, покрити всеки месец.
         </h2>
+        <p className="mt-3 max-w-2xl text-sm sm:text-base" style={{ color: "rgba(255,255,255,0.75)" }}>
+          Логистичните партньори, за които наши екипи работят по договор:
+        </p>
       </div>
-      <div className="marquee-fade group overflow-hidden border-t border-border">
-        <div className="marquee-track marquee-track-partners flex w-max group-hover:[animation-play-state:paused]">
+      <div className="marquee-fade group overflow-hidden pb-10">
+        <div className="marquee-track marquee-track-partners flex w-max px-5 group-hover:[animation-play-state:paused] lg:px-8">
           <PartnerSet />
           <PartnerSet hidden />
         </div>
