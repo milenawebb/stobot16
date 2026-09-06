@@ -20,9 +20,8 @@ const description =
   "Обучен, осигурен и застрахован персонал на трудов договор за вашия обект. Плюс хамалски услуги и премествания за фирми и частни клиенти.";
 
 export const Route = createFileRoute("/")({
-  validateSearch: (search: Record<string, unknown>) => ({
-    sector: typeof search["sector"] === "string" ? (search["sector"] as string) : undefined,
-  }),
+  validateSearch: (search: Record<string, unknown>): { sector?: string } =>
+    typeof search["sector"] === "string" ? { sector: search["sector"] as string } : {},
   head: () => ({
     meta: [
       { title },
