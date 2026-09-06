@@ -11,10 +11,8 @@ const paths = {
     href: "#zayavka",
   },
   candidate: {
-    headline: "350+ хора вече работят с нас. Договор, осигуровки, коректно плащане.",
-    support: "Трудов договор, осигуровки и коректно заплащане от първия ден.",
-    stat: "350+",
-    statLabel: "наети хора",
+    headline: "Кажи къде и кога — ние ти намираме смяна.",
+    support: "Строителство, складове, ХоРеКа, производство — избираш сектор, започваш бързо.",
     cta: "Кандидатствайте сега",
     href: "#kandidati",
   },
@@ -74,10 +72,12 @@ export function Hero() {
 
           <p className="mt-5 text-base leading-relaxed text-white/75">{active.support}</p>
 
-          <p className="mt-6 flex items-baseline gap-2">
-            <span className="numeral text-4xl text-white">{active.stat}</span>
-            <span className="manifest-label">{active.statLabel}</span>
-          </p>
+          {path === "company" && (
+            <p className="mt-6 flex items-baseline gap-2">
+              <span className="numeral text-4xl text-white">{paths.company.stat}</span>
+              <span className="manifest-label">{paths.company.statLabel}</span>
+            </p>
+          )}
 
           <a
             href={active.href}
