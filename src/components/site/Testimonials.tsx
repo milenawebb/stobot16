@@ -9,6 +9,7 @@ const items = [
     name: "Оперативен директор",
     company: "Логистичен партньор, София",
   },
+  // PLACEHOLDER — replace with real client quote before launch
   {
     code: "T-02",
     quote:
@@ -16,6 +17,7 @@ const items = [
     name: "Ръководител склад",
     company: "Дистрибуция, Пловдив",
   },
+  // PLACEHOLDER — replace with real client quote before launch
   {
     code: "T-03",
     quote:
