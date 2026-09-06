@@ -17,9 +17,8 @@ function PartnerSet({ hidden = false }: { hidden?: boolean }) {
       {partners.map((partner) => (
         <div
           key={partner}
-          className="flex h-14 shrink-0 items-center gap-3 border-r border-border px-6 font-mono text-sm text-muted-foreground transition-colors hover:bg-surface hover:text-foreground"
+          className="flex h-14 shrink-0 items-center border-r border-border px-6 font-mono text-sm text-muted-foreground transition-colors hover:bg-surface hover:text-foreground"
         >
-          <span className="h-6 w-6 shrink-0 border border-line/40" aria-hidden="true" />
           {partner}
         </div>
       ))}
