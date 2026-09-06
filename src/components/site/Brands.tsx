@@ -56,9 +56,9 @@ export function Brands() {
     >
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="flex items-center gap-3">
-          <span className="manifest-label">05</span>
+          <span className="manifest-label text-paper-foreground/55">05</span>
           <span className="h-px w-8 bg-paper-foreground/20" aria-hidden="true" />
-          <span className="manifest-label">Крайни обекти</span>
+          <span className="manifest-label text-paper-foreground/55">Крайни обекти</span>
         </div>
         <h2 id="brands-title" className="mt-5 max-w-4xl text-[2rem] sm:text-5xl lg:text-6xl">
           Доверие от екипи по проекти за водещи марки
