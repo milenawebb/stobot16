@@ -72,10 +72,12 @@ export function Hero() {
 
           <p className="mt-5 text-base leading-relaxed text-white/75">{active.support}</p>
 
-          <p className="mt-6 flex items-baseline gap-2">
-            <span className="numeral text-4xl text-white">{active.stat}</span>
-            <span className="manifest-label">{active.statLabel}</span>
-          </p>
+          {path === "company" && (
+            <p className="mt-6 flex items-baseline gap-2">
+              <span className="numeral text-4xl text-white">{active.stat}</span>
+              <span className="manifest-label">{active.statLabel}</span>
+            </p>
+          )}
 
           <a
             href={active.href}
