@@ -10,11 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as ObiaviIndexRouteImport } from './routes/obiavi.index'
+import { Route as ObiaviSlugRouteImport } from './routes/obiavi.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ObiaviIndexRoute = ObiaviIndexRouteImport.update({
@@ -22,30 +29,43 @@ const ObiaviIndexRoute = ObiaviIndexRouteImport.update({
   path: '/obiavi/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ObiaviSlugRoute = ObiaviSlugRouteImport.update({
+  id: '/obiavi/$slug',
+  path: '/obiavi/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/obiavi/$slug': typeof ObiaviSlugRoute
   '/obiavi/': typeof ObiaviIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/obiavi/$slug': typeof ObiaviSlugRoute
   '/obiavi': typeof ObiaviIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/obiavi/$slug': typeof ObiaviSlugRoute
   '/obiavi/': typeof ObiaviIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/obiavi/'
+  fullPaths: '/' | '/admin' | '/obiavi/$slug' | '/obiavi/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/obiavi'
-  id: '__root__' | '/' | '/obiavi/'
+  to: '/' | '/admin' | '/obiavi/$slug' | '/obiavi'
+  id: '__root__' | '/' | '/admin' | '/obiavi/$slug' | '/obiavi/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
+  ObiaviSlugRoute: typeof ObiaviSlugRoute
   ObiaviIndexRoute: typeof ObiaviIndexRoute
 }
 
@@ -58,6 +78,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/obiavi/': {
       id: '/obiavi/'
       path: '/obiavi'
@@ -65,11 +92,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ObiaviIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/obiavi/$slug': {
+      id: '/obiavi/$slug'
+      path: '/obiavi/$slug'
+      fullPath: '/obiavi/$slug'
+      preLoaderRoute: typeof ObiaviSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
+  ObiaviSlugRoute: ObiaviSlugRoute,
   ObiaviIndexRoute: ObiaviIndexRoute,
 }
 export const routeTree = rootRouteImport
