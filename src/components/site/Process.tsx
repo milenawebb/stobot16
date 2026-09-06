@@ -93,31 +93,26 @@ export function Process() {
               </div>
             </div>
 
-            {/* Step content — one visible at a time */}
+            {/* Step content — exactly one step rendered at a time */}
             <div className="relative min-h-56 sm:min-h-44">
-              {steps.map((s, i) => (
-                <div
-                  key={s.t}
-                  aria-hidden={i !== active}
-                  className={`absolute inset-0 transition-[opacity,transform,visibility] duration-300 ease-out ${
-                    i === active
-                      ? "visible translate-y-0 opacity-100"
-                      : "invisible pointer-events-none translate-y-4 opacity-0"
-                  }`}
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="h-3 w-3 shrink-0 bg-primary" aria-hidden="true" />
-                    <span className="h-px flex-1 bg-paper-foreground/25" aria-hidden="true" />
-                    <span className="font-serif text-5xl leading-none text-primary">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                  </div>
-                  <h3 className="mt-5 text-2xl sm:text-3xl">{s.t}</h3>
-                  <p className="mt-3 max-w-xl text-sm leading-relaxed text-paper-foreground/70 sm:text-base">
-                    {s.d}
-                  </p>
+              <div
+                key={displayed}
+                className={`transition-[opacity,transform] duration-200 ease-out ${
+                  fadedIn ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  <span className="h-3 w-3 shrink-0 bg-primary" aria-hidden="true" />
+                  <span className="h-px flex-1 bg-paper-foreground/25" aria-hidden="true" />
+                  <span className="font-serif text-5xl leading-none text-primary">
+                    {String(displayed + 1).padStart(2, "0")}
+                  </span>
                 </div>
-              ))}
+                <h3 className="mt-5 text-2xl sm:text-3xl">{steps[displayed].t}</h3>
+                <p className="mt-3 max-w-xl text-sm leading-relaxed text-paper-foreground/70 sm:text-base">
+                  {steps[displayed].d}
+                </p>
+              </div>
             </div>
           </div>
         </div>
