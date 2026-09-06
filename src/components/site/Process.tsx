@@ -94,10 +94,6 @@ export function Process() {
             </div>
 
             {/* Step content — exactly one step rendered at a time */}
-            {(() => {
-              const step = steps[displayed]!;
-              return null;
-            })()}
             <div className="relative min-h-56 sm:min-h-44">
               <div
                 key={displayed}
