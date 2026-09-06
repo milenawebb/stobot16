@@ -134,8 +134,8 @@
 
 @utility grid-lines {
   background-image:
-    linear-gradient(#8a8f9412 1px, transparent 1px),
-    linear-gradient(90deg, #8a8f9412 1px, transparent 1px);
+    linear-gradient(#ffffff0f 1px, transparent 1px),
+    linear-gradient(90deg, #ffffff0f 1px, transparent 1px);
   background-size: 72px 72px;
 }
 
