@@ -1,5 +1,8 @@
 import { useState, type FormEvent } from "react";
+import { useSearch } from "@tanstack/react-router";
 import { toast } from "sonner";
+import { SECTORS } from "@/lib/sectors";
+
 
 const inputClass =
   "w-full border border-input bg-transparent px-4 py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:bg-surface";
