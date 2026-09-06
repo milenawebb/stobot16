@@ -1,6 +1,31 @@
+import { useState } from "react";
 import heroImg from "@/assets/hero-crew.jpg";
 
+const paths = {
+  company: {
+    headline: "350+ души на договор. Нула главоболия по наемането за вас.",
+    support: "Наемаме, обучаваме и осигуряваме хората — вие получавате готова смяна на обекта.",
+    stat: "95+",
+    statLabel: "партньори",
+    cta: "Изпратете заявка",
+    href: "#zayavka",
+  },
+  candidate: {
+    headline: "350+ хора вече работят с нас. Договор, осигуровки, коректно плащане.",
+    support: "Трудов договор, осигуровки и коректно заплащане от първия ден.",
+    stat: "350+",
+    statLabel: "наети хора",
+    cta: "Кандидатствайте сега",
+    href: "#kandidati",
+  },
+} as const;
+
+type PathKey = keyof typeof paths;
+
 export function Hero() {
+  const [path, setPath] = useState<PathKey>("company");
+  const active = paths[path];
+
   return (
     <section id="top" className="relative isolate overflow-hidden border-b border-border pt-28 lg:pt-36">
       <img
@@ -16,7 +41,55 @@ export function Hero() {
       />
       <div className="grid-lines pointer-events-none absolute inset-0 -z-10 opacity-70" />
 
-      <div className="mx-auto max-w-7xl px-5 pb-16 lg:px-8 lg:pb-24">
+      {/* MOBILE HERO */}
+      <div className="mx-auto max-w-7xl px-5 pb-14 md:hidden">
+        <div
+          role="tablist"
+          aria-label="Изберете вашия път"
+          className="flex w-full rounded-full border border-white/25 bg-white/10 p-1"
+        >
+          {(
+            [
+              ["company", "Търся персонал"],
+              ["candidate", "Търся работа"],
+            ] as const
+          ).map(([key, label]) => (
+            <button
+              key={key}
+              type="button"
+              role="tab"
+              aria-selected={path === key}
+              onClick={() => setPath(key)}
+              className={`flex-1 rounded-full px-4 py-2.5 text-sm font-bold transition-all duration-300 ${
+                path === key ? "bg-white text-[#130F3E] shadow-sm" : "text-white/80"
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+
+        <div key={path} className="animate-in fade-in duration-300">
+          <h1 className="mt-8 text-[2.15rem] leading-[1.03] text-white">{active.headline}</h1>
+
+          <p className="mt-5 text-base leading-relaxed text-white/75">{active.support}</p>
+
+          <p className="mt-6 flex items-baseline gap-2">
+            <span className="numeral text-4xl text-white">{active.stat}</span>
+            <span className="manifest-label">{active.statLabel}</span>
+          </p>
+
+          <a
+            href={active.href}
+            className="mt-7 block w-full bg-primary px-8 py-5 text-center font-display text-base font-bold tracking-wide text-primary-foreground uppercase transition-colors hover:bg-foreground hover:text-background"
+          >
+            {active.cta}
+          </a>
+        </div>
+      </div>
+
+      {/* DESKTOP HERO */}
+      <div className="mx-auto hidden max-w-7xl px-5 pb-16 md:block lg:px-8 lg:pb-24">
         <div className="flex flex-wrap items-center gap-3">
           <span className="manifest-label">Манифест 001</span>
           <span className="h-px flex-1 bg-line/35" aria-hidden="true" />
@@ -62,13 +135,13 @@ export function Hero() {
         <div className="mt-10 flex w-full flex-col gap-px bg-border sm:w-fit sm:flex-row sm:items-stretch">
           <a
             href="#zayavka"
-            className="bg-primary px-8 py-5 text-center font-display text-base font-bold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
+            className="bg-primary px-8 py-5 text-center font-display text-base font-bold tracking-wide text-primary-foreground uppercase transition-colors hover:bg-foreground hover:text-background"
           >
             Нуждая се от персонал
           </a>
           <a
             href="#kandidati"
-            className="bg-background px-8 py-5 text-center font-display text-base font-bold uppercase tracking-wide text-foreground transition-colors hover:bg-move hover:text-move-foreground"
+            className="bg-background px-8 py-5 text-center font-display text-base font-bold tracking-wide text-foreground uppercase transition-colors hover:bg-move hover:text-move-foreground"
           >
             Търся работа
           </a>
