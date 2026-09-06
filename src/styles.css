@@ -37,48 +37,50 @@
   --color-paper: var(--paper);
   --color-paper-foreground: var(--paper-foreground);
   --color-line: var(--line);
-  --font-display: "Archivo", "Arial Narrow", ui-sans-serif, sans-serif;
-  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-display: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-numeral: "Newsreader", Georgia, serif;
 }
 
 :root {
   --radius: 0px;
 
-  /* Industrial graphite base */
-  --background: #14181c;
-  --foreground: #f5f3ee;
-  --surface: #191e23;
-  --surface-2: #20262c;
-  --card: #191e23;
-  --card-foreground: #f5f3ee;
-  --popover: #191e23;
-  --popover-foreground: #f5f3ee;
+  /* Stobot 16 — indigo / white / graphite */
+  --background: #130f3e;
+  --foreground: #ffffff;
+  --surface: #17171b;
+  --surface-2: #1b1750;
+  --card: #17171b;
+  --card-foreground: #ffffff;
+  --popover: #17171b;
+  --popover-foreground: #ffffff;
 
-  /* Safety orange */
-  --primary: #e8471c;
-  --primary-foreground: #f5f3ee;
+  /* White is the contrast accent on indigo */
+  --primary: #ffffff;
+  --primary-foreground: #130f3e;
 
-  /* Dark green service line */
-  --move: #2b5d4f;
-  --move-foreground: #f5f3ee;
+  /* Graphite: alternative deep neutral block */
+  --move: #17171b;
+  --move-foreground: #ffffff;
 
-  --paper: #f5f3ee;
-  --paper-foreground: #14181c;
-  --line: #8a8f94;
+  --paper: #ffffff;
+  --paper-foreground: #130f3e;
+  --line: #a5a3bd;
 
-  --secondary: #20262c;
-  --secondary-foreground: #f5f3ee;
-  --muted: #20262c;
-  --muted-foreground: #8a8f94;
-  --accent: #20262c;
-  --accent-foreground: #f5f3ee;
-  --destructive: #e8471c;
-  --destructive-foreground: #f5f3ee;
-  --border: #8a8f9440;
-  --input: #8a8f9459;
-  --ring: #e8471c;
+  --secondary: #1b1750;
+  --secondary-foreground: #ffffff;
+  --muted: #1b1750;
+  --muted-foreground: #b3b1c8;
+  --accent: #1b1750;
+  --accent-foreground: #ffffff;
+  --destructive: #17171b;
+  --destructive-foreground: #ffffff;
+  --border: #ffffff2e;
+  --input: #ffffff40;
+  --ring: #ffffff;
 }
+
 
 @layer base {
   * {
@@ -102,20 +104,29 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    font-stretch: 87.5%;
     font-weight: 800;
-    letter-spacing: -0.025em;
-    line-height: 0.95;
+    letter-spacing: -0.03em;
+    line-height: 0.98;
   }
 }
 
-/* Manifest-style meta label: mono, tracked, not shouty */
+/* Meta label: brand sans, tracked, quiet */
 @utility manifest-label {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.72rem;
-  letter-spacing: 0.08em;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   color: var(--line);
 }
+
+/* Editorial serif numerals echoing the "16" mark */
+@utility numeral {
+  font-family: var(--font-numeral);
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: -0.01em;
+}
+
 
 @utility hairline {
   border: 1px solid var(--border);
