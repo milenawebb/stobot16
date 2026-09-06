@@ -85,10 +85,10 @@ export function Process() {
                 <div
                   key={s.t}
                   aria-hidden={i !== active}
-                  className={`absolute inset-0 transition-all duration-500 ease-out ${
+                  className={`absolute inset-0 transition-[opacity,transform,visibility] duration-300 ease-out ${
                     i === active
-                      ? "translate-y-0 opacity-100"
-                      : "pointer-events-none translate-y-4 opacity-0"
+                      ? "visible translate-y-0 opacity-100"
+                      : "invisible pointer-events-none translate-y-4 opacity-0"
                   }`}
                 >
                   <div className="flex items-center gap-3">
