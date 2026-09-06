@@ -12,3 +12,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://bulgaria-staff-movers.lovable.app/sitemap.xml
