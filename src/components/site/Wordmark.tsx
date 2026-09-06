@@ -22,7 +22,7 @@ export function Wordmark({
   return (
     // safe area ≈ half the circle diameter on all sides
     <span
-      className={cn("inline-flex items-end p-[0.3em]", size, className)}
+      className={cn("inline-flex items-start p-[0.3em]", size, className)}
       aria-label={`${word} 16`}
     >
       <span
@@ -35,14 +35,14 @@ export function Wordmark({
       </span>
       <span
         className={cn(
-          "-ml-[0.16em] grid aspect-square w-[0.62em] shrink-0 translate-y-[0.12em] place-items-center rounded-full",
+          "-ml-[0.06em] grid aspect-square w-[0.58em] shrink-0 -translate-y-[0.12em] place-items-center rounded-full",
           light ? "bg-white" : "bg-[#130F3E]",
         )}
         aria-hidden="true"
       >
         <span
           className={cn(
-            "numeral text-[0.34em] leading-none",
+            "numeral text-[0.3em] leading-none",
             light ? "text-[#130F3E]" : "text-white",
           )}
         >
