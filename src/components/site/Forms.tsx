@@ -32,7 +32,7 @@ export function Forms() {
         <span className="manifest-label">Последна спирка</span>
       </div>
       <h2 className="mt-5 max-w-3xl text-[2rem] sm:text-5xl lg:text-6xl">
-        Два пътя — изберете вашия
+        Два пътя. Изберете вашия.
       </h2>
 
       <div className="mt-14 grid gap-px border border-border bg-border lg:grid-cols-2">
