@@ -1,6 +1,5 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
-import { SectionHead } from "./SectionHead";
 
 const steps = [
   {
@@ -30,9 +29,21 @@ const steps = [
   },
 ];
 
+const INDIGO = "#130F3E";
+const WHITE = "#FFFFFF";
+
 export function Process() {
   const containerRef = useRef<HTMLElement | null>(null);
   const [activeStep, setActiveStep] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -44,75 +55,122 @@ export function Process() {
     setActiveStep(stepIndex);
   });
 
+  const active = steps[activeStep];
+
   return (
     <section
       ref={containerRef}
       id="kak-rabotim"
-      className="relative border-y border-border bg-paper text-paper-foreground"
-      style={{ height: `${steps.length * 100}vh`, position: "relative" }}
+      style={{ height: `${steps.length * 100}vh`, position: "relative", background: INDIGO }}
     >
       <div
-        className="flex px-5 lg:px-8"
         style={{
           position: "sticky",
           top: 0,
           height: "100vh",
-          overflow: "hidden",
+          display: "flex",
+          flexDirection: isMobile ? "column" : "row",
           alignItems: "center",
           justifyContent: "center",
+          gap: isMobile ? "40px" : "80px",
+          padding: "0 20px",
+          overflow: "hidden",
         }}
       >
-        <div className="w-full max-w-7xl">
-          <SectionHead
-            index="03"
-            label="Маршрут на изпълнение"
-            tone="paper"
-            title="Как работим"
-            lead="Placeholder текст: пет спирки от първия разговор до работещ екип на обекта."
-          />
-
-          <div className="mx-auto mt-12 w-full max-w-[700px]" style={{ position: "relative" }}>
-            <div className="mb-6 flex items-center gap-4">
-              <p className="manifest-label whitespace-nowrap text-paper-foreground/60">
-                Стъпка {String(activeStep + 1).padStart(2, "0")} /{" "}
-                {String(steps.length).padStart(2, "0")}
-              </p>
-              <div className="flex flex-1 gap-2" aria-hidden="true">
-                {steps.map((step, index) => (
-                  <span
-                    key={step.number}
-                    className={`h-0.5 flex-1 transition-colors duration-300 ${
-                      index <= activeStep ? "bg-primary" : "bg-paper-foreground/20"
-                    }`}
-                  />
-                ))}
-              </div>
-            </div>
-
-            {steps.map((step, index) =>
-              index === activeStep ? (
+        {/* Vertical (or horizontal on mobile) circle stepper */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: isMobile ? "row" : "column",
+            alignItems: "center",
+          }}
+        >
+          {steps.map((step, index) => {
+            const isActive = index <= activeStep;
+            const baseColor = index % 2 === 0 ? WHITE : INDIGO;
+            return (
+              <div
+                key={step.number}
+                style={{
+                  display: "flex",
+                  flexDirection: isMobile ? "row" : "column",
+                  alignItems: "center",
+                }}
+              >
                 <motion.div
-                  key={step.number}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
+                  animate={{
+                    scale: index === activeStep ? 1.15 : 1,
+                    backgroundColor: isActive ? baseColor : "rgba(0,0,0,0)",
+                    borderColor: WHITE,
+                  }}
                   transition={{ duration: 0.3 }}
+                  style={{
+                    width: isMobile ? 44 : 56,
+                    height: isMobile ? 44 : 56,
+                    flexShrink: 0,
+                    borderRadius: "50%",
+                    border: `2px solid ${WHITE}`,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontWeight: 700,
+                    fontSize: isMobile ? 14 : 16,
+                    color: isActive ? (baseColor === WHITE ? INDIGO : WHITE) : WHITE,
+                  }}
                 >
-                  <div className="flex items-center gap-3">
-                    <span className="h-3 w-3 shrink-0 bg-primary" aria-hidden="true" />
-                    <span className="h-px flex-1 bg-paper-foreground/25" aria-hidden="true" />
-                    <span className="font-serif text-5xl leading-none text-primary">
-                      {step.number}
-                    </span>
-                  </div>
-                  <h3 className="mt-5 text-2xl font-bold sm:text-3xl">{step.title}</h3>
-                  <p className="mt-3 max-w-xl text-base leading-relaxed text-paper-foreground/80 sm:text-lg">
-                    {step.body}
-                  </p>
+                  {step.number}
                 </motion.div>
-              ) : null,
-            )}
-          </div>
+                {index < steps.length - 1 && (
+                  <div
+                    style={{
+                      width: isMobile ? 32 : 2,
+                      height: isMobile ? 2 : 60,
+                      background: "rgba(255,255,255,0.25)",
+                      position: "relative",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <motion.div
+                      animate={
+                        isMobile
+                          ? { width: index < activeStep ? "100%" : "0%" }
+                          : { height: index < activeStep ? "100%" : "0%" }
+                      }
+                      transition={{ duration: 0.3 }}
+                      style={{
+                        width: isMobile ? undefined : "100%",
+                        height: isMobile ? "100%" : undefined,
+                        background: WHITE,
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                      }}
+                    />
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Active step text content */}
+        <div style={{ maxWidth: 480 }}>
+          <motion.div
+            key={active.number}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div style={{ color: WHITE, opacity: 0.5, fontSize: 14, marginBottom: 12 }}>
+              Стъпка {active.number} / {String(steps.length).padStart(2, "0")}
+            </div>
+            <h3 style={{ color: WHITE, fontSize: isMobile ? 26 : 32, fontWeight: 700 }}>
+              {active.title}
+            </h3>
+            <p style={{ color: WHITE, opacity: 0.8, fontSize: isMobile ? 16 : 18, marginTop: 12 }}>
+              {active.body}
+            </p>
+          </motion.div>
         </div>
       </div>
     </section>
