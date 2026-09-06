@@ -41,9 +41,8 @@ export function Hero() {
 
         <div className="mt-10 grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">
-            Placeholder текст: наемаме, обучаваме и осигуряваме хората — вие получавате работеща
-            смяна на обекта. Трудови договори, социални осигуровки, застраховка и заместване при
-            отсъствие.
+            Ние наемаме, обучаваме и осигуряваме хората. Вие получавате готова смяна на обекта — с
+            договор, осигуровки, застраховка и заместник, ако някой отсъства.
           </p>
 
           <dl className="grid grid-cols-3 gap-px bg-border">
