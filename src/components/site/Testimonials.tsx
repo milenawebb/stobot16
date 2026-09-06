@@ -1,6 +1,7 @@
 import { SectionHead } from "./SectionHead";
 
 const items = [
+  // PLACEHOLDER — replace with real client quote before launch
   {
     code: "T-01",
     quote:
