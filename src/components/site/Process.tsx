@@ -36,7 +36,7 @@ export function Process() {
                 <span className="h-3 w-3 shrink-0 bg-primary" aria-hidden="true" />
                 <span className="h-px flex-1 bg-paper-foreground/25 group-hover:bg-paper/30" aria-hidden="true" />
               </div>
-              <p className="manifest-label mt-5 block group-hover:text-paper/70">
+              <p className="manifest-label mt-5 block text-paper-foreground/55 group-hover:text-paper/70">
                 Стъпка {String(i + 1).padStart(2, "0")}
               </p>
               <h3 className="mt-2 text-xl">{s.t}</h3>
