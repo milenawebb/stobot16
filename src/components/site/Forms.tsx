@@ -41,6 +41,10 @@ export function Forms() {
             <h3 className="text-2xl">За фирми</h3>
             <span className="manifest-label">Заявка за персонал</span>
           </div>
+          <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+            Кажете ни от какво имате нужда — отговаряме до 24 часа.
+          </p>
+
 
           <div className="mt-6 space-y-3">
             <input required name="company" placeholder="Фирма" className={inputClass} />
