@@ -79,6 +79,10 @@ export function Forms() {
             <h3 className="text-2xl">За кандидати</h3>
             <span className="manifest-label">Кандидатствай за работа</span>
           </div>
+          <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+            Кандидатствайте сега — плащане на време, всичко по договор.
+          </p>
+
 
           <div className="mt-6 space-y-3">
             <input required name="name" placeholder="Име и фамилия" className={inputClass} />
