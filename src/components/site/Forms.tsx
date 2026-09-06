@@ -24,8 +24,11 @@ function useFakeSubmit(message: string) {
 }
 
 export function Forms() {
+  const search = useSearch({ strict: false }) as { sector?: string };
   const company = useFakeSubmit("Заявката е изпратена. Ще се свържем с вас до 24 часа.");
   const candidate = useFakeSubmit("Кандидатурата е изпратена. Очаквайте обаждане.");
+  const presetSector = search.sector && SECTORS.includes(search.sector as never) ? search.sector : "";
+
 
   return (
     <section id="kontakti" className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
