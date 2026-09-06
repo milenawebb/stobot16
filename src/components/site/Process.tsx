@@ -15,6 +15,20 @@ const steps = [
 export function Process() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const [active, setActive] = useState(0);
+  // Only one step is rendered at a time: on change we fade the current step
+  // out, then swap content and fade the new one in — never two steps visible.
+  const [displayed, setDisplayed] = useState(0);
+  const [fadedIn, setFadedIn] = useState(true);
+
+  useEffect(() => {
+    if (active === displayed) return;
+    setFadedIn(false);
+    const swap = window.setTimeout(() => {
+      setDisplayed(active);
+      setFadedIn(true);
+    }, 150);
+    return () => window.clearTimeout(swap);
+  }, [active, displayed]);
 
   useEffect(() => {
     const el = sectionRef.current;
