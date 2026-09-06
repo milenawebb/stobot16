@@ -38,11 +38,11 @@ export function Moving() {
             <span className="manifest-label text-move-foreground/70">Собствена услуга</span>
           </div>
           <h2 className="mt-5 max-w-xl text-[2rem] text-move-foreground sm:text-5xl lg:text-6xl">
-            Хамалски услуги и премествания
+            Местим ви без чупене и без нерви.
           </h2>
           <p className="mt-5 max-w-lg text-base leading-relaxed text-move-foreground/80">
-            Placeholder текст: отделна линия услуги със собствени екипи и транспорт — за фирми и за
-            частни клиенти, в удобен за вас час.
+            Отделен екип, отделни камиони — не сме просто складов персонал, а хора, свикнали да
+            мъкнат мебели по тесни стълбища и да пазят нервите ви на ден за преместване.
           </p>
 
           <div className="mt-10 grid gap-px bg-move-foreground/20 sm:grid-cols-2">
