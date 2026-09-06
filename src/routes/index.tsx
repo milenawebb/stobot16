@@ -14,7 +14,7 @@ import { Forms } from "@/components/site/Forms";
 import { Footer } from "@/components/site/Footer";
 import { FloatingContact } from "@/components/site/FloatingContact";
 
-const title = "Аутсорсинг на персонал и хамалски услуги в България";
+const title = "стобот 16 — аутсорсинг на персонал и хамалски услуги";
 const description =
   "Обучен, осигурен и застрахован персонал на трудов договор за вашия обект. Плюс хамалски услуги и премествания за фирми и частни клиенти.";
 

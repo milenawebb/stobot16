@@ -12,7 +12,7 @@ export function Moving() {
     <section
       id="hamalski"
       className="relative overflow-hidden border-b border-border"
-      style={{ background: "#2b5d4f" }}
+      style={{ background: "#17171B" }}
     >
       <div className="mx-auto grid max-w-7xl gap-12 px-5 py-20 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-28">
         <div>
@@ -34,7 +34,7 @@ export function Moving() {
               <div
                 key={i.t}
                 className="group p-5 transition-colors hover:bg-move-foreground hover:text-move"
-                style={{ background: "#2b5d4f" }}
+                style={{ background: "#17171B" }}
               >
                 <span className="manifest-label group-hover:text-move/70">{i.code}</span>
                 <p className="mt-3 font-display text-lg font-bold">{i.t}</p>
@@ -47,7 +47,7 @@ export function Moving() {
 
           <a
             href="#zayavka"
-            className="mt-10 inline-block bg-move-foreground px-8 py-4 font-display text-sm font-bold uppercase tracking-wide text-move transition-colors hover:bg-primary hover:text-primary-foreground"
+            className="mt-10 inline-block bg-move-foreground px-8 py-4 font-display text-sm font-bold uppercase tracking-wide text-move transition-colors hover:bg-white/80"
           >
             Оферта за преместване
           </a>
