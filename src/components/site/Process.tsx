@@ -108,9 +108,9 @@ export function Process() {
                     {String(displayed + 1).padStart(2, "0")}
                   </span>
                 </div>
-                <h3 className="mt-5 text-2xl sm:text-3xl">{steps[displayed].t}</h3>
+                <h3 className="mt-5 text-2xl sm:text-3xl">{steps[displayed]!.t}</h3>
                 <p className="mt-3 max-w-xl text-sm leading-relaxed text-paper-foreground/70 sm:text-base">
-                  {steps[displayed].d}
+                  {steps[displayed]!.d}
                 </p>
               </div>
             </div>
