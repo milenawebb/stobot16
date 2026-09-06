@@ -32,7 +32,7 @@ export function PartnerTicker() {
       <div className="mx-auto flex max-w-7xl items-center gap-3 px-5 py-3 lg:px-8">
         <span className="h-2 w-2 bg-primary" aria-hidden="true" />
         <h2 id="partners-title" className="manifest-label font-normal">
-          Директни партньори в логистиката — 10 действащи договора
+          10 логистични партньора ни се доверяват — над 95 обекта, покрити всеки месец.
         </h2>
       </div>
       <div className="marquee-fade group overflow-hidden border-t border-border">
