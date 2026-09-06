@@ -96,16 +96,20 @@ export function Forms() {
               <input required name="phone" placeholder="Телефон" className={inputClass} />
               <input name="city" placeholder="Град" className={inputClass} />
             </div>
-            <select name="sector" className={inputClass} defaultValue="">
+            <select
+              key={presetSector}
+              name="sector"
+              className={inputClass}
+              defaultValue={presetSector}
+            >
               <option value="" disabled>
                 Желана сфера
               </option>
-              <option>Строителство</option>
-              <option>Производство</option>
-              <option>Склад и логистика</option>
-              <option>ХоРеКа</option>
-              <option>Хамалски услуги</option>
+              {SECTORS.map((s) => (
+                <option key={s}>{s}</option>
+              ))}
             </select>
+
             <textarea
               name="experience"
               rows={3}
