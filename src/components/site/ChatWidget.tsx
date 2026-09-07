@@ -75,7 +75,7 @@ export function ChatWidget() {
                         : "whitespace-pre-wrap bg-primary px-3 py-2 text-sm text-primary-foreground"
                     }
                   >
-                    {m.content}
+                    {m.content.replace(/\*\*/g, "").replace(/^[*-]\s+/gm, "• ")}
                   </p>
                   {m.listings?.map((l) => (
                     <Link
