@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import { SectionHead } from "./SectionHead";
 
 const stats = [
-  { value: 500, suffix: "+", label: "разпределени работници", note: "Placeholder данни" },
-  { value: 12, suffix: "", label: "сектора на обслужване", note: "Placeholder данни" },
-  { value: 24, suffix: " ч.", label: "средно време за заместване", note: "Placeholder данни" },
-  { value: 98, suffix: "%", label: "покрити смени по график", note: "Placeholder данни" },
+  { value: 500, suffix: "+", label: "разпределени работници" },
+  { value: 12, suffix: "", label: "сектора на обслужване" },
+  { value: 24, suffix: " ч.", label: "средно време за заместване" },
+  { value: 98, suffix: "%", label: "покрити смени по график" },
 ];
 
 function useCountUp(target: number, run: boolean) {
