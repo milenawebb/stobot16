@@ -114,8 +114,8 @@ export function Process() {
                   }}
                   transition={{ duration: 0.3 }}
                   style={{
-                    width: isMobile ? 44 : 56,
-                    height: isMobile ? 44 : 56,
+                    width: isMobile ? 40 : 56,
+                    height: isMobile ? 40 : 56,
                     flexShrink: 0,
                     borderRadius: "50%",
                     border: `2px solid ${WHITE}`,
@@ -132,7 +132,9 @@ export function Process() {
                 {index < steps.length - 1 && (
                   <div
                     style={{
-                      width: isMobile ? 32 : 2,
+                      width: isMobile ? "auto" : 2,
+                      flex: isMobile ? "1 1 0" : "0 0 auto",
+                      minWidth: isMobile ? 8 : undefined,
                       height: isMobile ? 2 : 60,
                       background: "rgba(255,255,255,0.25)",
                       position: "relative",
