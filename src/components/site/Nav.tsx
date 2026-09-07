@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, Phone, X } from "lucide-react";
+import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/contact";
 import { cn } from "@/lib/utils";
 import { Wordmark } from "./Wordmark";
 
@@ -46,6 +47,13 @@ export function Nav() {
               {l.label}
             </a>
           ))}
+          <a
+            href={`tel:${PHONE_TEL}`}
+            className="flex items-center gap-2 font-mono text-sm text-foreground transition-colors hover:text-primary"
+          >
+            <Phone className="h-4 w-4 text-primary" />
+            {PHONE_DISPLAY}
+          </a>
           <a
             href="/#zayavka"
             className="bg-primary px-5 py-2.5 font-display text-sm font-bold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-foreground hover:text-background"

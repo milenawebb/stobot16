@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
+import { Phone } from "lucide-react";
+import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/contact";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import { FloatingContact } from "@/components/site/FloatingContact";
@@ -54,9 +56,15 @@ function ListingsPage() {
           Отворени позиции точно сега
         </h1>
         <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
-          Всички позиции са с трудов договор и осигуровки. Изберете сектор и кандидатствайте за
-          минута.
+          Всички позиции са с трудов договор и осигуровки.
         </p>
+        <a
+          href={`tel:${PHONE_TEL}`}
+          className="mt-6 inline-flex items-center gap-3 bg-primary px-7 py-4 font-display text-base font-bold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
+        >
+          <Phone className="h-5 w-5" /> Обадете се направо: {PHONE_DISPLAY}
+        </a>
+        <p className="mt-3 text-sm text-muted-foreground">или оставете кандидатура по-долу</p>
 
         {listings.length > 0 && (
           <div className="mt-10 flex flex-wrap gap-2">
