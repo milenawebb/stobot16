@@ -74,9 +74,11 @@ export function Process() {
           flexDirection: isMobile ? "column" : "row",
           alignItems: "center",
           justifyContent: "center",
-          gap: isMobile ? "40px" : "80px",
-          padding: "0 20px",
+          gap: isMobile ? "32px" : "80px",
+          padding: isMobile ? "0 16px" : "0 20px",
           overflow: "hidden",
+          boxSizing: "border-box",
+          maxWidth: "100%",
         }}
       >
         {/* Vertical (or horizontal on mobile) circle stepper */}
@@ -85,6 +87,9 @@ export function Process() {
             display: "flex",
             flexDirection: isMobile ? "row" : "column",
             alignItems: "center",
+            width: isMobile ? "100%" : "auto",
+            maxWidth: "100%",
+            boxSizing: "border-box",
           }}
         >
           {steps.map((step, index) => {
@@ -97,6 +102,8 @@ export function Process() {
                   display: "flex",
                   flexDirection: isMobile ? "row" : "column",
                   alignItems: "center",
+                  flex: isMobile && index < steps.length - 1 ? "1 1 0" : "0 0 auto",
+                  minWidth: 0,
                 }}
               >
                 <motion.div
