@@ -10,7 +10,7 @@ export function FloatingContact() {
   ];
 
   return (
-    <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-px">
+    <div className="fixed bottom-24 right-5 z-50 flex flex-col items-end gap-px">
       {open &&
         items.map((i) => (
           <a
