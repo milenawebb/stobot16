@@ -6,7 +6,7 @@ import { SECTORS } from "@/lib/sectors";
 
 
 const inputClass =
-  "w-full border border-input bg-transparent px-4 py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:bg-surface";
+  "rounded-xl w-full border border-input bg-transparent px-4 py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:bg-surface";
 
 function useFakeSubmit(message: string) {
   const [sending, setSending] = useState(false);

@@ -5,12 +5,12 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --radius-sm: 0px;
-  --radius-md: 0px;
-  --radius-lg: 0px;
-  --radius-xl: 0px;
-  --radius-2xl: 0px;
-  --radius-3xl: 0px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 12px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-3xl: 20px;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -46,7 +46,7 @@
 }
 
 :root {
-  --radius: 0px;
+  --radius: 12px;
 
   /* Stobot 16 — indigo / white / graphite */
   --background: #130f3e;
