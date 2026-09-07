@@ -38,10 +38,11 @@ function BrandSet({ brands, hidden = false }: { brands: string[]; hidden?: boole
       {brands.map((brand) => (
         <div
           key={brand}
-          className="flex h-32 w-52 shrink-0 flex-col justify-between border-r border-paper-foreground/15 px-6 py-5 transition-colors hover:bg-paper-foreground hover:text-paper sm:h-36 sm:w-60"
+          className="flex h-24 w-44 shrink-0 items-center justify-center border-r border-paper-foreground/15 px-6 transition-colors hover:bg-paper-foreground hover:text-paper sm:h-28 sm:w-56"
         >
-          <span className="h-8 w-8 border border-current opacity-30" aria-hidden="true" />
-          <span className="font-display text-xl font-extrabold sm:text-2xl">{brand}</span>
+          <span className="font-display text-xl font-extrabold whitespace-nowrap sm:text-2xl">
+            {brand}
+          </span>
         </div>
       ))}
     </div>
