@@ -57,7 +57,7 @@ export function Sectors() {
           index="04"
           label="Сектори на разпределение"
           title="Кадри за вашия бранш"
-          lead="Placeholder текст: осигуряваме персонал за производствени, логистични и сервизни обекти в цялата страна."
+          lead="осигуряваме персонал за производствени, логистични и сервизни обекти в цялата страна."
         />
 
         <div className="mt-14 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">

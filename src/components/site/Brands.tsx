@@ -36,16 +36,14 @@ import { RevealWords } from "./motion-kit";
 
 function BrandSet({ brands, hidden = false }: { brands: string[]; hidden?: boolean }) {
   return (
-    <div className="flex shrink-0 items-stretch" aria-hidden={hidden || undefined}>
+    <div className="flex shrink-0 items-center gap-3 pr-3 sm:gap-4 sm:pr-4" aria-hidden={hidden || undefined}>
       {brands.map((brand) => (
-        <div
+        <span
           key={brand}
-          className="flex h-24 w-44 shrink-0 items-center justify-center border-r border-paper-foreground/15 px-6 transition-colors hover:bg-paper-foreground hover:text-paper sm:h-28 sm:w-56"
+          className="inline-flex shrink-0 items-center whitespace-nowrap rounded-full border border-paper-foreground/20 px-5 py-3 font-display text-lg font-extrabold transition-colors hover:bg-paper-foreground hover:text-paper sm:px-7 sm:py-4 sm:text-2xl"
         >
-          <span className="font-display text-xl font-extrabold whitespace-nowrap sm:text-2xl">
-            {brand}
-          </span>
-        </div>
+          {brand}
+        </span>
       ))}
     </div>
   );
@@ -78,7 +76,7 @@ export function Brands() {
         {brandRows.map((brands, index) => (
           <div
             key={brands[0]}
-            className={`marquee-fade group overflow-hidden ${
+            className={`marquee-fade group overflow-hidden py-4 ${
               index === 1 ? "border-t border-paper-foreground/15" : ""
             }`}
           >
