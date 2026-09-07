@@ -1,4 +1,5 @@
 import { SectionHead } from "./SectionHead";
+import { SpotlightCard } from "./kinetic";
 
 const items = [
   {
@@ -41,9 +42,9 @@ export function Services() {
 
       <div className="mt-14 border-t border-border">
         {items.map((i) => (
-          <div
+          <SpotlightCard
             key={i.t}
-            className="group grid gap-3 border-b border-border py-8 transition-colors hover:bg-surface md:grid-cols-[8rem_1fr_1.1fr] md:items-baseline md:gap-8"
+            className="group grid gap-3 rounded-xl border-b border-border px-2 py-8 md:grid-cols-[8rem_1fr_1.1fr] md:items-baseline md:gap-8"
           >
             <span className="manifest-label transition-colors group-hover:text-primary">
               {i.code}
@@ -52,7 +53,7 @@ export function Services() {
               {i.t}
             </h3>
             <p className="max-w-lg text-sm leading-relaxed text-muted-foreground">{i.d}</p>
-          </div>
+          </SpotlightCard>
         ))}
       </div>
     </section>

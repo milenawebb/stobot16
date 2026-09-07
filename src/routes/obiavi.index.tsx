@@ -6,6 +6,7 @@ import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import { FloatingContact } from "@/components/site/FloatingContact";
 import { ListingCard } from "@/components/site/ListingCard";
+import { MagneticButton } from "@/components/site/kinetic";
 import { listActiveListings } from "@/lib/listings.functions";
 
 const title = "Свободни работни места — обяви за работа | Стобот 16";
@@ -58,12 +59,12 @@ function ListingsPage() {
         <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
           Всички позиции са с трудов договор и осигуровки.
         </p>
-        <a
+        <MagneticButton
           href={`tel:${PHONE_TEL}`}
           className="mt-6 inline-flex items-center gap-3 bg-primary px-7 py-4 font-display text-base font-bold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
         >
           <Phone className="h-5 w-5" /> Обадете се направо: {PHONE_DISPLAY}
-        </a>
+        </MagneticButton>
         <p className="mt-3 text-sm text-muted-foreground">или оставете кандидатура по-долу</p>
 
         {listings.length > 0 && (
@@ -73,7 +74,7 @@ function ListingsPage() {
                 key={s}
                 type="button"
                 onClick={() => setSector(s)}
-                className={`border px-4 py-2 text-sm font-medium transition-colors ${
+                className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
                   sector === s
                     ? "border-primary bg-primary text-primary-foreground"
                     : "border-border text-muted-foreground hover:border-primary hover:text-foreground"
@@ -86,7 +87,7 @@ function ListingsPage() {
         )}
 
         {visible.length === 0 ? (
-          <div className="mt-12 border border-border bg-surface-2/40 p-8">
+          <div className="mt-12 rounded-xl border border-border bg-surface-2/40 p-8">
             <p className="max-w-xl text-base leading-relaxed text-foreground/85">
               В момента няма отворени позиции — кандидатствайте и ще ви потърсим, щом се появи
               подходяща.
@@ -94,7 +95,7 @@ function ListingsPage() {
             <Link
               to="/"
               hash="kandidati"
-              className="mt-6 inline-block bg-primary px-6 py-4 font-display text-sm font-bold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
+              className="mt-6 inline-block rounded-xl bg-primary px-6 py-4 font-display text-sm font-bold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
             >
               Изпрати кандидатура
             </Link>

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
+import { MagneticButton } from "./kinetic";
 import heroImg from "@/assets/hero-crew.jpg";
 
 const paths = {
@@ -52,9 +54,10 @@ export function Hero() {
               ["candidate", "Търся работа"],
             ] as const
           ).map(([key, label]) => (
-            <button
+            <motion.button
               key={key}
               type="button"
+              whileTap={{ scale: 0.96 }}
               role="tab"
               aria-selected={path === key}
               onClick={() => setPath(key)}
@@ -63,7 +66,7 @@ export function Hero() {
               }`}
             >
               {label}
-            </button>
+            </motion.button>
           ))}
         </div>
 
@@ -79,12 +82,11 @@ export function Hero() {
             </p>
           )}
 
-          <a
+          <MagneticButton
             href={active.href}
-            className="mt-7 block w-full bg-primary px-8 py-5 text-center font-display text-base font-bold tracking-wide text-primary-foreground uppercase transition-colors hover:bg-foreground hover:text-background"
-          >
-            {active.cta}
-          </a>
+            label={active.cta}
+            className="mt-7 flex w-full items-center justify-center bg-primary px-8 py-5 text-center font-display text-base font-bold tracking-wide text-primary-foreground uppercase transition-colors hover:bg-foreground hover:text-background"
+          />
         </div>
       </div>
 
@@ -132,19 +134,17 @@ export function Hero() {
           </dl>
         </div>
 
-        <div className="mt-10 flex w-full flex-col gap-px bg-border sm:w-fit sm:flex-row sm:items-stretch">
-          <a
+        <div className="mt-10 flex w-full flex-col gap-3 sm:w-fit sm:flex-row sm:items-stretch">
+          <MagneticButton
             href="#zayavka"
-            className="bg-primary px-8 py-5 text-center font-display text-base font-bold tracking-wide text-primary-foreground uppercase transition-colors hover:bg-foreground hover:text-background"
-          >
-            Нуждая се от персонал
-          </a>
-          <a
+            label="Нуждая се от персонал"
+            className="flex items-center justify-center bg-primary px-8 py-5 text-center font-display text-base font-bold tracking-wide text-primary-foreground uppercase transition-colors hover:bg-foreground hover:text-background"
+          />
+          <MagneticButton
             href="/obiavi"
-            className="bg-background px-8 py-5 text-center font-display text-base font-bold tracking-wide text-foreground uppercase transition-colors hover:bg-move hover:text-move-foreground"
-          >
-            Търся работа
-          </a>
+            label="Търся работа"
+            className="flex items-center justify-center border border-border bg-background px-8 py-5 text-center font-display text-base font-bold tracking-wide text-foreground uppercase transition-colors hover:bg-move hover:text-move-foreground"
+          />
         </div>
       </div>
     </section>

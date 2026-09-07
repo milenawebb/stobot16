@@ -10,16 +10,16 @@ export function ListingBadges({ listing }: { listing: JobListing }) {
   return (
     <div className="flex flex-wrap items-center gap-2 text-xs">
       {listing.is_urgent && (
-        <span className="border border-gold px-2 py-1 font-semibold uppercase tracking-wide text-gold">
+        <span className="rounded-full border border-gold px-3 py-1 font-semibold uppercase tracking-wide text-gold">
           Спешно
         </span>
       )}
       {age < DAY ? (
-        <span className="bg-primary px-2 py-1 font-semibold uppercase tracking-wide text-primary-foreground">
+        <span className="rounded-full bg-primary px-3 py-1 font-semibold uppercase tracking-wide text-primary-foreground">
           Ново
         </span>
       ) : days <= 3 ? (
-        <span className="border border-border px-2 py-1 text-muted-foreground">
+        <span className="rounded-full border border-border px-3 py-1 text-muted-foreground">
           Публикувано преди {days} {days === 1 ? "ден" : "дни"}
         </span>
       ) : (

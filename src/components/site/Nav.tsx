@@ -3,6 +3,7 @@ import { Menu, Phone, X } from "lucide-react";
 import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/contact";
 import { cn } from "@/lib/utils";
 import { Wordmark } from "./Wordmark";
+import { MagneticButton } from "./kinetic";
 
 const links = [
   { href: "/#uslugi", label: "Услуги" },
@@ -54,12 +55,11 @@ export function Nav() {
             <Phone className="h-4 w-4 text-primary" />
             {PHONE_DISPLAY}
           </a>
-          <a
+          <MagneticButton
             href="/#zayavka"
-            className="bg-primary px-5 py-2.5 font-display text-sm font-bold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
-          >
-            Заявка за персонал
-          </a>
+            label="Заявка за персонал"
+            className="flex items-center bg-primary px-5 py-2.5 font-display text-sm font-bold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
+          />
         </div>
 
         <button
@@ -87,7 +87,7 @@ export function Nav() {
             <a
               href={`tel:${PHONE_TEL}`}
               onClick={() => setOpen(false)}
-              className="mt-4 flex items-center justify-center gap-2 border border-primary px-5 py-3.5 font-mono text-sm text-foreground"
+              className="mt-4 flex items-center justify-center gap-2 rounded-xl border border-primary px-5 py-3.5 font-mono text-sm text-foreground"
             >
               <Phone className="h-4 w-4 text-primary" />
               {PHONE_DISPLAY}
@@ -95,7 +95,7 @@ export function Nav() {
             <a
               href="/#zayavka"
               onClick={() => setOpen(false)}
-              className="mt-2 bg-primary px-5 py-3.5 text-center font-display text-sm font-bold uppercase tracking-wide text-primary-foreground"
+              className="mt-2 rounded-xl bg-primary px-5 py-3.5 text-center font-display text-sm font-bold uppercase tracking-wide text-primary-foreground"
             >
               Заявка за персонал
             </a>

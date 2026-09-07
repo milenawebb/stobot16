@@ -3,10 +3,14 @@ import { Clock, MapPin, Phone, Wallet } from "lucide-react";
 import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/contact";
 import type { JobListing } from "@/lib/listings.functions";
 import { ListingBadges } from "./ListingBadges";
+import { MagneticButton, SpotlightCard } from "./kinetic";
 
 export function ListingCard({ listing }: { listing: JobListing }) {
   return (
-    <article className="flex flex-col border border-border bg-background p-6 transition-colors hover:border-primary">
+    <SpotlightCard
+      as="article"
+      className="flex flex-col rounded-xl border border-border bg-background p-6 transition-colors hover:border-primary"
+    >
       <ListingBadges listing={listing} />
       <span className="manifest-label mt-3 block">{listing.sector}</span>
       <h3 className="mt-3 text-xl">
@@ -35,33 +39,33 @@ export function ListingCard({ listing }: { listing: JobListing }) {
         </div>
       </dl>
 
-      <a
+      <MagneticButton
         href={`tel:${listing.contact_phone ?? PHONE_TEL}`}
         className="mt-6 flex items-center justify-center gap-2 bg-primary px-5 py-4 font-display text-base font-bold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
       >
         <Phone className="h-4 w-4" /> Обади се сега
-      </a>
+      </MagneticButton>
       <span className="mt-2 text-center text-xs text-muted-foreground">
         {listing.contact_phone ?? PHONE_DISPLAY} — или оставете кандидатура
       </span>
 
-      <div className="mt-4 flex flex-wrap gap-px bg-border">
+      <div className="mt-4 flex flex-wrap gap-2">
         <Link
           to="/"
           search={{ sector: listing.sector }}
           hash="kandidati"
-          className="flex-1 bg-background px-5 py-3 text-center font-display text-sm font-bold uppercase tracking-wide text-foreground transition-colors hover:bg-move hover:text-move-foreground"
+          className="flex-1 rounded-lg border border-border bg-background px-5 py-3 text-center font-display text-sm font-bold uppercase tracking-wide text-foreground transition-colors hover:bg-move hover:text-move-foreground"
         >
           Кандидатствай
         </Link>
         <Link
           to="/obiavi/$slug"
           params={{ slug: listing.slug }}
-          className="flex-1 bg-background px-5 py-3 text-center font-display text-sm font-bold uppercase tracking-wide text-foreground transition-colors hover:bg-move hover:text-move-foreground"
+          className="flex-1 rounded-lg border border-border bg-background px-5 py-3 text-center font-display text-sm font-bold uppercase tracking-wide text-foreground transition-colors hover:bg-move hover:text-move-foreground"
         >
           Детайли
         </Link>
       </div>
-    </article>
+    </SpotlightCard>
   );
 }
