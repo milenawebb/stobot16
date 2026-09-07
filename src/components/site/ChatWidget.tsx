@@ -9,8 +9,7 @@ type Msg = { role: "user" | "assistant"; content: string; listings?: ListingRef[
 const GREETING =
   "Здравей! Търсиш работа или персонал за фирмата си? Пиши ми и ще ти помогна.";
 
-export function ChatWidget() {
-  const [open, setOpen] = useState(false);
+export function ChatWidget({ open, onClose }: { open: boolean; onClose: () => void }) {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [messages, setMessages] = useState<Msg[]>([{ role: "assistant", content: GREETING }]);
@@ -59,7 +58,7 @@ export function ChatWidget() {
               <Bot className="h-5 w-5" />
               <span className="font-display text-sm font-extrabold">Асистент стобот 16</span>
             </div>
-            <button onClick={() => setOpen(false)} aria-label="Затвори чата" className="p-1">
+            <button onClick={onClose} aria-label="Затвори чата" className="p-1">
               <X className="h-5 w-5" />
             </button>
           </header>
@@ -82,7 +81,7 @@ export function ChatWidget() {
                       key={l.slug}
                       to="/obiavi/$slug"
                       params={{ slug: l.slug }}
-                      onClick={() => setOpen(false)}
+                      onClick={onClose}
                       className="block border border-border p-3 transition-colors hover:bg-secondary"
                     >
                       <span className="block font-display text-sm font-extrabold">{l.title}</span>
@@ -117,15 +116,6 @@ export function ChatWidget() {
         </div>
       )}
 
-      {!open && (
-        <button
-          onClick={() => setOpen(true)}
-          aria-label="Отвори чат асистента"
-          className="fixed bottom-5 right-5 z-50 grid h-14 w-14 place-items-center bg-primary text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
-        >
-          <Bot className="h-6 w-6" />
-        </button>
-      )}
     </>
   );
 }
