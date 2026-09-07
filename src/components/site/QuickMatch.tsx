@@ -124,7 +124,7 @@ export function QuickMatch() {
                   {eta}
                 </p>
                 <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
-                  Placeholder: ориентировъчно време за първо предложение на екип за{" "}
+                  Ориентировъчно време за първо предложение на екип за{" "}
                   <span className="text-foreground">{industry.toLowerCase()}</span> — {volume}.
                 </p>
                 <dl className="mt-8 grid gap-px border border-border bg-border sm:grid-cols-2">
@@ -155,7 +155,7 @@ export function QuickMatch() {
                   ))}
                 </ul>
                 <p className="mt-6 max-w-md text-sm leading-relaxed text-muted-foreground">
-                  Placeholder: данните са примерни. Изпратете кратко заявление и ще се свържем с вас.
+                  Данните са примерни. Изпратете кратко заявление и ще се свържем с вас.
                 </p>
                 <a
                   href="#kandidati"

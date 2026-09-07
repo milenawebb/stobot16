@@ -8,7 +8,7 @@ export function Footer() {
         <div>
           <Wordmark lang="bg" tone="light" size="text-xl" />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
-            Placeholder: аутсорсинг на обучен и осигурен персонал и хамалски услуги в България.
+            Аутсорсинг на обучен и осигурен персонал и хамалски услуги в България.
           </p>
         </div>
 
