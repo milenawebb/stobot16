@@ -82,9 +82,9 @@ export function ParallaxImage({
     <div ref={ref} className={`relative overflow-hidden ${wrapperClassName}`}>
       <motion.div
         className="h-full w-full"
-        style={reduced ? undefined : { y }}
-        initial={reduced ? undefined : { clipPath: hidden }}
-        whileInView={reduced ? undefined : { clipPath: "inset(0 0% 0 0)" }}
+        style={reduced ? {} : { y }}
+        initial={reduced ? false : { clipPath: hidden }}
+        whileInView={reduced ? {} : { clipPath: "inset(0 0% 0 0)" }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       >
