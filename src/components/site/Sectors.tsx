@@ -9,6 +9,7 @@ import {
   Warehouse,
 } from "lucide-react";
 import { SectionHead } from "./SectionHead";
+import sectorsStrip from "@/assets/sectors-strip.jpg";
 
 const sectors = [
   {
@@ -74,6 +75,18 @@ export function Sectors() {
             </article>
           ))}
         </div>
+      </div>
+
+      <div className="relative mt-16 h-48 w-full overflow-hidden lg:h-64">
+        <img
+          src={sectorsStrip}
+          alt="Работници на смяна в складова база"
+          loading="lazy"
+          width={1920}
+          height={720}
+          className="h-full w-full object-cover"
+        />
+        <div className="pointer-events-none absolute inset-0 bg-background/70" />
       </div>
     </section>
   );

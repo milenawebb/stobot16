@@ -1,11 +1,13 @@
 import { Link } from "@tanstack/react-router";
 import { Clock, MapPin, Wallet } from "lucide-react";
 import type { JobListing } from "@/lib/listings.functions";
+import { ListingBadges } from "./ListingBadges";
 
 export function ListingCard({ listing }: { listing: JobListing }) {
   return (
     <article className="flex flex-col border border-border bg-background p-6 transition-colors hover:border-primary">
-      <span className="manifest-label">{listing.sector}</span>
+      <ListingBadges listing={listing} />
+      <span className="manifest-label mt-3 block">{listing.sector}</span>
       <h3 className="mt-3 text-xl">
         <Link
           to="/obiavi/$slug"

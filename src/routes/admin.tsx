@@ -33,6 +33,7 @@ const empty = {
   description: "",
   sector: SECTORS[0] as string,
   is_active: true,
+  is_urgent: false,
 };
 
 function AdminPage() {
@@ -87,6 +88,7 @@ function AdminPage() {
           description: form.description,
           sector: form.sector,
           is_active: form.is_active,
+          is_urgent: form.is_urgent,
         },
       });
       toast.success(form.id ? "Обявата е обновена." : "Обявата е публикувана.");
@@ -125,6 +127,7 @@ function AdminPage() {
           description: listing.description ?? "",
           sector: listing.sector,
           is_active: !listing.is_active,
+          is_urgent: listing.is_urgent,
         },
       });
       await load(password);
@@ -230,6 +233,14 @@ function AdminPage() {
             />
             Активна обява
           </label>
+          <label className="flex items-center gap-3 text-sm">
+            <input
+              type="checkbox"
+              checked={form.is_urgent}
+              onChange={(e) => setForm({ ...form, is_urgent: e.target.checked })}
+            />
+            Спешна позиция
+          </label>
         </div>
 
         <div className="mt-6 flex flex-wrap gap-3">
@@ -262,6 +273,7 @@ function AdminPage() {
               <p className="truncate text-base">{l.title}</p>
               <p className="mt-1 text-sm text-muted-foreground">
                 {l.position} · {l.schedule} · {l.location} · {l.pay}
+                {l.is_urgent && " · спешна"}
                 {!l.is_active && " · неактивна"}
               </p>
             </div>
@@ -279,6 +291,7 @@ function AdminPage() {
                     description: l.description ?? "",
                     sector: l.sector,
                     is_active: l.is_active,
+                    is_urgent: l.is_urgent,
                   })
                 }
                 className="border border-border px-4 py-2 transition-colors hover:border-primary"

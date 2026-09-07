@@ -13,10 +13,11 @@ export type JobListing = {
   description: string | null;
   sector: string;
   is_active: boolean;
+  is_urgent: boolean;
   created_at: string;
 };
 
-const COLUMNS = "id, slug, title, position, schedule, location, pay, description, sector, is_active, created_at";
+const COLUMNS = "id, slug, title, position, schedule, location, pay, description, sector, is_active, is_urgent, created_at";
 
 function publicClient() {
   const key = process.env["SUPABASE_PUBLISHABLE_KEY"]!;
@@ -91,6 +92,7 @@ type ListingInput = {
   description?: string;
   sector: string;
   is_active: boolean;
+  is_urgent?: boolean;
 };
 
 export const adminListListings = createServerFn({ method: "POST" })
@@ -120,6 +122,7 @@ export const adminSaveListing = createServerFn({ method: "POST" })
       description: data.description ?? null,
       sector: data.sector,
       is_active: data.is_active,
+      is_urgent: data.is_urgent ?? false,
     };
 
     if (data.id) {

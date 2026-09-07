@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
+import coordinatorPhoto from "@/assets/process-coordinator.jpg";
+import crewPhoto from "@/assets/process-crew.jpg";
 
 const steps = [
   {
@@ -152,6 +154,27 @@ export function Process() {
             );
           })}
         </div>
+
+        {/* Supporting photography, changing per step */}
+        {!isMobile && (
+          <motion.img
+            key={`photo-${active.number}`}
+            src={activeStep % 2 === 0 ? coordinatorPhoto : crewPhoto}
+            alt="Наш екип на обект"
+            loading="lazy"
+            width={1024}
+            height={1280}
+            initial={{ opacity: 0, scale: 1.03 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4 }}
+            style={{
+              width: 340,
+              height: 420,
+              objectFit: "cover",
+              flexShrink: 0,
+            }}
+          />
+        )}
 
         {/* Active step text content */}
         <div style={{ maxWidth: 480 }}>
