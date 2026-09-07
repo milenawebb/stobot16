@@ -74,9 +74,11 @@ export function Process() {
           flexDirection: isMobile ? "column" : "row",
           alignItems: "center",
           justifyContent: "center",
-          gap: isMobile ? "40px" : "80px",
-          padding: "0 20px",
+          gap: isMobile ? "32px" : "80px",
+          padding: isMobile ? "0 16px" : "0 20px",
           overflow: "hidden",
+          boxSizing: "border-box",
+          maxWidth: "100%",
         }}
       >
         {/* Vertical (or horizontal on mobile) circle stepper */}
@@ -85,6 +87,9 @@ export function Process() {
             display: "flex",
             flexDirection: isMobile ? "row" : "column",
             alignItems: "center",
+            width: isMobile ? "100%" : "auto",
+            maxWidth: "100%",
+            boxSizing: "border-box",
           }}
         >
           {steps.map((step, index) => {
@@ -97,6 +102,8 @@ export function Process() {
                   display: "flex",
                   flexDirection: isMobile ? "row" : "column",
                   alignItems: "center",
+                  flex: isMobile && index < steps.length - 1 ? "1 1 0" : "0 0 auto",
+                  minWidth: 0,
                 }}
               >
                 <motion.div
@@ -107,8 +114,8 @@ export function Process() {
                   }}
                   transition={{ duration: 0.3 }}
                   style={{
-                    width: isMobile ? 44 : 56,
-                    height: isMobile ? 44 : 56,
+                    width: isMobile ? 40 : 56,
+                    height: isMobile ? 40 : 56,
                     flexShrink: 0,
                     borderRadius: "50%",
                     border: `2px solid ${WHITE}`,
@@ -125,7 +132,9 @@ export function Process() {
                 {index < steps.length - 1 && (
                   <div
                     style={{
-                      width: isMobile ? 32 : 2,
+                      width: isMobile ? "auto" : 2,
+                      flex: isMobile ? "1 1 0" : "0 0 auto",
+                      minWidth: isMobile ? 8 : undefined,
                       height: isMobile ? 2 : 60,
                       background: "rgba(255,255,255,0.25)",
                       position: "relative",

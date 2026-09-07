@@ -101,6 +101,7 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    max-width: 100%;
   }
 
   h1,

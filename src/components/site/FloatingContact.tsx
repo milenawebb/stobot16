@@ -1,49 +1,84 @@
 import { useState } from "react";
-import { MessageCircle, Phone, X } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { MessageSquare, Phone, Plus, X } from "lucide-react";
 
-import { PHONE_WA } from "@/lib/contact";
+import { PHONE_TEL } from "@/lib/contact";
+import { ChatWidget } from "./ChatWidget";
 
-const WA_NUMBER = PHONE_WA;
-const WA_TEXT = encodeURIComponent(
-  "Здравейте, пиша във връзка с обява/позиция от сайта на Стобот 16.",
-);
+const actions = [
+  { key: "call", label: "Обади се", icon: Phone },
+  { key: "chat", label: "Чат", icon: MessageSquare },
+] as const;
 
 export function FloatingContact() {
   const [open, setOpen] = useState(false);
+  const [chatOpen, setChatOpen] = useState(false);
 
   return (
-    <div className="fixed bottom-24 right-5 z-50 flex flex-col items-end gap-px">
-      {open && (
-        <a
-          href={`viber://chat?number=%2B${WA_NUMBER}`}
-          target="_blank"
-          rel="noreferrer"
-          className="flex items-center gap-2 border border-border bg-background px-4 py-2.5 font-mono text-sm transition-colors hover:bg-primary hover:text-primary-foreground"
-        >
-          <Phone className="h-4 w-4" />
-          Viber
-        </a>
-      )}
+    <>
+      <ChatWidget open={chatOpen} onClose={() => setChatOpen(false)} />
 
-      <div className="mt-px flex items-center gap-px">
-        <button
+      <div className="pointer-events-none fixed bottom-5 right-4 z-40 flex flex-col items-end gap-3 sm:bottom-6 sm:right-6">
+        <AnimatePresence>
+          {open && (
+            <div className="pointer-events-auto flex flex-col items-end gap-3">
+              {actions.map((a, i) => {
+                const content = (
+                  <>
+                    <span className="rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground shadow-lg">
+                      {a.label}
+                    </span>
+                    <span className="grid h-12 w-12 place-items-center rounded-full bg-primary text-primary-foreground shadow-lg">
+                      <a.icon className="h-5 w-5" />
+                    </span>
+                  </>
+                );
+                return (
+                  <motion.div
+                    key={a.key}
+                    initial={{ opacity: 0, scale: 0.6, y: 8 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.6, y: 8 }}
+                    transition={{ type: "spring", stiffness: 420, damping: 26, delay: i * 0.05 }}
+                    className="flex items-center gap-2"
+                  >
+                    {a.key === "call" ? (
+                      <a href={`tel:${PHONE_TEL}`} aria-label="Обади се" className="flex items-center gap-2">
+                        {content}
+                      </a>
+                    ) : (
+                      <button
+                        type="button"
+                        aria-label="Отвори чат асистента"
+                        onClick={() => {
+                          setChatOpen(true);
+                          setOpen(false);
+                        }}
+                        className="flex items-center gap-2"
+                      >
+                        {content}
+                      </button>
+                    )}
+                  </motion.div>
+                );
+              })}
+            </div>
+          )}
+        </AnimatePresence>
+
+        <motion.button
+          type="button"
           onClick={() => setOpen((v) => !v)}
-          aria-label="Още начини за контакт"
-          className="grid h-11 w-11 place-items-center border border-border bg-background transition-colors hover:bg-primary hover:text-primary-foreground"
+          aria-expanded={open}
+          aria-label={open ? "Затвори менюто за контакт" : "Отвори менюто за контакт"}
+          whileTap={{ scale: 0.94 }}
+          className="pointer-events-auto grid h-14 w-14 place-items-center rounded-full bg-primary text-primary-foreground shadow-xl"
         >
-          {open ? <X className="h-5 w-5" /> : <Phone className="h-5 w-5" />}
-        </button>
-
-        <a
-          href={`https://wa.me/${WA_NUMBER}?text=${WA_TEXT}`}
-          target="_blank"
-          rel="noreferrer"
-          aria-label="Пишете ни в WhatsApp"
-          className="grid h-11 w-11 place-items-center bg-whatsapp text-[#0b3d20] transition-opacity hover:opacity-90"
-        >
-          <MessageCircle className="h-5 w-5" />
-        </a>
+          <motion.span animate={{ rotate: open ? 135 : 0 }} transition={{ duration: 0.2 }}>
+            {open ? <X className="h-6 w-6" /> : <Plus className="h-6 w-6" />}
+          </motion.span>
+        </motion.button>
       </div>
-    </div>
+    </>
   );
 }
