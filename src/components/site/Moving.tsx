@@ -1,4 +1,5 @@
 import movingImg from "@/assets/moving.jpg";
+import { ParallaxImage } from "./motion-kit";
 
 const items = [
   {
@@ -69,13 +70,14 @@ export function Moving() {
           </a>
         </div>
 
-        <img
+        <ParallaxImage
           src={movingImg}
           alt="Хамали товарят мебели в камион"
-          loading="lazy"
           width={1200}
           height={900}
-          className="h-full w-full border border-move-foreground/25 object-cover"
+          distance={30}
+          wrapperClassName="h-full w-full border border-move-foreground/25"
+          className="h-full w-full object-cover"
         />
       </div>
     </section>
