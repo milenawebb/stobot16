@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { MagneticButton } from "./kinetic";
+import { ParallaxImage } from "./motion-kit";
 import heroImg from "@/assets/hero-crew.jpg";
 
 const paths = {
@@ -28,12 +29,15 @@ export function Hero() {
 
   return (
     <section id="top" className="relative isolate overflow-hidden border-b border-border pt-28 lg:pt-36">
-      <img
+      <ParallaxImage
         src={heroImg}
         alt="Екип от обучени работници на индустриален обект"
         width={1600}
         height={1100}
-        className="absolute inset-0 -z-20 h-full w-full object-cover opacity-20 grayscale"
+        distance={50}
+        direction="up"
+        wrapperClassName="absolute inset-0 -z-20"
+        className="h-[115%] w-full object-cover opacity-20 grayscale"
       />
       <div
         className="absolute inset-0 -z-10"

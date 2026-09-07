@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import { SectionHead } from "./SectionHead";
 
 const stats = [
-  { value: 500, suffix: "+", label: "разпределени работници", note: "Placeholder данни" },
-  { value: 12, suffix: "", label: "сектора на обслужване", note: "Placeholder данни" },
-  { value: 24, suffix: " ч.", label: "средно време за заместване", note: "Placeholder данни" },
-  { value: 98, suffix: "%", label: "покрити смени по график", note: "Placeholder данни" },
+  { value: 500, suffix: "+", label: "разпределени работници" },
+  { value: 12, suffix: "", label: "сектора на обслужване" },
+  { value: 24, suffix: " ч.", label: "средно време за заместване" },
+  { value: 98, suffix: "%", label: "покрити смени по график" },
 ];
 
 function useCountUp(target: number, run: boolean) {
@@ -31,7 +31,7 @@ function useCountUp(target: number, run: boolean) {
   return n;
 }
 
-function Stat({ value, suffix, label, note, run }: (typeof stats)[number] & { run: boolean }) {
+function Stat({ value, suffix, label, run }: (typeof stats)[number] & { run: boolean }) {
   const n = useCountUp(value, run);
   return (
     <div className="bg-background p-6 lg:p-8">
@@ -40,7 +40,6 @@ function Stat({ value, suffix, label, note, run }: (typeof stats)[number] & { ru
         <span className="text-white/60">{suffix}</span>
       </p>
       <p className="mt-4 text-base text-foreground">{label}</p>
-      <p className="manifest-label mt-2">{note}</p>
     </div>
   );
 }

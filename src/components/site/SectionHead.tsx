@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { RevealWords } from "./motion-kit";
 
 export function SectionHead({
   index,
@@ -14,6 +15,7 @@ export function SectionHead({
   tone?: "dark" | "paper";
 }) {
   const rule = tone === "paper" ? "bg-paper-foreground/20" : "bg-line/35";
+  const headingClass = "mt-5 text-[2rem] leading-[0.95] sm:text-5xl lg:text-6xl";
   return (
     <div className="max-w-3xl">
       <div className="flex items-center gap-3">
@@ -21,7 +23,11 @@ export function SectionHead({
         <span className={`h-px w-8 ${rule}`} aria-hidden="true" />
         <span className="manifest-label">{label}</span>
       </div>
-      <h2 className="mt-5 text-[2rem] leading-[0.95] sm:text-5xl lg:text-6xl">{title}</h2>
+      {typeof title === "string" ? (
+        <RevealWords text={title} className={headingClass} />
+      ) : (
+        <h2 className={headingClass}>{title}</h2>
+      )}
       {lead ? (
         <p
           className={`mt-5 max-w-xl text-base leading-relaxed ${

@@ -11,6 +11,7 @@ import {
 import { SectionHead } from "./SectionHead";
 import { SpotlightCard } from "./kinetic";
 import sectorsStrip from "@/assets/sectors-strip.jpg";
+import { ParallaxImage } from "./motion-kit";
 
 const sectors = [
   {
@@ -80,13 +81,15 @@ export function Sectors() {
       </div>
 
       <div className="relative mt-16 h-48 w-full overflow-hidden lg:h-64">
-        <img
+        <ParallaxImage
           src={sectorsStrip}
           alt="Работници на смяна в складова база"
-          loading="lazy"
           width={1920}
           height={720}
-          className="h-full w-full object-cover"
+          distance={35}
+          direction="up"
+          wrapperClassName="h-full w-full"
+          className="h-[120%] w-full object-cover"
         />
         <div className="pointer-events-none absolute inset-0 bg-background/70" />
       </div>

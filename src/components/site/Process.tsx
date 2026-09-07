@@ -186,7 +186,7 @@ export function Process() {
         )}
 
         {/* Active step text content */}
-        <div style={{ maxWidth: 480 }}>
+        <div style={{ maxWidth: 480, width: "100%", minWidth: 0 }}>
           <motion.div
             key={active.number}
             initial={{ opacity: 0, y: 20 }}

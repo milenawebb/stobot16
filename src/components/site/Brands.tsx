@@ -32,16 +32,19 @@ const brandRows = [
   ],
 ];
 
+import { RevealWords } from "./motion-kit";
+
 function BrandSet({ brands, hidden = false }: { brands: string[]; hidden?: boolean }) {
   return (
     <div className="flex shrink-0 items-stretch" aria-hidden={hidden || undefined}>
       {brands.map((brand) => (
         <div
           key={brand}
-          className="flex h-32 w-52 shrink-0 flex-col justify-between border-r border-paper-foreground/15 px-6 py-5 transition-colors hover:bg-paper-foreground hover:text-paper sm:h-36 sm:w-60"
+          className="flex h-24 w-44 shrink-0 items-center justify-center border-r border-paper-foreground/15 px-6 transition-colors hover:bg-paper-foreground hover:text-paper sm:h-28 sm:w-56"
         >
-          <span className="h-8 w-8 border border-current opacity-30" aria-hidden="true" />
-          <span className="font-display text-xl font-extrabold sm:text-2xl">{brand}</span>
+          <span className="font-display text-xl font-extrabold whitespace-nowrap sm:text-2xl">
+            {brand}
+          </span>
         </div>
       ))}
     </div>
@@ -51,7 +54,8 @@ function BrandSet({ brands, hidden = false }: { brands: string[]; hidden?: boole
 export function Brands() {
   return (
     <section
-      aria-labelledby="brands-title"
+      id="marki"
+      aria-label="Марки, с които сме работили"
       className="overflow-hidden border-y border-border bg-paper py-20 text-paper-foreground lg:py-28"
     >
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
@@ -60,9 +64,10 @@ export function Brands() {
           <span className="h-px w-8 bg-paper-foreground/20" aria-hidden="true" />
           <span className="manifest-label text-paper-foreground/55">Крайни обекти</span>
         </div>
-        <h2 id="brands-title" className="mt-5 max-w-4xl text-[2rem] sm:text-5xl lg:text-6xl">
-          Доверие от екипи по проекти за водещи марки
-        </h2>
+        <RevealWords
+          text="Доверие от екипи по проекти за водещи марки"
+          className="mt-5 max-w-4xl text-[2rem] sm:text-5xl lg:text-6xl"
+        />
         <p className="mt-5 max-w-2xl text-base leading-relaxed text-paper-foreground/70">
           Хората ни работят на терен за разпознаваеми марки — не по документи, а на място, всеки
           ден.
