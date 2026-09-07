@@ -125,7 +125,7 @@ export function Forms() {
             className="mt-6 flex w-full items-center justify-center border border-foreground px-6 py-4 font-display text-sm font-bold uppercase tracking-wide text-foreground transition-colors hover:border-move hover:bg-move hover:text-move-foreground disabled:opacity-60"
           />
           <p className="manifest-label mt-4 block">
-            Placeholder: трудов договор, осигуровки и коректно заплащане.
+            Трудов договор, осигуровки и коректно заплащане.
           </p>
         </form>
       </div>
