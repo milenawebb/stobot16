@@ -14,7 +14,6 @@ import { Testimonials } from "@/components/site/Testimonials";
 import { Forms } from "@/components/site/Forms";
 import { Footer } from "@/components/site/Footer";
 import { FloatingContact } from "@/components/site/FloatingContact";
-import { ChatWidget } from "@/components/site/ChatWidget";
 
 const title = "стобот 16 — аутсорсинг на персонал и хамалски услуги";
 const description =
@@ -63,7 +62,6 @@ function Index() {
 
       <Footer />
       <FloatingContact />
-      <ChatWidget />
     </main>
   );
 }
