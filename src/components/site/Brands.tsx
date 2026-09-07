@@ -52,6 +52,7 @@ function BrandSet({ brands, hidden = false }: { brands: string[]; hidden?: boole
 export function Brands() {
   return (
     <section
+      id="marki"
       aria-labelledby="brands-title"
       className="overflow-hidden border-y border-border bg-paper py-20 text-paper-foreground lg:py-28"
     >
@@ -61,9 +62,10 @@ export function Brands() {
           <span className="h-px w-8 bg-paper-foreground/20" aria-hidden="true" />
           <span className="manifest-label text-paper-foreground/55">Крайни обекти</span>
         </div>
-        <h2 id="brands-title" className="mt-5 max-w-4xl text-[2rem] sm:text-5xl lg:text-6xl">
-          Доверие от екипи по проекти за водещи марки
-        </h2>
+        <RevealWords
+          text="Доверие от екипи по проекти за водещи марки"
+          className="mt-5 max-w-4xl text-[2rem] sm:text-5xl lg:text-6xl"
+        />
         <p className="mt-5 max-w-2xl text-base leading-relaxed text-paper-foreground/70">
           Хората ни работят на терен за разпознаваеми марки — не по документи, а на място, всеки
           ден.
