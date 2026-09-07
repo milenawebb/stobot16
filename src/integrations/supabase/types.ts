@@ -20,6 +20,7 @@ export type Database = {
           description: string | null
           id: string
           is_active: boolean
+          is_urgent: boolean
           location: string
           pay: string
           position: string
@@ -34,6 +35,7 @@ export type Database = {
           description?: string | null
           id?: string
           is_active?: boolean
+          is_urgent?: boolean
           location: string
           pay: string
           position: string
@@ -48,6 +50,7 @@ export type Database = {
           description?: string | null
           id?: string
           is_active?: boolean
+          is_urgent?: boolean
           location?: string
           pay?: string
           position?: string
