@@ -63,6 +63,7 @@ function Index() {
 
       <Footer />
       <FloatingContact />
+      <ChatWidget />
     </main>
   );
 }
