@@ -34,6 +34,7 @@ const empty = {
   sector: SECTORS[0] as string,
   is_active: true,
   is_urgent: false,
+  contact_phone: "",
 };
 
 function AdminPage() {
@@ -89,6 +90,7 @@ function AdminPage() {
           sector: form.sector,
           is_active: form.is_active,
           is_urgent: form.is_urgent,
+          contact_phone: form.contact_phone,
         },
       });
       toast.success(form.id ? "Обявата е обновена." : "Обявата е публикувана.");
@@ -128,6 +130,7 @@ function AdminPage() {
           sector: listing.sector,
           is_active: !listing.is_active,
           is_urgent: listing.is_urgent,
+          contact_phone: listing.contact_phone ?? "",
         },
       });
       await load(password);
@@ -218,6 +221,12 @@ function AdminPage() {
               <option key={s}>{s}</option>
             ))}
           </select>
+          <input
+            value={form.contact_phone}
+            onChange={(e) => setForm({ ...form, contact_phone: e.target.value })}
+            placeholder="Телефон за тази обява (по желание, по подразбиране +359 87 647 2224)"
+            className={inputClass}
+          />
           <textarea
             rows={4}
             value={form.description}
@@ -292,6 +301,7 @@ function AdminPage() {
                     sector: l.sector,
                     is_active: l.is_active,
                     is_urgent: l.is_urgent,
+                    contact_phone: l.contact_phone ?? "",
                   })
                 }
                 className="border border-border px-4 py-2 transition-colors hover:border-primary"

@@ -1,5 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { Clock, MapPin, Wallet, ArrowLeft } from "lucide-react";
+import { Clock, MapPin, Wallet, ArrowLeft, Phone } from "lucide-react";
+import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/contact";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import { FloatingContact } from "@/components/site/FloatingContact";
@@ -117,14 +118,22 @@ function ListingDetail() {
           </p>
         )}
 
-        <Link
-          to="/"
-          search={{ sector: listing.sector }}
-          hash="kandidati"
-          className="mt-10 inline-block bg-primary px-8 py-5 font-display text-base font-bold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
-        >
-          Кандидатствай за тази позиция
-        </Link>
+        <div className="mt-10 flex flex-col items-start gap-3">
+          <a
+            href={`tel:${listing.contact_phone ?? PHONE_TEL}`}
+            className="inline-flex items-center gap-3 bg-primary px-8 py-5 font-display text-base font-bold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
+          >
+            <Phone className="h-5 w-5" /> Обади се сега — {listing.contact_phone ?? PHONE_DISPLAY}
+          </a>
+          <Link
+            to="/"
+            search={{ sector: listing.sector }}
+            hash="kandidati"
+            className="text-sm text-muted-foreground underline underline-offset-4 transition-colors hover:text-foreground"
+          >
+            или оставете кандидатура по-долу
+          </Link>
+        </div>
       </article>
 
       <Footer />

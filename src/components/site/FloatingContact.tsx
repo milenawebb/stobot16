@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { MessageCircle, Phone, X } from "lucide-react";
 
-const WA_NUMBER = "359000000000";
+import { PHONE_WA } from "@/lib/contact";
+
+const WA_NUMBER = PHONE_WA;
 const WA_TEXT = encodeURIComponent(
   "Здравейте, пиша във връзка с обява/позиция от сайта на Стобот 16.",
 );

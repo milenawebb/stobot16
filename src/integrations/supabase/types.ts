@@ -16,6 +16,7 @@ export type Database = {
     Tables: {
       job_listings: {
         Row: {
+          contact_phone: string | null
           created_at: string
           description: string | null
           id: string
@@ -31,6 +32,7 @@ export type Database = {
           updated_at: string
         }
         Insert: {
+          contact_phone?: string | null
           created_at?: string
           description?: string | null
           id?: string
@@ -46,6 +48,7 @@ export type Database = {
           updated_at?: string
         }
         Update: {
+          contact_phone?: string | null
           created_at?: string
           description?: string | null
           id?: string

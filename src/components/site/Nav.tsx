@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, Phone, X } from "lucide-react";
+import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/contact";
 import { cn } from "@/lib/utils";
 import { Wordmark } from "./Wordmark";
 
@@ -47,6 +48,13 @@ export function Nav() {
             </a>
           ))}
           <a
+            href={`tel:${PHONE_TEL}`}
+            className="flex items-center gap-2 font-mono text-sm text-foreground transition-colors hover:text-primary"
+          >
+            <Phone className="h-4 w-4 text-primary" />
+            {PHONE_DISPLAY}
+          </a>
+          <a
             href="/#zayavka"
             className="bg-primary px-5 py-2.5 font-display text-sm font-bold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
           >
@@ -77,9 +85,17 @@ export function Nav() {
               </a>
             ))}
             <a
+              href={`tel:${PHONE_TEL}`}
+              onClick={() => setOpen(false)}
+              className="mt-4 flex items-center justify-center gap-2 border border-primary px-5 py-3.5 font-mono text-sm text-foreground"
+            >
+              <Phone className="h-4 w-4 text-primary" />
+              {PHONE_DISPLAY}
+            </a>
+            <a
               href="/#zayavka"
               onClick={() => setOpen(false)}
-              className="mt-4 bg-primary px-5 py-3.5 text-center font-display text-sm font-bold uppercase tracking-wide text-primary-foreground"
+              className="mt-2 bg-primary px-5 py-3.5 text-center font-display text-sm font-bold uppercase tracking-wide text-primary-foreground"
             >
               Заявка за персонал
             </a>
