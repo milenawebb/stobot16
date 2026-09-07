@@ -9,6 +9,7 @@ import {
   Warehouse,
 } from "lucide-react";
 import { SectionHead } from "./SectionHead";
+import { SpotlightCard } from "./kinetic";
 import sectorsStrip from "@/assets/sectors-strip.jpg";
 
 const sectors = [
@@ -60,19 +61,20 @@ export function Sectors() {
 
         <div className="mt-14 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
           {sectors.map((s, i) => (
-            <article
+            <SpotlightCard
+              as="article"
               key={s.t}
-              className="group relative bg-background p-6 transition-colors hover:bg-primary hover:text-primary-foreground"
+              className="group bg-background p-6"
             >
-              <span className="manifest-label absolute right-4 top-4 group-hover:text-primary-foreground/70">
+              <span className="manifest-label absolute right-4 top-4 ">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <s.icon className="h-6 w-6 text-primary transition-colors group-hover:text-primary-foreground" />
+              <s.icon className="h-6 w-6 text-primary" />
               <h3 className="mt-6 text-xl">{s.t}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground group-hover:text-primary-foreground/85">
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                 {s.d}
               </p>
-            </article>
+            </SpotlightCard>
           ))}
         </div>
       </div>
