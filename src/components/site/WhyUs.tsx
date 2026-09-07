@@ -31,7 +31,7 @@ function useCountUp(target: number, run: boolean) {
   return n;
 }
 
-function Stat({ value, suffix, label, note, run }: (typeof stats)[number] & { run: boolean }) {
+function Stat({ value, suffix, label, run }: (typeof stats)[number] & { run: boolean }) {
   const n = useCountUp(value, run);
   return (
     <div className="bg-background p-6 lg:p-8">
@@ -40,7 +40,6 @@ function Stat({ value, suffix, label, note, run }: (typeof stats)[number] & { ru
         <span className="text-white/60">{suffix}</span>
       </p>
       <p className="mt-4 text-base text-foreground">{label}</p>
-      <p className="manifest-label mt-2">{note}</p>
     </div>
   );
 }
