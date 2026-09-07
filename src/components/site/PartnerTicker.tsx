@@ -34,6 +34,7 @@ function PartnerSet({ hidden = false }: { hidden?: boolean }) {
 export function PartnerTicker() {
   return (
     <section
+      id="partnyori"
       aria-labelledby="partners-title"
       className="border-b border-border"
       style={{ background: "#130F3E" }}

@@ -29,7 +29,7 @@ const items = [
 
 export function Testimonials() {
   return (
-    <section className="relative overflow-hidden border-b border-border bg-paper py-20 text-paper-foreground lg:py-28">
+    <section id="otzivi" className="relative overflow-hidden border-b border-border bg-paper py-20 text-paper-foreground lg:py-28">
       <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
         <SectionHead
           index="09"

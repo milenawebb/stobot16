@@ -32,6 +32,8 @@ const brandRows = [
   ],
 ];
 
+import { RevealWords } from "./motion-kit";
+
 function BrandSet({ brands, hidden = false }: { brands: string[]; hidden?: boolean }) {
   return (
     <div className="flex shrink-0 items-stretch" aria-hidden={hidden || undefined}>
@@ -53,7 +55,7 @@ export function Brands() {
   return (
     <section
       id="marki"
-      aria-labelledby="brands-title"
+      aria-label="Марки, с които сме работили"
       className="overflow-hidden border-y border-border bg-paper py-20 text-paper-foreground lg:py-28"
     >
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
