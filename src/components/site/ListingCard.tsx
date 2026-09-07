@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { Clock, MapPin, Wallet } from "lucide-react";
+import { Clock, MapPin, Phone, Wallet } from "lucide-react";
+import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/contact";
 import type { JobListing } from "@/lib/listings.functions";
 import { ListingBadges } from "./ListingBadges";
 
