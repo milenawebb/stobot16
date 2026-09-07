@@ -1,4 +1,5 @@
 import { Wordmark } from "./Wordmark";
+import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/contact";
 
 export function Footer() {
   return (
@@ -12,7 +13,11 @@ export function Footer() {
         </div>
 
         <div className="space-y-2 font-mono text-sm text-muted-foreground">
-          <p>+359 000 000 000</p>
+          <p>
+            <a href={`tel:${PHONE_TEL}`} className="transition-colors hover:text-primary">
+              {PHONE_DISPLAY}
+            </a>
+          </p>
           <p>office@example.bg</p>
           <p>София, България</p>
         </div>
