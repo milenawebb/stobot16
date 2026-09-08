@@ -31,6 +31,8 @@ const steps = [
   },
 ];
 
+const triggerPositions = ["top-0", "top-[100vh]", "top-[200vh]", "top-[300vh]", "top-[400vh]"];
+
 function StepCircles({ activeStep }: { activeStep: number }) {
   return (
     <div className="flex w-full max-w-full items-center" aria-hidden="true">
@@ -79,7 +81,7 @@ export function Process() {
           }
         }
       },
-      { rootMargin: "-50% 0px -50% 0px", threshold: 0 },
+      { rootMargin: "-45% 0px -45% 0px", threshold: 0 },
     );
     for (const el of triggerRefs.current) if (el) observer.observe(el);
     return () => observer.disconnect();
@@ -97,7 +99,7 @@ export function Process() {
       </div>
 
       {/* Desktop: sticky pinned panel + 5 IntersectionObserver trigger markers */}
-      <div className="relative mt-12 hidden lg:block">
+      <div className="relative mt-12 hidden h-[500vh] lg:block">
         <div className="sticky top-0 flex h-screen items-center">
           <div className="mx-auto w-full max-w-7xl px-5 lg:px-8">
             <StepCircles activeStep={activeStep} />
@@ -144,7 +146,7 @@ export function Process() {
           </div>
         </div>
 
-        {/* Invisible trigger markers, one viewport-height apart */}
+        {/* Five full-viewport observer zones make each step stable under wheel/trackpad scrolling. */}
         {steps.map((step, index) => (
           <div
             key={`trigger-${step.number}`}
@@ -152,7 +154,7 @@ export function Process() {
               triggerRefs.current[index] = el;
             }}
             data-step-index={index}
-            className="h-screen"
+            className={`pointer-events-none absolute inset-x-0 h-screen ${triggerPositions[index]}`}
             aria-hidden="true"
           />
         ))}
