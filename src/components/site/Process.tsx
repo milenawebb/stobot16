@@ -31,7 +31,7 @@ const steps = [
   },
 ];
 
-const triggerPositions = ["top-[50vh]", "top-[150vh]", "top-[250vh]", "top-[350vh]", "top-[450vh]"];
+const triggerPositions = ["top-0", "top-[100vh]", "top-[200vh]", "top-[300vh]", "top-[400vh]"];
 
 function StepCircles({ activeStep }: { activeStep: number }) {
   return (
@@ -81,7 +81,7 @@ export function Process() {
           }
         }
       },
-      { rootMargin: "-50% 0px -49% 0px", threshold: 0 },
+      { rootMargin: "-45% 0px -45% 0px", threshold: 0 },
     );
     for (const el of triggerRefs.current) if (el) observer.observe(el);
     return () => observer.disconnect();
@@ -146,7 +146,7 @@ export function Process() {
           </div>
         </div>
 
-        {/* Fixed-height track: each sentinel crosses the viewport midpoint once per step. */}
+        {/* Five full-viewport observer zones make each step stable under wheel/trackpad scrolling. */}
         {steps.map((step, index) => (
           <div
             key={`trigger-${step.number}`}
@@ -154,7 +154,7 @@ export function Process() {
               triggerRefs.current[index] = el;
             }}
             data-step-index={index}
-            className={`pointer-events-none absolute inset-x-0 h-px ${triggerPositions[index]}`}
+            className={`pointer-events-none absolute inset-x-0 h-screen ${triggerPositions[index]}`}
             aria-hidden="true"
           />
         ))}
