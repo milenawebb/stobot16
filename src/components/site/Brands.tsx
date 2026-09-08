@@ -58,8 +58,6 @@ export function Brands() {
     >
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="flex items-center gap-3">
-          <span className="manifest-label text-paper-foreground/55">05</span>
-          <span className="h-px w-8 bg-paper-foreground/20" aria-hidden="true" />
           <span className="manifest-label text-paper-foreground/55">Крайни обекти</span>
         </div>
         <RevealWords

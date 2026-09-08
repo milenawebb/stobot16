@@ -159,13 +159,6 @@
   border: 1px solid var(--border);
 }
 
-@utility grid-lines {
-  background-image:
-    linear-gradient(#ffffff0f 1px, transparent 1px),
-    linear-gradient(90deg, #ffffff0f 1px, transparent 1px);
-  background-size: 72px 72px;
-}
-
 /* ---- the route line: one orchestrated animation on load ---- */
 @keyframes route-draw {
   from {

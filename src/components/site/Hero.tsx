@@ -96,7 +96,7 @@ export function Hero() {
       {/* DESKTOP HERO */}
       <div className="mx-auto hidden max-w-7xl px-5 pb-16 opacity-100 md:block lg:px-8 lg:pb-24">
         <div className="flex flex-wrap items-center gap-3">
-          <span className="manifest-label">Манифест 001</span>
+          <span className="manifest-label">Манифест</span>
           <span className="h-px flex-1 bg-line/35" aria-hidden="true" />
           <span className="manifest-label">Аутсорсинг на персонал / България</span>
         </div>
