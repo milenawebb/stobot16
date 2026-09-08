@@ -85,8 +85,8 @@ export function MagneticButton({
     whileHover: "hover" as const,
     whileTap: { scale: 0.96 },
     variants: {
-      rest: { borderRadius: 8 },
-      hover: { borderRadius: 28 },
+      rest: { borderRadius: 9999 },
+      hover: { borderRadius: 9999 },
     },
     transition: { duration: 0.3, ease: "easeOut" as const },
     style: { x, y },
