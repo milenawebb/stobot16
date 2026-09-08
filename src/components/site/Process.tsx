@@ -74,7 +74,7 @@ export function Process() {
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
-            const index = Number((entry.target as HTMLElement).dataset.stepIndex);
+            const index = Number((entry.target as HTMLElement).dataset["stepIndex"]);
             if (!Number.isNaN(index)) setActiveStep(index);
           }
         }
