@@ -79,7 +79,10 @@ export function ParallaxImage({
     direction === "left" ? "inset(0 100% 0 0)" : "inset(100% 0 0 0)";
 
   return (
-    <div ref={ref} className={`relative overflow-hidden ${wrapperClassName}`}>
+    <div
+      ref={ref}
+      className={`${/(^|\s)(absolute|fixed|sticky|relative)(\s|$)/.test(wrapperClassName) ? "" : "relative"} overflow-hidden ${wrapperClassName}`}
+    >
       <motion.div
         className="h-full w-full"
         style={reduced ? {} : { y }}
