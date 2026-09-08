@@ -60,12 +60,12 @@ export function Sectors() {
           lead="осигуряваме персонал за производствени, логистични и сервизни обекти в цялата страна."
         />
 
-        <div className="mt-14 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid gap-px rounded-[32px] border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
           {sectors.map((s, i) => (
             <SpotlightCard
               as="article"
               key={s.t}
-              className="group bg-background p-6"
+              className="group rounded-[28px] bg-background p-6"
             >
               <span className="manifest-label absolute right-4 top-4 ">
                 {String(i + 1).padStart(2, "0")}
@@ -80,7 +80,7 @@ export function Sectors() {
         </div>
       </div>
 
-      <div className="relative mt-16 h-48 w-full overflow-hidden lg:h-64">
+      <div className="relative mx-auto mt-16 h-48 w-[calc(100%-2.5rem)] max-w-7xl overflow-hidden rounded-[32px] lg:h-64">
         <ParallaxImage
           src={sectorsStrip}
           alt="Работници на смяна в складова база"

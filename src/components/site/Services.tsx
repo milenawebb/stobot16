@@ -44,7 +44,7 @@ export function Services() {
         {items.map((i) => (
           <SpotlightCard
             key={i.t}
-            className="group grid gap-3 rounded-xl border-b border-border px-2 py-8 md:grid-cols-[8rem_1fr_1.1fr] md:items-baseline md:gap-8"
+            className="group grid gap-3 rounded-[28px] border-b border-border px-4 py-8 md:grid-cols-[8rem_1fr_1.1fr] md:items-baseline md:gap-8"
           >
             <span className="manifest-label transition-colors group-hover:text-primary">
               {i.code}

@@ -40,7 +40,7 @@ function Field({
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="mt-2 w-full appearance-none border border-border bg-background px-4 py-3 text-base text-foreground outline-none transition-colors focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/40"
+        className="mt-2 w-full appearance-none rounded-full border border-border bg-background px-4 py-3 text-base text-foreground outline-none transition-colors focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/40"
       >
         {options.map((o) => (
           <option key={o} value={o}>
@@ -76,9 +76,9 @@ export function QuickMatch() {
           lead="Изберете параметри и вижте ориентировъчен отговор — отнема 10 секунди, без обаждане и без регистрация."
         />
 
-        <div className="mt-12 grid gap-px border border-border bg-border lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="bg-background p-6 lg:p-8">
-            <div className="flex border border-border">
+        <div className="mt-12 grid gap-px rounded-[32px] border border-border bg-border lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="rounded-[30px] bg-background p-6 lg:p-8">
+            <div className="flex overflow-hidden rounded-full border border-border">
               {(
                 [
                   ["company", "За фирми"],
@@ -116,7 +116,7 @@ export function QuickMatch() {
             </div>
           </div>
 
-          <div className="bg-secondary p-6 lg:p-8">
+          <div className="rounded-[30px] bg-secondary p-6 lg:p-8">
             <span className="manifest-label">Резултат</span>
             {tab === "company" ? (
               <div className="mt-6">
@@ -127,14 +127,14 @@ export function QuickMatch() {
                   Ориентировъчно време за първо предложение на екип за{" "}
                   <span className="text-foreground">{industry.toLowerCase()}</span> — {volume}.
                 </p>
-                <dl className="mt-8 grid gap-px border border-border bg-border sm:grid-cols-2">
+                <dl className="mt-8 grid gap-px rounded-[26px] border border-border bg-border sm:grid-cols-2">
                   {[
                     ["Договор", "Трудов, с осигуровки"],
                     ["Застраховка", "Включена"],
                     ["Заместване", "До 24 часа"],
                     ["Фактуриране", "Месечно"],
                   ].map(([k, v]) => (
-                    <div key={k} className="bg-secondary p-4">
+                    <div key={k} className="rounded-[22px] bg-secondary p-4">
                       <dt className="manifest-label">{k}</dt>
                       <dd className="mt-2 text-sm text-foreground">{v}</dd>
                     </div>
@@ -159,7 +159,7 @@ export function QuickMatch() {
                 </p>
                 <a
                   href="#kandidati"
-                  className="mt-6 inline-block border border-primary bg-primary px-6 py-3 font-mono text-xs uppercase tracking-[0.18em] text-primary-foreground transition-colors hover:bg-transparent hover:text-primary"
+                  className="mt-6 inline-block rounded-full border border-primary bg-primary px-6 py-3 font-mono text-xs uppercase tracking-[0.18em] text-primary-foreground transition-colors hover:bg-transparent hover:text-primary"
                 >
                   Кандидатствай
                 </a>
