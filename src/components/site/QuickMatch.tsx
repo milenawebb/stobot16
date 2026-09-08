@@ -120,10 +120,7 @@ export function QuickMatch() {
             <span className="manifest-label">Резултат</span>
             {tab === "company" ? (
               <div className="mt-6">
-                <p className="font-display text-4xl font-bold leading-none text-primary lg:text-5xl">
-                  {eta}
-                </p>
-                <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
+                <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
                   Ориентировъчно време за първо предложение на екип за{" "}
                   <span className="text-foreground">{industry.toLowerCase()}</span> — {volume}.
                 </p>
