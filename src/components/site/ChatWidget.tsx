@@ -70,8 +70,8 @@ export function ChatWidget({ open, onClose }: { open: boolean; onClose: () => vo
                   <p
                     className={
                       m.role === "user"
-                        ? "whitespace-pre-wrap bg-secondary px-3 py-2 text-sm text-foreground"
-                        : "whitespace-pre-wrap bg-primary px-3 py-2 text-sm text-primary-foreground"
+                        ? "whitespace-pre-wrap rounded-2xl bg-secondary px-3 py-2 text-sm text-foreground"
+                        : "whitespace-pre-wrap rounded-2xl bg-primary px-3 py-2 text-sm text-primary-foreground"
                     }
                   >
                     {m.content.replace(/\*\*/g, "").replace(/^[*-]\s+/gm, "• ")}
@@ -82,7 +82,7 @@ export function ChatWidget({ open, onClose }: { open: boolean; onClose: () => vo
                       to="/obiavi/$slug"
                       params={{ slug: l.slug }}
                       onClick={onClose}
-                      className="block border border-border p-3 transition-colors hover:bg-secondary"
+                      className="block rounded-2xl border border-border p-3 transition-colors hover:bg-secondary"
                     >
                       <span className="block font-display text-sm font-extrabold">{l.title}</span>
                       <span className="mt-1 block text-xs text-muted-foreground">
@@ -102,7 +102,7 @@ export function ChatWidget({ open, onClose }: { open: boolean; onClose: () => vo
               onChange={(e) => setInput(e.target.value)}
               placeholder="Напишете съобщение…"
               aria-label="Съобщение"
-              className="min-w-0 flex-1 border border-input bg-transparent px-3 py-2 text-sm outline-none focus:border-ring"
+              className="min-w-0 flex-1 rounded-full border border-input bg-transparent px-3 py-2 text-sm outline-none focus:border-ring"
             />
             <button
               type="submit"

@@ -89,7 +89,7 @@ export function Hero() {
           <MagneticButton
             href={active.href}
             label={active.cta}
-            className="mt-7 flex w-full items-center justify-center bg-primary px-8 py-5 text-center font-display text-base font-bold tracking-wide text-primary-foreground uppercase transition-colors hover:bg-foreground hover:text-background"
+            className="mt-7 flex w-full items-center justify-center rounded-full bg-primary px-8 py-5 text-center font-display text-base font-bold tracking-wide text-primary-foreground uppercase transition-colors hover:bg-foreground hover:text-background"
           />
         </div>
       </div>
@@ -130,7 +130,7 @@ export function Hero() {
               ["95+", "партньори"],
               ["24ч", "заместване"],
             ].map(([v, k]) => (
-              <div key={k} className="bg-background px-4 py-5">
+              <div key={k} className="rounded-[24px] bg-background px-4 py-5">
                 <dt className="numeral text-3xl sm:text-4xl">{v}</dt>
                 <dd className="manifest-label mt-1 block">{k}</dd>
               </div>
@@ -142,12 +142,12 @@ export function Hero() {
           <MagneticButton
             href="#zayavka"
             label="Нуждая се от персонал"
-            className="flex items-center justify-center bg-primary px-8 py-5 text-center font-display text-base font-bold tracking-wide text-primary-foreground uppercase transition-colors hover:bg-foreground hover:text-background"
+            className="flex items-center justify-center rounded-full bg-primary px-8 py-5 text-center font-display text-base font-bold tracking-wide text-primary-foreground uppercase transition-colors hover:bg-foreground hover:text-background"
           />
           <MagneticButton
             href="/obiavi"
             label="Търся работа"
-            className="flex items-center justify-center border border-border bg-background px-8 py-5 text-center font-display text-base font-bold tracking-wide text-foreground uppercase transition-colors hover:bg-move hover:text-move-foreground"
+            className="flex items-center justify-center rounded-full border border-border bg-background px-8 py-5 text-center font-display text-base font-bold tracking-wide text-foreground uppercase transition-colors hover:bg-move hover:text-move-foreground"
           />
         </div>
       </div>

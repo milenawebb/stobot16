@@ -58,21 +58,21 @@ export function Nav() {
           <MagneticButton
             href="/#zayavka"
             label="Заявка за персонал"
-            className="flex items-center bg-primary px-5 py-2.5 font-display text-sm font-bold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
+            className="flex items-center rounded-full bg-primary px-5 py-2.5 font-display text-sm font-bold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
           />
         </div>
 
         <button
           aria-label="Меню"
           onClick={() => setOpen((v) => !v)}
-          className="grid h-10 w-10 shrink-0 place-items-center border border-border transition-colors hover:border-primary lg:hidden"
+          className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-border transition-colors hover:border-primary lg:hidden"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </nav>
 
       {open && (
-        <div className="border-t border-border bg-background px-5 py-4 lg:hidden">
+        <div className="rounded-b-[32px] border-t border-border bg-background px-5 py-4 lg:hidden">
           <div className="flex flex-col">
             {links.map((l) => (
               <a
@@ -87,7 +87,7 @@ export function Nav() {
             <a
               href={`tel:${PHONE_TEL}`}
               onClick={() => setOpen(false)}
-              className="mt-4 flex items-center justify-center gap-2 rounded-xl border border-primary px-5 py-3.5 font-mono text-sm text-foreground"
+              className="mt-4 flex items-center justify-center gap-2 rounded-full border border-primary px-5 py-3.5 font-mono text-sm text-foreground"
             >
               <Phone className="h-4 w-4 text-primary" />
               {PHONE_DISPLAY}
@@ -95,7 +95,7 @@ export function Nav() {
             <a
               href="/#zayavka"
               onClick={() => setOpen(false)}
-              className="mt-2 rounded-xl bg-primary px-5 py-3.5 text-center font-display text-sm font-bold uppercase tracking-wide text-primary-foreground"
+              className="mt-2 rounded-full bg-primary px-5 py-3.5 text-center font-display text-sm font-bold uppercase tracking-wide text-primary-foreground"
             >
               Заявка за персонал
             </a>

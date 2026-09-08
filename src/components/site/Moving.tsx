@@ -64,7 +64,7 @@ export function Moving() {
 
           <a
             href="#zayavka"
-            className="mt-10 inline-block bg-move-foreground px-8 py-4 font-display text-sm font-bold uppercase tracking-wide text-move transition-colors hover:bg-white/80"
+            className="mt-10 inline-block rounded-full bg-move-foreground px-8 py-4 font-display text-sm font-bold uppercase tracking-wide text-move transition-colors hover:bg-white/80"
           >
             Оферта за преместване
           </a>
@@ -76,7 +76,7 @@ export function Moving() {
           width={1200}
           height={900}
           distance={30}
-          wrapperClassName="h-full w-full border border-move-foreground/25"
+          wrapperClassName="h-full w-full overflow-hidden rounded-[32px] border border-move-foreground/25"
           className="h-full w-full object-cover"
         />
       </div>

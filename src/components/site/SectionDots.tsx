@@ -57,7 +57,7 @@ export function SectionDots() {
                   : "h-2 w-2 bg-transparent opacity-40 group-hover:opacity-90"
               }`}
             />
-            <span className="pointer-events-none absolute right-6 whitespace-nowrap rounded-md bg-white px-2 py-1 text-xs font-semibold text-[#130F3E] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+            <span className="pointer-events-none absolute right-6 whitespace-nowrap rounded-full bg-white px-2 py-1 text-xs font-semibold text-[#130F3E] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
               {s.label}
             </span>
           </button>
