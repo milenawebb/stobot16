@@ -103,14 +103,14 @@ export function ParallaxImage({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
+  const revealed = useRevealed(ref, !reduced);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
   const y = useTransform(scrollYProgress, [0, 1], [-distance, distance]);
 
-  const hidden =
-    direction === "left" ? "inset(0 100% 0 0)" : "inset(100% 0 0 0)";
+  const hidden = direction === "left" ? "inset(0 100% 0 0)" : "inset(100% 0 0 0)";
 
   return (
     <div
@@ -120,11 +120,10 @@ export function ParallaxImage({
       <motion.div
         className="h-full w-full"
         style={reduced ? {} : { y }}
-        initial={reduced ? false : { clipPath: hidden }}
-        whileInView={reduced ? {} : { clipPath: "inset(0 0% 0 0)" }}
-        viewport={{ once: true, amount: 0.2 }}
+        animate={reduced ? {} : { clipPath: revealed ? "inset(0 0% 0 0)" : hidden }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       >
+
         <img
           src={src}
           alt={alt}
