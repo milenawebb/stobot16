@@ -124,7 +124,7 @@ export function Hero() {
             договор, осигуровки, застраховка и заместник, ако някой отсъства.
           </p>
 
-          <dl className="grid grid-cols-3 gap-px bg-border">
+          <dl className="grid grid-cols-3 gap-px rounded-[28px] bg-border">
             {[
               ["12", "години опит"],
               ["95+", "партньори"],
