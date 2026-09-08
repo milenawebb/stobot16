@@ -92,6 +92,20 @@
     border-color: var(--color-border);
   }
 
+  button,
+  [type="button"],
+  [type="submit"],
+  [type="reset"],
+  input:not([type="checkbox"]):not([type="radio"]),
+  select {
+    border-radius: 9999px;
+  }
+
+  textarea {
+    border-radius: 24px;
+  }
+
+
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 5rem;
