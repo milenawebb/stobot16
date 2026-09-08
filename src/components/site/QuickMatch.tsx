@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { SectionHead } from "./SectionHead";
 
 const industries = [
@@ -58,11 +58,6 @@ export function QuickMatch() {
   const [volume, setVolume] = useState(volumes[0]!);
   const [skill, setSkill] = useState(skills[0]!);
   const [city, setCity] = useState(cities[0]!);
-
-  const eta = useMemo(() => {
-    const base = volumes.indexOf(volume);
-    return ["24 часа", "48 часа", "3 – 5 дни", "5 – 10 дни"][base] ?? "48 часа";
-  }, [volume]);
 
   const openSectors = hiring[skill] ?? [];
 
