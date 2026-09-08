@@ -127,14 +127,17 @@ export function QuickMatch() {
                   Ориентировъчно време за първо предложение на екип за{" "}
                   <span className="text-foreground">{industry.toLowerCase()}</span> — {volume}.
                 </p>
-                <dl className="mt-8 grid gap-px rounded-[26px] border border-border bg-border sm:grid-cols-2">
+                <dl className="mt-8 grid gap-3 sm:grid-cols-2">
                   {[
                     ["Договор", "Трудов, с осигуровки"],
                     ["Застраховка", "Включена"],
                     ["Заместване", "До 24 часа"],
                     ["Фактуриране", "Месечно"],
                   ].map(([k, v]) => (
-                    <div key={k} className="rounded-[22px] bg-secondary p-4">
+                    <div
+                      key={k}
+                      className="rounded-[22px] border border-border bg-transparent p-4"
+                    >
                       <dt className="manifest-label">{k}</dt>
                       <dd className="mt-2 text-sm text-foreground">{v}</dd>
                     </div>
