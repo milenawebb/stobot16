@@ -43,7 +43,6 @@ export function Hero() {
         className="absolute inset-0 -z-10"
         style={{ background: "linear-gradient(100deg, #130F3E 30%, #130F3Ee6 65%, #130F3Ebf)" }}
       />
-      <div className="grid-lines pointer-events-none absolute inset-0 -z-10 opacity-70" />
 
       {/* MOBILE HERO */}
       <div className="visible mx-auto max-w-7xl px-5 pb-14 opacity-100 md:hidden">
@@ -97,7 +96,7 @@ export function Hero() {
       {/* DESKTOP HERO */}
       <div className="mx-auto hidden max-w-7xl px-5 pb-16 opacity-100 md:block lg:px-8 lg:pb-24">
         <div className="flex flex-wrap items-center gap-3">
-          <span className="manifest-label">Манифест 001</span>
+          <span className="manifest-label">Манифест</span>
           <span className="h-px flex-1 bg-line/35" aria-hidden="true" />
           <span className="manifest-label">Аутсорсинг на персонал / България</span>
         </div>

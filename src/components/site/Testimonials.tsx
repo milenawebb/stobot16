@@ -44,8 +44,7 @@ export function Testimonials() {
               className="flex h-full flex-col justify-between rounded-[28px] bg-paper p-6 transition-colors hover:bg-paper-foreground/5 lg:p-8"
             >
               <div>
-                <span className="manifest-label text-paper-foreground/55">{i.code}</span>
-                <blockquote className="mt-6 text-lg leading-snug">{i.quote}</blockquote>
+                <blockquote className="text-lg leading-snug">{i.quote}</blockquote>
               </div>
               <figcaption className="mt-8 border-t border-paper-foreground/20 pt-4">
                 <p className="font-display text-base font-bold">{i.name}</p>
