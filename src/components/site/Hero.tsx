@@ -46,7 +46,7 @@ export function Hero() {
       <div className="grid-lines pointer-events-none absolute inset-0 -z-10 opacity-70" />
 
       {/* MOBILE HERO */}
-      <div className="mx-auto max-w-7xl px-5 pb-14 md:hidden">
+      <div className="visible mx-auto max-w-7xl px-5 pb-14 opacity-100 md:hidden">
         <div
           role="tablist"
           aria-label="Изберете вашия път"
@@ -74,7 +74,7 @@ export function Hero() {
           ))}
         </div>
 
-        <div key={path} className="animate-in fade-in duration-300">
+        <div key={path} className="visible opacity-100">
           <h1 className="mt-8 text-[2.15rem] leading-[1.03] text-white">{active.headline}</h1>
 
           <p className="mt-5 text-base leading-relaxed text-white/75">{active.support}</p>
@@ -95,7 +95,7 @@ export function Hero() {
       </div>
 
       {/* DESKTOP HERO */}
-      <div className="mx-auto hidden max-w-7xl px-5 pb-16 md:block lg:px-8 lg:pb-24">
+      <div className="mx-auto hidden max-w-7xl px-5 pb-16 opacity-100 md:block lg:px-8 lg:pb-24">
         <div className="flex flex-wrap items-center gap-3">
           <span className="manifest-label">Манифест 001</span>
           <span className="h-px flex-1 bg-line/35" aria-hidden="true" />
