@@ -51,7 +51,6 @@ const sectors = [
 export function Sectors() {
   return (
     <section id="sektori" className="relative overflow-hidden py-20 lg:py-28">
-      <div className="grid-lines pointer-events-none absolute inset-0 opacity-60" />
       <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
         <SectionHead
           index="04"
@@ -67,7 +66,7 @@ export function Sectors() {
               key={s.t}
               className="group rounded-[28px] bg-background p-6"
             >
-              <span className="manifest-label absolute right-4 top-4 ">
+              <span className="manifest-label absolute right-4 top-4">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <s.icon className="h-6 w-6 text-primary" />
@@ -91,7 +90,7 @@ export function Sectors() {
           wrapperClassName="h-full w-full"
           className="h-[120%] w-full object-cover"
         />
-        <div className="pointer-events-none absolute inset-0 bg-background/70" />
+        <div className="pointer-events-none absolute inset-0 bg-background/20" />
       </div>
     </section>
   );

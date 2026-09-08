@@ -19,9 +19,8 @@ export function SectionHead({
   return (
     <div className="max-w-3xl">
       <div className="flex items-center gap-3">
-        <span className="manifest-label">{index}</span>
-        <span className={`h-px w-8 ${rule}`} aria-hidden="true" />
         <span className="manifest-label">{label}</span>
+        <span className={`h-px w-8 ${rule}`} aria-hidden="true" />
       </div>
       {typeof title === "string" ? (
         <RevealWords text={title} className={headingClass} />

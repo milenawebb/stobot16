@@ -43,7 +43,6 @@ export function Hero() {
         className="absolute inset-0 -z-10"
         style={{ background: "linear-gradient(100deg, #130F3E 30%, #130F3Ee6 65%, #130F3Ebf)" }}
       />
-      <div className="grid-lines pointer-events-none absolute inset-0 -z-10 opacity-70" />
 
       {/* MOBILE HERO */}
       <div className="visible mx-auto max-w-7xl px-5 pb-14 opacity-100 md:hidden">
