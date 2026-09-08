@@ -9,7 +9,7 @@ export function ListingCard({ listing }: { listing: JobListing }) {
   return (
     <SpotlightCard
       as="article"
-      className="flex flex-col rounded-xl border border-border bg-background p-6 transition-colors hover:border-primary"
+      className="flex flex-col rounded-[28px] border border-border bg-background p-6 transition-colors hover:border-primary"
     >
       <ListingBadges listing={listing} />
       <span className="manifest-label mt-3 block">{listing.sector}</span>
@@ -54,14 +54,14 @@ export function ListingCard({ listing }: { listing: JobListing }) {
           to="/"
           search={{ sector: listing.sector }}
           hash="kandidati"
-          className="flex-1 rounded-lg border border-border bg-background px-5 py-3 text-center font-display text-sm font-bold uppercase tracking-wide text-foreground transition-colors hover:bg-move hover:text-move-foreground"
+          className="flex-1 rounded-full border border-border bg-background px-5 py-3 text-center font-display text-sm font-bold uppercase tracking-wide text-foreground transition-colors hover:bg-move hover:text-move-foreground"
         >
           Кандидатствай
         </Link>
         <Link
           to="/obiavi/$slug"
           params={{ slug: listing.slug }}
-          className="flex-1 rounded-lg border border-border bg-background px-5 py-3 text-center font-display text-sm font-bold uppercase tracking-wide text-foreground transition-colors hover:bg-move hover:text-move-foreground"
+          className="flex-1 rounded-full border border-border bg-background px-5 py-3 text-center font-display text-sm font-bold uppercase tracking-wide text-foreground transition-colors hover:bg-move hover:text-move-foreground"
         >
           Детайли
         </Link>

@@ -21,7 +21,7 @@ export const Route = createFileRoute("/admin")({
 });
 
 const inputClass =
-  "w-full border border-input bg-transparent px-4 py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:bg-surface";
+  "w-full rounded-full border border-input bg-transparent px-4 py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:bg-surface";
 
 const empty = {
   id: "",
@@ -143,7 +143,7 @@ function AdminPage() {
   if (!authed) {
     return (
       <main className="grid min-h-screen place-items-center px-5">
-        <form onSubmit={onLogin} className="w-full max-w-sm border border-border p-8">
+        <form onSubmit={onLogin} className="w-full max-w-sm rounded-[32px] border border-border p-8">
           <h1 className="text-2xl">Вход в панела</h1>
           <p className="mt-3 text-sm text-muted-foreground">Въведете администраторската парола.</p>
           <input
@@ -170,7 +170,7 @@ function AdminPage() {
     <main className="mx-auto max-w-5xl px-5 py-16 lg:px-8">
       <h1 className="text-3xl">Обяви за работа</h1>
 
-      <form onSubmit={onSave} className="mt-10 border border-border p-6 lg:p-8">
+      <form onSubmit={onSave} className="mt-10 rounded-[32px] border border-border p-6 lg:p-8">
         <h2 className="text-xl">{form.id ? "Редакция на обява" : "Нова обява"}</h2>
         <div className="mt-6 space-y-3">
           <input
@@ -276,7 +276,7 @@ function AdminPage() {
         {listings.map((l) => (
           <div
             key={l.id}
-            className="flex flex-wrap items-center justify-between gap-4 border border-border p-5"
+            className="flex flex-wrap items-center justify-between gap-4 rounded-[28px] border border-border p-5"
           >
             <div className="min-w-0">
               <p className="truncate text-base">{l.title}</p>

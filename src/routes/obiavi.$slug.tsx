@@ -96,7 +96,7 @@ function ListingDetail() {
         <h1 className="mt-4 text-[2rem] leading-tight sm:text-5xl">{listing.title}</h1>
         <p className="mt-4 text-lg text-muted-foreground">{listing.position}</p>
 
-        <dl className="mt-10 grid gap-px border border-border bg-border sm:grid-cols-3">
+        <dl className="mt-10 grid gap-px rounded-[32px] border border-border bg-border sm:grid-cols-3">
           {[
             [Clock, "График", listing.schedule],
             [MapPin, "Локация", listing.location],
@@ -104,7 +104,7 @@ function ListingDetail() {
           ].map(([Icon, label, value]) => {
             const I = Icon as typeof Clock;
             return (
-              <div key={label as string} className="bg-background p-5">
+              <div key={label as string} className="rounded-[26px] bg-background p-5">
                 <I className="h-5 w-5 text-primary" />
                 <dt className="manifest-label mt-4 block">{label as string}</dt>
                 <dd className="mt-1 text-base text-foreground">{value as string}</dd>
@@ -122,7 +122,7 @@ function ListingDetail() {
         <div className="mt-10 flex flex-col items-start gap-3">
           <MagneticButton
             href={`tel:${listing.contact_phone ?? PHONE_TEL}`}
-            className="inline-flex items-center gap-3 bg-primary px-8 py-5 font-display text-base font-bold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
+            className="inline-flex items-center gap-3 rounded-full bg-primary px-8 py-5 font-display text-base font-bold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
           >
             <Phone className="h-5 w-5" /> Обади се сега — {listing.contact_phone ?? PHONE_DISPLAY}
           </MagneticButton>

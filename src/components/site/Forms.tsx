@@ -5,8 +5,11 @@ import { MagneticButton } from "./kinetic";
 import { SECTORS } from "@/lib/sectors";
 
 
+const textareaClass =
+  "rounded-3xl w-full border border-input bg-transparent px-4 py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:bg-surface";
+
 const inputClass =
-  "rounded-xl w-full border border-input bg-transparent px-4 py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:bg-surface";
+  "rounded-full w-full border border-input bg-transparent px-4 py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:bg-surface";
 
 function useFakeSubmit(message: string) {
   const [sending, setSending] = useState(false);
@@ -42,8 +45,8 @@ export function Forms() {
         Два пътя. Изберете вашия.
       </h2>
 
-      <div className="mt-14 grid gap-px border border-border bg-border lg:grid-cols-2">
-        <form onSubmit={company.onSubmit} id="zayavka" className="bg-background p-7 lg:p-10">
+      <div className="mt-14 grid gap-px rounded-[32px] border border-border bg-border lg:grid-cols-2">
+        <form onSubmit={company.onSubmit} id="zayavka" className="rounded-[30px] bg-background p-7 lg:p-10">
           <div className="flex items-center justify-between gap-4 border-b border-border pb-5">
             <h3 className="text-2xl">За фирми</h3>
             <span className="manifest-label">Заявка за персонал</span>
@@ -68,7 +71,7 @@ export function Forms() {
               name="details"
               rows={3}
               placeholder="Кратко описание на дейността"
-              className={inputClass}
+              className={textareaClass}
             />
           </div>
 
@@ -80,7 +83,7 @@ export function Forms() {
           />
         </form>
 
-        <form onSubmit={candidate.onSubmit} id="kandidati" className="bg-background p-7 lg:p-10">
+        <form onSubmit={candidate.onSubmit} id="kandidati" className="rounded-[30px] bg-background p-7 lg:p-10">
           <div className="flex items-center justify-between gap-4 border-b border-border pb-5">
             <h3 className="text-2xl">За кандидати</h3>
             <span className="manifest-label">Кандидатствай за работа</span>
@@ -114,7 +117,7 @@ export function Forms() {
               name="experience"
               rows={3}
               placeholder="Опит (по желание)"
-              className={inputClass}
+              className={textareaClass}
             />
           </div>
 
