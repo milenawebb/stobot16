@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { SectionHead } from "./SectionHead";
 
 const industries = [
@@ -59,11 +59,6 @@ export function QuickMatch() {
   const [skill, setSkill] = useState(skills[0]!);
   const [city, setCity] = useState(cities[0]!);
 
-  const eta = useMemo(() => {
-    const base = volumes.indexOf(volume);
-    return ["24 часа", "48 часа", "3 – 5 дни", "5 – 10 дни"][base] ?? "48 часа";
-  }, [volume]);
-
   const openSectors = hiring[skill] ?? [];
 
   return (
@@ -120,10 +115,7 @@ export function QuickMatch() {
             <span className="manifest-label">Резултат</span>
             {tab === "company" ? (
               <div className="mt-6">
-                <p className="font-display text-4xl font-bold leading-none text-primary lg:text-5xl">
-                  {eta}
-                </p>
-                <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
+                <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
                   Ориентировъчно време за първо предложение на екип за{" "}
                   <span className="text-foreground">{industry.toLowerCase()}</span> — {volume}.
                 </p>

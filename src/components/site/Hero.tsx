@@ -37,11 +37,11 @@ export function Hero() {
         distance={50}
         direction="up"
         wrapperClassName="absolute inset-0 -z-20"
-        className="h-[115%] w-full object-cover opacity-20 grayscale"
+        className="h-[115%] w-full object-cover opacity-60"
       />
       <div
         className="absolute inset-0 -z-10"
-        style={{ background: "linear-gradient(100deg, #130F3E 30%, #130F3Ee6 65%, #130F3Ebf)" }}
+        style={{ background: "linear-gradient(100deg, #130F3Ecc 20%, #130F3E73 60%, #130F3E40)" }}
       />
 
       {/* MOBILE HERO */}

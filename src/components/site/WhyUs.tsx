@@ -34,7 +34,7 @@ function useCountUp(target: number, run: boolean) {
 function Stat({ value, suffix, label, run }: (typeof stats)[number] & { run: boolean }) {
   const n = useCountUp(value, run);
   return (
-    <div className="rounded-[28px] bg-background p-6 lg:p-8">
+    <div className="bg-background p-6 lg:p-8">
       <p className="numeral text-5xl leading-none tabular-nums lg:text-7xl">
         {n}
         <span className="text-white/60">{suffix}</span>
@@ -75,7 +75,7 @@ export function WhyUs() {
         />
         <div
           ref={ref}
-          className="mt-14 grid gap-px rounded-[32px] border border-border bg-border sm:grid-cols-2 lg:grid-cols-4"
+          className="mt-14 grid gap-px overflow-hidden rounded-[32px] border border-border bg-border sm:grid-cols-2 lg:grid-cols-4"
         >
           {stats.map((s) => (
             <Stat key={s.label} {...s} run={run} />

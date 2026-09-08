@@ -59,12 +59,12 @@ export function Sectors() {
           lead="осигуряваме персонал за производствени, логистични и сервизни обекти в цялата страна."
         />
 
-        <div className="mt-14 grid gap-px rounded-[32px] border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid gap-px overflow-hidden rounded-[32px] border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
           {sectors.map((s, i) => (
             <SpotlightCard
               as="article"
               key={s.t}
-              className="group rounded-[28px] bg-background p-6"
+              className="group bg-background p-6"
             >
               <span className="manifest-label absolute right-4 top-4">
                 {String(i + 1).padStart(2, "0")}

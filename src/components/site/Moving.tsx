@@ -40,11 +40,11 @@ export function Moving() {
             мъкнат мебели по тесни стълбища и да пазят нервите ви на ден за преместване.
           </p>
 
-          <div className="mt-10 grid gap-px rounded-[32px] bg-move-foreground/20 sm:grid-cols-2">
+          <div className="mt-10 grid gap-px overflow-hidden rounded-[32px] bg-move-foreground/20 sm:grid-cols-2">
             {items.map((i) => (
               <div
                 key={i.t}
-                className="group rounded-[28px] p-5 transition-colors hover:bg-move-foreground hover:text-move"
+                className="group p-5 transition-colors hover:bg-move-foreground hover:text-move"
                 style={{ background: "#17171B" }}
               >
                 <p className="font-display text-lg font-bold">{i.t}</p>
