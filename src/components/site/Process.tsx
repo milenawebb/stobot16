@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import coordinatorPhoto from "@/assets/process-coordinator.jpg";
 import crewPhoto from "@/assets/process-crew.jpg";
 
@@ -32,12 +31,59 @@ const steps = [
   },
 ];
 
+function StepCircles({ activeStep }: { activeStep: number }) {
+  return (
+    <div className="flex w-full max-w-full items-center" aria-hidden="true">
+      {steps.map((step, index) => {
+        const isDone = index <= activeStep;
+        const isActive = index === activeStep;
+        return (
+          <div
+            key={step.number}
+            className={`flex min-w-0 items-center ${index < steps.length - 1 ? "flex-1" : "flex-none"}`}
+          >
+            <div
+              className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-primary font-display text-sm font-bold transition-all duration-300 sm:h-14 sm:w-14 sm:text-base ${
+                isDone ? "bg-primary text-primary-foreground" : "bg-transparent text-primary"
+              } ${isActive ? "scale-110" : ""}`}
+            >
+              {step.number}
+            </div>
+            {index < steps.length - 1 && (
+              <div className="relative mx-1 h-0.5 flex-1 overflow-hidden bg-primary/25 sm:mx-2">
+                <div
+                  className="absolute inset-y-0 left-0 bg-primary transition-[width] duration-300"
+                  style={{ width: index < activeStep ? "100%" : "0%" }}
+                />
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 export function Process() {
   const [activeStep, setActiveStep] = useState(0);
+  const triggerRefs = useRef<Array<HTMLDivElement | null>>([]);
   const active = steps[activeStep]!;
 
-  const go = (dir: -1 | 1) =>
-    setActiveStep((s) => Math.min(steps.length - 1, Math.max(0, s + dir)));
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            const index = Number((entry.target as HTMLElement).dataset.stepIndex);
+            if (!Number.isNaN(index)) setActiveStep(index);
+          }
+        }
+      },
+      { rootMargin: "-50% 0px -50% 0px", threshold: 0 },
+    );
+    for (const el of triggerRefs.current) if (el) observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section id="kak-rabotim" className="border-b border-border py-20 lg:py-28">
@@ -48,104 +94,85 @@ export function Process() {
         <h2 className="mt-5 max-w-2xl text-[2rem] sm:text-5xl lg:text-6xl">
           Пет стъпки от заявка до работещ екип.
         </h2>
+      </div>
 
-        {/* Clickable circle stepper */}
-        <div className="mt-12 flex w-full max-w-full items-center">
-          {steps.map((step, index) => {
-            const isDone = index <= activeStep;
-            const isActive = index === activeStep;
-            return (
-              <div
-                key={step.number}
-                className={`flex min-w-0 items-center ${
-                  index < steps.length - 1 ? "flex-1" : "flex-none"
-                }`}
-              >
-                <button
-                  type="button"
-                  onClick={() => setActiveStep(index)}
-                  aria-label={`Стъпка ${step.number}: ${step.title}`}
-                  aria-current={isActive ? "step" : undefined}
-                  className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-primary font-display text-sm font-bold transition-all duration-300 sm:h-14 sm:w-14 sm:text-base ${
-                    isDone ? "bg-primary text-primary-foreground" : "bg-transparent text-primary"
-                  } ${isActive ? "scale-110" : "hover:scale-105"}`}
-                >
-                  {step.number}
-                </button>
-                {index < steps.length - 1 && (
-                  <div className="relative mx-1 h-0.5 flex-1 overflow-hidden bg-primary/25 sm:mx-2">
-                    <motion.div
-                      className="absolute inset-y-0 left-0 bg-primary"
-                      animate={{ width: index < activeStep ? "100%" : "0%" }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  </div>
-                )}
+      {/* Desktop: sticky pinned panel + 5 IntersectionObserver trigger markers */}
+      <div className="relative mt-12 hidden lg:block">
+        <div className="sticky top-0 flex h-screen items-center">
+          <div className="mx-auto w-full max-w-7xl px-5 lg:px-8">
+            <StepCircles activeStep={activeStep} />
+
+            <div className="mt-12 grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+              <div className="overflow-hidden rounded-[32px]">
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={`photo-${active.number}`}
+                    src={activeStep % 2 === 0 ? coordinatorPhoto : crewPhoto}
+                    alt="Наш екип на обект"
+                    loading="lazy"
+                    width={1024}
+                    height={1280}
+                    initial={{ opacity: 0, scale: 1.03 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="h-[420px] w-full object-cover"
+                  />
+                </AnimatePresence>
               </div>
-            );
-          })}
-        </div>
 
-        <div className="mt-12 grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="hidden overflow-hidden rounded-[32px] lg:block">
-            <AnimatePresence mode="wait">
-              <motion.img
-                key={`photo-${active.number}`}
-                src={activeStep % 2 === 0 ? coordinatorPhoto : crewPhoto}
-                alt="Наш екип на обект"
-                loading="lazy"
-                width={1024}
-                height={1280}
-                initial={{ opacity: 0, scale: 1.03 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                className="h-[420px] w-full object-cover"
-              />
-            </AnimatePresence>
-          </div>
-
-          <div className="min-w-0">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={active.number}
-                initial={{ opacity: 0, y: 14 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.25 }}
-              >
-                <span className="manifest-label">
-                  Стъпка {active.number} / {String(steps.length).padStart(2, "0")}
-                </span>
-                <h3 className="mt-3 text-3xl lg:text-4xl">{active.title}</h3>
-                <p className="mt-4 max-w-lg text-base leading-relaxed text-muted-foreground lg:text-lg">
-                  {active.body}
-                </p>
-              </motion.div>
-            </AnimatePresence>
-
-            <div className="mt-8 flex items-center gap-3">
-              <button
-                type="button"
-                onClick={() => go(-1)}
-                disabled={activeStep === 0}
-                aria-label="Предишна стъпка"
-                className="flex h-12 w-12 items-center justify-center rounded-full border border-border text-foreground transition-colors hover:border-primary disabled:opacity-30"
-              >
-                <ChevronLeft className="h-5 w-5" />
-              </button>
-              <button
-                type="button"
-                onClick={() => go(1)}
-                disabled={activeStep === steps.length - 1}
-                aria-label="Следваща стъпка"
-                className="flex h-12 w-12 items-center justify-center rounded-full border border-border text-foreground transition-colors hover:border-primary disabled:opacity-30"
-              >
-                <ChevronRight className="h-5 w-5" />
-              </button>
+              <div className="min-w-0">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={active.number}
+                    initial={{ opacity: 0, y: 14 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.28 }}
+                  >
+                    <span className="manifest-label">
+                      Стъпка {active.number} / {String(steps.length).padStart(2, "0")}
+                    </span>
+                    <h3 className="mt-3 text-3xl lg:text-4xl">{active.title}</h3>
+                    <p className="mt-4 max-w-lg text-base leading-relaxed text-muted-foreground lg:text-lg">
+                      {active.body}
+                    </p>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
             </div>
           </div>
         </div>
+
+        {/* Invisible trigger markers, one viewport-height apart */}
+        {steps.map((step, index) => (
+          <div
+            key={`trigger-${step.number}`}
+            ref={(el) => {
+              triggerRefs.current[index] = el;
+            }}
+            data-step-index={index}
+            className="h-screen"
+            aria-hidden="true"
+          />
+        ))}
+      </div>
+
+      {/* Mobile: stacked steps, no pinning */}
+      <div className="mx-auto mt-12 max-w-7xl px-5 lg:hidden">
+        <ol className="space-y-10">
+          {steps.map((step) => (
+            <li key={`mobile-${step.number}`} className="flex gap-4">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-primary bg-primary font-display text-sm font-bold text-primary-foreground">
+                {step.number}
+              </div>
+              <div className="min-w-0">
+                <h3 className="text-xl font-semibold">{step.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{step.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   );
