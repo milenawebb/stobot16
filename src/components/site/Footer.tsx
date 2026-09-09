@@ -72,7 +72,19 @@ export function Footer() {
             © 2026 Стобот 16. Всички права запазени.
           </p>
 
-          <p className="flex items-center justify-center gap-1.5 text-center">
+          <div className="flex flex-wrap items-center justify-center gap-4 md:justify-center">
+            {legalLinks.map(([href, label]) => (
+              <a
+                key={label}
+                href={href}
+                className="transition-colors hover:text-white"
+              >
+                {label}
+              </a>
+            ))}
+          </div>
+
+          <p className="flex items-center justify-center gap-1.5 text-center md:justify-end">
             Разработено от
             <a
               href="https://fifthexit.eu"
@@ -87,18 +99,6 @@ export function Footer() {
               />
             </a>
           </p>
-
-          <div className="flex flex-wrap items-center justify-center gap-4 md:justify-end">
-            {legalLinks.map(([href, label]) => (
-              <a
-                key={label}
-                href={href}
-                className="transition-colors hover:text-white"
-              >
-                {label}
-              </a>
-            ))}
-          </div>
         </div>
       </div>
     </footer>
