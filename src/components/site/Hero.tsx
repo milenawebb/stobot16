@@ -6,7 +6,7 @@ import heroImg from "@/assets/hero-crew.jpg";
 
 const paths = {
   company: {
-    headline: "500+ души на трудов договор в 12 сектора. Наемането и документите поемаме ние.",
+    headline: "500+ души на трудов договор в 12 сектора. Наемането и документите са наша работа.",
     support: "Ние наемаме, обучаваме и осигуряваме хората. Вие получавате готова смяна на обекта, с договор, осигуровки, застраховка и заместник при отсъствие.",
     cta: "Изпратете заявка",
     href: "#zayavka",
@@ -105,7 +105,7 @@ export function Hero() {
       <div className="mx-auto hidden max-w-7xl px-5 pb-16 opacity-100 md:block lg:px-8 lg:pb-24">
         <h1 className="max-w-5xl text-[2.75rem] leading-[0.92] sm:text-6xl lg:text-[5.25rem]">
           500+ души на трудов договор в 12 сектора.
-          <span className="block text-white/70">Наемането и документите поемаме ние.</span>
+          <span className="block text-white/70">Наемането и документите са наша работа.</span>
         </h1>
 
         {/* the single orchestrated animation: the route line drawing in on load */}
