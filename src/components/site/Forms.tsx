@@ -114,6 +114,18 @@ export function Forms() {
               placeholder="Опит (по желание)"
               className={textareaClass}
             />
+
+            <label className="flex cursor-pointer items-center justify-between gap-3 rounded-[6px] border border-dashed border-input px-4 py-3 text-sm text-muted-foreground transition-colors hover:border-primary">
+              <span>{resumeName ?? "Прикачете CV (PDF, DOC, по желание)"}</span>
+              <span className="font-display text-xs font-bold text-foreground">Избери файл</span>
+              <input
+                type="file"
+                name="resume"
+                accept=".pdf,.doc,.docx,.rtf,.odt,image/*"
+                className="hidden"
+                onChange={(e) => setResumeName(e.target.files?.[0]?.name ?? null)}
+              />
+            </label>
           </div>
 
           <MagneticButton
