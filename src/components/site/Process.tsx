@@ -74,10 +74,7 @@ export function Process() {
   return (
     <section id="kak-rabotim" className="border-b border-border py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="flex items-center gap-3">
-          <span className="manifest-label">Как работим</span>
-        </div>
-        <h2 className="mt-5 max-w-2xl text-[2rem] sm:text-5xl lg:text-6xl">
+        <h2 className="max-w-2xl text-[2rem] sm:text-5xl lg:text-6xl">
           От заявка до работещ екип
         </h2>
       </div>
@@ -86,7 +83,7 @@ export function Process() {
       <div className="relative mt-12 hidden h-[500vh] lg:block">
         <div className="sticky top-0 flex h-screen items-center">
           <div className="mx-auto w-full max-w-7xl px-5 lg:px-8">
-            <StepCircles activeStep={activeStep} />
+            <StepLabels activeStep={activeStep} />
 
             <div className="mt-12 grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
               <div className="overflow-hidden rounded-[32px]">
