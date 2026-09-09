@@ -29,7 +29,7 @@ export function Moving() {
     >
       <div className="mx-auto grid max-w-7xl gap-12 px-5 py-20 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-28">
         <div>
-          <h2 className="mt-5 max-w-xl text-[2rem] text-move-foreground sm:text-5xl lg:text-6xl">
+          <h2 className="max-w-xl text-[2rem] text-move-foreground sm:text-5xl lg:text-6xl">
             Премествания с наши хора и камиони
           </h2>
           <p className="mt-5 max-w-lg text-base leading-relaxed text-move-foreground/80">
