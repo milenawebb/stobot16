@@ -6,10 +6,8 @@ import heroImg from "@/assets/hero-crew.jpg";
 
 const paths = {
   company: {
-    headline: "350 души на трудов договор в 12 сектора. Наемането и документите поемаме ние.",
+    headline: "500 души на трудов договор в 12 сектора. Наемането и документите поемаме ние.",
     support: "Ние наемаме, обучаваме и осигуряваме хората. Вие получавате готова смяна на обекта, с договор, осигуровки, застраховка и заместник при отсъствие.",
-    stat: "95+",
-    statLabel: "партньори",
     cta: "Изпратете заявка",
     href: "#zayavka",
   },
@@ -22,6 +20,12 @@ const paths = {
 } as const;
 
 type PathKey = keyof typeof paths;
+
+const heroStats = [
+  ["500", "разпределени работници"],
+  ["95", "обекта"],
+  ["24ч", "заместване"],
+] as const;
 
 export function Hero() {
   const [path, setPath] = useState<PathKey>("company");
@@ -79,10 +83,14 @@ export function Hero() {
           <p className="mt-5 text-base leading-relaxed text-white/75">{active.support}</p>
 
           {path === "company" && (
-            <p className="mt-6 flex items-baseline gap-2">
-              <span className="numeral text-4xl text-white">{paths.company.stat}</span>
-              <span className="manifest-label">{paths.company.statLabel}</span>
-            </p>
+            <dl className="mt-6 grid grid-cols-3 gap-px rounded-[28px] bg-border">
+              {heroStats.map(([v, k]) => (
+                <div key={k} className="rounded-[24px] bg-background px-2 py-4 text-center">
+                  <dt className="numeral text-xl text-white">{v}</dt>
+                  <dd className="manifest-label mt-1 block text-[0.6rem] leading-tight text-white/70">{k}</dd>
+                </div>
+              ))}
+            </dl>
           )}
 
           <MagneticButton
@@ -102,7 +110,7 @@ export function Hero() {
         </div>
 
         <h1 className="mt-8 max-w-5xl text-[2.75rem] leading-[0.92] sm:text-6xl lg:text-[5.25rem]">
-          350 души на трудов договор в 12 сектора.
+          500 души на трудов договор в 12 сектора.
           <span className="block text-white/70">Наемането и документите поемаме ние.</span>
         </h1>
 
@@ -123,11 +131,7 @@ export function Hero() {
           </p>
 
           <dl className="grid grid-cols-3 gap-px rounded-[28px] bg-border">
-            {[
-              ["12", "години опит"],
-              ["95+", "партньори"],
-              ["24ч", "заместване"],
-            ].map(([v, k]) => (
+            {heroStats.map(([v, k]) => (
               <div key={k} className="rounded-[24px] bg-background px-4 py-5">
                 <dt className="numeral text-3xl sm:text-4xl">{v}</dt>
                 <dd className="manifest-label mt-1 block">{k}</dd>
