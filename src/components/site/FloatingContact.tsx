@@ -25,10 +25,10 @@ export function FloatingContact() {
               {actions.map((a, i) => {
                 const content = (
                   <>
-                    <span className="rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground shadow-lg">
+                    <span className="rounded-md bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground shadow-lg">
                       {a.label}
                     </span>
-                    <span className="grid h-12 w-12 place-items-center rounded-full bg-primary text-primary-foreground shadow-lg">
+                    <span className="grid h-12 w-12 place-items-center rounded-md bg-primary text-primary-foreground shadow-lg">
                       <a.icon className="h-5 w-5" />
                     </span>
                   </>
@@ -72,7 +72,7 @@ export function FloatingContact() {
           aria-expanded={open}
           aria-label={open ? "Затвори менюто за контакт" : "Отвори менюто за контакт"}
           whileTap={{ scale: 0.94 }}
-          className="pointer-events-auto grid h-14 w-14 place-items-center rounded-full bg-primary text-primary-foreground shadow-xl"
+          className="pointer-events-auto grid h-14 w-14 place-items-center rounded-md bg-primary text-primary-foreground shadow-xl"
         >
           <motion.span animate={{ rotate: open ? 135 : 0 }} transition={{ duration: 0.2 }}>
             {open ? <X className="h-6 w-6" /> : <Plus className="h-6 w-6" />}

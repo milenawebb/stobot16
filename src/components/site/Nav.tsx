@@ -58,7 +58,7 @@ export function Nav() {
           <MagneticButton
             href="/#zayavka"
             label="Заявка за персонал"
-            className="flex items-center rounded-full bg-primary px-5 py-2.5 font-display text-sm font-bold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
+            className="flex items-center rounded-md bg-primary px-5 py-2.5 font-display text-sm font-bold  text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
           />
         </div>
 
@@ -95,7 +95,7 @@ export function Nav() {
             <a
               href="/#zayavka"
               onClick={() => setOpen(false)}
-              className="mt-2 rounded-full bg-primary px-5 py-3.5 text-center font-display text-sm font-bold uppercase tracking-wide text-primary-foreground"
+              className="mt-2 rounded-md bg-primary px-5 py-3.5 text-center font-display text-sm font-bold  text-primary-foreground"
             >
               Заявка за персонал
             </a>

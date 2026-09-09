@@ -102,7 +102,7 @@ export function ChatWidget({ open, onClose }: { open: boolean; onClose: () => vo
               onChange={(e) => setInput(e.target.value)}
               placeholder="Напишете съобщение…"
               aria-label="Съобщение"
-              className="min-w-0 flex-1 rounded-full border border-input bg-transparent px-3 py-2 text-sm outline-none focus:border-ring"
+              className="min-w-0 flex-1 rounded-md border border-input bg-transparent px-3 py-2 text-sm outline-none focus:border-ring"
             />
             <button
               type="submit"

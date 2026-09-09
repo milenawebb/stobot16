@@ -35,7 +35,7 @@ export function LatestListings() {
 
       <Link
         to="/obiavi"
-        className="mt-10 inline-block rounded-full border border-foreground px-8 py-4 font-display text-sm font-bold uppercase tracking-wide text-foreground transition-colors hover:bg-move hover:border-move hover:text-move-foreground"
+        className="mt-10 inline-block rounded-md border border-foreground px-8 py-4 font-display text-sm font-bold  text-foreground transition-colors hover:bg-move hover:border-move hover:text-move-foreground"
       >
         Виж всички обяви
       </Link>

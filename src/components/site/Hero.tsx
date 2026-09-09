@@ -96,7 +96,7 @@ export function Hero() {
           <MagneticButton
             href={active.href}
             label={active.cta}
-            className="mt-7 flex w-full items-center justify-center rounded-full bg-primary px-8 py-5 text-center font-display text-base font-bold tracking-wide text-primary-foreground uppercase transition-colors hover:bg-foreground hover:text-background"
+            className="mt-7 flex w-full items-center justify-center rounded-md bg-primary px-8 py-5 text-center font-display text-base font-bold text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
           />
         </div>
       </div>
@@ -144,12 +144,12 @@ export function Hero() {
           <MagneticButton
             href="#zayavka"
             label="Нуждая се от персонал"
-            className="flex items-center justify-center rounded-full bg-primary px-8 py-5 text-center font-display text-base font-bold tracking-wide text-primary-foreground uppercase transition-colors hover:bg-foreground hover:text-background"
+            className="flex items-center justify-center rounded-md bg-primary px-8 py-5 text-center font-display text-base font-bold text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
           />
           <MagneticButton
             href="/obiavi"
             label="Търся работа"
-            className="flex items-center justify-center rounded-full border border-border bg-background px-8 py-5 text-center font-display text-base font-bold tracking-wide text-foreground uppercase transition-colors hover:bg-move hover:text-move-foreground"
+            className="flex items-center justify-center rounded-md border border-border bg-background px-8 py-5 text-center font-display text-base font-bold text-foreground transition-colors hover:bg-move hover:text-move-foreground"
           />
         </div>
       </div>
