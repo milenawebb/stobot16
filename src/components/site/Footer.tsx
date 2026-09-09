@@ -25,7 +25,7 @@ export function Footer() {
           {[
             ["#kak-rabotim", "Как работим"],
             ["#sektori", "Сектори"],
-            ["#hamalski", "Хамалски услуги"],
+            ["#hamalski", "Преместване"],
             ["#kandidati", "Кариери"],
           ].map(([href, label]) => (
             <a key={href} href={href} className="transition-colors hover:text-primary">

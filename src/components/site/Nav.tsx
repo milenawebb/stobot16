@@ -10,7 +10,7 @@ const links = [
   { href: "/#kak-rabotim", label: "Как работим" },
   { href: "/obiavi", label: "Обяви" },
   { href: "/#sektori", label: "Сектори" },
-  { href: "/#hamalski", label: "Хамалски услуги" },
+  { href: "/#hamalski", label: "Преместване" },
   { href: "/#kontakti", label: "Контакти" },
 ];
 
