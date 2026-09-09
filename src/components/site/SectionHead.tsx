@@ -9,19 +9,21 @@ export function SectionHead({
   tone = "dark",
 }: {
   index: string;
-  label: string;
+  label?: string;
   title: ReactNode;
   lead?: ReactNode;
   tone?: "dark" | "paper";
 }) {
   const rule = tone === "paper" ? "bg-paper-foreground/20" : "bg-line/35";
-  const headingClass = "mt-5 text-[2rem] leading-[0.95] sm:text-5xl lg:text-6xl";
+  const headingClass = `${label ? "mt-5 " : ""}text-[2rem] leading-[0.95] sm:text-5xl lg:text-6xl`;
   return (
     <div className="max-w-3xl">
-      <div className="flex items-center gap-3">
-        <span className="manifest-label">{label}</span>
-        <span className={`h-px w-8 ${rule}`} aria-hidden="true" />
-      </div>
+      {label ? (
+        <div className="flex items-center gap-3">
+          <span className="manifest-label">{label}</span>
+          <span className={`h-px w-8 ${rule}`} aria-hidden="true" />
+        </div>
+      ) : null}
       {typeof title === "string" ? (
         <RevealWords text={title} className={headingClass} />
       ) : (

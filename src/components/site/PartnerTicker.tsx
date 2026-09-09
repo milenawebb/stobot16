@@ -40,18 +40,9 @@ export function PartnerTicker() {
       style={{ background: "#130F3E" }}
     >
       <div className="mx-auto max-w-7xl px-5 pt-10 pb-6 lg:px-8">
-        <span
-          className="inline-block rounded border px-2.5 py-1 font-mono text-[0.7rem] tracking-[0.18em] uppercase"
-          style={{
-            borderColor: "rgba(255,255,255,0.25)",
-            color: "rgba(255,255,255,0.75)",
-          }}
-        >
-          Партньори
-        </span>
         <h2
           id="partners-title"
-          className="mt-4 max-w-3xl text-xl leading-snug font-bold sm:text-2xl"
+          className="max-w-3xl text-xl leading-snug font-bold sm:text-2xl"
           style={{ color: "#FFFFFF" }}
         >
           10 логистични партньора, 95 обекта всеки месец
