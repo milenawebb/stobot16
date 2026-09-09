@@ -83,7 +83,7 @@ export function Footer() {
               <img
                 src={fifthExitLogo.url}
                 alt="Fifth Exit"
-                className="h-4 w-auto"
+                className="h-5 w-auto"
               />
             </a>
           </p>
