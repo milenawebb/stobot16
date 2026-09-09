@@ -54,7 +54,7 @@ export function PartnerTicker() {
           className="mt-4 max-w-3xl text-xl leading-snug font-bold sm:text-2xl"
           style={{ color: "#FFFFFF" }}
         >
-          Логистични партньори, за които работят нашите екипи
+          10 логистични партньора, 95 обекта всеки месец
         </h2>
       </div>
       <div className="marquee-fade group overflow-hidden pb-10">
