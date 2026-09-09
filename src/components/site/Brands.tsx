@@ -61,13 +61,9 @@ export function Brands() {
           <span className="manifest-label text-paper-foreground/55">Крайни обекти</span>
         </div>
         <RevealWords
-          text="Доверие от екипи по проекти за водещи марки"
+          text="Обекти, на които работят нашите екипи"
           className="mt-5 max-w-4xl text-[2rem] sm:text-5xl lg:text-6xl"
         />
-        <p className="mt-5 max-w-2xl text-base leading-relaxed text-paper-foreground/70">
-          Хората ни работят на терен за разпознаваеми марки — не по документи, а на място, всеки
-          ден.
-        </p>
       </div>
 
       <div className="mt-14 border-y border-paper-foreground/15">

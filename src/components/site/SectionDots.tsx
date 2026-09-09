@@ -9,7 +9,6 @@ const sections = [
   { id: "marki", label: "Марки" },
   { id: "hamalski", label: "Хамалски услуги" },
   { id: "obiavi", label: "Обяви" },
-  { id: "zashto", label: "Показатели" },
   { id: "otzivi", label: "Отзиви" },
   { id: "kontakti", label: "Контакти" },
 ];

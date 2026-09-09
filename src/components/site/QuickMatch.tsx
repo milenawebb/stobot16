@@ -6,11 +6,11 @@ const industries = [
   "Производство",
   "Строителство",
   "Опаковане",
-  "ХоРеКа",
+  "HoReCa",
   "Почистване",
 ];
 
-const volumes = ["1 – 5 души", "6 – 15 души", "16 – 40 души", "40+ души"];
+const volumes = ["1 до 5 души", "6 до 15 души", "16 до 40 души", "40+ души"];
 
 const skills = ["Без опит", "Складов работник", "Оператор на машина", "Хамалски дейности", "Шофьор"];
 const cities = ["София", "Пловдив", "Варна", "Бургас", "Стара Загора"];
@@ -68,7 +68,7 @@ export function QuickMatch() {
           index="07"
           label="Бърза проверка"
           title="Проверете за 10 секунди"
-          lead="Изберете параметри и вижте ориентировъчен отговор — отнема 10 секунди, без обаждане и без регистрация."
+          lead="Изберете параметри и вижте ориентировъчен отговор. Отнема 10 секунди и не изисква обаждане или регистрация."
         />
 
         <div className="mt-12 grid gap-px rounded-[32px] border border-border bg-border lg:grid-cols-[0.9fr_1.1fr]">
@@ -117,7 +117,7 @@ export function QuickMatch() {
               <div className="mt-6">
                 <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
                   Ориентировъчно време за първо предложение на екип за{" "}
-                  <span className="text-foreground">{industry.toLowerCase()}</span> — {volume}.
+                  <span className="text-foreground">{industry.toLowerCase()}</span>, {volume}.
                 </p>
                 <dl className="mt-8 grid gap-3 sm:grid-cols-2">
                   {[

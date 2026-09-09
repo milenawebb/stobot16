@@ -36,7 +36,7 @@ export function Footer() {
       </div>
       <div className="border-t border-border px-5 py-5 lg:px-8">
         <p className="manifest-label text-center">
-          © {new Date().getFullYear()} стобот 16 — Всички права запазени.
+          © {new Date().getFullYear()} стобот 16. Всички права запазени.
         </p>
       </div>
     </footer>
