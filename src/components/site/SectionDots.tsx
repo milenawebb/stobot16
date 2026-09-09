@@ -7,7 +7,7 @@ const sections = [
   { id: "kak-rabotim", label: "Как работим" },
   { id: "sektori", label: "Сектори" },
   { id: "marki", label: "Марки" },
-  { id: "hamalski", label: "Хамалски услуги" },
+  { id: "hamalski", label: "Преместване" },
   { id: "obiavi", label: "Обяви" },
   { id: "zashto", label: "Показатели" },
   { id: "otzivi", label: "Отзиви" },
