@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { SectionHead } from "./SectionHead";
 
 const stats = [
-  { value: 500, suffix: "", label: "разпределени работници" },
+  { value: 500, suffix: "+", label: "разпределени работници" },
   { value: 12, suffix: "", label: "сектора на обслужване" },
   { value: 24, suffix: " ч.", label: "средно време за заместване" },
   { value: 98, suffix: "%", label: "покрити смени по график" },
