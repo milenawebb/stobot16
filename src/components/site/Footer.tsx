@@ -18,7 +18,11 @@ export function Footer() {
               {PHONE_DISPLAY}
             </a>
           </p>
-          <p>office@example.bg</p>
+          <p>
+            <a href="mailto:info@stobot16.com" className="transition-colors hover:text-primary">
+              info@stobot16.com
+            </a>
+          </p>
           <p>София, България</p>
         </div>
         <div className="flex flex-col gap-2 text-sm text-muted-foreground">
