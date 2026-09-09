@@ -31,6 +31,7 @@ export function Forms() {
   const search = useSearch({ strict: false }) as { sector?: string };
   const company = useFakeSubmit("Заявката е изпратена. Ще се свържем с вас до 24 часа.");
   const candidate = useFakeSubmit("Кандидатурата е изпратена. Очаквайте обаждане.");
+  const [resumeName, setResumeName] = useState<string | null>(null);
   const presetSector = search.sector && SECTORS.includes(search.sector as never) ? search.sector : "";
 
 
