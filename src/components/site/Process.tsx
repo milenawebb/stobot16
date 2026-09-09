@@ -33,35 +33,19 @@ const steps = [
 
 const triggerPositions = ["top-0", "top-[100vh]", "top-[200vh]", "top-[300vh]", "top-[400vh]"];
 
-function StepCircles({ activeStep }: { activeStep: number }) {
+function StepLabels({ activeStep }: { activeStep: number }) {
   return (
-    <div className="flex w-full max-w-full items-center" aria-hidden="true">
-      {steps.map((step, index) => {
-        const isDone = index <= activeStep;
-        const isActive = index === activeStep;
-        return (
-          <div
-            key={step.number}
-            className={`flex min-w-0 items-center ${index < steps.length - 1 ? "flex-1" : "flex-none"}`}
-          >
-            <div
-              className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-primary font-display text-sm font-bold transition-all duration-300 sm:h-14 sm:w-14 sm:text-base ${
-                isDone ? "bg-primary text-primary-foreground" : "bg-transparent text-primary"
-              } ${isActive ? "scale-110" : ""}`}
-            >
-              {step.number}
-            </div>
-            {index < steps.length - 1 && (
-              <div className="relative mx-1 h-0.5 flex-1 overflow-hidden bg-primary/25 sm:mx-2">
-                <div
-                  className="absolute inset-y-0 left-0 bg-primary transition-[width] duration-300"
-                  style={{ width: index < activeStep ? "100%" : "0%" }}
-                />
-              </div>
-            )}
-          </div>
-        );
-      })}
+    <div className="flex w-full max-w-full flex-wrap gap-x-10 gap-y-2" aria-hidden="true">
+      {steps.map((step, index) => (
+        <span
+          key={step.number}
+          className={`font-display text-sm font-semibold transition-opacity duration-300 ${
+            index === activeStep ? "text-white opacity-100" : "text-white opacity-45"
+          }`}
+        >
+          {step.title}
+        </span>
+      ))}
     </div>
   );
 }
