@@ -1,5 +1,6 @@
 import { Wordmark } from "./Wordmark";
 import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/contact";
+import fifthExitLogo from "@/assets/fifthexit-logo-for-dark.png.asset.json";
 
 const quickLinks = [
   ["#uslugi", "Услуги"],
