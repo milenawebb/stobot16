@@ -61,7 +61,7 @@ function ListingsPage() {
         </p>
         <MagneticButton
           href={`tel:${PHONE_TEL}`}
-          className="mt-6 inline-flex items-center gap-3 rounded-md bg-primary px-7 py-4 font-display text-base font-bold  text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
+          className="mt-6 inline-flex items-center gap-3 rounded-[6px] bg-primary px-7 py-4 font-display text-base font-bold  text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
         >
           <Phone className="h-5 w-5" /> Обадете се направо: {PHONE_DISPLAY}
         </MagneticButton>
@@ -95,7 +95,7 @@ function ListingsPage() {
             <Link
               to="/"
               hash="kandidati"
-              className="mt-6 inline-block rounded-md bg-primary px-6 py-4 font-display text-sm font-bold  text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
+              className="mt-6 inline-block rounded-[6px] bg-primary px-6 py-4 font-display text-sm font-bold  text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
             >
               Изпрати кандидатура
             </Link>

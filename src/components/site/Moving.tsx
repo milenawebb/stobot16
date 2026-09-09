@@ -53,7 +53,7 @@ export function Moving() {
 
           <a
             href="#zayavka"
-            className="mt-10 inline-block rounded-md bg-move-foreground px-8 py-4 font-display text-sm font-bold  text-move transition-colors hover:bg-white/80"
+            className="mt-10 inline-block rounded-[6px] bg-move-foreground px-8 py-4 font-display text-sm font-bold  text-move transition-colors hover:bg-white/80"
           >
             Оферта за преместване
           </a>

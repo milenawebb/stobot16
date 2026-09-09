@@ -40,7 +40,7 @@ function Field({
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="mt-2 w-full appearance-none rounded-md border border-border bg-background px-4 py-3 text-base text-foreground outline-none transition-colors focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/40"
+        className="mt-2 w-full appearance-none rounded-[6px] border border-border bg-background px-4 py-3 text-base text-foreground outline-none transition-colors focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/40"
       >
         {options.map((o) => (
           <option key={o} value={o}>
@@ -153,7 +153,7 @@ export function QuickMatch() {
                 </p>
                 <a
                   href="#kandidati"
-                  className="mt-6 inline-block rounded-md border border-primary bg-primary px-6 py-3 font-mono text-xs uppercase tracking-[0.18em] text-primary-foreground transition-colors hover:bg-transparent hover:text-primary"
+                  className="mt-6 inline-block rounded-[6px] border border-primary bg-primary px-6 py-3 font-mono text-xs uppercase tracking-[0.18em] text-primary-foreground transition-colors hover:bg-transparent hover:text-primary"
                 >
                   Кандидатствай
                 </a>
