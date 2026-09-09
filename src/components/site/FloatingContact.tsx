@@ -25,7 +25,7 @@ export function FloatingContact() {
               {actions.map((a, i) => {
                 const content = (
                   <>
-                    <span className="rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground shadow-lg">
+                    <span className="rounded-[6px] bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground shadow-lg">
                       {a.label}
                     </span>
                     <span className="grid h-12 w-12 place-items-center rounded-full bg-primary text-primary-foreground shadow-lg">

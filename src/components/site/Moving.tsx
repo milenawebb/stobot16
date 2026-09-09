@@ -29,10 +29,7 @@ export function Moving() {
     >
       <div className="mx-auto grid max-w-7xl gap-12 px-5 py-20 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-28">
         <div>
-          <div className="flex items-center gap-3">
-            <span className="manifest-label text-move-foreground/70">Собствена услуга</span>
-          </div>
-          <h2 className="mt-5 max-w-xl text-[2rem] text-move-foreground sm:text-5xl lg:text-6xl">
+          <h2 className="max-w-xl text-[2rem] text-move-foreground sm:text-5xl lg:text-6xl">
             Премествания с наши хора и камиони
           </h2>
           <p className="mt-5 max-w-lg text-base leading-relaxed text-move-foreground/80">
@@ -56,7 +53,7 @@ export function Moving() {
 
           <a
             href="#zayavka"
-            className="mt-10 inline-block rounded-full bg-move-foreground px-8 py-4 font-display text-sm font-bold uppercase tracking-wide text-move transition-colors hover:bg-white/80"
+            className="mt-10 inline-block rounded-[6px] bg-move-foreground px-8 py-4 font-display text-sm font-bold  text-move transition-colors hover:bg-white/80"
           >
             Оферта за преместване
           </a>

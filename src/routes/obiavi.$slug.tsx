@@ -122,7 +122,7 @@ function ListingDetail() {
         <div className="mt-10 flex flex-col items-start gap-3">
           <MagneticButton
             href={`tel:${listing.contact_phone ?? PHONE_TEL}`}
-            className="inline-flex items-center gap-3 rounded-full bg-primary px-8 py-5 font-display text-base font-bold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
+            className="inline-flex items-center gap-3 rounded-[6px] bg-primary px-8 py-5 font-display text-base font-bold  text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
           >
             <Phone className="h-5 w-5" /> Обади се сега — {listing.contact_phone ?? PHONE_DISPLAY}
           </MagneticButton>

@@ -53,7 +53,7 @@ export function Hero() {
         <div
           role="tablist"
           aria-label="Изберете вашия път"
-          className="flex w-full rounded-full border border-white/25 bg-white/10 p-1"
+          className="flex w-full rounded-[6px] border border-white/25 bg-white/10 p-1"
         >
           {(
             [
@@ -68,7 +68,7 @@ export function Hero() {
               role="tab"
               aria-selected={path === key}
               onClick={() => setPath(key)}
-              className={`flex-1 rounded-full px-4 py-2.5 text-sm font-bold transition-all duration-300 ${
+              className={`flex-1 rounded-[6px] px-4 py-2.5 text-sm font-bold transition-all duration-300 ${
                 path === key ? "bg-white text-[#130F3E] shadow-sm" : "text-white/80"
               }`}
             >
@@ -96,20 +96,14 @@ export function Hero() {
           <MagneticButton
             href={active.href}
             label={active.cta}
-            className="mt-7 flex w-full items-center justify-center rounded-full bg-primary px-8 py-5 text-center font-display text-base font-bold tracking-wide text-primary-foreground uppercase transition-colors hover:bg-foreground hover:text-background"
+            className="mt-7 flex w-full items-center justify-center rounded-[6px] bg-primary px-8 py-5 text-center font-display text-base font-bold text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
           />
         </div>
       </div>
 
       {/* DESKTOP HERO */}
       <div className="mx-auto hidden max-w-7xl px-5 pb-16 opacity-100 md:block lg:px-8 lg:pb-24">
-        <div className="flex flex-wrap items-center gap-3">
-          <span className="manifest-label">Манифест</span>
-          <span className="h-px flex-1 bg-line/35" aria-hidden="true" />
-          <span className="manifest-label">Аутсорсинг на персонал / България</span>
-        </div>
-
-        <h1 className="mt-8 max-w-5xl text-[2.75rem] leading-[0.92] sm:text-6xl lg:text-[5.25rem]">
+        <h1 className="max-w-5xl text-[2.75rem] leading-[0.92] sm:text-6xl lg:text-[5.25rem]">
           500 души на трудов договор в 12 сектора.
           <span className="block text-white/70">Наемането и документите поемаме ние.</span>
         </h1>
@@ -144,12 +138,12 @@ export function Hero() {
           <MagneticButton
             href="#zayavka"
             label="Нуждая се от персонал"
-            className="flex items-center justify-center rounded-full bg-primary px-8 py-5 text-center font-display text-base font-bold tracking-wide text-primary-foreground uppercase transition-colors hover:bg-foreground hover:text-background"
+            className="flex items-center justify-center rounded-[6px] bg-primary px-8 py-5 text-center font-display text-base font-bold text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
           />
           <MagneticButton
             href="/obiavi"
             label="Търся работа"
-            className="flex items-center justify-center rounded-full border border-border bg-background px-8 py-5 text-center font-display text-base font-bold tracking-wide text-foreground uppercase transition-colors hover:bg-move hover:text-move-foreground"
+            className="flex items-center justify-center rounded-[6px] border border-border bg-background px-8 py-5 text-center font-display text-base font-bold text-foreground transition-colors hover:bg-move hover:text-move-foreground"
           />
         </div>
       </div>

@@ -35,7 +35,7 @@ function Stat({ value, suffix, label, run }: (typeof stats)[number] & { run: boo
   const n = useCountUp(value, run);
   return (
     <div className="bg-background p-6 lg:p-8">
-      <p className="numeral text-5xl leading-none tabular-nums lg:text-7xl">
+      <p className="font-display font-extrabold text-5xl leading-none tabular-nums lg:text-7xl">
         {n}{suffix}
       </p>
       <p className="mt-4 text-base text-foreground">{label}</p>
@@ -68,7 +68,6 @@ export function WhyUs() {
       <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
         <SectionHead
           index="08"
-          label=""
           title="Числата зад екипите"
           lead="Фиксирани договори, ясно отчитане на часовете и бърза реакция при отсъствия."
         />

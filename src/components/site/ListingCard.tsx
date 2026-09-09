@@ -41,7 +41,7 @@ export function ListingCard({ listing }: { listing: JobListing }) {
 
       <MagneticButton
         href={`tel:${listing.contact_phone ?? PHONE_TEL}`}
-        className="mt-6 flex items-center justify-center gap-2 bg-primary px-5 py-4 font-display text-base font-bold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
+        className="mt-6 flex items-center justify-center gap-2 rounded-[6px] bg-primary px-5 py-4 font-display text-base font-bold  text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
       >
         <Phone className="h-4 w-4" /> Обади се сега
       </MagneticButton>
@@ -54,14 +54,14 @@ export function ListingCard({ listing }: { listing: JobListing }) {
           to="/"
           search={{ sector: listing.sector }}
           hash="kandidati"
-          className="flex-1 rounded-full border border-border bg-background px-5 py-3 text-center font-display text-sm font-bold uppercase tracking-wide text-foreground transition-colors hover:bg-move hover:text-move-foreground"
+          className="flex-1 rounded-[6px] border border-border bg-background px-5 py-3 text-center font-display text-sm font-bold  text-foreground transition-colors hover:bg-move hover:text-move-foreground"
         >
           Кандидатствай
         </Link>
         <Link
           to="/obiavi/$slug"
           params={{ slug: listing.slug }}
-          className="flex-1 rounded-full border border-border bg-background px-5 py-3 text-center font-display text-sm font-bold uppercase tracking-wide text-foreground transition-colors hover:bg-move hover:text-move-foreground"
+          className="flex-1 rounded-[6px] border border-border bg-background px-5 py-3 text-center font-display text-sm font-bold  text-foreground transition-colors hover:bg-move hover:text-move-foreground"
         >
           Детайли
         </Link>

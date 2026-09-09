@@ -9,7 +9,7 @@ const textareaClass =
   "rounded-3xl w-full border border-input bg-transparent px-4 py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:bg-surface";
 
 const inputClass =
-  "rounded-full w-full border border-input bg-transparent px-4 py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:bg-surface";
+  "rounded-[6px] w-full border border-input bg-transparent px-4 py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:bg-surface";
 
 function useFakeSubmit(message: string) {
   const [sending, setSending] = useState(false);
@@ -36,10 +36,7 @@ export function Forms() {
 
   return (
     <section id="kontakti" className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
-      <div className="flex items-center gap-3">
-        <span className="h-px w-8 bg-line/35" aria-hidden="true" />
-      </div>
-      <h2 className="mt-5 max-w-3xl text-[2rem] sm:text-5xl lg:text-6xl">
+      <h2 className="max-w-3xl text-[2rem] sm:text-5xl lg:text-6xl">
         Свържете се с нас
       </h2>
 
@@ -77,7 +74,7 @@ export function Forms() {
             type="submit"
             disabled={company.sending}
             label={company.sending ? "Изпращане..." : "Изпратете заявка"}
-            className="mt-6 flex w-full items-center justify-center bg-primary px-6 py-4 font-display text-sm font-bold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-foreground hover:text-background disabled:opacity-60"
+            className="mt-6 flex w-full items-center justify-center rounded-[6px] bg-primary px-6 py-4 font-display text-sm font-bold  text-primary-foreground transition-colors hover:bg-foreground hover:text-background disabled:opacity-60"
           />
         </form>
 
@@ -123,7 +120,7 @@ export function Forms() {
             type="submit"
             disabled={candidate.sending}
             label={candidate.sending ? "Изпращане..." : "Изпрати кандидатура"}
-            className="mt-6 flex w-full items-center justify-center border border-foreground px-6 py-4 font-display text-sm font-bold uppercase tracking-wide text-foreground transition-colors hover:border-move hover:bg-move hover:text-move-foreground disabled:opacity-60"
+            className="mt-6 flex w-full items-center justify-center rounded-[6px] border border-foreground px-6 py-4 font-display text-sm font-bold  text-foreground transition-colors hover:border-move hover:bg-move hover:text-move-foreground disabled:opacity-60"
           />
           <p className="manifest-label mt-4 block">
             Трудов договор, осигуровки и коректно заплащане.

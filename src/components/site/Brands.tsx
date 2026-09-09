@@ -57,12 +57,9 @@ export function Brands() {
       className="overflow-hidden border-y border-border bg-paper py-20 text-paper-foreground lg:py-28"
     >
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="flex items-center gap-3">
-          <span className="manifest-label text-paper-foreground/55">Крайни обекти</span>
-        </div>
         <RevealWords
           text="Обекти, на които работят нашите екипи"
-          className="mt-5 max-w-4xl text-[2rem] sm:text-5xl lg:text-6xl"
+          className="max-w-4xl text-[2rem] sm:text-5xl lg:text-6xl"
         />
       </div>
 
