@@ -16,7 +16,6 @@ export function LatestListings() {
     <section id="obiavi" className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
       <SectionHead
         index="08"
-        label="Актуални обяви"
         title="Свободни позиции точно сега"
         lead="Отворени позиции при наши партньори с договор, осигуровки и ясно заплащане."
       />

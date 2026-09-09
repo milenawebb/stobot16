@@ -66,9 +66,6 @@ export function Sectors() {
               key={s.t}
               className="group bg-background p-6"
             >
-              <span className="manifest-label absolute right-4 top-4">
-                {String(i + 1).padStart(2, "0")}
-              </span>
               <s.icon className="h-6 w-6 text-primary" />
               <h3 className="mt-6 text-xl">{s.t}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">

@@ -36,10 +36,7 @@ export function Forms() {
 
   return (
     <section id="kontakti" className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
-      <div className="flex items-center gap-3">
-        <span className="h-px w-8 bg-line/35" aria-hidden="true" />
-      </div>
-      <h2 className="mt-5 max-w-3xl text-[2rem] sm:text-5xl lg:text-6xl">
+      <h2 className="max-w-3xl text-[2rem] sm:text-5xl lg:text-6xl">
         Свържете се с нас
       </h2>
 

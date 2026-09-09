@@ -103,13 +103,7 @@ export function Hero() {
 
       {/* DESKTOP HERO */}
       <div className="mx-auto hidden max-w-7xl px-5 pb-16 opacity-100 md:block lg:px-8 lg:pb-24">
-        <div className="flex flex-wrap items-center gap-3">
-          <span className="manifest-label">Манифест</span>
-          <span className="h-px flex-1 bg-line/35" aria-hidden="true" />
-          <span className="manifest-label">Аутсорсинг на персонал / България</span>
-        </div>
-
-        <h1 className="mt-8 max-w-5xl text-[2.75rem] leading-[0.92] sm:text-6xl lg:text-[5.25rem]">
+        <h1 className="max-w-5xl text-[2.75rem] leading-[0.92] sm:text-6xl lg:text-[5.25rem]">
           500 души на трудов договор в 12 сектора.
           <span className="block text-white/70">Наемането и документите поемаме ние.</span>
         </h1>

@@ -66,7 +66,6 @@ export function QuickMatch() {
       <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
         <SectionHead
           index="07"
-          label="Бърза проверка"
           title="Проверете за 10 секунди"
           lead="Изберете параметри и вижте ориентировъчен отговор. Отнема 10 секунди и не изисква обаждане или регистрация."
         />

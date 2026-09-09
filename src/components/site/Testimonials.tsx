@@ -33,7 +33,6 @@ export function Testimonials() {
       <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
         <SectionHead
           index="09"
-          label="Отзиви от партньори"
           title="Отзиви"
           tone="paper"
         />
