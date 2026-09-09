@@ -9,6 +9,7 @@ import { Brands } from "@/components/site/Brands";
 import { Moving } from "@/components/site/Moving";
 import { LatestListings } from "@/components/site/LatestListings";
 import { QuickMatch } from "@/components/site/QuickMatch";
+import { WhyUs } from "@/components/site/WhyUs";
 import { Testimonials } from "@/components/site/Testimonials";
 import { Forms } from "@/components/site/Forms";
 import { Footer } from "@/components/site/Footer";
@@ -54,9 +55,10 @@ function Index() {
         <Brands />
         <Moving />
         <LatestListings />
-        <QuickMatch />
-        <Testimonials />
-        <Forms />
+      <QuickMatch />
+      <WhyUs />
+      <Testimonials />
+      <Forms />
       </div>
 
       <Footer />
