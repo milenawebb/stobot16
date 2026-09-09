@@ -72,15 +72,19 @@ export function Footer() {
             © 2026 Стобот 16. Всички права запазени.
           </p>
 
-          <p className="text-center">
-            Разработено от{" "}
+          <p className="flex items-center justify-center gap-1.5 text-center">
+            Разработено от
             <a
               href="https://fifthexit.eu"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-display font-bold text-white transition-opacity hover:opacity-80"
+              className="inline-flex items-center opacity-80 transition-opacity hover:opacity-100"
             >
-              Fifth Exit
+              <img
+                src={fifthExitLogo.url}
+                alt="Fifth Exit"
+                className="h-4 w-auto"
+              />
             </a>
           </p>
 
