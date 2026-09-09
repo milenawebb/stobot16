@@ -53,7 +53,7 @@ export function Hero() {
         <div
           role="tablist"
           aria-label="Изберете вашия път"
-          className="flex w-full rounded-full border border-white/25 bg-white/10 p-1"
+          className="flex w-full rounded-md border border-white/25 bg-white/10 p-1"
         >
           {(
             [
@@ -68,7 +68,7 @@ export function Hero() {
               role="tab"
               aria-selected={path === key}
               onClick={() => setPath(key)}
-              className={`flex-1 rounded-full px-4 py-2.5 text-sm font-bold transition-all duration-300 ${
+              className={`flex-1 rounded-md px-4 py-2.5 text-sm font-bold transition-all duration-300 ${
                 path === key ? "bg-white text-[#130F3E] shadow-sm" : "text-white/80"
               }`}
             >
