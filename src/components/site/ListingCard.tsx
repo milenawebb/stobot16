@@ -46,7 +46,7 @@ export function ListingCard({ listing }: { listing: JobListing }) {
         <Phone className="h-4 w-4" /> Обади се сега
       </MagneticButton>
       <span className="mt-2 text-center text-xs text-muted-foreground">
-        {listing.contact_phone ?? PHONE_DISPLAY} — или оставете кандидатура
+        {listing.contact_phone ?? PHONE_DISPLAY}. Може да оставите и кандидатура.
       </span>
 
       <div className="mt-4 flex flex-wrap gap-2">

@@ -38,10 +38,9 @@ export function Forms() {
     <section id="kontakti" className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
       <div className="flex items-center gap-3">
         <span className="h-px w-8 bg-line/35" aria-hidden="true" />
-        <span className="manifest-label">Последна спирка</span>
       </div>
       <h2 className="mt-5 max-w-3xl text-[2rem] sm:text-5xl lg:text-6xl">
-        Два пътя. Изберете вашия.
+        Свържете се с нас
       </h2>
 
       <div className="mt-14 grid gap-px rounded-[32px] border border-border bg-border lg:grid-cols-2">
@@ -51,7 +50,7 @@ export function Forms() {
             <span className="manifest-label">Заявка за персонал</span>
           </div>
           <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-            Кажете ни от какво имате нужда — отговаряме до 24 часа.
+            Кажете ни от какво имате нужда. Отговаряме до 24 часа.
           </p>
 
 
@@ -88,7 +87,7 @@ export function Forms() {
             <span className="manifest-label">Кандидатствай за работа</span>
           </div>
           <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-            Кандидатствайте сега — плащане на време, всичко по договор.
+            Кандидатствайте сега. Плащането е навреме и всичко е по договор.
           </p>
 
 

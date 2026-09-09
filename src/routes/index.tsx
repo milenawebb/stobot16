@@ -9,14 +9,13 @@ import { Brands } from "@/components/site/Brands";
 import { Moving } from "@/components/site/Moving";
 import { LatestListings } from "@/components/site/LatestListings";
 import { QuickMatch } from "@/components/site/QuickMatch";
-import { WhyUs } from "@/components/site/WhyUs";
 import { Testimonials } from "@/components/site/Testimonials";
 import { Forms } from "@/components/site/Forms";
 import { Footer } from "@/components/site/Footer";
 import { FloatingContact } from "@/components/site/FloatingContact";
 import { SectionDots } from "@/components/site/SectionDots";
 
-const title = "стобот 16 — аутсорсинг на персонал и хамалски услуги";
+const title = "стобот 16, аутсорсинг на персонал и хамалски услуги";
 const description =
   "Обучен, осигурен и застрахован персонал на трудов договор за вашия обект. Плюс хамалски услуги и премествания за фирми и частни клиенти.";
 
@@ -56,7 +55,6 @@ function Index() {
         <Moving />
         <LatestListings />
         <QuickMatch />
-        <WhyUs />
         <Testimonials />
         <Forms />
       </div>

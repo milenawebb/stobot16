@@ -54,11 +54,8 @@ export function PartnerTicker() {
           className="mt-4 max-w-3xl text-xl leading-snug font-bold sm:text-2xl"
           style={{ color: "#FFFFFF" }}
         >
-          10 логистични партньора ни се доверяват — над 95 обекта, покрити всеки месец.
+          Логистични партньори, за които работят нашите екипи
         </h2>
-        <p className="mt-3 max-w-2xl text-sm sm:text-base" style={{ color: "rgba(255,255,255,0.75)" }}>
-          Логистичните партньори, за които наши екипи работят по договор:
-        </p>
       </div>
       <div className="marquee-fade group overflow-hidden pb-10">
         <div className="marquee-track marquee-track-partners flex w-max px-5 group-hover:[animation-play-state:paused] lg:px-8">
