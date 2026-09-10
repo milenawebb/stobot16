@@ -2,32 +2,40 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import coordinatorPhoto from "@/assets/process-coordinator.jpg";
 import crewPhoto from "@/assets/process-crew.jpg";
+import trainingPhoto from "@/assets/process-training.jpg";
+import contractsPhoto from "@/assets/process-contracts.jpg";
+import supervisionPhoto from "@/assets/process-supervision.jpg";
 
 const steps = [
   {
     number: "01",
     title: "Заявка и анализ",
     body: "Казвате ни колко хора, за какво и къде. Отговаряме до 24 часа.",
+    image: coordinatorPhoto,
   },
   {
     number: "02",
     title: "Подбор и обучение",
     body: "Подбираме хора с нужните умения и ги подготвяме конкретно за вашата позиция, преди да излязат на смяна.",
+    image: trainingPhoto,
   },
   {
     number: "03",
     title: "Договори и осигуровки",
     body: "Наемаме хората при нас с всички документи по закон. Подготовката на договорите е наша грижа.",
+    image: contractsPhoto,
   },
   {
     number: "04",
     title: "Стартиране на обекта",
     body: "Екипът излиза на смяна с наш координатор на терен, който следи присъствие и качество от първия ден.",
+    image: crewPhoto,
   },
   {
     number: "05",
     title: "Контрол и заместване",
     body: "При отсъствие изпращаме заместник до 24 часа. Смяната на обекта не спира.",
+    image: supervisionPhoto,
   },
 ];
 
@@ -90,7 +98,7 @@ export function Process() {
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={`photo-${active.number}`}
-                    src={activeStep % 2 === 0 ? coordinatorPhoto : crewPhoto}
+                    src={active.image}
                     alt="Наш екип на обект"
                     loading="lazy"
                     width={1024}
