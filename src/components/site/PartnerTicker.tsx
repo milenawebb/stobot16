@@ -18,11 +18,7 @@ function PartnerSet({ hidden = false }: { hidden?: boolean }) {
         <div
           key={partner}
           className="glass-panel flex shrink-0 items-center rounded-lg px-5 py-3 text-sm font-semibold tracking-tight whitespace-nowrap transition-shadow duration-300 hover:shadow-[0_0_0_1px_rgba(201,160,92,0.35)] sm:text-base"
-          style={{
-            borderColor: "rgba(255,255,255,0.2)",
-            backgroundColor: "rgba(255,255,255,0.06)",
-            color: "#FFFFFF",
-          }}
+          style={{ color: "#FFFFFF" }}
         >
           {partner}
         </div>

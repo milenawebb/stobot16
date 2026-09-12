@@ -309,3 +309,14 @@
     transform: none;
   }
 }
+
+/* elegant focus state for form controls */
+@layer base {
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: none;
+    border-color: rgba(201, 160, 92, 0.7);
+    box-shadow: 0 0 0 3px rgba(201, 160, 92, 0.18);
+  }
+}
