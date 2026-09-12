@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { RevealWords } from "./motion-kit";
+import { Reveal, RevealWords } from "./motion-kit";
 
 export function SectionHead({
   index,
@@ -28,13 +28,15 @@ export function SectionHead({
         <h2 className={headingClass}>{title}</h2>
       )}
       {lead ? (
-        <p
-          className={`mt-5 max-w-xl text-base leading-relaxed ${
-            tone === "paper" ? "text-paper-foreground/70" : "text-muted-foreground"
-          }`}
-        >
-          {lead}
-        </p>
+        <Reveal delay={0.1}>
+          <p
+            className={`mt-5 max-w-xl text-base leading-relaxed ${
+              tone === "paper" ? "text-paper-foreground/70" : "text-muted-foreground"
+            }`}
+          >
+            {lead}
+          </p>
+        </Reveal>
       ) : null}
     </div>
   );
