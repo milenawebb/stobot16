@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { SectionHead } from "./SectionHead";
+import { Reveal } from "./motion-kit";
 
 const stats = [
   { value: 500, suffix: "+", label: "разпределени работници" },
@@ -75,8 +76,10 @@ export function WhyUs() {
           ref={ref}
           className="mt-14 grid gap-px overflow-hidden rounded-[32px] border border-border bg-border sm:grid-cols-2 lg:grid-cols-4"
         >
-          {stats.map((s) => (
-            <Stat key={s.label} {...s} run={run} />
+          {stats.map((s, i) => (
+            <Reveal key={s.label} delay={i * 0.08} className="h-full">
+              <Stat {...s} run={run} />
+            </Reveal>
           ))}
         </div>
       </div>
