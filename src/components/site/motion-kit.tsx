@@ -137,3 +137,38 @@ export function ParallaxImage({
     </div>
   );
 }
+
+/**
+ * Cinematic entrance: fades, lifts and sharpens content when it scrolls in.
+ * Falls back to plain visible content when motion is reduced.
+ */
+export function Reveal({
+  children,
+  className = "",
+  delay = 0,
+  x = 0,
+  as = "div",
+}: {
+  children: ReactNode;
+  className?: string;
+  delay?: number;
+  x?: number;
+  as?: "div" | "li" | "section";
+}) {
+  const reduced = useReducedMotion();
+  const MotionTag = motion[as];
+
+  if (reduced) return <div className={className}>{children}</div>;
+
+  return (
+    <MotionTag
+      className={className}
+      initial={{ opacity: 0, y: 22, x, filter: "blur(6px)" }}
+      whileInView={{ opacity: 1, y: 0, x: 0, filter: "blur(0px)" }}
+      viewport={{ once: true, amount: 0.15, margin: "0px 0px -8% 0px" }}
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay }}
+    >
+      {children}
+    </MotionTag>
+  );
+}
