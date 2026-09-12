@@ -35,7 +35,7 @@ function useCountUp(target: number, run: boolean) {
 function Stat({ value, suffix, label, run }: (typeof stats)[number] & { run: boolean }) {
   const n = useCountUp(value, run);
   return (
-    <div className="bg-background p-6 lg:p-8">
+    <div className="h-full bg-background p-6 lg:p-8">
       <p className="font-display font-extrabold text-5xl leading-none tabular-nums lg:text-7xl">
         {n}{suffix}
       </p>
