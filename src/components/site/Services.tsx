@@ -1,5 +1,6 @@
 import { SectionHead } from "./SectionHead";
 import { SpotlightCard } from "./kinetic";
+import { Reveal } from "./motion-kit";
 
 const items = [
   {
