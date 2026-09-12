@@ -256,3 +256,67 @@
     scroll-behavior: auto;
   }
 }
+
+/* ---- cinematic layer: glass surfaces, glow, depth ---- */
+@utility glass-panel {
+  background:
+    linear-gradient(150deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.015));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+@supports not (backdrop-filter: blur(4px)) {
+  .glass-panel {
+    background: #1b1750;
+  }
+}
+
+@utility glow-soft {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 30px 80px -50px rgba(0, 0, 0, 0.9);
+  transition: box-shadow 0.35s ease, transform 0.35s ease;
+  &:hover {
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.12) inset,
+      0 0 0 1px rgba(201, 160, 92, 0.35),
+      0 30px 90px -45px rgba(201, 160, 92, 0.5);
+  }
+}
+
+@utility lift-hover {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+
+/* halo behind the hero headline */
+@utility hero-halo {
+  position: absolute;
+  pointer-events: none;
+  background: radial-gradient(closest-side, rgba(201, 160, 92, 0.22), transparent 75%);
+  filter: blur(10px);
+}
+
+@utility fluid-display {
+  font-size: clamp(2.15rem, 6vw, 5.25rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lift-hover:hover {
+    transform: none;
+  }
+}
+
+/* elegant focus state for form controls */
+@layer base {
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: none;
+    border-color: rgba(201, 160, 92, 0.7);
+    box-shadow: 0 0 0 3px rgba(201, 160, 92, 0.18);
+  }
+}

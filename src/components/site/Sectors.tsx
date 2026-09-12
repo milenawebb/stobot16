@@ -11,7 +11,7 @@ import {
 import { SectionHead } from "./SectionHead";
 import { SpotlightCard } from "./kinetic";
 import sectorsStrip from "@/assets/sectors-strip.jpg";
-import { ParallaxImage } from "./motion-kit";
+import { ParallaxImage, Reveal } from "./motion-kit";
 
 const sectors = [
   {
@@ -61,17 +61,15 @@ export function Sectors() {
 
         <div className="mt-14 grid gap-px overflow-hidden rounded-[32px] border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
           {sectors.map((s, i) => (
-            <SpotlightCard
-              as="article"
-              key={s.t}
-              className="group bg-background p-6"
-            >
-              <s.icon className="h-6 w-6 text-primary" />
-              <h3 className="mt-6 text-xl">{s.t}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                {s.d}
-              </p>
-            </SpotlightCard>
+            <Reveal key={s.t} delay={(i % 4) * 0.07} x={i % 2 === 0 ? -18 : 18} className="h-full">
+              <SpotlightCard as="article" className="group h-full bg-background p-6">
+                <s.icon className="h-6 w-6 text-primary transition-transform duration-300 group-hover:scale-110" />
+                <h3 className="mt-6 text-xl">{s.t}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {s.d}
+                </p>
+              </SpotlightCard>
+            </Reveal>
           ))}
         </div>
       </div>

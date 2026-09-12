@@ -1,4 +1,5 @@
 import { SectionHead } from "./SectionHead";
+import { Reveal } from "./motion-kit";
 
 const items = [
   // PLACEHOLDER — replace with real client quote before launch
@@ -37,9 +38,9 @@ export function Testimonials() {
           tone="paper"
         />
         <div className="mt-14 grid gap-px rounded-[32px] bg-paper-foreground/15 lg:grid-cols-3">
-          {items.map((i) => (
+          {items.map((i, idx) => (
+            <Reveal key={i.code} delay={idx * 0.08} className="h-full">
             <figure
-              key={i.code}
               className="flex h-full flex-col justify-between rounded-[28px] bg-paper p-6 transition-colors hover:bg-paper-foreground/5 lg:p-8"
             >
               <div>
@@ -50,6 +51,7 @@ export function Testimonials() {
                 <p className="mt-1 text-sm text-paper-foreground/65">{i.company}</p>
               </figcaption>
             </figure>
+            </Reveal>
           ))}
         </div>
       </div>

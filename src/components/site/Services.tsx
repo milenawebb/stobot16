@@ -1,5 +1,6 @@
 import { SectionHead } from "./SectionHead";
 import { SpotlightCard } from "./kinetic";
+import { Reveal } from "./motion-kit";
 
 const items = [
   {
@@ -31,16 +32,17 @@ export function Services() {
       />
 
       <div className="mt-14 border-t border-border">
-        {items.map((i) => (
-          <SpotlightCard
-            key={i.t}
-            className="group grid gap-3 rounded-[28px] border-b border-border px-4 py-8 md:grid-cols-[1fr_1.1fr] md:items-baseline md:gap-8"
-          >
-            <h3 className="text-2xl transition-transform duration-200 group-hover:translate-x-1 md:text-3xl">
-              {i.t}
-            </h3>
-            <p className="max-w-lg text-sm leading-relaxed text-muted-foreground">{i.d}</p>
-          </SpotlightCard>
+        {items.map((i, idx) => (
+          <Reveal key={i.t} delay={idx * 0.06}>
+            <SpotlightCard
+              className="group grid gap-3 rounded-[28px] border-b border-border px-4 py-8 md:grid-cols-[1fr_1.1fr] md:items-baseline md:gap-8"
+            >
+              <h3 className="text-2xl transition-transform duration-200 group-hover:translate-x-1 md:text-3xl">
+                {i.t}
+              </h3>
+              <p className="max-w-lg text-sm leading-relaxed text-muted-foreground">{i.d}</p>
+            </SpotlightCard>
+          </Reveal>
         ))}
       </div>
     </section>
