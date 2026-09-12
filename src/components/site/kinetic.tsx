@@ -138,7 +138,7 @@ export function SpotlightCard({
         setPos({ x: e.clientX - r.left, y: e.clientY - r.top });
       }}
       onMouseLeave={() => setPos(null)}
-      className={`relative isolate overflow-hidden ${className}`}
+      className={`glow-soft lift-hover relative isolate overflow-hidden ${className}`}
     >
       <span
         aria-hidden="true"

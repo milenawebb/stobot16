@@ -4,6 +4,7 @@ import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/contact";
 import { cn } from "@/lib/utils";
 import { Wordmark } from "./Wordmark";
 import { MagneticButton } from "./kinetic";
+import { ScrollProgress } from "./ScrollProgress";
 
 const links = [
   { href: "/#uslugi", label: "Услуги" },
