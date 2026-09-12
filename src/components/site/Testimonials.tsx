@@ -1,4 +1,5 @@
 import { SectionHead } from "./SectionHead";
+import { Reveal } from "./motion-kit";
 
 const items = [
   // PLACEHOLDER — replace with real client quote before launch
@@ -50,6 +51,7 @@ export function Testimonials() {
                 <p className="mt-1 text-sm text-paper-foreground/65">{i.company}</p>
               </figcaption>
             </figure>
+            </Reveal>
           ))}
         </div>
       </div>
