@@ -30,9 +30,12 @@ export function Nav() {
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-colors duration-200",
-        scrolled ? "border-b border-border bg-background/95 backdrop-blur" : "bg-transparent",
+        scrolled
+          ? "border-b border-border bg-background/80 shadow-[0_20px_60px_-40px_rgba(0,0,0,0.9)] backdrop-blur-xl"
+          : "bg-transparent",
       )}
     >
+      <ScrollProgress>
       <nav className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-4 lg:px-8">
         <a href="/" className="flex min-w-0 items-center">
           <Wordmark lang="bg" tone="light" size="text-xl" />
