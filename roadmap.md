@@ -9,4 +9,4 @@
 - [x] Convert all pay and pricing references from Bulgarian lev to euro.
 - [x] Осем корекции по hero, преместване, обяви, QuickMatch, отзиви и чат бутона.
 
-- [ ] Отделяне на фирмената QuickMatch логика от обявите и визуална проверка на двата таба.
+- [x] Отделяне на фирмената QuickMatch логика от обявите и визуална проверка на двата таба.
