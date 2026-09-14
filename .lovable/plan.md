@@ -1,11 +1,11 @@
-# Distinct process photography
+# Partner ticker logos
 
 ## Implementation
-- Generate three warm, documentary-style industrial photographs for training, workplace paperwork, and on-site supervision.
-- Keep the two existing process photographs unchanged.
-- Assign one explicit image to each of the five process steps in the requested order.
-- Remove the current alternating-image logic without changing copy, layout, or animation.
+- Download the seven approved logos from the specified Wikimedia pages or official company websites and store them as local project assets.
+- Replace those seven partner names with accessible logo images inside consistent light-backed glass badges.
+- Keep Sirius 2005, Zora, and Bold Foods as text-only glass badges.
+- Preserve the existing marquee speed, seamless loop, hover pause, spacing, and responsive layout.
 
 ## Verification
-- Check all five steps on desktop to confirm every step shows a distinct photograph.
-- Confirm the stacked mobile version and existing section behavior remain unchanged.
+- Confirm every logo file loads successfully and each of the seven logos renders in both ticker copies.
+- Check the ticker on desktop and 375px mobile without changing its motion or introducing overflow.
