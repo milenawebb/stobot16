@@ -208,7 +208,7 @@ function AdminPage() {
               required
               value={form.pay}
               onChange={(e) => setForm({ ...form, pay: e.target.value })}
-              placeholder="Заплащане (напр. 15 лв/час)"
+              placeholder="Заплащане (напр. 60 €/ден)"
               className={inputClass}
             />
           </div>
