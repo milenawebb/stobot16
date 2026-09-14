@@ -12,41 +12,36 @@ import { SectionHead } from "./SectionHead";
 import { SpotlightCard } from "./kinetic";
 import sectorsStrip from "@/assets/sectors-strip.jpg";
 import { ParallaxImage, Reveal } from "./motion-kit";
+import { STAFFING_SECTORS } from "@/lib/sectors";
 
-const sectors = [
-  {
+const sectorDetails = {
+  Строителство: {
     icon: HardHat,
-    t: "Строителство",
     d: "Общи работници, кофражисти, помощен персонал за обекти в цялата страна.",
   },
-  {
+  Производство: {
     icon: Factory,
-    t: "Производство",
     d: "Оператори на машини и поточни линии, с бърз старт на смяна.",
   },
-  {
+  "Складове и логистика": {
     icon: Warehouse,
-    t: "Складове и логистика",
     d: "Комисиониране и товаро-разтоварна дейност, включително нощни смени.",
   },
-  { icon: Boxes, t: "Опаковане", d: "Пакетиране, етикетиране и сортиране за пикови периоди." },
-  {
+  Опаковане: { icon: Boxes, d: "Пакетиране, етикетиране и сортиране за пикови периоди." },
+  HoReCa: {
     icon: UtensilsCrossed,
-    t: "HoReCa",
     d: "Кухненски помощници, миячи и сервитьори при спешна нужда.",
   },
-  { icon: Truck, t: "Транспорт", d: "Шофьори, куриери и помощници на курс, готови за старт." },
-  {
+  Транспорт: { icon: Truck, d: "Шофьори, куриери и помощници на курс, готови за старт." },
+  Почистване: {
     icon: Sparkles,
-    t: "Почистване",
     d: "Индустриално и следремонтно почистване, по график или еднократно.",
   },
-  {
+  Поддръжка: {
     icon: Wrench,
-    t: "Поддръжка",
     d: "Техници и помощен технически персонал за текуща поддръжка.",
   },
-];
+} as const;
 
 export function Sectors() {
   return (
@@ -60,17 +55,21 @@ export function Sectors() {
         />
 
         <div className="mt-14 grid gap-px overflow-hidden rounded-[32px] border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
-          {sectors.map((s, i) => (
-            <Reveal key={s.t} delay={(i % 4) * 0.07} x={i % 2 === 0 ? -18 : 18} className="h-full">
+          {STAFFING_SECTORS.map((sector, i) => {
+            const details = sectorDetails[sector];
+            const Icon = details.icon;
+            return (
+            <Reveal key={sector} delay={(i % 4) * 0.07} x={i % 2 === 0 ? -18 : 18} className="h-full">
               <SpotlightCard as="article" className="group h-full bg-background p-6">
-                <s.icon className="h-6 w-6 text-primary transition-transform duration-300 group-hover:scale-110" />
-                <h3 className="mt-6 text-xl">{s.t}</h3>
+                <Icon className="h-6 w-6 text-primary transition-transform duration-300 group-hover:scale-110" />
+                <h3 className="mt-6 text-xl">{sector}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {s.d}
+                  {details.d}
                 </p>
               </SpotlightCard>
             </Reveal>
-          ))}
+            );
+          })}
         </div>
       </div>
 
