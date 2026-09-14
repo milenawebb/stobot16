@@ -1,18 +1,10 @@
-# Update four partner logos
+# Currency correction to euro
 
-## Scope
-- Replace the current Sameday asset with the full current logo including icon, wordmark, and tagline.
-- Replace the text-only Sirius 2005 and Zora badges with their official company logos.
-- Rename `Bold Foods` to `Bolt Food` everywhere and add the official Bolt Food logo.
-- Keep all existing partner ticker behavior, ordering, duplication, hover pause, and responsive layout unchanged.
-
-## Implementation
-- Download verified logo files from official company websites or official brand/media resources.
-- Store each logo through the existing local Lovable asset flow and import its asset pointer in the ticker.
-- Give all four logos the same single-surface rounded badge treatment as the existing partner logos, with per-logo sizing only where needed for legibility.
-- Update the assistant’s company facts so it also uses the corrected `Bolt Food` name.
+## Changes
+- Search all source, migration, and seed content for Bulgarian lev references.
+- Convert visible pay examples and stored sample listings to Bulgarian euro formatting.
+- Keep listing pay as flexible free text and make QuickMatch wording independent of hourly or daily rates.
 
 ## Verification
-- Confirm no `Bold Foods` references remain.
-- Check all eleven partner logos/badges on desktop and at 375px mobile width.
-- Confirm the four changed images load with natural dimensions, preserve aspect ratio, have no inner square corners, and cause no horizontal page overflow or browser errors.
+- Confirm no relevant `лв` or `лева` references remain.
+- Check the admin pay example and public listing displays.
