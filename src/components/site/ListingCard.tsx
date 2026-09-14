@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { Clock, MapPin, Phone, Wallet } from "lucide-react";
-import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/contact";
+import { Clock, FileUp, MapPin, Phone, Wallet } from "lucide-react";
+import { PHONE_TEL } from "@/lib/contact";
 import type { JobListing } from "@/lib/listings.functions";
 import { ListingBadges } from "./ListingBadges";
 import { MagneticButton, SpotlightCard } from "./kinetic";
@@ -39,29 +39,27 @@ export function ListingCard({ listing }: { listing: JobListing }) {
         </div>
       </dl>
 
-      <MagneticButton
-        href={`tel:${listing.contact_phone ?? PHONE_TEL}`}
-        className="mt-6 flex items-center justify-center gap-2 rounded-[6px] bg-primary px-5 py-4 font-display text-base font-bold  text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
-      >
-        <Phone className="h-4 w-4" /> Обади се сега
-      </MagneticButton>
-      <span className="mt-2 text-center text-xs text-muted-foreground">
-        {listing.contact_phone ?? PHONE_DISPLAY}. Може да оставите и кандидатура.
-      </span>
-
-      <div className="mt-4 flex flex-wrap gap-2">
+      <div className="mt-6 grid grid-cols-2 gap-2">
+        <MagneticButton
+          href={`tel:${listing.contact_phone ?? PHONE_TEL}`}
+          className="flex min-w-0 items-center justify-center gap-2 rounded-[6px] bg-primary px-3 py-4 text-center font-display text-sm font-bold text-primary-foreground transition-colors hover:bg-foreground hover:text-background sm:text-base"
+        >
+          <Phone className="h-4 w-4 shrink-0" /> Обади се сега
+        </MagneticButton>
         <Link
           to="/"
-          search={{ sector: listing.sector }}
+          search={{ sector: listing.sector, listing: listing.title }}
           hash="kandidati"
-          className="flex-1 rounded-[6px] border border-border bg-background px-5 py-3 text-center font-display text-sm font-bold  text-foreground transition-colors hover:bg-move hover:text-move-foreground"
+          className="flex min-w-0 items-center justify-center gap-2 rounded-[6px] border border-border bg-background px-3 py-4 text-center font-display text-sm font-bold text-foreground transition-colors hover:bg-move hover:text-move-foreground sm:text-base"
         >
-          Кандидатствай
+          <FileUp className="h-4 w-4 shrink-0" /> Изпрати CV
         </Link>
+      </div>
+      <div className="mt-2">
         <Link
           to="/obiavi/$slug"
           params={{ slug: listing.slug }}
-          className="flex-1 rounded-[6px] border border-border bg-background px-5 py-3 text-center font-display text-sm font-bold  text-foreground transition-colors hover:bg-move hover:text-move-foreground"
+          className="block rounded-[6px] border border-border bg-background px-5 py-3 text-center font-display text-sm font-bold text-foreground transition-colors hover:bg-move hover:text-move-foreground"
         >
           Детайли
         </Link>

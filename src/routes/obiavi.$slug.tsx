@@ -96,7 +96,7 @@ function ListingDetail() {
         <h1 className="mt-4 text-[2rem] leading-tight sm:text-5xl">{listing.title}</h1>
         <p className="mt-4 text-lg text-muted-foreground">{listing.position}</p>
 
-        <dl className="mt-10 grid gap-px rounded-[32px] border border-border bg-border sm:grid-cols-3">
+        <dl className="mt-10 grid overflow-hidden rounded-[28px] border border-border bg-border sm:grid-cols-3 sm:gap-px">
           {[
             [Clock, "График", listing.schedule],
             [MapPin, "Локация", listing.location],
@@ -104,7 +104,7 @@ function ListingDetail() {
           ].map(([Icon, label, value]) => {
             const I = Icon as typeof Clock;
             return (
-              <div key={label as string} className="rounded-[26px] bg-background p-5">
+              <div key={label as string} className="min-w-0 bg-background p-5 sm:min-h-40 sm:p-6">
                 <I className="h-5 w-5 text-primary" />
                 <dt className="manifest-label mt-4 block">{label as string}</dt>
                 <dd className="mt-1 text-base text-foreground">{value as string}</dd>

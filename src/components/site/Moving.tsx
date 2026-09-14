@@ -40,11 +40,10 @@ export function Moving() {
             {items.map((i) => (
               <div
                 key={i.t}
-                className="group p-5 transition-colors hover:bg-move-foreground hover:text-move"
-                style={{ background: "#17171B" }}
+                className="group bg-move p-5 text-move-foreground transition-colors hover:bg-move-foreground hover:text-move"
               >
                 <p className="font-display text-lg font-bold">{i.t}</p>
-                <p className="mt-1 text-sm text-move-foreground/75 group-hover:text-move/80">
+                <p className="mt-1 text-sm text-move-foreground/75 transition-colors group-hover:text-move/80">
                   {i.d}
                 </p>
               </div>

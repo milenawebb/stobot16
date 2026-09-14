@@ -25,7 +25,7 @@ type PathKey = keyof typeof paths;
 const heroStats = [
   ["500+", "разпределени работници"],
   ["95", "обекта"],
-  ["24ч", "заместване"],
+  ["12", "сектора"],
 ] as const;
 
 const EASE = [0.22, 1, 0.36, 1] as const;

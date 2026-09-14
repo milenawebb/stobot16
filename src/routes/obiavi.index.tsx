@@ -14,6 +14,8 @@ const description =
   "Актуални обяви за работа в складове, транспорт, производство, строителство и хамалски услуги. Трудов договор, осигуровки и коректно заплащане.";
 
 export const Route = createFileRoute("/obiavi/")({
+  validateSearch: (search: Record<string, unknown>): { sector?: string } =>
+    typeof search["sector"] === "string" ? { sector: search["sector"] as string } : {},
   head: () => ({
     meta: [
       { title },
@@ -38,7 +40,10 @@ export const Route = createFileRoute("/obiavi/")({
 
 function ListingsPage() {
   const listings = Route.useLoaderData();
-  const [sector, setSector] = useState<string>("Всички");
+  const search = Route.useSearch();
+  const availableSectors = new Set(listings.map((listing) => listing.sector));
+  const initialSector = search.sector && availableSectors.has(search.sector) ? search.sector : "Всички";
+  const [sector, setSector] = useState<string>(initialSector);
 
   const sectors = ["Всички", ...Array.from(new Set(listings.map((l) => l.sector)))];
   const visible = sector === "Всички" ? listings : listings.filter((l) => l.sector === sector);
@@ -61,7 +66,7 @@ function ListingsPage() {
         </p>
         <MagneticButton
           href={`tel:${PHONE_TEL}`}
-          className="mt-6 inline-flex items-center gap-3 rounded-[6px] bg-primary px-7 py-4 font-display text-base font-bold  text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
+          className="mt-6 inline-flex max-w-full items-center gap-2 whitespace-nowrap rounded-[6px] bg-primary px-4 py-4 font-display text-[clamp(0.72rem,3.4vw,1rem)] font-bold text-primary-foreground transition-colors hover:bg-foreground hover:text-background sm:gap-3 sm:px-7"
         >
           <Phone className="h-5 w-5" /> Обадете се направо: {PHONE_DISPLAY}
         </MagneticButton>
