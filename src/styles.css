@@ -191,6 +191,21 @@
   }
 }
 
+@keyframes assistant-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@utility assistant-bob {
+  animation: assistant-bob 2.4s ease-in-out infinite;
+  will-change: transform;
+}
+
 @utility route-line-x {
   transform-origin: left center;
   animation: route-draw 1.5s cubic-bezier(0.65, 0, 0.35, 1) both;
@@ -253,6 +268,10 @@
     animation: none;
     transform: none;
     opacity: 1;
+  }
+  .assistant-bob {
+    animation: none;
+    transform: none;
   }
   html {
     scroll-behavior: auto;

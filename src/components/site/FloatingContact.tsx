@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
 import { Bot } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -7,7 +6,6 @@ import { ChatWidget } from "./ChatWidget";
 
 export function FloatingContact() {
   const [chatOpen, setChatOpen] = useState(false);
-  const reduced = useReducedMotion();
 
   return (
     <>
@@ -23,13 +21,9 @@ export function FloatingContact() {
             aria-label="Отвори AI чат асистента"
             className="pointer-events-auto h-14 w-14 rounded-full border border-primary/30 bg-primary text-primary-foreground shadow-xl"
           >
-            <motion.span
-              animate={reduced ? { y: 0 } : { y: [0, -3, 0] }}
-              transition={reduced ? { duration: 0 } : { duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
-              className="grid place-items-center"
-            >
+            <span className="assistant-bob grid place-items-center">
               <Bot className="h-7 w-7" />
-            </motion.span>
+            </span>
           </Button>
         </div>
       </div>
