@@ -1,5 +1,10 @@
 import { useState } from "react";
+import { Link } from "@tanstack/react-router";
+import { useQuery } from "@tanstack/react-query";
+import { Phone } from "lucide-react";
 import { SectionHead } from "./SectionHead";
+import { listActiveListings } from "@/lib/listings.functions";
+import { PHONE_TEL } from "@/lib/contact";
 
 const industries = [
   "Складове и логистика",
@@ -22,6 +27,12 @@ const hiring: Record<string, string[]> = {
   "Хамалски дейности": ["Премествания", "Транспорт"],
   Шофьор: ["Транспорт", "Логистика"],
 };
+
+function matchesSector(listingSector: string, selectedSector: string) {
+  const listing = listingSector.toLocaleLowerCase("bg");
+  const selected = selectedSector.toLocaleLowerCase("bg");
+  return listing.includes(selected) || selected.includes(listing);
+}
 
 function Field({
   label,
@@ -58,8 +69,17 @@ export function QuickMatch() {
   const [volume, setVolume] = useState(volumes[0]!);
   const [skill, setSkill] = useState(skills[0]!);
   const [city, setCity] = useState(cities[0]!);
-
-  const openSectors = hiring[skill] ?? [];
+  const { data: listings = [], isPending } = useQuery({
+    queryKey: ["quick-match-listings"],
+    queryFn: () => listActiveListings(),
+  });
+  const candidateSectors = hiring[skill] ?? [];
+  const matches = listings.filter((listing) => {
+    if (tab === "company") return matchesSector(listing.sector, industry);
+    const cityMatches = listing.location.toLocaleLowerCase("bg").includes(city.toLocaleLowerCase("bg"));
+    return cityMatches && candidateSectors.some((sector) => matchesSector(listing.sector, sector));
+  });
+  const resultSector = tab === "company" ? industry : skill;
 
   return (
     <section id="match" className="relative overflow-hidden border-b border-border py-20 lg:py-28">
@@ -112,53 +132,43 @@ export function QuickMatch() {
 
           <div className="rounded-[30px] bg-secondary p-6 lg:p-8">
             <span className="manifest-label">Резултат</span>
-            {tab === "company" ? (
-              <div className="mt-6">
-                <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
-                  Ориентировъчно време за първо предложение на екип за{" "}
-                  <span className="text-foreground">{industry.toLowerCase()}</span>, {volume}.
-                </p>
-                <dl className="mt-8 grid gap-3 sm:grid-cols-2">
-                  {[
-                    ["Договор", "Трудов, с осигуровки"],
-                    ["Застраховка", "Включена"],
-                    ["Заместване", "До 24 часа"],
-                    ["Фактуриране", "Месечно"],
-                  ].map(([k, v]) => (
-                    <div
-                      key={k}
-                      className="rounded-[22px] border border-border bg-transparent p-4"
-                    >
-                      <dt className="manifest-label">{k}</dt>
-                      <dd className="mt-2 text-sm text-foreground">{v}</dd>
-                    </div>
-                  ))}
-                </dl>
-              </div>
-            ) : (
-              <div className="mt-6">
-                <p className="font-display text-3xl font-bold leading-tight lg:text-4xl">
-                  Свободни позиции в {city}
-                </p>
-                <ul className="mt-6 divide-y divide-border border-y border-border">
-                  {openSectors.map((s) => (
-                    <li key={s} className="flex items-center justify-between py-4">
-                      <span className="text-base">{s}</span>
-                      <span className="manifest-label text-primary">набира</span>
-                    </li>
-                  ))}
-                </ul>
-                <p className="mt-6 max-w-md text-sm leading-relaxed text-muted-foreground">
-                  Данните са примерни. Изпратете кратко заявление и ще се свържем с вас.
-                </p>
-                <a
-                  href="#kandidati"
-                  className="mt-6 inline-block rounded-[6px] border border-primary bg-primary px-6 py-3 font-mono text-xs uppercase tracking-[0.18em] text-primary-foreground transition-colors hover:bg-transparent hover:text-primary"
-                >
-                  Кандидатствай
-                </a>
-              </div>
-            )}
+            <div className="mt-6">
+              {isPending ? (
+                <p className="text-sm text-muted-foreground">Проверяваме активните обяви...</p>
+              ) : matches.length > 0 ? (
+                <>
+                  <p className="font-display text-3xl font-bold leading-tight lg:text-4xl">
+                    В момента имаме {matches.length} {matches.length === 1 ? "отворена позиция" : "отворени позиции"}
+                    {tab === "candidate" ? ` в ${city}` : ` в ${resultSector.toLowerCase()}`}.
+                  </p>
+                  <p className="mt-5 max-w-md text-sm leading-relaxed text-muted-foreground">
+                    Това са реалните активни обяви към момента.
+                  </p>
+                  <Link
+                    to="/obiavi"
+                    search={{ sector: matches[0]?.sector ?? "" }}
+                    className="mt-6 inline-block rounded-[6px] border border-primary bg-primary px-6 py-3 text-sm font-bold text-primary-foreground transition-colors hover:bg-transparent hover:text-primary"
+                  >
+                    Виж обявите
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <p className="font-display text-3xl font-bold leading-tight lg:text-4xl">
+                    В момента няма отворени позиции в този сектор.
+                  </p>
+                  <p className="mt-5 max-w-md text-sm leading-relaxed text-muted-foreground">
+                    Обадете се. Възможно е да имаме подходяща позиция, която още не е публикувана.
+                  </p>
+                  <a
+                    href={`tel:${PHONE_TEL}`}
+                    className="mt-6 inline-flex items-center gap-2 rounded-[6px] border border-primary bg-primary px-6 py-3 text-sm font-bold text-primary-foreground transition-colors hover:bg-transparent hover:text-primary"
+                  >
+                    <Phone className="h-4 w-4" /> Обади се сега
+                  </a>
+                </>
+              )}
+            </div>
           </div>
         </div>
       </div>

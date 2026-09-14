@@ -28,7 +28,7 @@ function useFakeSubmit(message: string) {
 }
 
 export function Forms() {
-  const search = useSearch({ strict: false }) as { sector?: string };
+  const search = useSearch({ strict: false }) as { sector?: string; listing?: string };
   const company = useFakeSubmit("Заявката е изпратена. Ще се свържем с вас до 24 часа.");
   const candidate = useFakeSubmit("Кандидатурата е изпратена. Очаквайте обаждане.");
   const [resumeName, setResumeName] = useState<string | null>(null);
@@ -112,7 +112,8 @@ export function Forms() {
             <textarea
               name="experience"
               rows={3}
-              placeholder="Опит (по желание)"
+              placeholder={search.listing ? `Кандидатура за: ${search.listing}` : "Опит (по желание)"}
+              defaultValue={search.listing ? `Кандидатствам за: ${search.listing}` : undefined}
               className={textareaClass}
             />
 

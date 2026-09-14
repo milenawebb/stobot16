@@ -39,15 +39,15 @@ export function Testimonials() {
         />
         <div className="mt-14 grid gap-px rounded-[32px] bg-paper-foreground/15 lg:grid-cols-3">
           {items.map((i, idx) => (
-            <Reveal key={i.code} delay={idx * 0.08} className="h-full">
+            <Reveal key={i.code} delay={idx * 0.12} x={idx === 0 ? -12 : idx === 2 ? 12 : 0} className="h-full">
             <figure
-              className="flex h-full flex-col justify-between rounded-[28px] bg-paper p-6 transition-colors hover:bg-paper-foreground/5 lg:p-8"
+              className="flex h-full flex-col justify-between rounded-[28px] bg-paper p-6 transition-transform duration-300 hover:-translate-y-1 hover:bg-paper-foreground/5 lg:p-8"
             >
               <div>
                 <blockquote className="text-lg leading-snug">{i.quote}</blockquote>
               </div>
               <figcaption className="mt-8 border-t border-paper-foreground/20 pt-4">
-                <p className="font-display text-base font-bold">{i.name}</p>
+                 <p className="font-display text-lg font-extrabold leading-tight">{i.name}</p>
                 <p className="mt-1 text-sm text-paper-foreground/65">{i.company}</p>
               </figcaption>
             </figure>
