@@ -40,6 +40,7 @@
   --color-line: var(--line);
   --color-gold: var(--gold);
   --color-whatsapp: var(--whatsapp);
+  --color-bolt: var(--bolt);
   --font-display: "Manrope", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Montserrat", ui-sans-serif, system-ui, sans-serif;
@@ -72,6 +73,7 @@
   --line: #a5a3bd;
   --gold: #c9a05c;
   --whatsapp: #25d366;
+  --bolt: #34d186;
 
   --secondary: #1b1750;
   --secondary-foreground: #ffffff;
