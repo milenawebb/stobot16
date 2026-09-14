@@ -16,9 +16,9 @@ import { Footer } from "@/components/site/Footer";
 import { FloatingContact } from "@/components/site/FloatingContact";
 import { SectionDots } from "@/components/site/SectionDots";
 
-const title = "stobot 16, аутсорсинг на персонал и хамалски услуги";
+const title = "Стобот 16 | Аутсорсинг на персонал и работна сила";
 const description =
-  "Обучен, осигурен и застрахован персонал на трудов договор за вашия обект. Плюс хамалски услуги и премествания за фирми и частни клиенти.";
+  "Надежден персонал за вашия бизнес и обект. Стобот 16 осигурява обучени, осигурени и застраховани служители, както и хамалски услуги и премествания.";
 
 export const Route = createFileRoute("/")({
   validateSearch: (search: Record<string, unknown>): { sector?: string; listing?: string } => ({
