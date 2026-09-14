@@ -3,7 +3,7 @@ import boltFoodAsset from "@/assets/partners/bolt-food-white.svg.asset.json";
 import emagAsset from "@/assets/partners/emag.svg.asset.json";
 import orbitAsset from "@/assets/partners/orbit-full.jpg.asset.json";
 import quehenbergerAsset from "@/assets/partners/quehenberger.svg.asset.json";
-import samedayAsset from "@/assets/partners/sameday-full.png.asset.json";
+import samedayAsset from "@/assets/partners/sameday-horizontal.png.asset.json";
 import siriusAsset from "@/assets/partners/sirius-2005.png.asset.json";
 import silaBgAsset from "@/assets/partners/sila-bg-clear.png.asset.json";
 import unimastersAsset from "@/assets/partners/unimasters.svg.asset.json";
@@ -27,7 +27,7 @@ const partners: Partner[] = [
     logo: orbitAsset.url,
     imageClassName: "w-44 sm:w-48",
   },
-  { name: "Sameday", logo: samedayAsset.url, imageClassName: "h-14 w-16 sm:h-16 sm:w-[4.5rem]" },
+  { name: "Sameday", logo: samedayAsset.url, imageClassName: "w-48 sm:w-56" },
   { name: "Emag", logo: emagAsset.url, imageClassName: "w-32 sm:w-36" },
   {
     name: "Unimaster Logistic",
