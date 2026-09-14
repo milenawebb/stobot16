@@ -60,7 +60,7 @@ function PartnerSet({ hidden = false }: { hidden?: boolean }) {
       {partners.map((partner) => (
         <div
           key={partner.name}
-          className={`${partner.logo ? `border border-border/50 bg-paper ${partner.badgeClassName ?? ""}` : "glass-panel"} flex h-16 min-w-28 max-w-full shrink-0 items-center justify-center overflow-hidden rounded-lg px-2 py-1.5 text-sm font-semibold tracking-tight whitespace-nowrap transition-shadow duration-300 hover:shadow-[0_0_0_1px_rgba(201,160,92,0.35)] sm:h-[4.5rem] sm:px-2.5 sm:py-2 sm:text-base`}
+          className={`${partner.logo ? `border border-border/50 ${partner.badgeClassName ?? "bg-paper"}` : "glass-panel"} flex h-16 min-w-28 max-w-full shrink-0 items-center justify-center overflow-hidden rounded-lg px-2 py-1.5 text-sm font-semibold tracking-tight whitespace-nowrap transition-shadow duration-300 hover:shadow-[0_0_0_1px_rgba(201,160,92,0.35)] sm:h-[4.5rem] sm:px-2.5 sm:py-2 sm:text-base`}
           style={{ color: "#FFFFFF" }}
         >
           {partner.logo ? (
