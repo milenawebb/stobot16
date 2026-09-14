@@ -5,15 +5,9 @@ import { Phone } from "lucide-react";
 import { SectionHead } from "./SectionHead";
 import { listActiveListings } from "@/lib/listings.functions";
 import { PHONE_TEL } from "@/lib/contact";
+import { STAFFING_SECTORS } from "@/lib/sectors";
 
-const industries = [
-  "Складове и логистика",
-  "Производство",
-  "Строителство",
-  "Опаковане",
-  "HoReCa",
-  "Почистване",
-];
+const industries = [...STAFFING_SECTORS];
 
 const volumes = ["1 до 5 души", "6 до 15 души", "16 до 40 души", "40+ души"];
 
@@ -72,14 +66,14 @@ export function QuickMatch() {
   const { data: listings = [], isPending } = useQuery({
     queryKey: ["quick-match-listings"],
     queryFn: () => listActiveListings(),
+    enabled: tab === "candidate",
   });
   const candidateSectors = hiring[skill] ?? [];
   const matches = listings.filter((listing) => {
-    if (tab === "company") return matchesSector(listing.sector, industry);
     const cityMatches = listing.location.toLocaleLowerCase("bg").includes(city.toLocaleLowerCase("bg"));
     return cityMatches && candidateSectors.some((sector) => matchesSector(listing.sector, sector));
   });
-  const resultSector = tab === "company" ? industry : skill;
+  const servesIndustry = STAFFING_SECTORS.some((sector) => sector === industry);
 
   return (
     <section id="match" className="relative overflow-hidden border-b border-border py-20 lg:py-28">
@@ -133,13 +127,42 @@ export function QuickMatch() {
           <div className="rounded-[30px] bg-secondary p-6 lg:p-8">
             <span className="manifest-label">Резултат</span>
             <div className="mt-6">
-              {isPending ? (
+              {tab === "company" ? (
+                servesIndustry ? (
+                  <>
+                    <p className="font-display text-3xl font-bold leading-tight lg:text-4xl">
+                      Работим активно в сектор „{industry}“.
+                    </p>
+                    <p className="mt-5 max-w-md text-sm leading-relaxed text-muted-foreground">
+                      Опишете нуждите и броя хора за обекта. Отговаряме на запитването ви до 24 часа.
+                    </p>
+                    <a
+                      href="#zayavka"
+                      className="mt-6 inline-block rounded-[6px] border border-primary bg-primary px-6 py-3 text-sm font-bold text-primary-foreground transition-colors hover:bg-transparent hover:text-primary"
+                    >
+                      Изпратете заявка
+                    </a>
+                  </>
+                ) : (
+                  <>
+                    <p className="font-display text-3xl font-bold leading-tight lg:text-4xl">
+                      Свържете се с нас. Може да имаме решение и извън обичайните сектори.
+                    </p>
+                    <a
+                      href={`tel:${PHONE_TEL}`}
+                      className="mt-6 inline-flex items-center gap-2 rounded-[6px] border border-primary bg-primary px-6 py-3 text-sm font-bold text-primary-foreground transition-colors hover:bg-transparent hover:text-primary"
+                    >
+                      <Phone className="h-4 w-4" /> Обадете се
+                    </a>
+                  </>
+                )
+              ) : isPending ? (
                 <p className="text-sm text-muted-foreground">Проверяваме активните обяви...</p>
               ) : matches.length > 0 ? (
                 <>
                   <p className="font-display text-3xl font-bold leading-tight lg:text-4xl">
                     В момента имаме {matches.length} {matches.length === 1 ? "отворена позиция" : "отворени позиции"}
-                    {tab === "candidate" ? ` в ${city}` : ` в ${resultSector.toLowerCase()}`}.
+                    {` в ${city}`}.
                   </p>
                   <p className="mt-5 max-w-md text-sm leading-relaxed text-muted-foreground">
                     Това са реалните активни обяви към момента.
