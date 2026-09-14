@@ -1,21 +1,17 @@
-# Site-wide usability fixes
+# QuickMatch логика за фирми
 
-## Changes
-- Update the Hero’s third credibility stat to `12 / сектора` on mobile and desktop.
-- Fix the moving-services hover state so descriptions retain readable contrast throughout hover.
-- Rework each job card’s actions into a call button plus `Изпрати CV`, remove the phone helper line, and send the CV action to the existing candidate form with the listing sector and title prefilled.
-- Tighten the listing detail facts into a three-column edge-to-edge grid on desktop and a clean stacked layout on mobile.
-- Keep the `/obiavi` phone CTA on one line using responsive sizing and nowrap behavior.
-- Replace QuickMatch’s static claims with live active-listing counts filtered by the selected sector or candidate criteria, including honest zero-result copy and links to matching listings or direct calling.
-- Strengthen testimonial attribution and add a restrained staggered entrance/float treatment using the existing motion system.
-- Replace the expandable contact menu with one gently bobbing assistant button that opens chat directly.
+## Промени
+- Използване на единния списък с осемте реално обслужвани сектора и в полето „Бранш“.
+- Фирменият резултат няма да зависи от обявите за работа или от тяхното зареждане.
+- При обслужван сектор ще се показва потвърждение, отговор до 24 часа и бутон „Изпратете заявка“ към фирмената форма.
+- При непознат сектор ще се показва честен резервен текст и бутон за обаждане.
+- Кандидатският резултат и броенето на реалните активни обяви остават непроменени.
 
-## Technical details
-- Reuse the existing public active-listings server function and current database policies; no schema change is required.
-- Extend homepage search parameters only as needed to carry a listing title into the candidate form.
-- Preserve existing phone links, listing routes, chat logic, and all current responsive behavior.
+## Технически детайли
+- Общият списък със сектори ще бъде споделен между секцията със сектори, QuickMatch и формите, за да няма разминавания.
+- Зареждането и филтрирането на обяви ще влияят само върху таба „За кандидати“.
 
-## Verification
-- Test the moving-service text while hovered.
-- Test job-card CV prefill, QuickMatch counts and zero state, chat opening, and the `/obiavi` CTA.
-- Capture desktop and 375px views of the listing detail facts and check for overflow or browser errors.
+## Проверка
+- Проверка на фирмения резултат за обслужван сектор на настолен и мобилен екран.
+- Проверка, че бутонът води до фирмената заявка.
+- Проверка, че кандидатският таб продължава да показва реалните обяви.
