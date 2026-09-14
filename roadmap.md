@@ -7,4 +7,4 @@
 - [x] Обновяване на 4 партньорски лога и корекция Bolt Food
 
 - [x] Convert all pay and pricing references from Bulgarian lev to euro.
-- [ ] Осем корекции по hero, преместване, обяви, QuickMatch, отзиви и чат бутона.
+- [x] Осем корекции по hero, преместване, обяви, QuickMatch, отзиви и чат бутона.
