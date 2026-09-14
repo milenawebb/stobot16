@@ -1,15 +1,19 @@
 import cargoPartnerAsset from "@/assets/partners/cargo-partner-light.svg.asset.json";
+import boltFoodAsset from "@/assets/partners/bolt-food-white.svg.asset.json";
 import emagAsset from "@/assets/partners/emag.svg.asset.json";
 import orbitAsset from "@/assets/partners/orbit-full.jpg.asset.json";
 import quehenbergerAsset from "@/assets/partners/quehenberger.svg.asset.json";
-import samedayAsset from "@/assets/partners/sameday-clean.jpg.asset.json";
+import samedayAsset from "@/assets/partners/sameday-full.png.asset.json";
+import siriusAsset from "@/assets/partners/sirius-2005.png.asset.json";
 import silaBgAsset from "@/assets/partners/sila-bg-clear.png.asset.json";
 import unimastersAsset from "@/assets/partners/unimasters.svg.asset.json";
+import zoraAsset from "@/assets/partners/zora.webp.asset.json";
 
 type Partner = {
   name: string;
   logo?: string;
   imageClassName?: string;
+  badgeClassName?: string;
 };
 
 const partners: Partner[] = [
@@ -23,7 +27,7 @@ const partners: Partner[] = [
     logo: orbitAsset.url,
     imageClassName: "w-44 sm:w-48",
   },
-  { name: "Sameday", logo: samedayAsset.url, imageClassName: "h-auto w-40 sm:w-44" },
+  { name: "Sameday", logo: samedayAsset.url, imageClassName: "h-14 w-16 sm:h-16 sm:w-[4.5rem]" },
   { name: "Emag", logo: emagAsset.url, imageClassName: "w-32 sm:w-36" },
   {
     name: "Unimaster Logistic",
@@ -40,9 +44,14 @@ const partners: Partner[] = [
     logo: silaBgAsset.url,
     imageClassName: "w-12 sm:w-14",
   },
-  { name: "Sirius 2005" },
-  { name: "Zora" },
-  { name: "Bold Foods" },
+  { name: "Sirius 2005", logo: siriusAsset.url, imageClassName: "w-44 sm:w-48" },
+  { name: "Zora", logo: zoraAsset.url, imageClassName: "w-40 sm:w-44" },
+  {
+    name: "Bolt Food",
+    logo: boltFoodAsset.url,
+    imageClassName: "w-36 sm:w-40",
+    badgeClassName: "bg-[#34D186]",
+  },
 ];
 
 function PartnerSet({ hidden = false }: { hidden?: boolean }) {
@@ -51,7 +60,7 @@ function PartnerSet({ hidden = false }: { hidden?: boolean }) {
       {partners.map((partner) => (
         <div
           key={partner.name}
-          className={`${partner.logo ? "border border-border/50 bg-paper" : "glass-panel"} flex h-16 min-w-28 max-w-full shrink-0 items-center justify-center overflow-hidden rounded-lg px-2 py-1.5 text-sm font-semibold tracking-tight whitespace-nowrap transition-shadow duration-300 hover:shadow-[0_0_0_1px_rgba(201,160,92,0.35)] sm:h-[4.5rem] sm:px-2.5 sm:py-2 sm:text-base`}
+          className={`${partner.logo ? `border border-border/50 bg-paper ${partner.badgeClassName ?? ""}` : "glass-panel"} flex h-16 min-w-28 max-w-full shrink-0 items-center justify-center overflow-hidden rounded-lg px-2 py-1.5 text-sm font-semibold tracking-tight whitespace-nowrap transition-shadow duration-300 hover:shadow-[0_0_0_1px_rgba(201,160,92,0.35)] sm:h-[4.5rem] sm:px-2.5 sm:py-2 sm:text-base`}
           style={{ color: "#FFFFFF" }}
         >
           {partner.logo ? (
