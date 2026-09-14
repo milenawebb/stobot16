@@ -9,7 +9,7 @@ import { ListingCard } from "@/components/site/ListingCard";
 import { MagneticButton } from "@/components/site/kinetic";
 import { listActiveListings } from "@/lib/listings.functions";
 
-const title = "Свободни работни места — обяви за работа | Стобот 16";
+const title = "Свободни работни места — обяви за работа | stobot 16";
 const description =
   "Актуални обяви за работа в складове, транспорт, производство, строителство и хамалски услуги. Трудов договор, осигуровки и коректно заплащане.";
 

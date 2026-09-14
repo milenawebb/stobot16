@@ -1,8 +1,6 @@
 import { cn } from "@/lib/utils";
 
 type WordmarkProps = {
-  /** Never mix scripts in one lockup: "bg" renders стобот, "en" renders stobot. */
-  lang?: "bg" | "en";
   /** "light" = white lockup for indigo/graphite backgrounds, "dark" = indigo lockup for white. */
   tone?: "light" | "dark";
   className?: string;
@@ -11,19 +9,17 @@ type WordmarkProps = {
 };
 
 export function Wordmark({
-  lang = "bg",
   tone = "light",
   className,
   size = "text-2xl",
 }: WordmarkProps) {
-  const word = lang === "bg" ? "стобот" : "stobot";
   const light = tone === "light";
 
   return (
     // safe area ≈ half the circle diameter on all sides
     <span
       className={cn("inline-flex items-start p-[0.3em]", size, className)}
-      aria-label={`${word} 16`}
+      aria-label="stobot 16"
     >
       <span
         className={cn(
@@ -31,7 +27,7 @@ export function Wordmark({
           light ? "text-white" : "text-[#130F3E]",
         )}
       >
-        {word}
+        stobot
       </span>
       <span
         className={cn(

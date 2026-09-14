@@ -38,7 +38,7 @@ export function Nav() {
       <ScrollProgress />
       <nav className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-4 lg:px-8">
         <a href="/" className="flex min-w-0 items-center">
-          <Wordmark lang="bg" tone="light" size="text-xl" />
+          <Wordmark tone="light" size="text-xl" />
         </a>
 
 

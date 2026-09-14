@@ -23,7 +23,7 @@ export function Footer() {
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-3 lg:px-8">
         {/* Column 1 — brand */}
         <div>
-          <Wordmark lang="bg" tone="light" size="text-xl" />
+          <Wordmark tone="light" size="text-xl" />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">
             Аутсорсинг на обучен и осигурен персонал и услуги за преместване в България.
           </p>
@@ -69,7 +69,7 @@ export function Footer() {
       <div className="border-t border-white/10 px-5 lg:px-8">
         <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 py-6 text-xs text-white/50 md:flex-row md:justify-between">
           <p className="text-center md:text-left">
-            © 2026 Стобот 16. Всички права запазени.
+            © 2026 stobot 16. Всички права запазени.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 md:justify-center">

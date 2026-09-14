@@ -16,10 +16,10 @@ export const Route = createFileRoute("/obiavi/$slug")({
   head: ({ loaderData }) => {
     if (!loaderData) {
       return {
-        meta: [{ title: "Обявата не е налична | Стобот 16" }, { name: "robots", content: "noindex" }],
+        meta: [{ title: "Обявата не е налична | stobot 16" }, { name: "robots", content: "noindex" }],
       };
     }
-    const title = `Работа: ${loaderData.position}, ${loaderData.schedule.toLowerCase()} — ${loaderData.location} | Стобот 16`;
+    const title = `Работа: ${loaderData.position}, ${loaderData.schedule.toLowerCase()} — ${loaderData.location} | stobot 16`;
     const description = `${loaderData.position} — ${loaderData.schedule.toLowerCase()}, ${loaderData.location}. Заплащане ${loaderData.pay}. Трудов договор и осигуровки от първия ден.`;
     return {
       meta: [
@@ -44,7 +44,7 @@ export const Route = createFileRoute("/obiavi/$slug")({
               : "FULL_TIME",
             hiringOrganization: {
               "@type": "Organization",
-              name: "Стобот 16",
+              name: "stobot 16",
             },
             jobLocation: {
               "@type": "Place",
