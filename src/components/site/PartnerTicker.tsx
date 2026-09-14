@@ -3,7 +3,7 @@ import emagAsset from "@/assets/partners/emag.svg.asset.json";
 import orbitAsset from "@/assets/partners/orbit-full.jpg.asset.json";
 import quehenbergerAsset from "@/assets/partners/quehenberger.svg.asset.json";
 import samedayAsset from "@/assets/partners/sameday-clean.jpg.asset.json";
-import silaBgAsset from "@/assets/partners/sila-bg-light.png.asset.json";
+import silaBgAsset from "@/assets/partners/sila-bg.png.asset.json";
 import unimastersAsset from "@/assets/partners/unimasters.svg.asset.json";
 
 type Partner = {
@@ -38,7 +38,7 @@ const partners: Partner[] = [
   {
     name: "Sila BG",
     logo: silaBgAsset.url,
-    imageClassName: "w-36 sm:w-40",
+    imageClassName: "w-12",
   },
   { name: "Sirius 2005" },
   { name: "Zora" },
