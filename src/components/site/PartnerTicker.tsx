@@ -1,14 +1,46 @@
-const partners = [
-  "Quehenberger Logistic",
-  "Orbit Logistic",
-  "Sameday",
-  "Emag",
-  "Unimaster Logistic",
-  "Cargo-partner Logistic",
-  "Sila BG",
-  "Sirius 2005",
-  "Zora",
-  "Bold Foods",
+import cargoPartnerAsset from "@/assets/partners/cargo-partner.svg.asset.json";
+import emagAsset from "@/assets/partners/emag.svg.asset.json";
+import orbitAsset from "@/assets/partners/orbit.png.asset.json";
+import quehenbergerAsset from "@/assets/partners/quehenberger.svg.asset.json";
+import samedayAsset from "@/assets/partners/sameday.jpg.asset.json";
+import silaBgAsset from "@/assets/partners/sila-bg.jpg.asset.json";
+import unimastersAsset from "@/assets/partners/unimasters.svg.asset.json";
+
+type Partner = {
+  name: string;
+  logo?: string;
+  darkLogoSurface?: boolean;
+  imageClassName?: string;
+};
+
+const partners: Partner[] = [
+  {
+    name: "Quehenberger Logistic",
+    logo: quehenbergerAsset.url,
+    imageClassName: "w-40 sm:w-44",
+  },
+  {
+    name: "Orbit Logistic",
+    logo: orbitAsset.url,
+    imageClassName: "w-32 sm:w-36",
+  },
+  { name: "Sameday", logo: samedayAsset.url, imageClassName: "w-32 sm:w-36" },
+  { name: "Emag", logo: emagAsset.url, imageClassName: "w-28 sm:w-32" },
+  {
+    name: "Unimaster Logistic",
+    logo: unimastersAsset.url,
+    imageClassName: "w-36 sm:w-40",
+  },
+  {
+    name: "Cargo-partner Logistic",
+    logo: cargoPartnerAsset.url,
+    darkLogoSurface: true,
+    imageClassName: "w-10",
+  },
+  { name: "Sila BG", logo: silaBgAsset.url, imageClassName: "w-32 sm:w-36" },
+  { name: "Sirius 2005" },
+  { name: "Zora" },
+  { name: "Bold Foods" },
 ];
 
 function PartnerSet({ hidden = false }: { hidden?: boolean }) {
@@ -16,11 +48,25 @@ function PartnerSet({ hidden = false }: { hidden?: boolean }) {
     <div className="flex shrink-0 items-stretch gap-3 pr-3" aria-hidden={hidden || undefined}>
       {partners.map((partner) => (
         <div
-          key={partner}
-          className="glass-panel flex shrink-0 items-center rounded-lg px-5 py-3 text-sm font-semibold tracking-tight whitespace-nowrap transition-shadow duration-300 hover:shadow-[0_0_0_1px_rgba(201,160,92,0.35)] sm:text-base"
+          key={partner.name}
+          className="glass-panel flex h-16 min-w-28 max-w-full shrink-0 items-center justify-center rounded-lg px-3 py-2 text-sm font-semibold tracking-tight whitespace-nowrap transition-shadow duration-300 hover:shadow-[0_0_0_1px_rgba(201,160,92,0.35)] sm:h-[4.5rem] sm:text-base"
           style={{ color: "#FFFFFF" }}
         >
-          {partner}
+          {partner.logo ? (
+            <span
+              className={`flex h-11 max-w-full items-center justify-center overflow-hidden rounded-[6px] px-3 sm:h-12 ${partner.darkLogoSurface ? "bg-background" : "bg-paper"}`}
+            >
+              <img
+                src={partner.logo}
+                alt={`${partner.name} лого`}
+                className={`max-h-8 max-w-full object-contain ${partner.imageClassName ?? "w-36"}`}
+                loading="eager"
+                decoding="async"
+              />
+            </span>
+          ) : (
+            <span className="px-2">{partner.name}</span>
+          )}
         </div>
       ))}
     </div>
