@@ -100,6 +100,20 @@ export function ChatWidget({ open, onClose }: { open: boolean; onClose: () => vo
                 </div>
               </div>
             ))}
+            {messages.length === 1 && !loading && (
+              <div className="flex flex-wrap gap-2">
+                {SUGGESTIONS.map((s) => (
+                  <button
+                    key={s}
+                    type="button"
+                    onClick={() => submit(undefined, s)}
+                    className="rounded-full border border-border bg-secondary/60 px-3 py-1.5 text-xs text-foreground transition-colors hover:border-gold hover:bg-secondary"
+                  >
+                    {s}
+                  </button>
+                ))}
+              </div>
+            )}
             {loading && <p className="text-xs text-muted-foreground">Асистентът пише…</p>}
           </div>
 
