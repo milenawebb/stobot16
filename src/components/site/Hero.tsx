@@ -8,7 +8,7 @@ import heroImg from "@/assets/hero-crew.jpg";
 const paths = {
   company: {
     headline: "500+ души на трудов договор в 12 сектора. Наемането и документите са наша работа.",
-    support: "Ние наемаме, обучаваме и осигуряваме хората. Вие получавате готова смяна на обекта, с договор, осигуровки, застраховка и заместник при отсъствие.",
+    support: "Ние наемаме, обучаваме и осигуряваме хората. Вие получавате готова смяна на обекта, с договор, осигуровки и застраховка.",
     cta: "Изпратете заявка",
     href: "#zayavka",
   },
@@ -150,7 +150,7 @@ export function Hero() {
         <div className="mt-10 grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <motion.p {...enter(0.2)} className="max-w-xl text-lg leading-relaxed text-muted-foreground">
             Ние наемаме, обучаваме и осигуряваме хората. Вие получавате готова смяна на обекта, с
-            договор, осигуровки, застраховка и заместник при отсъствие.
+            договор, осигуровки и застраховка.
           </motion.p>
 
           <motion.dl {...enter(0.3)} className="grid grid-cols-3 gap-px rounded-[28px] bg-border">
