@@ -112,7 +112,16 @@ export function QuickMatch() {
             <div className="mt-8 space-y-6">
               {tab === "company" ? (
                 <>
-                  <Field label="Бранш" value={industry} options={industries} onChange={setIndustry} />
+                  <Field
+                    label="Бранш"
+                    value={industry}
+                    options={industries}
+                    onChange={(value) => {
+                      if (STAFFING_SECTORS.some((sector) => sector === value)) {
+                        setIndustry(value as (typeof STAFFING_SECTORS)[number]);
+                      }
+                    }}
+                  />
                   <Field label="Брой хора" value={volume} options={volumes} onChange={setVolume} />
                 </>
               ) : (
