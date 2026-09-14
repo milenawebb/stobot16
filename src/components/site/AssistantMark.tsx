@@ -18,17 +18,16 @@ export function AssistantMark({ className }: Props) {
       aria-hidden="true"
       focusable="false"
     >
-      {/* globe outline */}
-      <circle cx="16" cy="15" r="10" />
-      {/* equator + latitude lines */}
-      <path d="M6 15h20" />
-      <path d="M7.6 9.8h16.8" />
-      <path d="M7.6 20.2h16.8" />
-      {/* meridians */}
-      <path d="M16 5c3.4 3 5 6.4 5 10s-1.6 7-5 10c-3.4-3-5-6.4-5-10s1.6-7 5-10z" />
-      {/* eyes peeking out below the grid */}
-      <circle cx="12.6" cy="17.6" r="1.5" fill="currentColor" stroke="none" />
-      <circle cx="19.4" cy="17.6" r="1.5" fill="currentColor" stroke="none" />
+      {/* dome: upper half of a globe forming the head */}
+      <path d="M3 19a13 13 0 0 1 26 0" />
+      {/* latitude lines across the dome */}
+      <path d="M5.4 13.2h21.2" />
+      <path d="M10 8.3h12" />
+      {/* meridian curving over the dome */}
+      <path d="M16 6c3.6 3.4 5.4 8 5.4 13M16 6c-3.6 3.4-5.4 8-5.4 13" />
+      {/* eyes peeking out beneath the dome */}
+      <circle cx="11.6" cy="23.4" r="2" fill="currentColor" stroke="none" />
+      <circle cx="20.4" cy="23.4" r="2" fill="currentColor" stroke="none" />
     </svg>
   );
 }
