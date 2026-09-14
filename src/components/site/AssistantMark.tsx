@@ -26,8 +26,8 @@ export function AssistantMark({ className }: Props) {
       {/* meridian curving over the dome */}
       <path d="M16 6c3.6 3.4 5.4 8 5.4 13M16 6c-3.6 3.4-5.4 8-5.4 13" />
       {/* eyes peeking out beneath the dome */}
-      <circle cx="11.6" cy="23.4" r="2" fill="currentColor" stroke="none" />
-      <circle cx="20.4" cy="23.4" r="2" fill="currentColor" stroke="none" />
+      <circle cx="10.8" cy="23.6" r="2.1" fill="currentColor" stroke="none" />
+      <circle cx="21.2" cy="23.6" r="2.1" fill="currentColor" stroke="none" />
     </svg>
   );
 }

@@ -43,7 +43,7 @@ export function FloatingContact() {
             className="pointer-events-auto h-14 w-14 rounded-full border border-primary/30 bg-primary text-primary-foreground shadow-xl"
           >
             <span className="grid place-items-center">
-              <AssistantMark className="h-8 w-8" />
+              <AssistantMark className="h-9 w-9" />
             </span>
           </Button>
         </div>
