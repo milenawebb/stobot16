@@ -5,7 +5,7 @@ import { Reveal } from "./motion-kit";
 const stats = [
   { value: 500, suffix: "+", label: "разпределени работници" },
   { value: 12, suffix: "", label: "сектора на обслужване" },
-  { value: 24, suffix: " ч.", label: "средно време за заместване" },
+  { value: 95, suffix: "", label: "обслужени обекта" },
   { value: 98, suffix: "%", label: "покрити смени по график" },
 ];
 

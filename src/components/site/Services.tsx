@@ -28,7 +28,7 @@ export function Services() {
         index="02"
         label="Услуги"
         title="Какво поемаме вместо вас"
-        lead="Поемаме наемането, документите и заместванията."
+        lead="Поемаме наемането, документите и контрола на терен."
       />
 
       <div className="mt-14 border-t border-border">
