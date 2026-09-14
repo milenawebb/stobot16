@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Bot } from "lucide-react";
+import { AssistantMark } from "./AssistantMark";
 
 import { Button } from "@/components/ui/button";
 import { ChatWidget } from "./ChatWidget";
@@ -43,7 +43,7 @@ export function FloatingContact() {
             className="pointer-events-auto h-14 w-14 rounded-full border border-primary/30 bg-primary text-primary-foreground shadow-xl"
           >
             <span className="grid place-items-center">
-              <Bot className="h-7 w-7" />
+              <AssistantMark className="h-8 w-8" />
             </span>
           </Button>
         </div>
