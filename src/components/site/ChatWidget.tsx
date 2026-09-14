@@ -9,6 +9,13 @@ type Msg = { role: "user" | "assistant"; content: string; listings?: ListingRef[
 const GREETING =
   "Здравей! Търсиш работа или персонал за фирмата си? Пиши ми и ще ти помогна.";
 
+const SUGGESTIONS = [
+  "Какви позиции имате в момента?",
+  "Как да кандидатствам?",
+  "Търся персонал за склад/производство",
+  "Какви документи получавам при наемане?",
+];
+
 export function ChatWidget({ open, onClose }: { open: boolean; onClose: () => void }) {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -23,9 +30,9 @@ export function ChatWidget({ open, onClose }: { open: boolean; onClose: () => vo
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
   }, [messages, loading, open]);
 
-  async function submit(e: React.FormEvent) {
-    e.preventDefault();
-    const text = input.trim();
+  async function submit(e?: React.FormEvent, override?: string) {
+    e?.preventDefault();
+    const text = (override ?? input).trim();
     if (!text || loading) return;
     const next: Msg[] = [...messages, { role: "user", content: text }];
     setMessages(next);
@@ -93,6 +100,20 @@ export function ChatWidget({ open, onClose }: { open: boolean; onClose: () => vo
                 </div>
               </div>
             ))}
+            {messages.length === 1 && !loading && (
+              <div className="flex flex-wrap gap-2">
+                {SUGGESTIONS.map((s) => (
+                  <button
+                    key={s}
+                    type="button"
+                    onClick={() => submit(undefined, s)}
+                    className="rounded-full border border-border bg-secondary/60 px-3 py-1.5 text-xs text-foreground transition-colors hover:border-gold hover:bg-secondary"
+                  >
+                    {s}
+                  </button>
+                ))}
+              </div>
+            )}
             {loading && <p className="text-xs text-muted-foreground">Асистентът пише…</p>}
           </div>
 
