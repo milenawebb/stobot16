@@ -16,7 +16,7 @@ import { Footer } from "@/components/site/Footer";
 import { FloatingContact } from "@/components/site/FloatingContact";
 import { SectionDots } from "@/components/site/SectionDots";
 
-const title = "стобот 16, аутсорсинг на персонал и хамалски услуги";
+const title = "stobot 16, аутсорсинг на персонал и хамалски услуги";
 const description =
   "Обучен, осигурен и застрахован персонал на трудов договор за вашия обект. Плюс хамалски услуги и премествания за фирми и частни клиенти.";
 

@@ -23,7 +23,7 @@ export function Footer() {
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-3 lg:px-8">
         {/* Column 1 — brand */}
         <div>
-          <Wordmark lang="bg" tone="light" size="text-xl" />
+          <Wordmark tone="light" size="text-xl" />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">
             Аутсорсинг на обучен и осигурен персонал и услуги за преместване в България.
           </p>

@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
 type WordmarkProps = {
-  /** Never mix scripts in one lockup: "bg" renders стобот, "en" renders stobot. */
+  /** The primary brand lockup uses the Latin wordmark. */
   lang?: "bg" | "en";
   /** "light" = white lockup for indigo/graphite backgrounds, "dark" = indigo lockup for white. */
   tone?: "light" | "dark";
@@ -11,7 +11,7 @@ type WordmarkProps = {
 };
 
 export function Wordmark({
-  lang = "bg",
+  lang = "en",
   tone = "light",
   className,
   size = "text-2xl",

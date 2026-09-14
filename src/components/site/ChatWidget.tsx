@@ -56,7 +56,7 @@ export function ChatWidget({ open, onClose }: { open: boolean; onClose: () => vo
           <header className="flex items-center justify-between border-b border-border px-4 py-3">
             <div className="flex items-center gap-2">
               <Bot className="h-5 w-5" />
-              <span className="font-display text-sm font-extrabold">Асистент стобот 16</span>
+              <span className="font-display text-sm font-extrabold">Асистент stobot 16</span>
             </div>
             <button onClick={onClose} aria-label="Затвори чата" className="p-1">
               <X className="h-5 w-5" />
