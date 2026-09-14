@@ -69,7 +69,7 @@ export function Footer() {
       <div className="border-t border-white/10 px-5 lg:px-8">
         <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 py-6 text-xs text-white/50 md:flex-row md:justify-between">
           <p className="text-center md:text-left">
-            © 2026 Стобот 16. Всички права запазени.
+            © 2026 stobot 16. Всички права запазени.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 md:justify-center">

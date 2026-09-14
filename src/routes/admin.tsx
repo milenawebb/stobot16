@@ -12,7 +12,7 @@ import { SECTORS } from "@/lib/sectors";
 export const Route = createFileRoute("/admin")({
   head: () => ({
     meta: [
-      { title: "Управление на обяви | Стобот 16" },
+      { title: "Управление на обяви | stobot 16" },
       { name: "description", content: "Вътрешен панел за управление на обявите за работа." },
       { name: "robots", content: "noindex, nofollow" },
     ],
