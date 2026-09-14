@@ -50,7 +50,7 @@ const partners: Partner[] = [
     name: "Bolt Food",
     logo: boltFoodAsset.url,
     imageClassName: "w-36 sm:w-40",
-    badgeClassName: "bg-[#34D186]",
+    badgeClassName: "bg-bolt",
   },
 ];
 
