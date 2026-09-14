@@ -3,7 +3,7 @@ import emagAsset from "@/assets/partners/emag.svg.asset.json";
 import orbitAsset from "@/assets/partners/orbit.png.asset.json";
 import quehenbergerAsset from "@/assets/partners/quehenberger.svg.asset.json";
 import samedayAsset from "@/assets/partners/sameday.jpg.asset.json";
-import silaBgAsset from "@/assets/partners/sila-bg.jpg.asset.json";
+import silaBgAsset from "@/assets/partners/sila-bg.png.asset.json";
 import unimastersAsset from "@/assets/partners/unimasters.svg.asset.json";
 
 type Partner = {
@@ -37,7 +37,12 @@ const partners: Partner[] = [
     darkLogoSurface: true,
     imageClassName: "w-10",
   },
-  { name: "Sila BG", logo: silaBgAsset.url, imageClassName: "w-32 sm:w-36" },
+  {
+    name: "Sila BG",
+    logo: silaBgAsset.url,
+    darkLogoSurface: true,
+    imageClassName: "w-10",
+  },
   { name: "Sirius 2005" },
   { name: "Zora" },
   { name: "Bold Foods" },
