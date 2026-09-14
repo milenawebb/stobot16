@@ -96,7 +96,7 @@ function ListingDetail() {
         <h1 className="mt-4 text-[2rem] leading-tight sm:text-5xl">{listing.title}</h1>
         <p className="mt-4 text-lg text-muted-foreground">{listing.position}</p>
 
-        <dl className="mt-10 grid overflow-hidden rounded-[28px] border border-border bg-border sm:grid-cols-3 sm:gap-px">
+        <dl className="mt-10 grid gap-px overflow-hidden rounded-[28px] border border-border bg-border sm:grid-cols-3">
           {[
             [Clock, "График", listing.schedule],
             [MapPin, "Локация", listing.location],

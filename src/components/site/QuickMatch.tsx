@@ -146,7 +146,7 @@ export function QuickMatch() {
                   </p>
                   <Link
                     to="/obiavi"
-                    search={{ sector: matches[0]?.sector }}
+                    search={{ sector: matches[0]?.sector ?? "" }}
                     className="mt-6 inline-block rounded-[6px] border border-primary bg-primary px-6 py-3 text-sm font-bold text-primary-foreground transition-colors hover:bg-transparent hover:text-primary"
                   >
                     Виж обявите
