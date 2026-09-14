@@ -56,7 +56,7 @@ export const Route = createFileRoute("/obiavi/$slug")({
             },
             baseSalary: {
               "@type": "MonetaryAmount",
-              currency: "BGN",
+              currency: "EUR",
               value: { "@type": "QuantitativeValue", unitText: loaderData.pay },
             },
           }),
