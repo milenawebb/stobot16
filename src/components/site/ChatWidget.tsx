@@ -30,9 +30,9 @@ export function ChatWidget({ open, onClose }: { open: boolean; onClose: () => vo
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
   }, [messages, loading, open]);
 
-  async function submit(e: React.FormEvent) {
-    e.preventDefault();
-    const text = input.trim();
+  async function submit(e?: React.FormEvent, override?: string) {
+    e?.preventDefault();
+    const text = (override ?? input).trim();
     if (!text || loading) return;
     const next: Msg[] = [...messages, { role: "user", content: text }];
     setMessages(next);
