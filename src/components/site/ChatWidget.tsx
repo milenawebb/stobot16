@@ -9,6 +9,13 @@ type Msg = { role: "user" | "assistant"; content: string; listings?: ListingRef[
 const GREETING =
   "Здравей! Търсиш работа или персонал за фирмата си? Пиши ми и ще ти помогна.";
 
+const SUGGESTIONS = [
+  "Какви позиции имате в момента?",
+  "Как да кандидатствам?",
+  "Търся персонал за склад/производство",
+  "Какви документи получавам при наемане?",
+];
+
 export function ChatWidget({ open, onClose }: { open: boolean; onClose: () => void }) {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
