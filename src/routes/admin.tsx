@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, type FormEvent } from "react";
+import { Eye, EyeOff } from "lucide-react";
 import { toast } from "sonner";
 import {
   adminListListings,
@@ -8,6 +9,26 @@ import {
   type JobListing,
 } from "@/lib/listings.functions";
 import { SECTORS } from "@/lib/sectors";
+
+const AUTH_KEY = "stobot_admin_auth";
+const AUTH_TTL_MS = 30 * 24 * 60 * 60 * 1000; // 30 days
+
+function readStoredAuth(): string | null {
+  try {
+    const raw = localStorage.getItem(AUTH_KEY);
+    if (!raw) return null;
+    const { password, timestamp } = JSON.parse(raw) as { password?: string; timestamp?: number };
+    if (!password || typeof timestamp !== "number") return null;
+    if (Date.now() - timestamp > AUTH_TTL_MS) {
+      localStorage.removeItem(AUTH_KEY);
+      return null;
+    }
+    return password;
+  } catch {
+    localStorage.removeItem(AUTH_KEY);
+    return null;
+  }
+}
 
 export const Route = createFileRoute("/admin")({
   head: () => ({
@@ -44,8 +65,10 @@ function AdminPage() {
   const [form, setForm] = useState({ ...empty });
   const [busy, setBusy] = useState(false);
 
+  const [showPassword, setShowPassword] = useState(false);
+
   useEffect(() => {
-    const saved = sessionStorage.getItem("stobot_admin_pw");
+    const saved = readStoredAuth();
     if (saved) {
       setPassword(saved);
       void load(saved);
@@ -58,10 +81,10 @@ function AdminPage() {
       const rows = await adminListListings({ data: { password: pw } });
       setListings(rows);
       setAuthed(true);
-      sessionStorage.setItem("stobot_admin_pw", pw);
+      localStorage.setItem(AUTH_KEY, JSON.stringify({ password: pw, timestamp: Date.now() }));
     } catch (e) {
       setAuthed(false);
-      sessionStorage.removeItem("stobot_admin_pw");
+      localStorage.removeItem(AUTH_KEY);
       toast.error(e instanceof Error ? e.message : "Грешка при вход.");
     }
   }
@@ -146,14 +169,24 @@ function AdminPage() {
         <form onSubmit={onLogin} className="w-full max-w-sm rounded-[32px] border border-border p-8">
           <h1 className="text-2xl">Вход в панела</h1>
           <p className="mt-3 text-sm text-muted-foreground">Въведете администраторската парола.</p>
-          <input
-            type="password"
-            required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Парола"
-            className={`${inputClass} mt-6`}
-          />
+          <div className="relative mt-6">
+            <input
+              type={showPassword ? "text" : "password"}
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Парола"
+              className={`${inputClass} pr-12`}
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword((v) => !v)}
+              aria-label={showPassword ? "Скрий паролата" : "Покажи паролата"}
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground transition-colors hover:text-foreground"
+            >
+              {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+            </button>
+          </div>
           <button
             type="submit"
             disabled={busy}
