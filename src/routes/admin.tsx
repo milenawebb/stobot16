@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, type FormEvent } from "react";
+import { Eye, EyeOff } from "lucide-react";
 import { toast } from "sonner";
 import {
   adminListListings,
@@ -8,6 +9,26 @@ import {
   type JobListing,
 } from "@/lib/listings.functions";
 import { SECTORS } from "@/lib/sectors";
+
+const AUTH_KEY = "stobot_admin_auth";
+const AUTH_TTL_MS = 30 * 24 * 60 * 60 * 1000; // 30 days
+
+function readStoredAuth(): string | null {
+  try {
+    const raw = localStorage.getItem(AUTH_KEY);
+    if (!raw) return null;
+    const { password, timestamp } = JSON.parse(raw) as { password?: string; timestamp?: number };
+    if (!password || typeof timestamp !== "number") return null;
+    if (Date.now() - timestamp > AUTH_TTL_MS) {
+      localStorage.removeItem(AUTH_KEY);
+      return null;
+    }
+    return password;
+  } catch {
+    localStorage.removeItem(AUTH_KEY);
+    return null;
+  }
+}
 
 export const Route = createFileRoute("/admin")({
   head: () => ({
