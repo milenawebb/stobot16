@@ -169,14 +169,24 @@ function AdminPage() {
         <form onSubmit={onLogin} className="w-full max-w-sm rounded-[32px] border border-border p-8">
           <h1 className="text-2xl">Вход в панела</h1>
           <p className="mt-3 text-sm text-muted-foreground">Въведете администраторската парола.</p>
-          <input
-            type="password"
-            required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Парола"
-            className={`${inputClass} mt-6`}
-          />
+          <div className="relative mt-6">
+            <input
+              type={showPassword ? "text" : "password"}
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Парола"
+              className={`${inputClass} pr-12`}
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword((v) => !v)}
+              aria-label={showPassword ? "Скрий паролата" : "Покажи паролата"}
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground transition-colors hover:text-foreground"
+            >
+              {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+            </button>
+          </div>
           <button
             type="submit"
             disabled={busy}
