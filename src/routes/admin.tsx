@@ -65,8 +65,10 @@ function AdminPage() {
   const [form, setForm] = useState({ ...empty });
   const [busy, setBusy] = useState(false);
 
+  const [showPassword, setShowPassword] = useState(false);
+
   useEffect(() => {
-    const saved = sessionStorage.getItem("stobot_admin_pw");
+    const saved = readStoredAuth();
     if (saved) {
       setPassword(saved);
       void load(saved);
@@ -79,10 +81,10 @@ function AdminPage() {
       const rows = await adminListListings({ data: { password: pw } });
       setListings(rows);
       setAuthed(true);
-      sessionStorage.setItem("stobot_admin_pw", pw);
+      localStorage.setItem(AUTH_KEY, JSON.stringify({ password: pw, timestamp: Date.now() }));
     } catch (e) {
       setAuthed(false);
-      sessionStorage.removeItem("stobot_admin_pw");
+      localStorage.removeItem(AUTH_KEY);
       toast.error(e instanceof Error ? e.message : "Грешка при вход.");
     }
   }
