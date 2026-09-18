@@ -3,6 +3,7 @@ import {
   Boxes,
   HardHat,
   Factory,
+  Plus,
   Truck,
   Sparkles,
   Wrench,
