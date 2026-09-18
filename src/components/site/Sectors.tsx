@@ -2,7 +2,6 @@ import {
   Boxes,
   HardHat,
   Factory,
-  UtensilsCrossed,
   Truck,
   Sparkles,
   Wrench,
