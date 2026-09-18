@@ -1,7 +1,9 @@
 import {
+  ArrowUpRight,
   Boxes,
   HardHat,
   Factory,
+  Plus,
   Truck,
   Sparkles,
   Wrench,
@@ -65,6 +67,29 @@ export function Sectors() {
             </Reveal>
             );
           })}
+
+          <Reveal delay={0.28} x={18} className="h-full">
+            <a href="#zayavka" className="group block h-full">
+              <SpotlightCard
+                as="div"
+                className="h-full bg-background p-6 ring-1 ring-inset ring-primary/15"
+              >
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 -z-10 bg-primary/[0.05]"
+                />
+                <Plus className="h-6 w-6 text-primary transition-transform duration-300 group-hover:rotate-90" />
+                <h3 className="mt-6 text-xl">Друг сектор?</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  Свържете се с нас — вероятно имаме решение и извън изброените сектори.
+                </p>
+                <span className="mt-6 inline-flex items-center gap-1.5 text-sm text-primary">
+                  Заявка за персонал
+                  <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </span>
+              </SpotlightCard>
+            </a>
+          </Reveal>
         </div>
       </div>
 
