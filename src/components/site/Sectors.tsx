@@ -2,7 +2,6 @@ import {
   Boxes,
   HardHat,
   Factory,
-  UtensilsCrossed,
   Truck,
   Sparkles,
   Wrench,
@@ -28,10 +27,6 @@ const sectorDetails = {
     d: "Комисиониране и товаро-разтоварна дейност, включително нощни смени.",
   },
   Опаковане: { icon: Boxes, d: "Пакетиране, етикетиране и сортиране за пикови периоди." },
-  HoReCa: {
-    icon: UtensilsCrossed,
-    d: "Кухненски помощници, миячи и сервитьори при спешна нужда.",
-  },
   Транспорт: { icon: Truck, d: "Шофьори, куриери и помощници на курс, готови за старт." },
   Почистване: {
     icon: Sparkles,

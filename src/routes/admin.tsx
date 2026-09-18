@@ -234,7 +234,7 @@ function AdminPage() {
               required
               value={form.location}
               onChange={(e) => setForm({ ...form, location: e.target.value })}
-              placeholder="Локация (напр. София, склад Орбита)"
+              placeholder="Локация (напр. София, склад Орбит)"
               className={inputClass}
             />
             <input
