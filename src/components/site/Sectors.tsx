@@ -1,4 +1,5 @@
 import {
+  ArrowUpRight,
   Boxes,
   HardHat,
   Factory,
