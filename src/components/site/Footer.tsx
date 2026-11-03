@@ -1,6 +1,5 @@
 import { Wordmark } from "./Wordmark";
 import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/contact";
-import fifthExitLogo from "@/assets/fifthexit-logo-for-dark.png.asset.json";
 
 const quickLinks = [
   ["#uslugi", "Услуги"],
@@ -87,16 +86,12 @@ export function Footer() {
           <p className="flex items-center justify-center gap-1.5 text-center md:justify-end">
             Разработено от
             <a
-              href="https://fifthexit.eu"
+              href="https://mfiveconsult.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center opacity-80 transition-opacity hover:opacity-100"
+              className="font-medium text-white/80 underline-offset-4 transition-colors hover:text-white hover:underline"
             >
-              <img
-                src={fifthExitLogo.url}
-                alt="Fifth Exit"
-                className="h-5 w-auto"
-              />
+              МВ5 Консулт
             </a>
           </p>
         </div>
