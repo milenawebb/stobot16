@@ -1,13 +1,13 @@
-import cargoPartnerAsset from "@/assets/partners/cargo-partner-light.svg.asset.json";
-import boltFoodAsset from "@/assets/partners/bolt-food-white.svg.asset.json";
-import emagAsset from "@/assets/partners/emag.svg.asset.json";
-import orbitAsset from "@/assets/partners/orbit-full.jpg.asset.json";
-import quehenbergerAsset from "@/assets/partners/quehenberger.svg.asset.json";
-import samedayAsset from "@/assets/partners/sameday-horizontal.png.asset.json";
-import siriusAsset from "@/assets/partners/sirius-2005.png.asset.json";
-import silaBgAsset from "@/assets/partners/sila-bg-clear.png.asset.json";
-import unimastersAsset from "@/assets/partners/unimasters.svg.asset.json";
-import zoraAsset from "@/assets/partners/zora.webp.asset.json";
+import cargoPartnerLogo from "@/assets/partners/cargo-partner-light.svg";
+import boltFoodLogo from "@/assets/partners/bolt-food-white.svg";
+import emagLogo from "@/assets/partners/emag.svg";
+import orbitLogo from "@/assets/partners/orbit-full.jpg";
+import quehenbergerLogo from "@/assets/partners/quehenberger.svg";
+import samedayLogo from "@/assets/partners/sameday-horizontal.png";
+import siriusLogo from "@/assets/partners/sirius-2005.png";
+import silaBgLogo from "@/assets/partners/sila-bg-clear.png";
+import unimastersLogo from "@/assets/partners/unimasters.svg";
+import zoraLogo from "@/assets/partners/zora.webp";
 
 type Partner = {
   name: string;
