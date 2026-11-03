@@ -21,8 +21,13 @@ export type JobListing = {
 const COLUMNS = "id, slug, title, position, schedule, location, pay, description, sector, is_active, is_urgent, contact_phone, created_at";
 
 function publicClient() {
-  const key = process.env["SUPABASE_PUBLISHABLE_KEY"]!;
-  return createClient<Database>(process.env["SUPABASE_URL"]!, key, {
+  // Fall back to the public build-time values so self-hosted deployments
+  // (e.g. Cloudflare) work without server-side env vars configured.
+  const key =
+    process.env["SUPABASE_PUBLISHABLE_KEY"] || import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+  const url = process.env["SUPABASE_URL"] || import.meta.env.VITE_SUPABASE_URL;
+  if (!url || !key) throw new Error("Липсва конфигурация на базата данни.");
+  return createClient<Database>(url, key, {
     auth: { persistSession: false, autoRefreshToken: false },
     global: {
       fetch: (input, init) => {
