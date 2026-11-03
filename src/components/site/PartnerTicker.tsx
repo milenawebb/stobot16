@@ -1,13 +1,13 @@
-import cargoPartnerAsset from "@/assets/partners/cargo-partner-light.svg.asset.json";
-import boltFoodAsset from "@/assets/partners/bolt-food-white.svg.asset.json";
-import emagAsset from "@/assets/partners/emag.svg.asset.json";
-import orbitAsset from "@/assets/partners/orbit-full.jpg.asset.json";
-import quehenbergerAsset from "@/assets/partners/quehenberger.svg.asset.json";
-import samedayAsset from "@/assets/partners/sameday-horizontal.png.asset.json";
-import siriusAsset from "@/assets/partners/sirius-2005.png.asset.json";
-import silaBgAsset from "@/assets/partners/sila-bg-clear.png.asset.json";
-import unimastersAsset from "@/assets/partners/unimasters.svg.asset.json";
-import zoraAsset from "@/assets/partners/zora.webp.asset.json";
+import cargoPartnerLogo from "@/assets/partners/cargo-partner-light.svg";
+import boltFoodLogo from "@/assets/partners/bolt-food-white.svg";
+import emagLogo from "@/assets/partners/emag.svg";
+import orbitLogo from "@/assets/partners/orbit-full.jpg";
+import quehenbergerLogo from "@/assets/partners/quehenberger.svg";
+import samedayLogo from "@/assets/partners/sameday-horizontal.png";
+import siriusLogo from "@/assets/partners/sirius-2005.png";
+import silaBgLogo from "@/assets/partners/sila-bg-clear.png";
+import unimastersLogo from "@/assets/partners/unimasters.svg";
+import zoraLogo from "@/assets/partners/zora.webp";
 
 type Partner = {
   name: string;
@@ -19,36 +19,36 @@ type Partner = {
 const partners: Partner[] = [
   {
     name: "Quehenberger Logistic",
-    logo: quehenbergerAsset.url,
+    logo: quehenbergerLogo,
     imageClassName: "w-44 sm:w-48",
   },
   {
     name: "Orbit Logistic",
-    logo: orbitAsset.url,
+    logo: orbitLogo,
     imageClassName: "w-44 sm:w-48",
   },
-  { name: "Sameday", logo: samedayAsset.url, imageClassName: "w-48 sm:w-56" },
-  { name: "Emag", logo: emagAsset.url, imageClassName: "w-32 sm:w-36" },
+  { name: "Sameday", logo: samedayLogo, imageClassName: "w-48 sm:w-56" },
+  { name: "Emag", logo: emagLogo, imageClassName: "w-32 sm:w-36" },
   {
     name: "Unimaster Logistic",
-    logo: unimastersAsset.url,
+    logo: unimastersLogo,
     imageClassName: "w-40 sm:w-44",
   },
   {
     name: "Cargo-partner Logistic",
-    logo: cargoPartnerAsset.url,
+    logo: cargoPartnerLogo,
     imageClassName: "w-24 sm:w-28",
   },
   {
     name: "Sila BG",
-    logo: silaBgAsset.url,
+    logo: silaBgLogo,
     imageClassName: "w-12 sm:w-14",
   },
-  { name: "Sirius 2005", logo: siriusAsset.url, imageClassName: "w-44 sm:w-48" },
-  { name: "Zora", logo: zoraAsset.url, imageClassName: "w-40 sm:w-44" },
+  { name: "Sirius 2005", logo: siriusLogo, imageClassName: "w-44 sm:w-48" },
+  { name: "Zora", logo: zoraLogo, imageClassName: "w-40 sm:w-44" },
   {
     name: "Bolt Food",
-    logo: boltFoodAsset.url,
+    logo: boltFoodLogo,
     imageClassName: "w-36 sm:w-40",
     badgeClassName: "bg-bolt",
   },
