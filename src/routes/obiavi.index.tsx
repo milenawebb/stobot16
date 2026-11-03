@@ -29,7 +29,7 @@ export const Route = createFileRoute("/obiavi/")({
   loader: () => listActiveListings(),
   errorComponent: ({ error }) => (
     <div role="alert" className="px-5 py-40 text-center text-muted-foreground">
-      Грешка при зареждане на обявите: {error.message}
+      Грешка при зареждане на обявите: {error instanceof Error ? error.message : String(error)}
     </div>
   ),
   notFoundComponent: () => (

@@ -66,7 +66,7 @@ export const Route = createFileRoute("/obiavi/$slug")({
   },
   errorComponent: ({ error }) => (
     <div role="alert" className="px-5 py-40 text-center text-muted-foreground">
-      Грешка при зареждане: {error.message}
+      Грешка при зареждане: {error instanceof Error ? error.message : String(error)}
     </div>
   ),
   notFoundComponent: () => (
