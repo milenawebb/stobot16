@@ -1,4 +1,4 @@
-# Stobot (стобот)
+# Stobot 16 (стобот 16)
 
 Landing page for a Bulgarian personnel outsourcing and staffing company.
 
