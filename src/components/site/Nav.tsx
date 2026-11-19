@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Menu, Phone, X } from "lucide-react";
 import { WORKERS_PHONE } from "@/lib/contact";
+import { useRouterState } from "@tanstack/react-router";
 import { cn } from "@/lib/utils";
 import { Wordmark } from "./Wordmark";
 import { MagneticButton } from "./kinetic";
@@ -19,6 +20,8 @@ const links = [
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const isActive = (href: string) => !href.includes("#") && pathname === href;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -48,7 +51,8 @@ export function Nav() {
             <a
               key={l.href}
               href={l.href}
-              className="relative py-1 text-sm font-medium text-muted-foreground transition-colors after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-left after:scale-x-0 after:bg-primary after:transition-transform hover:text-foreground hover:after:scale-x-100"
+              aria-current={isActive(l.href) ? "page" : undefined}
+              className="relative py-1 text-sm font-medium text-muted-foreground aria-[current=page]:text-foreground aria-[current=page]:after:scale-x-100 transition-colors after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-left after:scale-x-0 after:bg-primary after:transition-transform hover:text-foreground hover:after:scale-x-100"
             >
               {l.label}
             </a>
@@ -84,7 +88,8 @@ export function Nav() {
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="border-b border-border py-3.5 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                aria-current={isActive(l.href) ? "page" : undefined}
+                className="border-b border-border py-3.5 text-sm font-medium text-muted-foreground aria-[current=page]:text-primary transition-colors hover:text-primary"
               >
                 {l.label}
               </a>

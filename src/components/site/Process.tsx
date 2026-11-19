@@ -41,7 +41,6 @@ const defaultSteps: ProcessStep[] = [
   },
 ];
 
-const triggerPositions = ["top-0", "top-[100vh]", "top-[200vh]", "top-[300vh]", "top-[400vh]"];
 
 function StepLabels({ activeStep, steps }: { activeStep: number; steps: ProcessStep[] }) {
   return (
@@ -93,21 +92,29 @@ export function Process({
     return () => observer.disconnect();
   }, []);
 
+  const footnoteEl = footnote ? (
+    <p className="rounded-full border border-border bg-surface/60 px-5 py-3 text-sm leading-relaxed text-muted-foreground">
+      {footnote}
+    </p>
+  ) : null;
+
   return (
-    <section id={id} className="border-b border-border py-20 lg:py-28">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <h2 className="max-w-2xl text-[2rem] sm:text-5xl lg:text-6xl">
-          {heading}
-        </h2>
+    <section id={id} className="border-b border-border py-20 lg:py-0">
+      {/* Mobile heading; on desktop the heading lives inside the pinned panel */}
+      <div className="mx-auto max-w-7xl px-5 lg:hidden">
+        <h2 className="max-w-2xl text-[2rem] sm:text-5xl">{heading}</h2>
       </div>
 
-      {/* Desktop: sticky pinned panel + 5 IntersectionObserver trigger markers */}
-      <div className="relative mt-12 hidden h-[500vh] lg:block">
-        <div className="sticky top-0 flex h-screen items-center">
-          <div className="mx-auto w-full max-w-7xl px-5 lg:px-8">
-            <StepLabels activeStep={activeStep} steps={steps} />
+      {/* Desktop: one viewport of scroll per step; heading, labels and photo pin together under the fixed header */}
+      <div className="relative hidden lg:block" style={{ height: `${steps.length * 100}vh` }}>
+        <div className="sticky top-0 flex h-screen flex-col justify-center pb-8 pt-24">
+          <div className="mx-auto w-full max-w-7xl px-8">
+            <h2 className="max-w-3xl text-5xl xl:text-6xl">{heading}</h2>
+            <div className="mt-8">
+              <StepLabels activeStep={activeStep} steps={steps} />
+            </div>
 
-            <div className="mt-12 grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+            <div className="mt-8 grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
               <div className="overflow-hidden rounded-[32px]">
                 <AnimatePresence mode="wait">
                   <motion.img
@@ -121,7 +128,7 @@ export function Process({
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="h-[420px] w-full object-cover"
+                    className="h-[min(420px,44vh)] w-full object-cover"
                   />
                 </AnimatePresence>
               </div>
@@ -146,10 +153,11 @@ export function Process({
                 </AnimatePresence>
               </div>
             </div>
+            {footnoteEl ? <div className="mt-8">{footnoteEl}</div> : null}
           </div>
         </div>
 
-        {/* Five full-viewport observer zones make each step stable under wheel/trackpad scrolling. */}
+        {/* One full-viewport observer zone per step keeps each step stable under wheel/trackpad scrolling. */}
         {steps.map((step, index) => (
           <div
             key={`trigger-${step.number}`}
@@ -157,15 +165,16 @@ export function Process({
               triggerRefs.current[index] = el;
             }}
             data-step-index={index}
-            className={`pointer-events-none absolute inset-x-0 h-screen ${triggerPositions[index]}`}
+            style={{ top: `${index * 100}vh` }}
+            className="pointer-events-none absolute inset-x-0 h-screen"
             aria-hidden="true"
           />
         ))}
       </div>
 
       {/* Mobile: stacked steps, no pinning */}
-      <div className="mx-auto mt-12 max-w-7xl px-5 lg:hidden">
-        <ol className="space-y-10">
+      <div className="mx-auto mt-10 max-w-7xl px-5 lg:hidden">
+        <ol className="space-y-8">
           {steps.map((step) => (
             <li key={`mobile-${step.number}`} className="flex gap-4">
               <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-primary bg-primary font-display text-sm font-bold text-primary-foreground">
@@ -178,15 +187,8 @@ export function Process({
             </li>
           ))}
         </ol>
+        {footnoteEl ? <div className="mt-8">{footnoteEl}</div> : null}
       </div>
-
-      {footnote ? (
-        <div className="mx-auto mt-10 max-w-7xl px-5 lg:px-8">
-          <p className="rounded-full border border-border bg-surface/60 px-5 py-3 text-sm leading-relaxed text-muted-foreground">
-            {footnote}
-          </p>
-        </div>
-      ) : null}
     </section>
   );
 }

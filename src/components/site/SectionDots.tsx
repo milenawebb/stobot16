@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const sections = [
+const homeSections = [
   { id: "top", label: "Начало" },
   { id: "partnyori", label: "Партньори" },
   { id: "uslugi", label: "Услуги" },
@@ -14,8 +14,10 @@ const sections = [
   { id: "kontakti", label: "Контакти" },
 ];
 
-export function SectionDots() {
-  const [active, setActive] = useState("top");
+export type DotSection = { id: string; label: string };
+
+export function SectionDots({ sections = homeSections }: { sections?: DotSection[] } = {}) {
+  const [active, setActive] = useState(sections[0]!.id);
 
   useEffect(() => {
     const onScroll = () => {
@@ -30,7 +32,7 @@ export function SectionDots() {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [sections]);
 
   return (
     <nav

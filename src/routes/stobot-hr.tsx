@@ -4,7 +4,10 @@ import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import { FloatingContact } from "@/components/site/FloatingContact";
 import { Process, processImages, type ProcessStep } from "@/components/site/Process";
-import { Reveal } from "@/components/site/motion-kit";
+import { ParallaxImage, SafeReveal as Reveal } from "@/components/site/motion-kit";
+import { SectionDots } from "@/components/site/SectionDots";
+import { ParticleField } from "@/components/site/ParticleField";
+import heroImg from "@/assets/hero-crew.jpg";
 import { MagneticButton } from "@/components/site/kinetic";
 import { inputClass, textareaClass, useCompanySubmit } from "@/components/site/Forms";
 import { STAFFING_SECTORS } from "@/lib/sectors";
@@ -67,6 +70,16 @@ const FAQ = [
 const chip = "rounded-full border border-border bg-background/40 px-5 py-2.5 text-sm text-foreground";
 const mutedChip = "rounded-full border border-dashed border-border px-5 py-2.5 text-sm text-muted-foreground";
 
+const DOTS = [
+  { id: "top", label: "Начало" },
+  { id: "za-kogo", label: "За кого е" },
+  { id: "darzhavi", label: "Държави и позиции" },
+  { id: "kak-proticha", label: "Как протича" },
+  { id: "registratsii", label: "Регистрации" },
+  { id: "zapitvane", label: "Запитване" },
+  { id: "vaprosi", label: "Въпроси" },
+];
+
 const audience = [
   { icon: UserSearch, title: "Липса на кадри на местния пазар" },
   { icon: CalendarClock, title: "Сезонни и пикови нужди" },
@@ -117,10 +130,26 @@ function ForeignWorkersPage() {
   const form = useCompanySubmit("chuzhbina");
   const fieldClass = inputClass.replace("rounded-[6px]", "rounded-full");
   return (
-    <main className="overflow-x-hidden">
+    <main className="overflow-x-clip">
       <Nav />
 
-      <section className="mx-auto max-w-7xl px-5 pb-16 pt-32 lg:px-8 lg:pb-24 lg:pt-44">
+      <section id="top" className="relative isolate flex min-h-[100svh] items-center overflow-hidden border-b border-border pb-14 pt-28 lg:pb-20 lg:pt-32">
+        <ParallaxImage
+          src={heroImg}
+          alt="Екип от работници на индустриален обект"
+          width={1600}
+          height={1100}
+          distance={50}
+          direction="up"
+          wrapperClassName="absolute inset-0 -z-20"
+          className="h-[115%] w-full object-cover opacity-60"
+        />
+        <div
+          className="absolute inset-0 -z-10"
+          style={{ background: "linear-gradient(100deg, #130F3Ee6 15%, #130F3E99 60%, #130F3E59)" }}
+        />
+        <ParticleField className="-z-10 opacity-80" />
+        <div className="mx-auto w-full max-w-7xl px-5 lg:px-8">
         <Reveal>
           <span className="mb-5 inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-4 py-1.5 font-display text-sm font-bold text-primary">
             Stobot HR
@@ -144,12 +173,13 @@ function ForeignWorkersPage() {
             </a>
           </div>
         </Reveal>
+        </div>
       </section>
 
-      <section className="border-y border-border py-16 lg:py-24">
+      <section id="za-kogo" className="scroll-mt-20 border-b border-border py-14 lg:py-20">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <h2 className="text-[2rem] sm:text-5xl">За кого е</h2>
-          <div className="mt-10 grid gap-4 md:grid-cols-3">
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
             {audience.map(({ icon: Icon, title: t }, i) => (
               <Reveal key={t} delay={i * 0.08}>
                 <div className="glass-panel h-full rounded-[32px] border border-border p-7">
@@ -164,8 +194,12 @@ function ForeignWorkersPage() {
         </div>
       </section>
 
-      <ChipSection heading="Държави, от които подбираме" items={COUNTRIES} more="и други държави" note="Не виждате вашата държава? Попитайте — разглеждаме и други." />
-      <ChipSection heading="За какви позиции" items={POSITIONS} more="и др." note="Подбираме според изискванията на вашата позиция." bordered />
+      <section id="darzhavi" className="scroll-mt-20 border-b border-border py-14 lg:py-20">
+        <div className="mx-auto grid max-w-7xl gap-12 px-5 lg:px-8">
+          <ChipRow heading="Държави, от които подбираме" items={COUNTRIES} more="и други държави" note="Не виждате вашата държава? Попитайте — разглеждаме и други." />
+          <ChipRow heading="За какви позиции" items={POSITIONS} more="и др." note="Подбираме според изискванията на вашата позиция." />
+        </div>
+      </section>
 
       <Process
         id="kak-proticha"
@@ -176,8 +210,8 @@ function ForeignWorkersPage() {
 
       {LICENSES.length > 0 && <Licenses items={LICENSES} />}
 
-      <section className="mx-auto max-w-3xl px-5 py-16 lg:py-24">
-        <form id="zapitvane" onSubmit={form.onSubmit} className="scroll-mt-28 rounded-[32px] border border-border bg-background p-6 sm:p-10">
+      <section id="zapitvane" className="mx-auto max-w-7xl scroll-mt-20 px-5 py-14 lg:px-8 lg:py-20">
+        <form onSubmit={form.onSubmit} className="max-w-3xl rounded-[32px] border border-border bg-background p-6 sm:p-10">
           <h2 className="text-3xl sm:text-4xl">Запитване от фирма</h2>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
             Опишете нуждите си и ще се свържем с вас до 24 часа.
@@ -211,15 +245,17 @@ function ForeignWorkersPage() {
         </form>
       </section>
 
-      <section className="border-t border-border px-5 py-16 text-center">
-        <a href={`tel:${CLIENTS_PHONE.tel}`} className={`${primaryBtn} mx-auto inline-flex text-base`}>
-          <Phone className="h-4 w-4" /> Обадете се: {CLIENTS_PHONE.display}
-        </a>
+      <section className="border-t border-border py-10">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <a href={`tel:${CLIENTS_PHONE.tel}`} className={`${primaryBtn} inline-flex text-base`}>
+            <Phone className="h-4 w-4" /> Обадете се: {CLIENTS_PHONE.display}
+          </a>
+        </div>
       </section>
 
-      <section className="mx-auto max-w-3xl px-5 pb-16 lg:pb-24">
+      <section id="vaprosi" className="mx-auto max-w-7xl scroll-mt-20 border-t border-border px-5 py-14 lg:px-8 lg:py-20">
         <h2 className="text-[2rem] sm:text-5xl">Често задавани въпроси</h2>
-        <Accordion type="single" collapsible className="mt-8 space-y-3">
+        <Accordion type="single" collapsible className="mt-8 max-w-3xl space-y-3">
           {FAQ.map((f, i) => (
             <AccordionItem key={f.q} value={`q${i}`} className="rounded-[28px] border border-border px-6">
               <AccordionTrigger className="text-left text-base hover:no-underline">{f.q}</AccordionTrigger>
@@ -230,29 +266,28 @@ function ForeignWorkersPage() {
       </section>
 
       <Footer companyLine={COMPANY_LINE} />
+      <SectionDots sections={DOTS} />
       <FloatingContact />
     </main>
   );
 }
 
-function ChipSection({ heading, items, more, note, bordered }: { heading: string; items: string[]; more: string; note: string; bordered?: boolean }) {
+function ChipRow({ heading, items, more, note }: { heading: string; items: string[]; more: string; note: string }) {
   return (
-    <section className={bordered ? "border-b border-border py-16 lg:py-24" : "py-16 lg:py-24"}>
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <h2 className="text-[2rem] sm:text-5xl">{heading}</h2>
-        <ul className="mt-8 flex flex-wrap gap-3">
-          {items.map((c) => <li key={c} className={chip}>{c}</li>)}
-          <li className={mutedChip}>{more}</li>
-        </ul>
-        <p className="mt-6 text-sm text-muted-foreground">{note}</p>
-      </div>
-    </section>
+    <div>
+      <h2 className="text-[2rem] sm:text-5xl">{heading}</h2>
+      <ul className="mt-6 flex flex-wrap gap-3">
+        {items.map((c) => <li key={c} className={chip}>{c}</li>)}
+        <li className={mutedChip}>{more}</li>
+      </ul>
+      <p className="mt-4 text-sm text-muted-foreground">{note}</p>
+    </div>
   );
 }
 
 function Licenses({ items }: { items: License[] }) {
   return (
-    <section className="mx-auto max-w-7xl px-5 py-16 lg:px-8">
+    <section id="registratsii" className="mx-auto max-w-7xl scroll-mt-20 border-b border-border px-5 py-14 lg:px-8 lg:py-20">
       <h2 className="text-[2rem] sm:text-5xl">Регистрации и удостоверения</h2>
       <ul className="mt-8 flex flex-wrap gap-4">
         {items.map((l) => (
