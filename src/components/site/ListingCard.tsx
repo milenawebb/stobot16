@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Clock, FileUp, MapPin, Phone, Wallet } from "lucide-react";
-import { PHONE_TEL } from "@/lib/contact";
+import { WORKERS_PHONE } from "@/lib/contact";
 import type { JobListing } from "@/lib/listings.functions";
 import { ListingBadges } from "./ListingBadges";
 import { MagneticButton, SpotlightCard } from "./kinetic";
@@ -41,7 +41,7 @@ export function ListingCard({ listing }: { listing: JobListing }) {
 
       <div className="mt-6 grid grid-cols-2 gap-2">
         <MagneticButton
-          href={`tel:${listing.contact_phone ?? PHONE_TEL}`}
+          href={`tel:${listing.contact_phone ?? WORKERS_PHONE.tel}`}
           className="flex min-w-0 items-center justify-center gap-2 rounded-[6px] bg-primary px-3 py-4 text-center font-display text-sm font-bold text-primary-foreground transition-colors hover:bg-foreground hover:text-background sm:text-base"
         >
           <Phone className="h-4 w-4 shrink-0" /> Обади се сега

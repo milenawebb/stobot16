@@ -1,5 +1,5 @@
 import { Wordmark } from "./Wordmark";
-import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/contact";
+import { WORKERS_PHONE } from "@/lib/contact";
 
 const quickLinks = [
   ["/#uslugi", "Услуги"],
@@ -51,8 +51,8 @@ export function Footer() {
           <h3 className="text-sm font-bold text-white">Контакти</h3>
           <ul className="mt-4 space-y-2 text-sm text-white/60">
             <li>
-              <a href={`tel:${PHONE_TEL}`} className="transition-colors hover:text-white">
-                {PHONE_DISPLAY}
+              <a href={`tel:${WORKERS_PHONE.tel}`} className="transition-colors hover:text-white">
+                {WORKERS_PHONE.display}
               </a>
             </li>
             <li>

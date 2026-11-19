@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Phone } from "lucide-react";
-import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/contact";
+import { WORKERS_PHONE } from "@/lib/contact";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import { FloatingContact } from "@/components/site/FloatingContact";
@@ -65,10 +65,10 @@ function ListingsPage() {
           Всички позиции са с трудов договор и осигуровки.
         </p>
         <MagneticButton
-          href={`tel:${PHONE_TEL}`}
+          href={`tel:${WORKERS_PHONE.tel}`}
           className="mt-6 inline-flex max-w-full items-center gap-2 whitespace-nowrap rounded-[6px] bg-primary px-4 py-4 font-display text-[clamp(0.72rem,3.4vw,1rem)] font-bold text-primary-foreground transition-colors hover:bg-foreground hover:text-background sm:gap-3 sm:px-7"
         >
-          <Phone className="h-5 w-5" /> Обадете се направо: {PHONE_DISPLAY}
+          <Phone className="h-5 w-5" /> Обадете се направо: {WORKERS_PHONE.display}
         </MagneticButton>
         <p className="mt-3 text-sm text-muted-foreground">или оставете кандидатура по-долу</p>
 

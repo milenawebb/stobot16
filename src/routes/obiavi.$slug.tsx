@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Clock, MapPin, Wallet, ArrowLeft, Phone } from "lucide-react";
-import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/contact";
+import { WORKERS_PHONE } from "@/lib/contact";
 import { Nav } from "@/components/site/Nav";
 import { MagneticButton } from "@/components/site/kinetic";
 import { Footer } from "@/components/site/Footer";
@@ -121,10 +121,10 @@ function ListingDetail() {
 
         <div className="mt-10 flex flex-col items-start gap-3">
           <MagneticButton
-            href={`tel:${listing.contact_phone ?? PHONE_TEL}`}
+            href={`tel:${listing.contact_phone ?? WORKERS_PHONE.tel}`}
             className="inline-flex items-center gap-3 rounded-[6px] bg-primary px-8 py-5 font-display text-base font-bold  text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
           >
-            <Phone className="h-5 w-5" /> Обади се сега — {listing.contact_phone ?? PHONE_DISPLAY}
+            <Phone className="h-5 w-5" /> Обади се сега — {listing.contact_phone ?? WORKERS_PHONE.display}
           </MagneticButton>
           <Link
             to="/"

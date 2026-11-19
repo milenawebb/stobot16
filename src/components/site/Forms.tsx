@@ -3,6 +3,7 @@ import { useSearch } from "@tanstack/react-router";
 import { toast } from "sonner";
 import { MagneticButton } from "./kinetic";
 import { SECTORS } from "@/lib/sectors";
+import { CLIENTS_PHONE } from "@/lib/contact";
 import { submitCompanyRequest } from "@/lib/requests.functions";
 
 export const COMPANY_SUCCESS = "Заявката е изпратена. Ще се свържем с вас до 24 часа.";
@@ -93,6 +94,12 @@ export function Forms() {
           <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
             Кажете ни от какво имате нужда. Отговаряме до 24 часа.
           </p>
+          <a
+            href={`tel:${CLIENTS_PHONE.tel}`}
+            className="mt-3 inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 font-mono text-sm text-foreground transition-colors hover:border-primary"
+          >
+            Обадете се: {CLIENTS_PHONE.display}
+          </a>
 
 
           <div className="mt-6 space-y-3">

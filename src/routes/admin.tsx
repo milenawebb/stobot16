@@ -257,7 +257,7 @@ function AdminPage() {
           <input
             value={form.contact_phone}
             onChange={(e) => setForm({ ...form, contact_phone: e.target.value })}
-            placeholder="Телефон за тази обява (по желание, по подразбиране +359 87 647 2224)"
+            placeholder="Телефон за тази обява (по желание, по подразбиране +359 884 222 241)"
             className={inputClass}
           />
           <textarea

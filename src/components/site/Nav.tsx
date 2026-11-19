@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, Phone, X } from "lucide-react";
-import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/contact";
+import { WORKERS_PHONE } from "@/lib/contact";
 import { cn } from "@/lib/utils";
 import { Wordmark } from "./Wordmark";
 import { MagneticButton } from "./kinetic";
@@ -54,11 +54,11 @@ export function Nav() {
             </a>
           ))}
           <a
-            href={`tel:${PHONE_TEL}`}
+            href={`tel:${WORKERS_PHONE.tel}`}
             className="hidden items-center gap-2 font-mono text-sm text-foreground transition-colors hover:text-primary xl:flex"
           >
             <Phone className="h-4 w-4 text-primary" />
-            {PHONE_DISPLAY}
+            {WORKERS_PHONE.display}
           </a>
           <MagneticButton
             href="/#zayavka"
@@ -90,12 +90,12 @@ export function Nav() {
               </a>
             ))}
             <a
-              href={`tel:${PHONE_TEL}`}
+              href={`tel:${WORKERS_PHONE.tel}`}
               onClick={() => setOpen(false)}
               className="mt-4 flex items-center justify-center gap-2 rounded-full border border-primary px-5 py-3.5 font-mono text-sm text-foreground"
             >
               <Phone className="h-4 w-4 text-primary" />
-              {PHONE_DISPLAY}
+              {WORKERS_PHONE.display}
             </a>
             <a
               href="/#zayavka"
