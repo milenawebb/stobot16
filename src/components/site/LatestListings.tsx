@@ -2,15 +2,16 @@ import { Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { SectionHead } from "./SectionHead";
 import { ListingCard } from "./ListingCard";
-import { listActiveListings } from "@/lib/listings.functions";
+import { activeListingsQuery } from "@/hooks/use-active-listings";
 
 export function LatestListings() {
   const { data } = useQuery({
-    queryKey: ["latest-listings"],
-    queryFn: () => listActiveListings(),
+    ...activeListingsQuery,
   });
 
   const listings = (data ?? []).slice(0, 3);
+
+  if (!data || data.length === 0) return null;
 
   return (
     <section id="obiavi" className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">

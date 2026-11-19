@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { MagneticButton } from "./kinetic";
 import { ParallaxImage } from "./motion-kit";
 import { ParticleField } from "./ParticleField";
+import { useHasActiveListings } from "@/hooks/use-active-listings";
 import heroImg from "@/assets/hero-crew.jpg";
 
 const paths = {
@@ -15,7 +16,7 @@ const paths = {
   candidate: {
     headline: "Кажи къде и кога можеш да работиш. Ще ти предложим подходяща смяна.",
     support: "Избери работа в строителството, складовете или производството.",
-    cta: "Виж свободните места",
+    cta: "Търся работа",
     href: "/obiavi",
   },
 } as const;
@@ -44,6 +45,8 @@ function useEnter() {
 
 export function Hero() {
   const [path, setPath] = useState<PathKey>("company");
+  const hasListings = useHasActiveListings();
+  const jobsHref = hasListings ? "/obiavi" : "/#kandidati";
   const active = paths[path];
   const enter = useEnter();
 
@@ -118,7 +121,7 @@ export function Hero() {
 
           <motion.div {...enter(0.34)}>
             <MagneticButton
-              href={active.href}
+              href={path === "candidate" ? jobsHref : active.href}
               label={active.cta}
               className="mt-7 flex w-full items-center justify-center rounded-[6px] bg-primary px-8 py-5 text-center font-display text-base font-bold text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
             />
@@ -173,7 +176,7 @@ export function Hero() {
             className="flex items-center justify-center rounded-[6px] bg-primary px-8 py-5 text-center font-display text-base font-bold text-primary-foreground shadow-[0_25px_60px_-30px_rgba(201,160,92,0.8)] transition-colors hover:bg-foreground hover:text-background"
           />
           <MagneticButton
-            href="/obiavi"
+            href={jobsHref}
             label="Търся работа"
             className="glass-panel flex items-center justify-center rounded-[6px] px-8 py-5 text-center font-display text-base font-bold text-foreground transition-colors hover:bg-move hover:text-move-foreground"
           />

@@ -6,14 +6,15 @@ import { cn } from "@/lib/utils";
 import { Wordmark } from "./Wordmark";
 import { MagneticButton } from "./kinetic";
 import { ScrollProgress } from "./ScrollProgress";
+import { useHasActiveListings } from "@/hooks/use-active-listings";
 
-const links = [
+const allLinks = [
   { href: "/#uslugi", label: "Услуги" },
   { href: "/#kak-rabotim", label: "Как работим" },
   { href: "/obiavi", label: "Обяви" },
-  { href: "/stobot-hr", label: "Stobot HR" },
   { href: "/#sektori", label: "Сектори" },
   { href: "/#hamalski", label: "Преместване" },
+  { href: "/stobot-hr", label: "Stobot HR" },
   { href: "/#kontakti", label: "Контакти" },
 ];
 
@@ -21,6 +22,8 @@ export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const hasListings = useHasActiveListings();
+  const links = allLinks.filter((l) => l.href !== "/obiavi" || hasListings === true);
   const isActive = (href: string) => !href.includes("#") && pathname === href;
 
   useEffect(() => {

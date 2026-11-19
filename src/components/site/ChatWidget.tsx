@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { Bot, Send, X } from "lucide-react";
+import { useHasActiveListings } from "@/hooks/use-active-listings";
 import { chatAssistant, type ListingRef } from "@/lib/chat.functions";
 
 type Msg = { role: "user" | "assistant"; content: string; listings?: ListingRef[] };
@@ -9,8 +10,9 @@ type Msg = { role: "user" | "assistant"; content: string; listings?: ListingRef[
 const GREETING =
   "Здравей! Търсиш работа или персонал за фирмата си? Пиши ми и ще ти помогна.";
 
+const LISTINGS_CHIP = "Какви позиции имате в момента?";
 const SUGGESTIONS = [
-  "Какви позиции имате в момента?",
+  LISTINGS_CHIP,
   "Как да кандидатствам?",
   "Търся персонал за склад/производство",
   "Какви документи получавам при наемане?",
@@ -25,6 +27,8 @@ export function ChatWidget({ open, onClose }: { open: boolean; onClose: () => vo
   );
   const scrollRef = useRef<HTMLDivElement>(null);
   const send = useServerFn(chatAssistant);
+  const hasListings = useHasActiveListings();
+  const suggestions = SUGGESTIONS.filter((s) => s !== LISTINGS_CHIP || hasListings === true);
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
@@ -102,7 +106,7 @@ export function ChatWidget({ open, onClose }: { open: boolean; onClose: () => vo
             ))}
             {messages.length === 1 && !loading && (
               <div className="flex flex-wrap gap-2">
-                {SUGGESTIONS.map((s) => (
+                {suggestions.map((s) => (
                   <button
                     key={s}
                     type="button"

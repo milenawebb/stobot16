@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useHasActiveListings } from "@/hooks/use-active-listings";
 
 const homeSections = [
   { id: "top", label: "Начало" },
@@ -16,7 +17,12 @@ const homeSections = [
 
 export type DotSection = { id: string; label: string };
 
-export function SectionDots({ sections = homeSections }: { sections?: DotSection[] } = {}) {
+export function SectionDots({ sections: given }: { sections?: DotSection[] } = {}) {
+  const hasListings = useHasActiveListings();
+  const sections = useMemo(
+    () => given ?? homeSections.filter((s) => s.id !== "obiavi" || hasListings === true),
+    [given, hasListings],
+  );
   const [active, setActive] = useState(sections[0]!.id);
 
   useEffect(() => {

@@ -1,5 +1,6 @@
 import { Phone, Mail } from "lucide-react";
 import { Wordmark } from "./Wordmark";
+import { useHasActiveListings } from "@/hooks/use-active-listings";
 import { CLIENTS_PHONE, WORKERS_PHONE } from "@/lib/contact";
 import { LEGAL, LEGAL_COMPANY_LINE, openChat } from "@/lib/legal";
 
@@ -42,6 +43,7 @@ const pill =
   "inline-flex min-h-11 items-center gap-2 whitespace-nowrap rounded-full border border-white/15 px-4 py-2 text-sm text-white transition-colors hover:border-primary";
 
 export function Footer() {
+  const hasListings = useHasActiveListings();
   return (
     <footer className="border-t border-border bg-surface">
       <div className="mx-auto grid max-w-7xl grid-cols-2 gap-x-6 gap-y-10 px-5 py-14 sm:grid-cols-3 lg:grid-cols-[1.3fr_0.9fr_0.9fr_1fr_1.4fr] lg:px-8">
@@ -56,7 +58,7 @@ export function Footer() {
           <div key={c.title}>
             <h3 className="text-sm font-bold text-white">{c.title}</h3>
             <ul className="mt-3">
-              {c.links.map((l) => (
+              {c.links.filter((l) => l.href !== "/obiavi" || hasListings === true).map((l) => (
                 <li key={l.label}>
                   {l.chat ? (
                     <button type="button" onClick={openChat} className={linkClass}>

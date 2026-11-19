@@ -91,7 +91,19 @@ function ListingsPage() {
           </div>
         )}
 
-        {visible.length === 0 ? (
+        {listings.length === 0 ? (
+          <div className="mt-12 rounded-[32px] border border-border bg-surface-2/40 p-8">
+            <p className="max-w-xl text-base leading-relaxed text-foreground/85">
+              В момента няма свободни позиции. Обадете се на {WORKERS_PHONE.display} и ще ви насочим.
+            </p>
+            <a
+              href={`tel:${WORKERS_PHONE.tel}`}
+              className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-4 font-display text-sm font-bold text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
+            >
+              <Phone className="h-4 w-4" /> {WORKERS_PHONE.display}
+            </a>
+          </div>
+        ) : visible.length === 0 ? (
           <div className="mt-12 rounded-[32px] border border-border bg-surface-2/40 p-8">
             <p className="max-w-xl text-base leading-relaxed text-foreground/85">
               В момента няма отворени позиции — кандидатствайте и ще ви потърсим, щом се появи
