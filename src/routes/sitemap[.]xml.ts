@@ -28,7 +28,7 @@ export const Route = createFileRoute("/sitemap.xml")({
         const urls = [
           `<url><loc>${origin}/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>`,
           `<url><loc>${origin}/obiavi</loc><changefreq>daily</changefreq><priority>0.9</priority></url>`,
-          `<url><loc>${origin}/rabotnitsi-ot-chuzhbina</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>`,
+          `<url><loc>${origin}/stobot-hr</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>`,
           ...(data ?? []).map(
             (row: { slug: string; updated_at: string }) =>
               `<url><loc>${origin}/obiavi/${row.slug}</loc><lastmod>${new Date(row.updated_at).toISOString()}</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>`,

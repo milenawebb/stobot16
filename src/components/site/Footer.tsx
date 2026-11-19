@@ -7,7 +7,7 @@ const quickLinks = [
   ["/#sektori", "Сектори"],
   ["/#hamalski", "Преместване"],
   ["/obiavi", "Обяви"],
-  ["/rabotnitsi-ot-chuzhbina", "Работници от чужбина"],
+  ["/stobot-hr", "Stobot HR"],
   ["/#kontakti", "Контакти"],
 ] as const;
 

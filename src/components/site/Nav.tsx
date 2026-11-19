@@ -10,7 +10,7 @@ const links = [
   { href: "/#uslugi", label: "Услуги" },
   { href: "/#kak-rabotim", label: "Как работим" },
   { href: "/obiavi", label: "Обяви" },
-  { href: "/rabotnitsi-ot-chuzhbina", label: "От чужбина" },
+  { href: "/stobot-hr", label: "Stobot HR" },
   { href: "/#sektori", label: "Сектори" },
   { href: "/#hamalski", label: "Преместване" },
   { href: "/#kontakti", label: "Контакти" },

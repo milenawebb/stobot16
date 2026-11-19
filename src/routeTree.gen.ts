@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as RabotnitsiOtChuzhbinaRouteImport } from './routes/rabotnitsi-ot-chuzhbina'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as StobotHrRouteImport } from './routes/stobot-hr'
 import { Route as ObiaviIndexRouteImport } from './routes/obiavi.index'
 import { Route as ObiaviSlugRouteImport } from './routes/obiavi.$slug'
 
@@ -36,6 +37,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StobotHrRoute = StobotHrRouteImport.update({
+  id: '/stobot-hr',
+  path: '/stobot-hr',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ObiaviIndexRoute = ObiaviIndexRouteImport.update({
   id: '/obiavi/',
   path: '/obiavi/',
@@ -52,6 +58,7 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminRoute
   '/rabotnitsi-ot-chuzhbina': typeof RabotnitsiOtChuzhbinaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/stobot-hr': typeof StobotHrRoute
   '/obiavi/$slug': typeof ObiaviSlugRoute
   '/obiavi/': typeof ObiaviIndexRoute
 }
@@ -60,6 +67,7 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminRoute
   '/rabotnitsi-ot-chuzhbina': typeof RabotnitsiOtChuzhbinaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/stobot-hr': typeof StobotHrRoute
   '/obiavi/$slug': typeof ObiaviSlugRoute
   '/obiavi': typeof ObiaviIndexRoute
 }
@@ -69,6 +77,7 @@ export interface FileRoutesById {
   '/admin': typeof AdminRoute
   '/rabotnitsi-ot-chuzhbina': typeof RabotnitsiOtChuzhbinaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/stobot-hr': typeof StobotHrRoute
   '/obiavi/$slug': typeof ObiaviSlugRoute
   '/obiavi/': typeof ObiaviIndexRoute
 }
@@ -79,6 +88,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/rabotnitsi-ot-chuzhbina'
     | '/sitemap.xml'
+    | '/stobot-hr'
     | '/obiavi/$slug'
     | '/obiavi/'
   fileRoutesByTo: FileRoutesByTo
@@ -87,6 +97,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/rabotnitsi-ot-chuzhbina'
     | '/sitemap.xml'
+    | '/stobot-hr'
     | '/obiavi/$slug'
     | '/obiavi'
   id:
@@ -95,6 +106,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/rabotnitsi-ot-chuzhbina'
     | '/sitemap.xml'
+    | '/stobot-hr'
     | '/obiavi/$slug'
     | '/obiavi/'
   fileRoutesById: FileRoutesById
@@ -104,6 +116,7 @@ export interface RootRouteChildren {
   AdminRoute: typeof AdminRoute
   RabotnitsiOtChuzhbinaRoute: typeof RabotnitsiOtChuzhbinaRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  StobotHrRoute: typeof StobotHrRoute
   ObiaviSlugRoute: typeof ObiaviSlugRoute
   ObiaviIndexRoute: typeof ObiaviIndexRoute
 }
@@ -138,6 +151,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/stobot-hr': {
+      id: '/stobot-hr'
+      path: '/stobot-hr'
+      fullPath: '/stobot-hr'
+      preLoaderRoute: typeof StobotHrRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/obiavi/': {
       id: '/obiavi/'
       path: '/obiavi'
@@ -160,6 +180,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminRoute: AdminRoute,
   RabotnitsiOtChuzhbinaRoute: RabotnitsiOtChuzhbinaRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  StobotHrRoute: StobotHrRoute,
   ObiaviSlugRoute: ObiaviSlugRoute,
   ObiaviIndexRoute: ObiaviIndexRoute,
 }
