@@ -9,14 +9,32 @@ import { MagneticButton } from "@/components/site/kinetic";
 import { inputClass, textareaClass, useCompanySubmit } from "@/components/site/Forms";
 import { STAFFING_SECTORS } from "@/lib/sectors";
 import { CLIENTS_PHONE } from "@/lib/contact";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 const URL = "https://stobot16.lovable.app/stobot-hr";
 const title = "Stobot HR — работници от трети страни | stobot 16";
 const description =
-  "Stobot HR: организираме подбора и документите за работници от трети страни заедно с вашата фирма, стъпка по стъпка и в рамките на действащата нормативна уредба.";
+  "Stobot HR: организираме подбора и документите за работници от Турция, Индия, Пакистан, Филипини, Украйна, Виетнам и други трети страни, заедно с вашата фирма и по закона.";
+const keywords =
+  "Stobot HR, работници от трети страни, работници от Турция, работници от Индия, работници от Пакистан, работници от Филипини, работници от Украйна, работници от Виетнам";
 
-// Fill in the real license numbers from the client before launch.
-const LICENSES: { name: string; number: string }[] = [];
+type License = { title: string; description?: string; number?: string; imageSrc?: string };
+// Empty for now: the client's certificate image will be uploaded and added here in a follow-up.
+const LICENSES: License[] = [];
+
+const COUNTRIES = ["Турция", "Индия", "Пакистан", "Филипини", "Украйна", "Виетнам"];
+const POSITIONS = ["Складови работници", "Товарене и разтоварване", "Шофьори", "Работници в производство", "Общи работници"];
+
+const FAQ = [
+  { q: "От кои държави подбирате работници?", a: "Подбираме работници от Турция, Индия, Пакистан, Филипини, Украйна, Виетнам и други държави. Ако не виждате вашата, попитайте — разглеждаме и други." },
+  { q: "За какви позиции?", a: "Складови работници, товарене и разтоварване, шофьори, работници в производство, общи работници и други. Подбираме според изискванията на вашата позиция." },
+  { q: "Колко време отнема процесът?", a: "Сроковете зависят от компетентните институции и не могат да бъдат гарантирани предварително." },
+  { q: "Как да изпратя запитване?", a: `Попълнете формата за запитване на тази страница или се обадете на ${CLIENTS_PHONE.display}.` },
+];
+
+const chip = "rounded-full border border-border bg-background/40 px-5 py-2.5 text-sm text-foreground";
+const mutedChip = "rounded-full border border-dashed border-border px-5 py-2.5 text-sm text-muted-foreground";
 
 const audience = [
   { icon: UserSearch, title: "Липса на кадри на местния пазар" },
@@ -37,6 +55,7 @@ export const Route = createFileRoute("/stobot-hr")({
     meta: [
       { title },
       { name: "description", content: description },
+      { name: "keywords", content: keywords },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
@@ -44,6 +63,16 @@ export const Route = createFileRoute("/stobot-hr")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: URL }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+        }),
+      },
+    ],
   }),
   component: ForeignWorkersPage,
 });
@@ -104,6 +133,9 @@ function ForeignWorkersPage() {
         </div>
       </section>
 
+      <ChipSection heading="Държави, от които подбираме" items={COUNTRIES} more="и други държави" note="Не виждате вашата държава? Попитайте — разглеждаме и други." />
+      <ChipSection heading="За какви позиции" items={POSITIONS} more="и др." note="Подбираме според изискванията на вашата позиция." bordered />
+
       <Process
         id="kak-proticha"
         heading="Как протича"
@@ -111,18 +143,7 @@ function ForeignWorkersPage() {
         footnote="Сроковете зависят от компетентните институции и не могат да бъдат гарантирани предварително."
       />
 
-      {LICENSES.length > 0 && (
-        <section className="mx-auto max-w-7xl px-5 py-16 lg:px-8">
-          <h2 className="text-[2rem] sm:text-5xl">Лицензи и регистрации</h2>
-          <ul className="mt-8 flex flex-wrap gap-3">
-            {LICENSES.map((l) => (
-              <li key={l.number} className="rounded-full border border-border px-5 py-2.5 text-sm">
-                {l.name}: <span className="font-mono">{l.number}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
+      {LICENSES.length > 0 && <Licenses items={LICENSES} />}
 
       <section className="mx-auto max-w-3xl px-5 py-16 lg:py-24">
         <form id="zapitvane" onSubmit={form.onSubmit} className="scroll-mt-28 rounded-[32px] border border-border bg-background p-6 sm:p-10">
@@ -165,8 +186,67 @@ function ForeignWorkersPage() {
         </a>
       </section>
 
+      <section className="mx-auto max-w-3xl px-5 pb-16 lg:pb-24">
+        <h2 className="text-[2rem] sm:text-5xl">Често задавани въпроси</h2>
+        <Accordion type="single" collapsible className="mt-8 space-y-3">
+          {FAQ.map((f, i) => (
+            <AccordionItem key={f.q} value={`q${i}`} className="rounded-[28px] border border-border px-6">
+              <AccordionTrigger className="text-left text-base hover:no-underline">{f.q}</AccordionTrigger>
+              <AccordionContent className="text-sm leading-relaxed text-muted-foreground">{f.a}</AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </section>
+
       <Footer />
       <FloatingContact />
     </main>
+  );
+}
+
+function ChipSection({ heading, items, more, note, bordered }: { heading: string; items: string[]; more: string; note: string; bordered?: boolean }) {
+  return (
+    <section className={bordered ? "border-b border-border py-16 lg:py-24" : "py-16 lg:py-24"}>
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+        <h2 className="text-[2rem] sm:text-5xl">{heading}</h2>
+        <ul className="mt-8 flex flex-wrap gap-3">
+          {items.map((c) => <li key={c} className={chip}>{c}</li>)}
+          <li className={mutedChip}>{more}</li>
+        </ul>
+        <p className="mt-6 text-sm text-muted-foreground">{note}</p>
+      </div>
+    </section>
+  );
+}
+
+function Licenses({ items }: { items: License[] }) {
+  return (
+    <section className="mx-auto max-w-7xl px-5 py-16 lg:px-8">
+      <h2 className="text-[2rem] sm:text-5xl">Лицензи и регистрации</h2>
+      <ul className="mt-8 flex flex-wrap gap-4">
+        {items.map((l) => (
+          <li key={l.title} className="glass-panel flex max-w-sm items-center gap-4 rounded-[28px] border border-border p-4">
+            {l.imageSrc && (
+              <Dialog>
+                <DialogTrigger asChild>
+                  <button type="button" aria-label={`Виж ${l.title}`} className="shrink-0 overflow-hidden rounded-2xl border border-border transition-colors hover:border-primary">
+                    <img src={l.imageSrc} alt={l.title} loading="lazy" className="h-20 w-16 object-cover" />
+                  </button>
+                </DialogTrigger>
+                <DialogContent className="max-w-3xl rounded-[28px] p-4">
+                  <DialogTitle className="sr-only">{l.title}</DialogTitle>
+                  <img src={l.imageSrc} alt={l.title} className="max-h-[80vh] w-full rounded-2xl object-contain" />
+                </DialogContent>
+              </Dialog>
+            )}
+            <div className="text-sm">
+              <p className="font-semibold">{l.title}</p>
+              {l.description && <p className="mt-1 text-muted-foreground">{l.description}</p>}
+              {l.number && <p className="mt-1 font-mono">{l.number}</p>}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }
