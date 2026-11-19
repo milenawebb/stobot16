@@ -2,18 +2,19 @@ import { Wordmark } from "./Wordmark";
 import { PHONE_DISPLAY, PHONE_TEL } from "@/lib/contact";
 
 const quickLinks = [
-  ["#uslugi", "Услуги"],
-  ["#kak-rabotim", "Как работим"],
-  ["#sektori", "Сектори"],
-  ["#hamalski", "Преместване"],
-  ["#obiavi", "Обяви"],
-  ["#kontakti", "Контакти"],
+  ["/#uslugi", "Услуги"],
+  ["/#kak-rabotim", "Как работим"],
+  ["/#sektori", "Сектори"],
+  ["/#hamalski", "Преместване"],
+  ["/obiavi", "Обяви"],
+  ["/rabotnitsi-ot-chuzhbina", "Работници от чужбина"],
+  ["/#kontakti", "Контакти"],
 ] as const;
 
 const legalLinks = [
-  ["#", "Поверителност"],
-  ["#", "Условия за ползване"],
-  ["#", "Бисквитки"],
+  ["/#", "Поверителност"],
+  ["/#", "Условия за ползване"],
+  ["/#", "Бисквитки"],
 ] as const;
 
 export function Footer() {

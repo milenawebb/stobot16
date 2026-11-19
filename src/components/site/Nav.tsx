@@ -10,6 +10,7 @@ const links = [
   { href: "/#uslugi", label: "Услуги" },
   { href: "/#kak-rabotim", label: "Как работим" },
   { href: "/obiavi", label: "Обяви" },
+  { href: "/rabotnitsi-ot-chuzhbina", label: "От чужбина" },
   { href: "/#sektori", label: "Сектори" },
   { href: "/#hamalski", label: "Преместване" },
   { href: "/#kontakti", label: "Контакти" },
@@ -42,7 +43,7 @@ export function Nav() {
         </a>
 
 
-        <div className="hidden items-center gap-8 lg:flex">
+        <div className="hidden items-center gap-5 whitespace-nowrap lg:flex xl:gap-7">
           {links.map((l) => (
             <a
               key={l.href}
@@ -54,7 +55,7 @@ export function Nav() {
           ))}
           <a
             href={`tel:${PHONE_TEL}`}
-            className="flex items-center gap-2 font-mono text-sm text-foreground transition-colors hover:text-primary"
+            className="hidden items-center gap-2 font-mono text-sm text-foreground transition-colors hover:text-primary xl:flex"
           >
             <Phone className="h-4 w-4 text-primary" />
             {PHONE_DISPLAY}
@@ -62,7 +63,7 @@ export function Nav() {
           <MagneticButton
             href="/#zayavka"
             label="Заявка за персонал"
-            className="flex items-center rounded-[6px] bg-primary px-5 py-2.5 font-display text-sm font-bold  text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
+            className="flex shrink-0 items-center whitespace-nowrap rounded-[6px] bg-primary px-5 py-2.5 font-display text-sm font-bold  text-primary-foreground transition-colors hover:bg-foreground hover:text-background"
           />
         </div>
 

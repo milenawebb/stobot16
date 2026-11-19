@@ -14,6 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
+      company_requests: {
+        Row: {
+          city: string | null
+          company: string
+          contact_name: string
+          created_at: string
+          email: string | null
+          gdpr_consent: boolean
+          id: string
+          message: string | null
+          phone: string
+          sector: string | null
+          source: string
+          workers: string | null
+        }
+        Insert: {
+          city?: string | null
+          company: string
+          contact_name: string
+          created_at?: string
+          email?: string | null
+          gdpr_consent?: boolean
+          id?: string
+          message?: string | null
+          phone: string
+          sector?: string | null
+          source?: string
+          workers?: string | null
+        }
+        Update: {
+          city?: string | null
+          company?: string
+          contact_name?: string
+          created_at?: string
+          email?: string | null
+          gdpr_consent?: boolean
+          id?: string
+          message?: string | null
+          phone?: string
+          sector?: string | null
+          source?: string
+          workers?: string | null
+        }
+        Relationships: []
+      }
       job_listings: {
         Row: {
           contact_phone: string | null

@@ -6,7 +6,9 @@ import trainingPhoto from "@/assets/process-training.jpg";
 import contractsPhoto from "@/assets/process-contracts.jpg";
 import supervisionPhoto from "@/assets/process-supervision.jpg";
 
-const steps = [
+export type ProcessStep = { number: string; title: string; body: string; image: string };
+
+const defaultSteps: ProcessStep[] = [
   {
     number: "01",
     title: "Заявка и анализ",
@@ -41,7 +43,7 @@ const steps = [
 
 const triggerPositions = ["top-0", "top-[100vh]", "top-[200vh]", "top-[300vh]", "top-[400vh]"];
 
-function StepLabels({ activeStep }: { activeStep: number }) {
+function StepLabels({ activeStep, steps }: { activeStep: number; steps: ProcessStep[] }) {
   return (
     <div className="flex w-full max-w-full flex-wrap gap-x-10 gap-y-2" aria-hidden="true">
       {steps.map((step, index) => (
@@ -58,7 +60,19 @@ function StepLabels({ activeStep }: { activeStep: number }) {
   );
 }
 
-export function Process() {
+export const processImages = { coordinatorPhoto, trainingPhoto, contractsPhoto, crewPhoto, supervisionPhoto };
+
+export function Process({
+  id = "kak-rabotim",
+  heading = "От заявка до работещ екип",
+  steps = defaultSteps,
+  footnote,
+}: {
+  id?: string;
+  heading?: string;
+  steps?: ProcessStep[];
+  footnote?: string;
+} = {}) {
   const [activeStep, setActiveStep] = useState(0);
   const triggerRefs = useRef<Array<HTMLDivElement | null>>([]);
   const active = steps[activeStep]!;
@@ -80,10 +94,10 @@ export function Process() {
   }, []);
 
   return (
-    <section id="kak-rabotim" className="border-b border-border py-20 lg:py-28">
+    <section id={id} className="border-b border-border py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <h2 className="max-w-2xl text-[2rem] sm:text-5xl lg:text-6xl">
-          От заявка до работещ екип
+          {heading}
         </h2>
       </div>
 
@@ -91,7 +105,7 @@ export function Process() {
       <div className="relative mt-12 hidden h-[500vh] lg:block">
         <div className="sticky top-0 flex h-screen items-center">
           <div className="mx-auto w-full max-w-7xl px-5 lg:px-8">
-            <StepLabels activeStep={activeStep} />
+            <StepLabels activeStep={activeStep} steps={steps} />
 
             <div className="mt-12 grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
               <div className="overflow-hidden rounded-[32px]">
@@ -165,6 +179,14 @@ export function Process() {
           ))}
         </ol>
       </div>
+
+      {footnote ? (
+        <div className="mx-auto mt-10 max-w-7xl px-5 lg:px-8">
+          <p className="rounded-full border border-border bg-surface/60 px-5 py-3 text-sm leading-relaxed text-muted-foreground">
+            {footnote}
+          </p>
+        </div>
+      ) : null}
     </section>
   );
 }

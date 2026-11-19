@@ -3,12 +3,55 @@ import { useSearch } from "@tanstack/react-router";
 import { toast } from "sonner";
 import { MagneticButton } from "./kinetic";
 import { SECTORS } from "@/lib/sectors";
+import { submitCompanyRequest } from "@/lib/requests.functions";
+
+export const COMPANY_SUCCESS = "Заявката е изпратена. Ще се свържем с вас до 24 часа.";
+
+function str(f: FormData, k: string) {
+  const v = f.get(k);
+  return typeof v === "string" ? v : "";
+}
+
+export function useCompanySubmit(source: "home" | "chuzhbina") {
+  const [sending, setSending] = useState(false);
+  return {
+    sending,
+    onSubmit: async (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      const form = e.currentTarget;
+      const f = new FormData(form);
+      setSending(true);
+      try {
+        await submitCompanyRequest({
+          data: {
+            source,
+            company: str(f, "company"),
+            contact_name: str(f, "name"),
+            phone: str(f, "phone"),
+            email: str(f, "email"),
+            sector: str(f, "sector") || undefined,
+            workers: str(f, "people") || undefined,
+            city: str(f, "city") || undefined,
+            message: str(f, "details") || undefined,
+            gdpr_consent: f.get("gdpr") === "on",
+          },
+        });
+        form.reset();
+        toast.success(COMPANY_SUCCESS);
+      } catch {
+        toast.error("Заявката не беше изпратена. Опитайте отново или се обадете.");
+      } finally {
+        setSending(false);
+      }
+    },
+  };
+}
 
 
-const textareaClass =
+export const textareaClass =
   "rounded-3xl w-full border border-input bg-transparent px-4 py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:bg-surface";
 
-const inputClass =
+export const inputClass =
   "rounded-[6px] w-full border border-input bg-transparent px-4 py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:bg-surface";
 
 function useFakeSubmit(message: string) {
@@ -29,7 +72,7 @@ function useFakeSubmit(message: string) {
 
 export function Forms() {
   const search = useSearch({ strict: false }) as { sector?: string; listing?: string };
-  const company = useFakeSubmit("Заявката е изпратена. Ще се свържем с вас до 24 часа.");
+  const company = useCompanySubmit("home");
   const candidate = useFakeSubmit("Кандидатурата е изпратена. Очаквайте обаждане.");
   const [resumeName, setResumeName] = useState<string | null>(null);
   const presetSector = search.sector && SECTORS.includes(search.sector as never) ? search.sector : "";
