@@ -19,14 +19,37 @@ const description =
 const keywords =
   "Stobot HR, работници от трети страни, работници от Турция, работници от Индия, работници от Пакистан, работници от Филипини, работници от Украйна, работници от Виетнам";
 
-type License = { title: string; description?: string; number?: string; imageSrc?: string };
+type LicenseRow = { label: string; value: string };
+type License = {
+  title: string;
+  rows?: LicenseRow[];
+  description?: string;
+  number?: string;
+  // Optional: set only with the redacted scan (personal data and signature hidden).
+  imageSrc?: string;
+  imageCaption?: string;
+};
+const LICENSE_IMAGE_CAPTION = "Копие на удостоверението (личните данни и подписът са скрити)";
 // Text only: the certificate scan contains private data, so never add imageSrc for it.
 const LICENSES: License[] = [
   {
     title: "Регистрация за посредническа дейност по наемане на работа",
-    description:
-      "Министерство на труда и социалната политика. Регистрацията е безсрочна. Обхват: информиране и консултиране на търсещи работа лица и на работодатели; насочване и подпомагане за започване на работа, включително в друго населено място в страната или в други държави.",
-    number: "№ 4055 / 16.02.2026 г.",
+    rows: [
+      { label: "Издаден от", value: "Министерство на труда и социалната политика" },
+      {
+        label: "Правно основание",
+        value:
+          "чл. 28, ал. 5 от Закона за насърчаване на заетостта и Наредбата за условията и реда за извършване на посредническа дейност по наемане на работа",
+      },
+      { label: "Регистрационен номер", value: "№ 4055 / 16.02.2026 г." },
+      { label: "Валидност", value: "безсрочна" },
+      { label: "Дружество", value: "Стобот ЕйчАр ЕООД, ЕИК 208648435, гр. София" },
+      {
+        label: "Посреднически услуги",
+        value:
+          "(1) информиране и консултиране на търсещи работа лица и на работодатели; (2) насочване и подпомагане за започване на работа, включително в друго населено място в страната или в други държави.",
+      },
+    ],
   },
 ];
 const COMPANY_LINE = "Стобот ЕйчАр ЕООД, ЕИК 208648435";
@@ -230,7 +253,7 @@ function ChipSection({ heading, items, more, note, bordered }: { heading: string
 function Licenses({ items }: { items: License[] }) {
   return (
     <section className="mx-auto max-w-7xl px-5 py-16 lg:px-8">
-      <h2 className="text-[2rem] sm:text-5xl">Лицензи и регистрации</h2>
+      <h2 className="text-[2rem] sm:text-5xl">Регистрации и удостоверения</h2>
       <ul className="mt-8 flex flex-wrap gap-4">
         {items.map((l) => (
           <li key={l.title} className="glass-panel flex max-w-3xl items-start gap-4 rounded-[28px] border border-border p-5 text-left sm:p-6">
@@ -249,6 +272,7 @@ function Licenses({ items }: { items: License[] }) {
                 <DialogContent className="max-w-3xl rounded-[28px] p-4">
                   <DialogTitle className="sr-only">{l.title}</DialogTitle>
                   <img src={l.imageSrc} alt={l.title} className="max-h-[80vh] w-full rounded-2xl object-contain" />
+                  <p className="mt-3 text-center text-xs text-muted-foreground">{l.imageCaption ?? LICENSE_IMAGE_CAPTION}</p>
                 </DialogContent>
               </Dialog>
             )}
@@ -256,11 +280,23 @@ function Licenses({ items }: { items: License[] }) {
               <p className="text-base font-semibold">{l.title}</p>
               {l.number && <p className="mt-1 font-mono text-primary">{l.number}</p>}
               {l.description && <p className="mt-2 text-muted-foreground">{l.description}</p>}
+              {l.rows && l.rows.length > 0 && (
+                <dl className="mt-4 grid gap-x-8 gap-y-3 border-t border-border pt-4 sm:grid-cols-[10.5rem_1fr]">
+                  {l.rows.map((r) => (
+                    <div key={r.label} className="sm:contents">
+                      <dt className="text-xs font-medium text-muted-foreground">{r.label}</dt>
+                      <dd className="m-0 text-sm text-foreground">{r.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              )}
+              {l.imageSrc && (
+                <p className="mt-3 text-xs text-muted-foreground">{l.imageCaption ?? LICENSE_IMAGE_CAPTION}</p>
+              )}
             </div>
           </li>
         ))}
       </ul>
-      <p className="mt-5 text-sm text-muted-foreground">{COMPANY_LINE}, гр. София.</p>
     </section>
   );
 }
