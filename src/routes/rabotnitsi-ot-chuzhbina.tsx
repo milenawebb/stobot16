@@ -8,7 +8,7 @@ import { Reveal } from "@/components/site/motion-kit";
 import { MagneticButton } from "@/components/site/kinetic";
 import { inputClass, textareaClass, useCompanySubmit } from "@/components/site/Forms";
 import { STAFFING_SECTORS } from "@/lib/sectors";
-import { WORKERS_PHONE } from "@/lib/contact";
+import { CLIENTS_PHONE } from "@/lib/contact";
 
 const URL = "https://stobot16.lovable.app/rabotnitsi-ot-chuzhbina";
 const title = "Работници от трети страни — организиране на процеса | stobot 16";
@@ -74,8 +74,8 @@ function ForeignWorkersPage() {
         <Reveal delay={0.2}>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a href="#zapitvane" className={primaryBtn}>Изпратете запитване</a>
-            <a href={`tel:${WORKERS_PHONE.tel}`} className={ghostBtn}>
-              <Phone className="h-4 w-4 text-primary" /> {WORKERS_PHONE.display}
+            <a href={`tel:${CLIENTS_PHONE.tel}`} className={ghostBtn}>
+              <Phone className="h-4 w-4 text-primary" /> {CLIENTS_PHONE.display}
             </a>
           </div>
         </Reveal>
@@ -155,8 +155,8 @@ function ForeignWorkersPage() {
       </section>
 
       <section className="border-t border-border px-5 py-16 text-center">
-        <a href={`tel:${WORKERS_PHONE.tel}`} className={`${primaryBtn} mx-auto inline-flex text-base`}>
-          <Phone className="h-4 w-4" /> Обадете се: {WORKERS_PHONE.display}
+        <a href={`tel:${CLIENTS_PHONE.tel}`} className={`${primaryBtn} mx-auto inline-flex text-base`}>
+          <Phone className="h-4 w-4" /> Обадете се: {CLIENTS_PHONE.display}
         </a>
       </section>
 

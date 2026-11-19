@@ -9,6 +9,6 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 
-- Phone numbers live only in `src/lib/contact.ts` (WORKERS_PHONE default, CLIENTS_PHONE for the company form section); never hardcode a number.
+- Phone numbers live only in `src/lib/contact.ts`; never hardcode a number. WORKERS_PHONE is the default everywhere; CLIENTS_PHONE is for all company-facing contact (the "За фирми" form, the QuickMatch company tab, the third-country workers page) and for the chat assistant's employer answers.
 - Company inquiry forms submit via `submitCompanyRequest` into `company_requests` with a `source` tag; anon may only insert, so leads stay private.
 - `Process` accepts `steps/heading/footnote` props so other pages reuse the pinned-steps pattern instead of a new one.

@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Phone } from "lucide-react";
 import { SectionHead } from "./SectionHead";
 import { listActiveListings } from "@/lib/listings.functions";
-import { WORKERS_PHONE } from "@/lib/contact";
+import { CLIENTS_PHONE, WORKERS_PHONE } from "@/lib/contact";
 import { STAFFING_SECTORS } from "@/lib/sectors";
 
 const industries = [...STAFFING_SECTORS];
@@ -158,7 +158,7 @@ export function QuickMatch() {
                       Свържете се с нас. Може да имаме решение и извън обичайните сектори.
                     </p>
                     <a
-                      href={`tel:${WORKERS_PHONE.tel}`}
+                      href={`tel:${CLIENTS_PHONE.tel}`}
                       className="mt-6 inline-flex items-center gap-2 rounded-[6px] border border-primary bg-primary px-6 py-3 text-sm font-bold text-primary-foreground transition-colors hover:bg-transparent hover:text-primary"
                     >
                       <Phone className="h-4 w-4" /> Обадете се
