@@ -17,7 +17,7 @@ const legalLinks = [
   ["/#", "Бисквитки"],
 ] as const;
 
-export function Footer() {
+export function Footer({ companyLine }: { companyLine?: string } = {}) {
   return (
     <footer className="border-t border-border bg-surface">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-3 lg:px-8">
@@ -70,6 +70,7 @@ export function Footer() {
         <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 py-6 text-xs text-white/50 md:flex-row md:justify-between">
           <p className="text-center md:text-left">
             © 2026 stobot 16. Всички права запазени.
+            {companyLine && <span className="mt-1 block">{companyLine}</span>}
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 md:justify-center">

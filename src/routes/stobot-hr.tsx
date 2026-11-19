@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { CalendarClock, Phone, UserSearch, Users } from "lucide-react";
+import { CalendarClock, Phone, ShieldCheck, UserSearch, Users } from "lucide-react";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import { FloatingContact } from "@/components/site/FloatingContact";
@@ -20,8 +20,16 @@ const keywords =
   "Stobot HR, работници от трети страни, работници от Турция, работници от Индия, работници от Пакистан, работници от Филипини, работници от Украйна, работници от Виетнам";
 
 type License = { title: string; description?: string; number?: string; imageSrc?: string };
-// Empty for now: the client's certificate image will be uploaded and added here in a follow-up.
-const LICENSES: License[] = [];
+// Text only: the certificate scan contains private data, so never add imageSrc for it.
+const LICENSES: License[] = [
+  {
+    title: "Регистрация за посредническа дейност по наемане на работа",
+    description:
+      "Министерство на труда и социалната политика. Регистрацията е безсрочна. Обхват: информиране и консултиране на търсещи работа лица и на работодатели; насочване и подпомагане за започване на работа, включително в друго населено място в страната или в други държави.",
+    number: "№ 4055 / 16.02.2026 г.",
+  },
+];
+const COMPANY_LINE = "Стобот ЕйчАр ЕООД, ЕИК 208648435";
 
 const COUNTRIES = ["Турция", "Индия", "Пакистан", "Филипини", "Украйна", "Виетнам"];
 const POSITIONS = ["Складови работници", "Товарене и разтоварване", "Шофьори", "Работници в производство", "Общи работници"];
@@ -198,7 +206,7 @@ function ForeignWorkersPage() {
         </Accordion>
       </section>
 
-      <Footer />
+      <Footer companyLine={COMPANY_LINE} />
       <FloatingContact />
     </main>
   );
@@ -225,7 +233,12 @@ function Licenses({ items }: { items: License[] }) {
       <h2 className="text-[2rem] sm:text-5xl">Лицензи и регистрации</h2>
       <ul className="mt-8 flex flex-wrap gap-4">
         {items.map((l) => (
-          <li key={l.title} className="glass-panel flex max-w-sm items-center gap-4 rounded-[28px] border border-border p-4">
+          <li key={l.title} className="glass-panel flex max-w-3xl items-start gap-4 rounded-[28px] border border-border p-5 text-left sm:p-6">
+            {!l.imageSrc && (
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-primary/15">
+                <ShieldCheck className="h-5 w-5 text-primary" />
+              </span>
+            )}
             {l.imageSrc && (
               <Dialog>
                 <DialogTrigger asChild>
@@ -239,14 +252,15 @@ function Licenses({ items }: { items: License[] }) {
                 </DialogContent>
               </Dialog>
             )}
-            <div className="text-sm">
-              <p className="font-semibold">{l.title}</p>
-              {l.description && <p className="mt-1 text-muted-foreground">{l.description}</p>}
-              {l.number && <p className="mt-1 font-mono">{l.number}</p>}
+            <div className="min-w-0 text-sm leading-relaxed">
+              <p className="text-base font-semibold">{l.title}</p>
+              {l.number && <p className="mt-1 font-mono text-primary">{l.number}</p>}
+              {l.description && <p className="mt-2 text-muted-foreground">{l.description}</p>}
             </div>
           </li>
         ))}
       </ul>
+      <p className="mt-5 text-sm text-muted-foreground">{COMPANY_LINE}, гр. София.</p>
     </section>
   );
 }
