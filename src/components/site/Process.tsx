@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useRef, useState, type KeyboardEvent } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import coordinatorPhoto from "@/assets/process-coordinator.jpg";
 import crewPhoto from "@/assets/process-crew.jpg";
 import trainingPhoto from "@/assets/process-training.jpg";
@@ -42,23 +42,6 @@ const defaultSteps: ProcessStep[] = [
 ];
 
 
-function StepLabels({ activeStep, steps }: { activeStep: number; steps: ProcessStep[] }) {
-  return (
-    <div className="flex w-full max-w-full flex-wrap gap-x-10 gap-y-2" aria-hidden="true">
-      {steps.map((step, index) => (
-        <span
-          key={step.number}
-          className={`font-display text-sm font-semibold transition-opacity duration-300 ${
-            index === activeStep ? "text-white opacity-100" : "text-white opacity-45"
-          }`}
-        >
-          {step.title}
-        </span>
-      ))}
-    </div>
-  );
-}
-
 export const processImages = { coordinatorPhoto, trainingPhoto, contractsPhoto, crewPhoto, supervisionPhoto };
 
 export function Process({
@@ -73,24 +56,21 @@ export function Process({
   footnote?: string;
 } = {}) {
   const [activeStep, setActiveStep] = useState(0);
-  const triggerRefs = useRef<Array<HTMLDivElement | null>>([]);
-  const active = steps[activeStep]!;
+  const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const reduced = useReducedMotion();
+  const transition = reduced ? { duration: 0 } : { duration: 0.35, ease: [0.22, 1, 0.36, 1] as const };
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            const index = Number((entry.target as HTMLElement).dataset["stepIndex"]);
-            if (!Number.isNaN(index)) setActiveStep(index);
-          }
-        }
-      },
-      { rootMargin: "-45% 0px -45% 0px", threshold: 0 },
-    );
-    for (const el of triggerRefs.current) if (el) observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+  const onKey = (e: KeyboardEvent<HTMLButtonElement>, index: number) => {
+    let next = index;
+    if (e.key === "ArrowRight" || e.key === "ArrowDown") next = (index + 1) % steps.length;
+    else if (e.key === "ArrowLeft" || e.key === "ArrowUp") next = (index - 1 + steps.length) % steps.length;
+    else if (e.key === "Home") next = 0;
+    else if (e.key === "End") next = steps.length - 1;
+    else return;
+    e.preventDefault();
+    setActiveStep(next);
+    tabRefs.current[next]?.focus();
+  };
 
   const footnoteEl = footnote ? (
     <p className="rounded-full border border-border bg-surface/60 px-5 py-3 text-sm leading-relaxed text-muted-foreground">
@@ -100,76 +80,78 @@ export function Process({
 
   return (
     <section id={id} className="border-b border-border py-20 lg:py-0">
-      {/* Mobile heading; on desktop the heading lives inside the pinned panel */}
+      {/* Mobile heading */}
       <div className="mx-auto max-w-7xl px-5 lg:hidden">
         <h2 className="max-w-2xl text-[2rem] sm:text-5xl">{heading}</h2>
       </div>
 
-      {/* Desktop: one viewport of scroll per step; heading, labels and photo pin together under the fixed header */}
-      <div className="relative hidden lg:block" style={{ height: `${steps.length * 100}vh` }}>
-        <div className="sticky top-0 flex h-screen flex-col justify-center pb-8 pt-24">
-          <div className="mx-auto w-full max-w-7xl px-8">
-            <h2 className="max-w-3xl text-5xl xl:text-6xl">{heading}</h2>
-            <div className="mt-8">
-              <StepLabels activeStep={activeStep} steps={steps} />
-            </div>
-
-            <div className="mt-8 grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-              <div className="overflow-hidden rounded-[32px]">
-                <AnimatePresence mode="wait">
-                  <motion.img
-                    key={`photo-${active.number}`}
-                    src={active.image}
-                    alt="Наш екип на обект"
-                    loading="lazy"
-                    width={1024}
-                    height={1280}
-                    initial={{ opacity: 0, scale: 1.03 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="h-[min(420px,44vh)] w-full object-cover"
-                  />
-                </AnimatePresence>
-              </div>
-
-              <div className="min-w-0">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={active.number}
-                    initial={{ opacity: 0, y: 14 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.28 }}
+      {/* Desktop: normal-height section with clickable, expanding photo cards */}
+      <div className="mx-auto hidden max-w-7xl px-8 py-24 lg:block">
+        <h2 className="max-w-3xl text-5xl xl:text-6xl">{heading}</h2>
+        <div role="tablist" aria-label={heading} className="mt-10 flex h-[460px] gap-3">
+          {steps.map((step, index) => {
+            const isActive = index === activeStep;
+            return (
+              <motion.button
+                key={step.number}
+                ref={(el) => {
+                  tabRefs.current[index] = el;
+                }}
+                layout
+                transition={transition}
+                type="button"
+                role="tab"
+                aria-selected={isActive}
+                tabIndex={isActive ? 0 : -1}
+                onClick={() => setActiveStep(index)}
+                onKeyDown={(e) => onKey(e, index)}
+                style={{ flexGrow: isActive ? 4.2 : 1, flexBasis: 0 }}
+                className={`group relative min-w-0 overflow-hidden rounded-[32px] text-left outline-none ring-offset-2 ring-offset-background focus-visible:ring-2 focus-visible:ring-primary ${
+                  isActive ? "" : "transition-transform duration-200 hover:-translate-y-1"
+                }`}
+              >
+                <img
+                  src={step.image}
+                  alt=""
+                  loading="lazy"
+                  width={1024}
+                  height={1280}
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+                <span
+                  aria-hidden="true"
+                  className={`absolute inset-0 bg-gradient-to-t from-background via-background/55 to-background/0 transition-opacity duration-300 ${
+                    isActive ? "opacity-95" : "opacity-80"
+                  }`}
+                />
+                <span className="absolute left-4 top-4 rounded-full bg-primary px-3 py-1 font-display text-sm font-bold text-primary-foreground">
+                  {step.number}
+                </span>
+                <span lang="bg" className={`absolute inset-x-0 bottom-0 block ${isActive ? "p-5 xl:p-7" : "p-4"}`}>
+                  <span
+                    className={`block font-display font-semibold text-foreground ${
+                      isActive ? "text-3xl xl:text-4xl" : "hyphens-auto break-words text-sm leading-snug xl:text-base"
+                    }`}
                   >
-                    <span className="manifest-label">
-                      Стъпка {active.number} / {String(steps.length).padStart(2, "0")}
-                    </span>
-                    <h3 className="mt-3 text-3xl lg:text-4xl">{active.title}</h3>
-                    <p className="mt-4 max-w-lg text-base leading-relaxed text-muted-foreground lg:text-lg">
-                      {active.body}
-                    </p>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-            </div>
-            {footnoteEl ? <div className="mt-8">{footnoteEl}</div> : null}
-          </div>
+                    {step.title}
+                  </span>
+                  {isActive && (
+                    <motion.span
+                      key={`body-${step.number}`}
+                      initial={reduced ? false : { opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ ...transition, delay: reduced ? 0 : 0.12 }}
+                      className="mt-3 block max-w-lg text-base leading-relaxed text-foreground/85 xl:text-lg"
+                    >
+                      {step.body}
+                    </motion.span>
+                  )}
+                </span>
+              </motion.button>
+            );
+          })}
         </div>
-
-        {/* One full-viewport observer zone per step keeps each step stable under wheel/trackpad scrolling. */}
-        {steps.map((step, index) => (
-          <div
-            key={`trigger-${step.number}`}
-            ref={(el) => {
-              triggerRefs.current[index] = el;
-            }}
-            data-step-index={index}
-            style={{ top: `${index * 100}vh` }}
-            className="pointer-events-none absolute inset-x-0 h-screen"
-            aria-hidden="true"
-          />
-        ))}
+        {footnoteEl ? <div className="mt-8">{footnoteEl}</div> : null}
       </div>
 
       {/* Mobile: stacked steps, no pinning */}
