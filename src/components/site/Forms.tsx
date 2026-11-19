@@ -119,6 +119,10 @@ export function Forms() {
               placeholder="Кратко описание на дейността"
               className={textareaClass}
             />
+            <label className="flex cursor-pointer items-start gap-3 text-sm text-muted-foreground">
+              <input required type="checkbox" name="gdpr" className="mt-1 h-4 w-4 shrink-0 accent-[var(--primary)]" />
+              <span>Съгласен/на съм данните ми да бъдат обработвани съгласно <a href="/poveritelnost" className="text-foreground underline underline-offset-4">политиката за поверителност</a>.</span>
+            </label>
           </div>
 
           <MagneticButton
@@ -177,6 +181,10 @@ export function Forms() {
                 className="hidden"
                 onChange={(e) => setResumeName(e.target.files?.[0]?.name ?? null)}
               />
+            </label>
+            <label className="flex cursor-pointer items-start gap-3 text-sm text-muted-foreground">
+              <input required type="checkbox" name="gdpr" className="mt-1 h-4 w-4 shrink-0 accent-[var(--primary)]" />
+              <span>Съгласен/на съм данните ми да бъдат обработвани съгласно <a href="/poveritelnost" className="text-foreground underline underline-offset-4">политиката за поверителност</a>.</span>
             </label>
           </div>
 

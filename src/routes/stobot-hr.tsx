@@ -55,7 +55,6 @@ const LICENSES: License[] = [
     ],
   },
 ];
-const COMPANY_LINE = "Стобот ЕйчАр ЕООД, ЕИК 208648435";
 
 const COUNTRIES = ["Турция", "Индия", "Пакистан", "Филипини", "Украйна", "Виетнам"];
 const POSITIONS = ["Складови работници", "Товарене и разтоварване", "Шофьори", "Работници в производство", "Общи работници"];
@@ -233,7 +232,7 @@ function ForeignWorkersPage() {
             <textarea name="details" rows={3} maxLength={2000} placeholder="Кратко съобщение" className={textareaClass} />
             <label className="flex cursor-pointer items-start gap-3 text-sm text-muted-foreground">
               <input required type="checkbox" name="gdpr" className="mt-1 h-4 w-4 shrink-0 accent-[var(--primary)]" />
-              <span>Съгласен/на съм данните ми да бъдат обработвани за целите на запитването съгласно GDPR.</span>
+              <span>Съгласен/на съм данните ми да бъдат обработвани за целите на запитването съгласно <a href="/poveritelnost" className="text-foreground underline underline-offset-4">политиката за поверителност</a>.</span>
             </label>
           </div>
           <MagneticButton
@@ -265,7 +264,7 @@ function ForeignWorkersPage() {
         </Accordion>
       </section>
 
-      <Footer companyLine={COMPANY_LINE} />
+      <Footer />
       <SectionDots sections={DOTS} />
       <FloatingContact />
     </main>

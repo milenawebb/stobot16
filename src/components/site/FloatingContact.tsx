@@ -3,10 +3,17 @@ import { AssistantMark } from "./AssistantMark";
 
 import { Button } from "@/components/ui/button";
 import { ChatWidget } from "./ChatWidget";
+import { OPEN_CHAT_EVENT } from "@/lib/legal";
 
 export function FloatingContact() {
   const [chatOpen, setChatOpen] = useState(false);
   const bobRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const open = () => setChatOpen(true);
+    window.addEventListener(OPEN_CHAT_EVENT, open);
+    return () => window.removeEventListener(OPEN_CHAT_EVENT, open);
+  }, []);
 
   useEffect(() => {
     const element = bobRef.current;

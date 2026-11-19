@@ -11,6 +11,9 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminRouteImport } from './routes/admin'
+import { Route as BiskvitkiRouteImport } from './routes/biskvitki'
+import { Route as ObshtiUsloviyaRouteImport } from './routes/obshti-usloviya'
+import { Route as PoveritelnostRouteImport } from './routes/poveritelnost'
 import { Route as RabotnitsiOtChuzhbinaRouteImport } from './routes/rabotnitsi-ot-chuzhbina'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as StobotHrRouteImport } from './routes/stobot-hr'
@@ -25,6 +28,21 @@ const IndexRoute = IndexRouteImport.update({
 const AdminRoute = AdminRouteImport.update({
   id: '/admin',
   path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BiskvitkiRoute = BiskvitkiRouteImport.update({
+  id: '/biskvitki',
+  path: '/biskvitki',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ObshtiUsloviyaRoute = ObshtiUsloviyaRouteImport.update({
+  id: '/obshti-usloviya',
+  path: '/obshti-usloviya',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PoveritelnostRoute = PoveritelnostRouteImport.update({
+  id: '/poveritelnost',
+  path: '/poveritelnost',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RabotnitsiOtChuzhbinaRoute = RabotnitsiOtChuzhbinaRouteImport.update({
@@ -56,6 +74,9 @@ const ObiaviSlugRoute = ObiaviSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/biskvitki': typeof BiskvitkiRoute
+  '/obshti-usloviya': typeof ObshtiUsloviyaRoute
+  '/poveritelnost': typeof PoveritelnostRoute
   '/rabotnitsi-ot-chuzhbina': typeof RabotnitsiOtChuzhbinaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/stobot-hr': typeof StobotHrRoute
@@ -65,6 +86,9 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/biskvitki': typeof BiskvitkiRoute
+  '/obshti-usloviya': typeof ObshtiUsloviyaRoute
+  '/poveritelnost': typeof PoveritelnostRoute
   '/rabotnitsi-ot-chuzhbina': typeof RabotnitsiOtChuzhbinaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/stobot-hr': typeof StobotHrRoute
@@ -75,6 +99,9 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/biskvitki': typeof BiskvitkiRoute
+  '/obshti-usloviya': typeof ObshtiUsloviyaRoute
+  '/poveritelnost': typeof PoveritelnostRoute
   '/rabotnitsi-ot-chuzhbina': typeof RabotnitsiOtChuzhbinaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/stobot-hr': typeof StobotHrRoute
@@ -86,6 +113,9 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/admin'
+    | '/biskvitki'
+    | '/obshti-usloviya'
+    | '/poveritelnost'
     | '/rabotnitsi-ot-chuzhbina'
     | '/sitemap.xml'
     | '/stobot-hr'
@@ -95,6 +125,9 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/admin'
+    | '/biskvitki'
+    | '/obshti-usloviya'
+    | '/poveritelnost'
     | '/rabotnitsi-ot-chuzhbina'
     | '/sitemap.xml'
     | '/stobot-hr'
@@ -104,6 +137,9 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/admin'
+    | '/biskvitki'
+    | '/obshti-usloviya'
+    | '/poveritelnost'
     | '/rabotnitsi-ot-chuzhbina'
     | '/sitemap.xml'
     | '/stobot-hr'
@@ -114,6 +150,9 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRoute
+  BiskvitkiRoute: typeof BiskvitkiRoute
+  ObshtiUsloviyaRoute: typeof ObshtiUsloviyaRoute
+  PoveritelnostRoute: typeof PoveritelnostRoute
   RabotnitsiOtChuzhbinaRoute: typeof RabotnitsiOtChuzhbinaRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   StobotHrRoute: typeof StobotHrRoute
@@ -135,6 +174,27 @@ declare module '@tanstack/react-router' {
       path: '/admin'
       fullPath: '/admin'
       preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/biskvitki': {
+      id: '/biskvitki'
+      path: '/biskvitki'
+      fullPath: '/biskvitki'
+      preLoaderRoute: typeof BiskvitkiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/obshti-usloviya': {
+      id: '/obshti-usloviya'
+      path: '/obshti-usloviya'
+      fullPath: '/obshti-usloviya'
+      preLoaderRoute: typeof ObshtiUsloviyaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/poveritelnost': {
+      id: '/poveritelnost'
+      path: '/poveritelnost'
+      fullPath: '/poveritelnost'
+      preLoaderRoute: typeof PoveritelnostRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/rabotnitsi-ot-chuzhbina': {
@@ -178,6 +238,9 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRoute,
+  BiskvitkiRoute: BiskvitkiRoute,
+  ObshtiUsloviyaRoute: ObshtiUsloviyaRoute,
+  PoveritelnostRoute: PoveritelnostRoute,
   RabotnitsiOtChuzhbinaRoute: RabotnitsiOtChuzhbinaRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   StobotHrRoute: StobotHrRoute,
