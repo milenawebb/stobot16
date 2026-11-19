@@ -20,7 +20,7 @@ export type JobListing = {
 
 const COLUMNS = "id, slug, title, position, schedule, location, pay, description, sector, is_active, is_urgent, contact_phone, created_at";
 
-function publicClient() {
+export function publicClient() {
   // Fall back to the public build-time values so self-hosted deployments
   // (e.g. Cloudflare) work without server-side env vars configured.
   const key =
@@ -65,7 +65,7 @@ export const getListingBySlug = createServerFn({ method: "GET" })
 
 /* ---------------- admin ---------------- */
 
-function checkPassword(password: string) {
+export function checkPassword(password: string) {
   const expected = process.env["ADMIN_PASSWORD"];
   if (!expected || password !== expected) throw new Error("Грешна парола.");
 }

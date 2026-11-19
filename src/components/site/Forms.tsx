@@ -3,7 +3,8 @@ import { useSearch } from "@tanstack/react-router";
 import { toast } from "sonner";
 import { MagneticButton } from "./kinetic";
 import { SECTORS } from "@/lib/sectors";
-import { CLIENTS_PHONE } from "@/lib/contact";
+import { CLIENTS_PHONE, WORKERS_PHONE } from "@/lib/contact";
+import { submitCandidateApplication } from "@/lib/candidates.functions";
 import { submitCompanyRequest } from "@/lib/requests.functions";
 
 export const COMPANY_SUCCESS = "Заявката е изпратена. Ще се свържем с вас до 24 часа.";
@@ -55,18 +56,37 @@ export const textareaClass =
 export const inputClass =
   "rounded-[6px] w-full border border-input bg-transparent px-4 py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:bg-surface";
 
-function useFakeSubmit(message: string) {
+function useCandidateSubmit() {
   const [sending, setSending] = useState(false);
+  const [status, setStatus] = useState<"idle" | "ok" | "error">("idle");
   return {
     sending,
-    onSubmit: (e: FormEvent<HTMLFormElement>) => {
+    status,
+    onSubmit: async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
+      const form = e.currentTarget;
+      const f = new FormData(form);
       setSending(true);
-      setTimeout(() => {
+      setStatus("idle");
+      try {
+        await submitCandidateApplication({
+          data: {
+            name: str(f, "name"),
+            phone: str(f, "phone"),
+            city: str(f, "city") || undefined,
+            position: str(f, "sector") || undefined,
+            message: str(f, "experience") || undefined,
+            consent: (f.get("gdpr") === "on") as true,
+            website: str(f, "website") || undefined,
+          },
+        });
+        form.reset();
+        setStatus("ok");
+      } catch {
+        setStatus("error");
+      } finally {
         setSending(false);
-        (e.target as HTMLFormElement).reset();
-        toast.success(message);
-      }, 700);
+      }
     },
   };
 }
@@ -74,8 +94,7 @@ function useFakeSubmit(message: string) {
 export function Forms() {
   const search = useSearch({ strict: false }) as { sector?: string; listing?: string };
   const company = useCompanySubmit("home");
-  const candidate = useFakeSubmit("Кандидатурата е изпратена. Очаквайте обаждане.");
-  const [resumeName, setResumeName] = useState<string | null>(null);
+  const candidate = useCandidateSubmit();
   const presetSector = search.sector && SECTORS.includes(search.sector as never) ? search.sector : "";
 
 
@@ -133,7 +152,7 @@ export function Forms() {
           />
         </form>
 
-        <form onSubmit={candidate.onSubmit} id="kandidati" className="rounded-[30px] bg-background p-7 lg:p-10">
+        <form onSubmit={candidate.onSubmit} id="kandidati" className="relative rounded-[30px] bg-background p-7 lg:p-10">
           <div className="flex items-center justify-between gap-4 border-b border-border pb-5">
             <h3 className="text-2xl">За кандидати</h3>
             <span className="manifest-label">Кандидатствай за работа</span>
@@ -171,17 +190,7 @@ export function Forms() {
               className={textareaClass}
             />
 
-            <label className="flex cursor-pointer items-center justify-between gap-3 rounded-[6px] border border-dashed border-input px-4 py-3 text-sm text-muted-foreground transition-colors hover:border-primary">
-              <span>{resumeName ?? "Прикачете CV (PDF, DOC, по желание)"}</span>
-              <span className="font-display text-xs font-bold text-foreground">Избери файл</span>
-              <input
-                type="file"
-                name="resume"
-                accept=".pdf,.doc,.docx,.rtf,.odt,image/*"
-                className="hidden"
-                onChange={(e) => setResumeName(e.target.files?.[0]?.name ?? null)}
-              />
-            </label>
+            <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 opacity-0" />
             <label className="flex cursor-pointer items-start gap-3 text-sm text-muted-foreground">
               <input required type="checkbox" name="gdpr" className="mt-1 h-4 w-4 shrink-0 accent-[var(--primary)]" />
               <span>Съгласен/на съм данните ми да бъдат обработвани съгласно <a href="/poveritelnost" className="text-foreground underline underline-offset-4">политиката за поверителност</a>.</span>
@@ -194,6 +203,14 @@ export function Forms() {
             label={candidate.sending ? "Изпращане..." : "Изпрати кандидатура"}
             className="mt-6 flex w-full items-center justify-center rounded-[6px] border border-foreground px-6 py-4 font-display text-sm font-bold  text-foreground transition-colors hover:border-move hover:bg-move hover:text-move-foreground disabled:opacity-60"
           />
+          {candidate.status === "ok" && (
+            <p role="status" className="mt-4 rounded-[6px] border border-primary/40 bg-primary/10 px-4 py-3 text-sm text-foreground">Благодарим! Ще се свържем с вас.</p>
+          )}
+          {candidate.status === "error" && (
+            <p role="alert" className="mt-4 rounded-[6px] border border-destructive/50 bg-destructive/10 px-4 py-3 text-sm text-foreground">
+              Не успяхме да изпратим. Обадете се на <a href={`tel:${WORKERS_PHONE.tel}`} className="underline underline-offset-4">{WORKERS_PHONE.display}</a>.
+            </p>
+          )}
           <p className="manifest-label mt-4 block">
             Трудов договор, осигуровки и коректно заплащане.
           </p>

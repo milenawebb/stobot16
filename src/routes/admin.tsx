@@ -9,6 +9,7 @@ import {
   type JobListing,
 } from "@/lib/listings.functions";
 import { SECTORS } from "@/lib/sectors";
+import { AdminInbox } from "@/components/site/AdminInbox";
 
 const AUTH_KEY = "stobot_admin_auth";
 const AUTH_TTL_MS = 30 * 24 * 60 * 60 * 1000; // 30 days
@@ -66,6 +67,7 @@ function AdminPage() {
   const [busy, setBusy] = useState(false);
 
   const [showPassword, setShowPassword] = useState(false);
+  const [tab, setTab] = useState<"listings" | "candidates" | "companies">("listings");
 
   useEffect(() => {
     const saved = readStoredAuth();
@@ -201,7 +203,30 @@ function AdminPage() {
 
   return (
     <main className="mx-auto max-w-5xl px-5 py-16 lg:px-8">
-      <h1 className="text-3xl">Обяви за работа</h1>
+      <h1 className="text-3xl">Панел за управление</h1>
+      <div className="mt-6 flex flex-wrap gap-2" role="tablist">
+        {([
+          ["listings", "Обяви"],
+          ["candidates", "Кандидати"],
+          ["companies", "Запитвания от фирми"],
+        ] as const).map(([k, label]) => (
+          <button
+            key={k}
+            type="button"
+            role="tab"
+            aria-selected={tab === k}
+            onClick={() => setTab(k)}
+            className={`rounded-full px-5 py-2 text-sm transition-colors ${tab === k ? "bg-primary text-primary-foreground" : "border border-border hover:border-primary"}`}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+
+      {tab !== "listings" ? (
+        <AdminInbox password={password} tab={tab} />
+      ) : (
+      <>
 
       <form onSubmit={onSave} className="mt-10 rounded-[32px] border border-border p-6 lg:p-8">
         <h2 className="text-xl">{form.id ? "Редакция на обява" : "Нова обява"}</h2>
@@ -361,6 +386,8 @@ function AdminPage() {
           </div>
         ))}
       </div>
+      </>
+      )}
     </main>
   );
 }

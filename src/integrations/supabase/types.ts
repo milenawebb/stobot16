@@ -14,6 +14,48 @@ export type Database = {
   }
   public: {
     Tables: {
+      candidate_applications: {
+        Row: {
+          city: string | null
+          consent: boolean
+          created_at: string
+          id: string
+          ip_hash: string | null
+          message: string | null
+          name: string
+          phone: string
+          position: string | null
+          source: string
+          status: string
+        }
+        Insert: {
+          city?: string | null
+          consent: boolean
+          created_at?: string
+          id?: string
+          ip_hash?: string | null
+          message?: string | null
+          name: string
+          phone: string
+          position?: string | null
+          source?: string
+          status?: string
+        }
+        Update: {
+          city?: string | null
+          consent?: boolean
+          created_at?: string
+          id?: string
+          ip_hash?: string | null
+          message?: string | null
+          name?: string
+          phone?: string
+          position?: string | null
+          source?: string
+          status?: string
+        }
+        Relationships: []
+      }
       company_requests: {
         Row: {
           city: string | null
@@ -27,6 +69,7 @@ export type Database = {
           phone: string
           sector: string | null
           source: string
+          status: string
           workers: string | null
         }
         Insert: {
@@ -41,6 +84,7 @@ export type Database = {
           phone: string
           sector?: string | null
           source?: string
+          status?: string
           workers?: string | null
         }
         Update: {
@@ -55,6 +99,7 @@ export type Database = {
           phone?: string
           sector?: string | null
           source?: string
+          status?: string
           workers?: string | null
         }
         Relationships: []
@@ -115,7 +160,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      candidate_recent_count: { Args: { _ip_hash: string }; Returns: number }
     }
     Enums: {
       [_ in never]: never

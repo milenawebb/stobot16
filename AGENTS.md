@@ -19,3 +19,4 @@
 - Legal entity data lives only in src/lib/legal.ts (LEGAL); empty fields never render; footer always shows the company line; why: one source for company/registration details.
 - Legal pages (/poveritelnost, /biskvitki, /obshti-usloviya) use LegalPage + legalHead; privacy copy must describe only data the code actually collects; why: avoid false claims.
 - Anything can open the chat via openChat() (window event listened to by FloatingContact); why: footer and other links open the same assistant.
+- Candidate applications submit via `submitCandidateApplication` into `candidate_applications` (anon insert-only, honeypot `website`, max 5/hour per hashed IP via `candidate_recent_count`); admin inbox reads/updates/deletes it and `company_requests` only through ADMIN_PASSWORD-checked server functions; why: leads stay private.
